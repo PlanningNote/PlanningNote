@@ -10,6 +10,6 @@ public interface AskDAO {
 	public int deleteAsk(int no);
 	public List<AskDTO> listAsk();
 	public AskDTO findAsk(String search,String searchString);
-	public List<AskDTO> rankAsk();
+	public List<AskDTO> rankAsk(); 
 
 }
