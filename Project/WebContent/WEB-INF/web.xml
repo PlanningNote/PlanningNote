@@ -7,7 +7,7 @@
 <servlet-mapping>
   	<servlet-name>PN_planning</servlet-name>
   	<url-pattern>*.do</url-pattern>
-</servlet-mapping>
+</servlet-mapping><!-- plan -->
 
 <filter>
 	<filter-name>encodingFilter</filter-name>
