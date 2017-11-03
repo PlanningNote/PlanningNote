@@ -13,7 +13,7 @@
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:oracle:thin:@127.0.0.1:1521:xe</value>
+			<value>@192.168.53.4:1521:xe</value>
 		</property>
 		<property name="username" value="java07" />
 		<property name="password" value="java07" />	
@@ -23,9 +23,10 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<bean id="boardDAO" class="board.dao.BoardDAOImpl">
+	<bean id = "plan.controller" class="plan.controller.PlanController">
 	</bean>
 	
-	<bean class="board.controller.BoardController">
+	<bean id="planDAO" class="plan.dao.PlanDAO">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 </beans>
