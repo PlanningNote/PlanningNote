@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+<servlet>
+    <servlet-name>location</servlet-name>
+    <servlet-class>my.location.LocationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>location</servlet-name>
+    <url-pattern>*.lo</url-pattern>
+  </servlet-mapping>
+</web-app>
