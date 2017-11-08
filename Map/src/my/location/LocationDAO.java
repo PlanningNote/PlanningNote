@@ -13,7 +13,7 @@ import my.db.ConnectionPoolBean;
 public class LocationDAO {
 	private Connection con;
 	private PreparedStatement ps;
-	private ResultSet rs;
+	private ResultSet rs; 
 	
 	private ConnectionPoolBean pool;
 	
