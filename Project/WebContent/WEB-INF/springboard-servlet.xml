@@ -5,7 +5,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>jdbc/oracle</value>
+		</property>
+		<property name="resourceRef" value="true" />
+	</bean> -->
 	<context:annotation-config/>
+	<!-- 여기서 선언된 bean 만 받는다. -->
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -13,20 +20,31 @@
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="url">
-			<value>@192.168.53.4:1521:xe</value>
+			<value>jdbc:oracle:thin:@127.0.0.1:1521:xe</value>
 		</property>
 		<property name="username" value="java07" />
 		<property name="password" value="java07" />	
 	</bean>
-	
-	<bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource"/>
+	<bean id = "controller" class="plan.controller.PlanController">
 	</bean>
-	
-	<bean id = "plan.controller" class="plan.controller.PlanController">
-	</bean>
-	
-	<bean id="planDAO" class="plan.dao.PlanDAO">
+	<bean id="planDAO" class="plan.dao.PlanDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
+	<bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
