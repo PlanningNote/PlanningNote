@@ -38,35 +38,41 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap">
     </script>
     <script>
+    var map;
+    
     function initMap() {
         var cnt = 1; //마커 카운트 해서 우선 2개만 제한
         var initLatLng = {lat: 37.366184, lng: 127.107905};
         var geocoder = new google.maps.Geocoder;
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             center: initLatLng,
             zoom: 16
         });
         
         
-        <!--
+        
         // 기본 마커 - 지도 생기면 중심에 찍혀있는 것
         var basicMarker = new google.maps.Marker({
             position: initLatLng,
-            map: map, //map을 선택 안해주면 마커는 생성되지만 표시는 안됨 이 경우는 setmap으로 나중에 호출할 수 있음
+            //map: map, //map을 선택 안해주면 마커는 생성되지만 표시는 안됨 이 경우는 setmap으로 나중에 호출할 수 있음
             draggable: true
-        });         -->    
+        });          
         
         
         
         
     }
     
-    function addMarker(location, map) {
+    function addMarker(location) {
         var marker = new google.maps.Marker({
             position: location,
             map: map
             //label : 1,2 넣으면 좋겠다
         });
+    }
+    
+    function writeMessage(msg){
+    	window.alert('메시지 : '+msg);
     }
     
    
@@ -99,8 +105,14 @@
 					<td><%=list.get(i).getSubject() %></td>
 					<td><%=list.get(i).getContent() %></td>
 				<% }  %>
+				<script>
+					addMarker('<%=list.get(i).getLocation()%>')
+					
+				</script>
 				</tr>
-			<% } %>
+			<% }			
+			
+			%>
 			
 		</table>
 	</div>

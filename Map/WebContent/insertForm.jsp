@@ -17,7 +17,7 @@
     </script>
     <script>
     	var temp;
-    function initMap() {
+    	function initMap() {
         var cnt = 1; //마커 카운트 해서 우선 2개만 제한
         var initLatLng = {lat: 37.366184, lng: 127.107905};
         var geocoder = new google.maps.Geocoder;
@@ -26,13 +26,13 @@
             zoom: 16
         });
         
-        
+        <!--
         // 기본 마커 - 지도 생기면 중심에 찍혀있는 것
         var basicMarker = new google.maps.Marker({
             position: initLatLng,
             map: map, //map을 선택 안해주면 마커는 생성되지만 표시는 안됨 이 경우는 setmap으로 나중에 호출할 수 있음
             draggable: true
-        });
+        });-->
        
         google.maps.event.addListener(map, 'click', function(event) {
             if(cnt < 2) {
