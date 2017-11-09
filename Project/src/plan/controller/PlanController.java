@@ -22,11 +22,11 @@ public class PlanController {
 	public ModelAndView plan(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/plan/addPlan.jsp");
+		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
 	}
 	
-	@RequestMapping(value="/addPlan.do")//∞Ë»π ¿˙¿Â
+	/*@RequestMapping(value="/addPlan.do")//∞Ë»π ¿˙¿Â
 	public ModelAndView addPlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
 		PlanDTO dto = new PlanDTO();
@@ -45,19 +45,6 @@ public class PlanController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/plan/list.jsp");
 		return mav;
-	}
+	}*/
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

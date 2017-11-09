@@ -127,7 +127,7 @@
 					<td width="3%"></td>
 				</tr>
 			</table>
-			<input type="button" value="추가" onClick="addRow()"><br>
+			<input type="button" value="+" onClick="addRow()"><br>
 			<br> <input type="submit" value="저장"> <input
 				type="reset" value="취소">
 	</div>

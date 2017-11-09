@@ -30,7 +30,7 @@
 				<br><li>
 				<a href="<%=request.getContextPath()%>/index.jsp">여행후기</a> <br>
 				<br><li>
-				<a href="<%=request.getContextPath()%>/index.jsp">내일정만들기</a> <br>
+				<a href="plan.do">내일정만들기</a> <br>
 				<br><li>
 				<a href="<%=request.getContextPath()%>/howto.jsp">이용방법</a> <br>
 				<br>
