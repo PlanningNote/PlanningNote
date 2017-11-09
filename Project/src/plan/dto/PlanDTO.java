@@ -10,7 +10,7 @@ public class PlanDTO {
 	private int tag_no;
 	private String country;
 	private String city;
-	private String tunmbnail;
+	private String thumbnail;
 	private int totalprice;
 	private String travel_period;
 	private String travel_seasion;
@@ -70,11 +70,11 @@ public class PlanDTO {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getTunmbnail() {
-		return tunmbnail;
+	public String getThumbnail() {
+		return thumbnail;
 	}
-	public void setTunmbnail(String tunmbnail) {
-		this.tunmbnail = tunmbnail;
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 	public int getTotalprice() {
 		return totalprice;

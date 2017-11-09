@@ -44,7 +44,6 @@
 	<bean id="askDAO" class="ask.dao.AskDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
-	
 	<bean class="ask.controller.AskController">
 	</bean>
 	

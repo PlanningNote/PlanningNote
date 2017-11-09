@@ -14,6 +14,9 @@ public interface PlanDAO {
 	public List<PlanDTO> tagPlan(String tag);
 	public List<PlanDTO> findOption(String search,String searchString); //여행기간, 시기, 테마 검색
 	public List<PlanDTO> subList(int group_no); //그룹에 해당하는 전체 서브리스트
+	public PlanDTO getContent(int no);
+	int updatePlan(int no, PlanDTO dto);
+	List<PlanDTO> listPlan(int group_no, PlanDTO dto);
 
 
 }
