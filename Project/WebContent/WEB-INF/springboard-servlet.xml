@@ -34,6 +34,21 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+		<bean id="noticeDAO" class="notice.dao.NoticeDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+	
+	<bean class="notice.controller.NoticeController">
+	</bean>
+	
+	<bean id="askDAO" class="ask.dao.AskDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+	
+	<bean class="ask.controller.AskController">
+	</bean>
+	
+	
 </beans>
 
 

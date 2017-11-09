@@ -3,6 +3,7 @@ package ask.dao;
 import java.util.List;
 
 import ask.dto.AskDTO;
+
   
 public interface AskDAO {
 	public int insertAsk(AskDTO dto);

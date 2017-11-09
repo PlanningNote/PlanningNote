@@ -12,6 +12,7 @@ public class AskDTO {
 	private int re_step;
 	private int re_group;
 	private int re_level;
+	
 	public int getNo() {
 		return no;
 	}
