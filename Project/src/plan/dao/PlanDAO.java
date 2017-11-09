@@ -7,7 +7,6 @@ import plan.dto.PlanDTO;
 public interface PlanDAO {
 	public int insertPlan(PlanDTO dto);
 	public int deletePlan(int no);
-	public List<PlanDTO> listPlan(); //전체 그룹 게시물 리스트
 	public PlanDTO findPlan(String search,String searchString); //제목으로할건지 작성자로 할건지
 	public List<PlanDTO> rankPlan();
 	public List<PlanDTO> tagPlan(String tag);

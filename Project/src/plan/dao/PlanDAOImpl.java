@@ -102,10 +102,4 @@ public class PlanDAOImpl implements PlanDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public List<PlanDTO> listPlan() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
