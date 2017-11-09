@@ -24,7 +24,7 @@
 		<a href="notice_list.do"> <img src="img/paris.jpg"></a> <!-- 공지사항-->
 		<a href="ask_list.do"> <img src="img/travel2.png">	</a> </td><!-- 문의하기 -->
 	
-	</table><br>
+	</table><br> 
 
 
 	<h4><br>
