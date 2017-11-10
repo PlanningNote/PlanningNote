@@ -88,7 +88,9 @@
 						<br>교통 <br> 
 						<input type="hidden" name="trffic" border="1" style="width: 100%; height: 25;" VALUE="${trffic}">
 					</td>
-					<td width="10%" height="100%">이미지<img name="img" VALUE="${img}"></td>
+					<td width="10%" height="100%">
+					<a href="content.do"><img name="img" VALUE="${img}"></a>
+					</td>
 					<td width="3%"></td>
 				</tr>
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
@@ -104,7 +106,9 @@
 						<br>교통 <br> 
 						<input type="hidden" name="trffic" border="1" style="width: 100%; height: 25;" VALUE="${trffic}">
 					</td>
-					<td width="10%" height="100%">이미지<img name="img" VALUE="${img}"></td>
+					<td width="10%" height="100%">
+					<a href="content.do"><img name="img" VALUE="${img}"></a>
+					</td>
 					<td width="3%"></td>
 				</tr>
 			</table>

@@ -30,7 +30,7 @@
 					<td WIDTH="37%">교통 
 					<input type="hidden" name="trffic" border="1" style="width: 100%; height: 25;" VALUE="${trffic}">
 					</td>
-					<td>예산: 원 <input type="hidden" name="price" border="1" style="width: 100%; height: 25;" VALUE="${price}">
+					<td>예산: <input type="hidden" name="price" border="1" style="width: 100%; height: 25;" VALUE="${price}">원
 					</td>
 				</tr>
 				<tr>
