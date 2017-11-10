@@ -80,7 +80,7 @@
 					<td whidth="50%" height="100%">
 						<!-- <div style="overflow-y: scroll; height: 100%; width: 100%">-->
 						<!-- 여기에 subplan이 들어갑니다. --> 
-						제목: <input type="hidden" name="subject" border="1" tyle="width: 100%; height: 25;" VALUE="${subject}"> 
+						제목: <input type="hidden" name="subject" border="1" style="width: 100%; height: 25;" VALUE="${subject}"> 
 						<br>비용:
 						<input type="hidden" name="price" border="1" style="width: 100%; height: 25;" VALUE="${price}">원 
 						<br>내용 <br> 

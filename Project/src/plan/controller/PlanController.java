@@ -29,7 +29,14 @@ public class PlanController {
 	public ModelAndView list(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/planning/addPlan.jsp");
+		mav.setViewName("WEB-INF/planning/listPlan.jsp");
+		return mav;
+	}
+	@RequestMapping(value="/content.do")//계획적는 페이지로 이동.
+	public ModelAndView content(HttpServletRequest arg0, 
+			HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/planning/contentPlan.jsp");
 		return mav;
 	}
 	
