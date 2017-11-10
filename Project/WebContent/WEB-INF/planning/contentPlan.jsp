@@ -7,23 +7,34 @@
 <body>
 	<div align="center">
 		<form name="f" method="post" action="content.do">
-			<table border="1" WIDTH="1000" HEIGHT="750">
-				<tr>
-					<td COLSPAN="2">이미지</td>
+			<table border="1" WIDTH="1000" HEIGHT="900">
+				<tr HEIGHT="40%">
+					<td COLSPAN="3">이미지 
+					<input type="hidden" name="img" border="1" style="width: 100%; height: 25;" VALUE="${img}">
+					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">제목</td>
-					<input type="hidden" name="subject" border="1" yle="width: 100%; height: 25;" VALUE="${subject}">
+					<td COLSPAN="3">제목
+					<input type="hidden" name="subject" border="1" style="width: 100%; height: 25;" VALUE="${subject}">
+					</td>
+				</tr>
+				<tr HEIGHT="50%">
+					<td COLSPAN="2">내용 
+					<input type="hidden" name="content" border="1" style="width: 100%; height: 25;" VALUE="${content}">
+					</td>
+					<td ROWSPAN="2" WIDTH="40%">지도 
+					<input type="hidden" name="map" border="1" style="width: 100%; height: 25;" VALUE="${map}">
+					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">내용</td>
+					<td WIDTH="37%">교통 
+					<input type="hidden" name="trffic" border="1" style="width: 100%; height: 25;" VALUE="${trffic}">
+					</td>
+					<td>예산: 원 <input type="hidden" name="price" border="1" style="width: 100%; height: 25;" VALUE="${price}">
+					</td>
 				</tr>
 				<tr>
-					<td WIDTH="50%">교통</td>
-					<td>예산: 원</td>
-				</tr>
-				<tr>
-					<td COLSPAN="2">지도</td>
+					
 				</tr>
 			</table>
 			<a href="list.do">뒤로가기</a>
