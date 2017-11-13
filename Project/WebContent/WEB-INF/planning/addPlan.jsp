@@ -24,7 +24,7 @@ var index=0;
 		oCell2.innerHTML = "제목 <br>"
 				+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
 				+ "<br>비용 <br>"
-				+ "<input type='text' name='targets["+index+"].price' border='1' style='width: 100%; height: 25;'>"
+				+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;' placeholder='숫자만 입력하세요'>원"
 				+ "<br>내용 <br>"
 				+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 				+ "</textarea>"
@@ -80,19 +80,24 @@ var index=0;
 						함께 <INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer">님
+					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer" value="${writer}">님
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성일: <c:set var="now"
-							value="<%=new java.util.Date()%>" /> <fmt:formatDate
-							value="${now}" type="date" dateStyle="full" /></td>
+					<td COLSPAN="2">작성일: 
+					<c:set var="day" value="<%=new java.util.Date()%>" /> 
+					<fmt:formatDate value="${day}" type="date" dateStyle="full"/> </td>
 				</tr>
 				<tr>
-					<td><font color="white">태그:</font> <INPUT TYPE="TEXT"
-						NAME="tag_no"></td>
-					<td ALIGN="RIGHT"><font color="white">총예산: <INPUT
-							TYPE="hidden" NAME="totalprice">원
+					<td>태그:<br>
+					<INPUT TYPE="TEXT" NAME="tag1" value="#"><br>
+					<INPUT TYPE="TEXT" NAME="tag2" value="#"><br>
+					<INPUT TYPE="TEXT" NAME="tag3" value="#"><br>
+					<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
+					<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
+					</td>
+					<td ALIGN="RIGHT"><font color="white">총예산: 
+					<INPUT TYPE="hidden" NAME="totalprice">원
 					</font></td>
 				</tr>
 				<tr>
@@ -108,12 +113,12 @@ var index=0;
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
 					<td width="5%">board_num</td>
 
-					<td whidth="50%" height="100%">
+				"WebContent/WEB-INF/web.xml"	<td whidth="50%" height="100%">
 						<!-- <div style="overflow-y: scroll; height: 100%; width: 100%">-->
 						<!-- 여기에 subplan이 들어갑니다. --> 제목 <br> 
 						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;">
 						<br>비용 <br>
-						<input type="text" name="targets[0].price" border="1"style="width: 100%; height: 25;">원
+						<input type="number" name="targets[0].price" border="1"style="width: 95%; height: 25;"placeholder="숫자만 입력하세요">원
 						<br>내용 <br>
 						<textarea name="targets[0].content" rows="5" border="1"style="width: 95%; height: 80;">
 						</textarea>

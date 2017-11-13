@@ -41,14 +41,6 @@ public class PlanController{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
-		
-	}
-	@RequestMapping(value="/list.do")//계획적는 페이지로 이동.
-	public ModelAndView list(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		return mav;
 	}
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addPlan(HttpServletRequest arg0, HttpServletResponse arg1,
@@ -93,7 +85,14 @@ public class PlanController{
 		}
 		return mav;
 	}
-	@RequestMapping(value="/updatePlan.do")//계획적는 페이지로 이동.
+	@RequestMapping(value="/list.do")//계획목록 페이지로 이동.
+	public ModelAndView list(HttpServletRequest arg0, 
+			HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/planning/listPlan.jsp");
+		return mav;
+	}
+	@RequestMapping(value="/updatePlan.do")//계획수정 페이지로 이동.
 	public ModelAndView updatePlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();

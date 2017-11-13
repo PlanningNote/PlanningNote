@@ -6,53 +6,6 @@
 <head>
 <title>플랜리스트</title>
 </head>
-<script language="javascript">
-var index=0;
-	function addRow() {
-		index+=1;
-		var oRow = dyntbl1.insertRow();
-		//oRow.onmouseover = function(){dyntbl1.clickedRowIndex=this.rowIndex};
-		var oCell1 = oRow.insertCell();
-		var oCell2 = oRow.insertCell();
-		var oCell3 = oRow.insertCell();
-		var oCell4 = oRow.insertCell();
-		oCell1.width = "5%";
-		oCell2.width = "50%";
-		oCell3.width = "10%";
-		oCell4.width = "3%";
-		oCell1.innerHTML = "board_num";
-		oCell2.innerHTML = "제목 <br>"
-				+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
-				+ "<br>비용 <br>"
-				+ "<input type='text' name='targets["+index+"].price' border='1' style='width: 100%; height: 25;'>"
-				+ "<br>내용 <br>"
-				+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
-				+ "</textarea>"
-				+ "<br>교통 <br>"
-				+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-		oCell3.innerHTML = "<input type='file' name='targets["+index+"].img'>";
-		oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
-		document.recalc();
-	}
-	function delRow() {
-
-		dyntbl1.deleteRow(dyntbl1.clickedRowIndex);
-	}
-	function renameForModelAttribute() {
-	    $("#form").each( function (index) {
-	        $(this).find("input[name=subject]").attr("name", "targets["+index+"].subject");
-	        $(this).find("input[name=price]").attr("name", "targets["+index+"].price");
-	        $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
-	        $(this).find("input[name=traffic]").attr("name", "targets["+index+"].traffic");
-	        $(this).find("input[name=img]").attr("name", "targets["+index+"].img");
-	    });
-	}
-	
-	//이미지 업로드 외의 데이터는 db에 올릴수 있다.
-	//----------이미지 업로드 구현중----------
-	
-	
-</script>
 <body>
 	<div align="center">
 		<FORM name="f" method="post" action="list.do">
@@ -75,7 +28,7 @@ var index=0;
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성일: <INPUT TYPE="hidden" name="day" VALUE="${day}">원
+					<td COLSPAN="2">작성일: <INPUT TYPE="hidden" name="day" VALUE="${day}">
 					</td>
 				</tr>
 				<tr>
@@ -83,7 +36,12 @@ var index=0;
 						/count:<INPUT TYPE="hidden" name="count" VALUE="count"></td>
 				</tr>
 				<tr>
-					<td>태그: <INPUT TYPE="hidden" name="tag_no" VALUE="${tag_no}"></td>
+					<td>태그:<br>
+					<INPUT TYPE="hidden" name="tag1" VALUE="${tag1}">
+					<INPUT TYPE="hidden" name="tag2" VALUE="${tag2}">
+					<INPUT TYPE="hidden" name="tag3" VALUE="${tag3}">
+					<INPUT TYPE="hidden" name="tag4" VALUE="${tag4}">
+					<INPUT TYPE="hidden" name="tag5" VALUE="${tag5}"></td>
 					<td ALIGN="RIGHT">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원
 					</td>
 				</tr>
@@ -106,7 +64,7 @@ var index=0;
 						<br>교통 <br>
 						<input type="hidden"name="targets[0].traffic" border="1"style="width: 100%; height: 25;" VALUE="${targets[0].traffic}">
 					</td>
-					<td width="10%" height="100%"><input type="file"name="targets[0].img"></td>
+					<!-- <td width="10%" height="100%"><input type="image"name="targets[0].img"src="button_ok.gif"></td> -->
 					<td width="3%"></td>
 				</tr>
 			</table>

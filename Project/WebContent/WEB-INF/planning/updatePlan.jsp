@@ -24,7 +24,7 @@ var index=0;
 		oCell2.innerHTML = "제목 <br>"
 				+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
 				+ "<br>비용 <br>"
-				+ "<input type='text' name='targets["+index+"].price' border='1' style='width: 100%; height: 25;'>"
+				+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;' placeholder='숫자만 입력하세요'>원"
 				+ "<br>내용 <br>"
 				+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 				+ "</textarea>"
@@ -84,11 +84,19 @@ var index=0;
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성일: <INPUT TYPE="hidden" name="day" VALUE="${day}">원
+					<td COLSPAN="2">작성일: 
+					<c:set var="day" value="<%=new java.util.Date()%>" /> 
+					<fmt:formatDate value="${day}" type="date" dateStyle="full"/>
 					</td>
 				</tr>
 				<tr>
-					<td>태그: <INPUT TYPE="text" name="tag_no" VALUE="${tag_no}"></td>
+					<td>태그: <br>
+					<INPUT TYPE="TEXT" NAME="tag1" value="${tag1}"><br>
+					<INPUT TYPE="TEXT" NAME="tag2" value="${tag2}"><br>
+					<INPUT TYPE="TEXT" NAME="tag3" value="${tag3}"><br>
+					<INPUT TYPE="TEXT" NAME="tag4" value="${tag4}"><br>
+					<INPUT TYPE="TEXT" NAME="tag5" value="${tag5}"><br>
+					</td>
 					<td ALIGN="RIGHT">총예산:
 					<INPUT TYPE="hidden" name="totalprice"  VALUE="${totalprice}">원
 					</td>
@@ -110,7 +118,7 @@ var index=0;
 						<!-- 여기에 subplan이 들어갑니다. --> 제목 <br> 
 						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;">
 						<br>비용 <br>
-						<input type="text" name="targets[0].price" border="1"style="width: 100%; height: 25;">원
+						<input type="number" name="targets[0].price" border="1"style="width: 95%; height: 25;">원
 						<br>내용 <br>
 						<textarea name="targets[0].content" rows="5" border="1"style="width: 95%; height: 80;">
 						</textarea>
