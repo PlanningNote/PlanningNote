@@ -10,17 +10,17 @@
 			<table border="1" WIDTH="1000" HEIGHT="900">
 				<tr HEIGHT="40%">
 					<td COLSPAN="3">이미지 
-					<input type="hidden" name="img" border="1" style="width: 100%; height: 25;" VALUE="${img}">
+					<input type="hidden" name="img" border="1" style="width: 100%; height: 25;" VALUE="${targets[0].img}">
 					</td>
 				</tr>
 				<tr>
 					<td COLSPAN="3">제목
-					<input type="hidden" name="subject" border="1" style="width: 100%; height: 25;" VALUE="${subject}">
+					<input type="hidden" name="subject" border="1" style="width: 100%; height: 25;" VALUE="${targets[0].subject}">
 					</td>
 				</tr>
 				<tr HEIGHT="50%">
 					<td COLSPAN="2">내용 
-					<input type="hidden" name="content" border="1" style="width: 100%; height: 25;" VALUE="${content}">
+					<input type="hidden" name="content" border="1" style="width: 100%; height: 25;" VALUE="${targets[0].content}">
 					</td>
 					<td ROWSPAN="2" WIDTH="40%">지도 
 					<input type="hidden" name="map" border="1" style="width: 100%; height: 25;" VALUE="${map}">
@@ -28,9 +28,9 @@
 				</tr>
 				<tr>
 					<td WIDTH="37%">교통 
-					<input type="hidden" name="trffic" border="1" style="width: 100%; height: 25;" VALUE="${trffic}">
+					<input type="hidden" name="trffic" border="1" style="width: 100%; height: 25;" VALUE="${targets[0].traffic}">
 					</td>
-					<td>예산: <input type="hidden" name="price" border="1" style="width: 100%; height: 25;" VALUE="${price}">원
+					<td>예산: <input type="hidden" name="price" border="1" style="width: 100%; height: 25;" VALUE="${targets[0].price}">원
 					</td>
 				</tr>
 				<tr>

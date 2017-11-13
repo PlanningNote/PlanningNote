@@ -11,7 +11,7 @@ var index=0;
 	function addRow() {
 		index+=1;
 		var oRow = dyntbl1.insertRow();
-		//oRow.onmouseover = function(){dyntbl1.clickedRowIndex=this.rowIndex};
+		oRow.onmouseover = function(){dyntbl1.clickedRowIndex=this.rowIndex};
 		var oCell1 = oRow.insertCell();
 		var oCell2 = oRow.insertCell();
 		var oCell3 = oRow.insertCell();
@@ -113,7 +113,7 @@ var index=0;
 						<!-- 여기에 subplan이 들어갑니다. --> 제목 <br> 
 						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;">
 						<br>비용 <br>
-						<input type="text" name="targets[0].price" border="1"style="width: 100%; height: 25;">
+						<input type="text" name="targets[0].price" border="1"style="width: 100%; height: 25;">원
 						<br>내용 <br>
 						<textarea name="targets[0].content" rows="5" border="1"style="width: 95%; height: 80;">
 						</textarea>
@@ -126,8 +126,9 @@ var index=0;
 					<td width="3%"></td>
 				</tr>
 			</table>
-			<input type="button" value="추가" onClick="addRow()"> <input
-				type="submit" value="저장">
+			<input type="button" value="+" onClick="addRow()"><br>
+			<input type="submit" value="저장">
+			<input type="reset" value="취소">
 		</form>
 	</div>
 	</form>
