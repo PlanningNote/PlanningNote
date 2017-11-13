@@ -49,35 +49,6 @@ public class PlanController{
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		return mav;
 	}
-	@RequestMapping(value="/content.do")//계획적는 페이지로 이동.
-	public ModelAndView content(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/planning/contentPlan.jsp");
-		return mav;
-	}
-	
-	/*@RequestMapping(value="/addPlan.do")//계획 저장
-	public ModelAndView addPlan(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
-		PlanDTO dto = new PlanDTO();
-		int res=0;
-		res=planDAO.insertPlan(dto);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/plan/list.jsp");
-		return mav;
-	}
-	@RequestMapping(value="/getContent.do")//상세페이지로 이동
-	public ModelAndView getContent(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
-		PlanDTO dto = new PlanDTO();
-		int no=Integer.parseInt(arg0.getParameter("no"));
-		dto = planDAO.getContent(no);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/plan/list.jsp");
-		return mav;
-	}*/
-	
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute SubPlanDTO dto) throws Exception {
@@ -121,5 +92,27 @@ public class PlanController{
 		}
 		return mav;
 	}
+
+	/*@RequestMapping(value="/addPlan.do")//계획 저장
+	public ModelAndView addPlan(HttpServletRequest arg0, 
+			HttpServletResponse arg1) throws Exception {
+		PlanDTO dto = new PlanDTO();
+		int res=0;
+		res=planDAO.insertPlan(dto);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/plan/list.jsp");
+		return mav;
+	}
+	@RequestMapping(value="/getContent.do")//상세페이지로 이동
+	public ModelAndView getContent(HttpServletRequest arg0, 
+			HttpServletResponse arg1) throws Exception {
+		PlanDTO dto = new PlanDTO();
+		int no=Integer.parseInt(arg0.getParameter("no"));
+		dto = planDAO.getContent(no);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/plan/list.jsp");
+		return mav;
+	}*/
+	
 
 }
