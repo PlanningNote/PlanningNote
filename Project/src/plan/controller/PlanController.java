@@ -23,7 +23,7 @@ import plan.dto.SubPlanDTO;
 
 @org.springframework.stereotype.Controller
 public class PlanController{
-	private static final Log LOG = LogFactory.getLog(PlanControllerTEST.class);
+	private static final Log LOG = LogFactory.getLog(PlanController.class);
 	private File destinationDir;
 	
 	/** 
