@@ -73,7 +73,7 @@ public class PlanControllerTEST {
 		for(int i=0;i<dto.targets.size();i++) {
 		System.out.println("Controller: "+dto.targets.get(i).getContent());
 		}
-		res = dao.insertPlan(dto);
+		res = dao.insertsubPlan(dto);
 		ModelAndView mav = new ModelAndView();
 		PrintWriter writer=arg1.getWriter();
 		
