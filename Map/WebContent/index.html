@@ -1,0 +1,138 @@
+<!-- https://youtu.be/Zxf1mnP5zcw -->
+
+<!DOCTYPE html>
+<html> 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Google Map Test</title>
+	<style>
+		#map{
+		height:400px;
+		width:100%;
+		}
+	</style>
+</head>
+<body>
+	<h1>My Google Map</h1>
+	<div id="map"></div>
+	<script> 
+		function initMap(){
+			//Map options
+			var options = {
+					zoom: 16,
+					center : {lat:37.570478, lng:126.992033}
+			}
+			
+			//New map
+			var map = new google.maps.Map(document.getElementById('map'), options);
+			
+			//Listen for click on map
+			google.maps.event.addListener(map,'click',function(event){
+				//Add marker
+				addMarker({coords:event.latLng});
+			});
+			
+			
+			/*
+			//Add marker 
+			var marker = new google.maps.Marker({
+				position:{lat: 37.571007, lng:126.992388},
+				map:map,
+				icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+			});
+			
+			var infoWindow = new google.maps.InfoWindow({
+				content:'<h1>아이티뱅크</h1>'
+			});
+			
+			marker.addListener('click',function(){
+				infoWindow.open(map, marker);
+			});
+			
+			*/
+			
+			//Array of markers
+			var markes =[
+				{
+					coords:{lat: 37.571007, lng:126.992388},
+					iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+					content:'<h1>아이티뱅크</h1>'
+				},
+				{
+					coords:{lat: 37.570998, lng:126.991257},
+					content:'<h1>CGV</h1>'
+				},
+				{coords:{lat: 37.570537, lng:126.990102}},
+				{coords:{lat: 37.569736, lng:126.988665}}
+				
+			];
+			
+			//Loop through markers
+			for(var i=0;i<markes.length;i++){
+				//Add marker
+				addMarker(markes[i]);
+			}
+			
+			
+			/*
+			addMarker({
+				coords:{lat: 37.571007, lng:126.992388},
+				iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+				content:'<h1>아이티뱅크</h1>'
+			});
+			addMarker({
+				coords:{lat: 37.570998, lng:126.991257},
+				content:'<h1>CGV</h1>'
+			});
+			addMarker({coords:{lat: 37.570537, lng:126.990102}});
+			addMarker({coords:{lat: 37.569736, lng:126.988665}});
+			*/
+			
+			//Add Marker Function
+			function addMarker(props){
+				var marker = new google.maps.Marker({
+					position: props.coords,
+					map:map,
+					//icon:props.iconImage        //아래 if문으로 대체 가능
+				});
+				
+				//Check for customicon
+				if(props.iconImage){
+					//Set icon image
+					marker.setIcon(props.iconImage);
+				}
+				
+				//Check content
+				if(props.content){
+					var infoWindow = new google.maps.InfoWindow({
+						content:props.content
+					});
+					
+					marker.addListener('click',function(){
+						infoWindow.open(map, marker);
+					});
+				}
+			}
+			
+		}
+	</script>
+
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap">
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
