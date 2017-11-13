@@ -100,7 +100,7 @@ var index=0;
 			</table>
 	</div>
 	<div id="pre_set" align="center">
-		<form name="f" method="post" action="goView.do" enctype="multipart/form-data">
+		<form name="f" method="post" action="update.do" enctype="multipart/form-data">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
 					<td width="5%">board_num</td>

@@ -39,8 +39,9 @@ public class PlanController{
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/plan/addPlan.jsp");
+		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
+		
 	}
 	@RequestMapping(value="/list.do")//계획적는 페이지로 이동.
 	public ModelAndView list(HttpServletRequest arg0, 
@@ -88,31 +89,15 @@ public class PlanController{
 			mav.setViewName("WEB-INF/plan/addPlan.jsp");
 		}
 		else {
-			mav.setViewName("WEB-INF/plan/subPlanContent.jsp");
+			mav.setViewName("WEB-INF/plan/listPlan.jsp");
 		}
 		return mav;
 	}
-
-	/*@RequestMapping(value="/addPlan.do")//계획 저장
-	public ModelAndView addPlan(HttpServletRequest arg0, 
+	@RequestMapping(value="/updatePlan.do")//계획적는 페이지로 이동.
+	public ModelAndView updatePlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
-		PlanDTO dto = new PlanDTO();
-		int res=0;
-		res=planDAO.insertPlan(dto);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/plan/list.jsp");
+		mav.setViewName("WEB-INF/planning/update.jsp");
 		return mav;
 	}
-	@RequestMapping(value="/getContent.do")//상세페이지로 이동
-	public ModelAndView getContent(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
-		PlanDTO dto = new PlanDTO();
-		int no=Integer.parseInt(arg0.getParameter("no"));
-		dto = planDAO.getContent(no);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/plan/list.jsp");
-		return mav;
-	}*/
-	
-
 }

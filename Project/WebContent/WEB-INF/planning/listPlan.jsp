@@ -90,7 +90,7 @@ var index=0;
 			</table>
 	</div>
 	<div id="pre_set" align="center">
-		<form name="f" method="post" action="goView.do" enctype="multipart/form-data">
+		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
 					<td width="5%">board_num</td>
@@ -111,9 +111,9 @@ var index=0;
 				</tr>
 			</table>
 			<input type="button" value="글수정"
-				onclick="window.location=planning_updatePlan?<%-- num=${getBoard.num}' --%>">
+				onclick="window.location='planning_updatePlan.do?num=${board_num}'">
 			<%-- <input type="button" value="글삭제"
-				onclick="window.location='board_deleteForm.do?num=${getBoard.num}'">  --%>
+				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
 		</form>
 	</div>
 	</FORM>

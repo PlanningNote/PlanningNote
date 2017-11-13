@@ -55,7 +55,7 @@ var index=0;
 </script>
 <body>
 	<div align="center">
-		<form name="f" method="post" action="insert.do">
+		<form name="f" method="post" action="goView.do">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
@@ -126,7 +126,7 @@ var index=0;
 					<td width="3%"></td>
 				</tr>
 			</table>
-			<input type="button" value="+" onClick="addRow()"><br>
+			<input type="button" value="+" onClick="addRow()"><br><br>
 			<input type="submit" value="저장">
 			<input type="reset" value="취소">
 		</form>
