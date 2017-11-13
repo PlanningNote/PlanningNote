@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import plan.dto.PlanDTO;
+import subplan.dto.SubPlanDTO;
 
 public class PlanDAOImpl implements PlanDAO {
 	private JdbcTemplate jdbcTemplate;
@@ -27,6 +28,34 @@ public class PlanDAOImpl implements PlanDAO {
 
 		int res = jdbcTemplate.update(sql, values);
 		return res;
+	}
+	@Override
+	public int insertsubPlan(SubPlanDTO sdto) {
+		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
+		
+		Object[] values;
+		int res = 0;
+		System.out.println("DAOImpl: "+sdto.targets.get(0).getSubject());
+		for(int i=0;i <1;i++) {
+			System.out.println("now is 'for':"+sdto.targets.get(i).getSubject());
+			sdto.setSubject(sdto.targets.get(i).getSubject());
+			sdto.setPrice(sdto.targets.get(i).getPrice());
+			sdto.setContent(sdto.targets.get(i).getContent());
+			sdto.setImg(sdto.targets.get(i).getImg());
+			sdto.setTraffic(sdto.targets.get(i).getTraffic());
+		
+			values = new Object[] {
+					sdto.getSubject(),sdto.getPrice(),sdto.getContent(),sdto.getImg(),sdto.getTraffic()
+			};
+			res=jdbcTemplate.update(sql, values);
+		}
+		
+		 if(res!=1) {
+			 //res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
+			 res=-1;
+			 return res;
+		 }
+		 return res;
 	}
 
 	@Override

@@ -32,6 +32,8 @@
 				<br><li>
 				<a href="plan.do">내일정만들기</a> <br>
 				<br><li>
+				<a href="list.do">내일정보기</a> <br>
+				<br><li>
 				<a href="<%=request.getContextPath()%>/howto.jsp">이용방법</a> <br>
 				<br>
 				

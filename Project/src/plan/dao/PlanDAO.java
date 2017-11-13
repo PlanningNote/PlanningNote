@@ -3,6 +3,7 @@ package plan.dao;
 import java.util.List;
 
 import plan.dto.PlanDTO;
+import subplan.dto.SubPlanDTO;
 
 public interface PlanDAO {
 	public int insertPlan(PlanDTO dto);
@@ -15,6 +16,6 @@ public interface PlanDAO {
 	public List<PlanDTO> subList(int group_no); //그룹에 해당하는 전체 서브리스트
 	public PlanDTO getContent(int no);//자세히 보기 페이지로 이동
 	public List<PlanDTO> listPlan(int group_no, PlanDTO dto);
-
+	int insertsubPlan(SubPlanDTO sdto);
 
 }
