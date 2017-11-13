@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import plan.dao.PlanDAO;
-import plan.dto.SubPlanDTO;
+import subplan.dto.SubPlanDTO;
 
 @org.springframework.stereotype.Controller
 public class PlanController{

@@ -3,7 +3,7 @@ package plan.dao;
 import java.util.List;
 
 import plan.dto.PlanDTO;
-import plan.dto.SubPlanDTO;
+import subplan.dto.SubPlanDTO;
 
 public interface PlanDAO {
 	public int insertPlan(PlanDTO dto);

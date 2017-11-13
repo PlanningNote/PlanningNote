@@ -1,4 +1,4 @@
-package plan.dto;
+package subplan.dto;
 
 import java.util.List;
 

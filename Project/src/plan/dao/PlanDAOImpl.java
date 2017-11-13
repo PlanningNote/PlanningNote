@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import plan.dto.PlanDTO;
-import plan.dto.SubPlanDTO;
+import subplan.dto.SubPlanDTO;
 
 public class PlanDAOImpl implements PlanDAO {
 	private JdbcTemplate jdbcTemplate;
