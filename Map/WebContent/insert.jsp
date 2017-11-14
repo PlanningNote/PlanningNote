@@ -99,7 +99,7 @@
    
     </script>
 
-<script async defer
+<script 
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap">
 	</script>
 </head>

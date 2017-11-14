@@ -24,9 +24,7 @@
         var map = new google.maps.Map(document.getElementById('map'), {
             center: initLatLng,
             zoom: 16
-        });
-        
-        
+        });        
         
         // 기본 마커 - 지도 생기면 중심에 찍혀있는 것
         var basicMarker = new google.maps.Marker({
@@ -50,18 +48,15 @@
     function addMarker(location, map) {
         var marker = new google.maps.Marker({
             position: location,
-            map: map
+            map: map,
+            draggable: true
             //label : 1,2 넣으면 좋겠다
         });
     }
     
     function send(form){
     	 document.f.location.value = temp;
-    	<!--var subject = form.subject.value;
-    	var content = form.content.value;
-    	window.alert('현재 위치 : '+temp+'/subject : '+subject+'/content:' + content);
-    	alert(temp);
-    	document.f.location = temp;-->
+    	 self.close();
     }
     
     
@@ -70,7 +65,7 @@
  
 <body>  
 	<div align="center">
-		<form name="f" action="insert.jsp" method="post" onsubmit="return send(this)">
+		<form name="f" action="insert.do" method="post" onsubmit="return send(this)">
 		  <table border="1" width="1000" height="400">
 		  	<tr  height="15%">
 		  		<th>제목</th>
