@@ -90,11 +90,11 @@ var index=0;
 				</tr>
 				<tr>
 					<td>태그:<br>
-					<INPUT TYPE="TEXT" NAME="tag1" value="#"><br>
-					<INPUT TYPE="TEXT" NAME="tag2" value="#"><br>
-					<INPUT TYPE="TEXT" NAME="tag3" value="#"><br>
-					<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
-					<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag1" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag2" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag3" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
 					</td>
 					<td ALIGN="RIGHT"><font color="white">총예산: 
 					<INPUT TYPE="hidden" NAME="totalprice">원
@@ -127,7 +127,6 @@ var index=0;
 					</td>
 
 					<td width="10%" height="100%"><input type="file"name="targets[0].img"></td>
-
 					<td width="3%"></td>
 				</tr>
 			</table>

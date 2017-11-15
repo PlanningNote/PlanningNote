@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import plan.dto.PlanDTO;
 import subplan.dto.SubPlanDTO;
+import tag.dto.TagDTO;
 
 public class PlanDAOImpl implements PlanDAO {
 	private JdbcTemplate jdbcTemplate;
@@ -21,7 +22,6 @@ public class PlanDAOImpl implements PlanDAO {
 	@Override
 	public int insertPlan(PlanDTO dto) {
 		String sql = "insert into PN_planning values(group_no.nextval, " + "?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
 		Object[] values = new Object[] { dto.getSubject(), dto.getDay(), dto.getWriter(), dto.getCount(), dto.getPwd(),
 				dto.getTag_no(), dto.getCountry(), dto.getCity(), dto.getThumbnail(), dto.getTotalprice(),
 				dto.getTravel_period(), dto.getTravel_seasion(), dto.getTravel_theme(), dto.getRecom() };
@@ -29,6 +29,7 @@ public class PlanDAOImpl implements PlanDAO {
 		int res = jdbcTemplate.update(sql, values);
 		return res;
 	}
+	
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
 		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
@@ -131,4 +132,5 @@ public class PlanDAOImpl implements PlanDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

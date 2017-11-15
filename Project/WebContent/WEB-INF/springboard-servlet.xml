@@ -47,5 +47,4 @@
 	<bean class="ask.controller.AskController">
 	</bean>
 	
-	
 </beans>

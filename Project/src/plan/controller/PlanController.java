@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import plan.dao.PlanDAO;
 import subplan.dto.SubPlanDTO;
+import tag.dto.TagDTO;
 
 @org.springframework.stereotype.Controller
 public class PlanController{
@@ -44,8 +46,7 @@ public class PlanController{
 	}
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addPlan(HttpServletRequest arg0, HttpServletResponse arg1,
-			@ModelAttribute SubPlanDTO dto) throws Exception {
-		
+			@ModelAttribute SubPlanDTO dto) throws Exception {		
 		/*//전달 받은 Request값을 MultipartHttpServletRequest로 바인딩 시킨다.
 				MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) arg0;
 				
@@ -67,7 +68,7 @@ public class PlanController{
 				return new ModelAndView("result", "message", vo)*/
 		//이 위는 사진 업로드용 코딩. 
 		////----------이미지 업로드 구현중----------
-				
+
 		int res =0;	
 		for(int i=0;i<dto.targets.size();i++) {
 		System.out.println("Controller: "+dto.targets.get(i).getContent());
