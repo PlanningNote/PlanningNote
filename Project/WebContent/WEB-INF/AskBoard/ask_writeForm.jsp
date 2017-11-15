@@ -32,10 +32,10 @@
 	
 
 		<form name="f" method="post"  
-			action="ask_writePro.do" onsubmit="return checkMember()">
+			action="ask_write.do" onsubmit="return checkMember()">
 		
 		<table border="1" width="600">
-			<tr bgcolor="blue">
+			<tr bgcolor="orange">
 				<th colspan="2">문 의 쓰 기</th>
 			</tr> 
 		
@@ -43,8 +43,7 @@
 				
 			<tr>
 				<th bgcolor="pink" width="20%">작성자</th>
-				<td width="80%">
-					<textarea name="writer" rows="10" cols="50"></textarea>
+				<td width="80%"><input type ="text" name="writer" rows="10" >
 				</td>
 			</tr> 
 			
@@ -52,7 +51,7 @@
 				<th bgcolor="pink" width="20%">제 목</th>
 				<td width="80%"><input type="text" name="subject" size="50"></td>
 			</tr>
-			
+			 
 			
 			
 			<tr>

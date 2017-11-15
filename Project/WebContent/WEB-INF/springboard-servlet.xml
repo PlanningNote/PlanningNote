@@ -45,6 +45,9 @@
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 	<bean class="ask.controller.AskController">
-	</bean>
+	</bean>   
 	
+	
+	<bean class="center.controller.CenterController">
+	</bean> 
 </beans>

@@ -5,6 +5,15 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>공지사항쓰기</title>
+	
+	<style type="text/css">
+		#title{
+			height : 16;
+			font-family :'궁서';
+			font-size : 12;
+			text-align :center;
+		}
+	</style>
 	<script type="text/javascript">
 		function checkMember(){
 			
