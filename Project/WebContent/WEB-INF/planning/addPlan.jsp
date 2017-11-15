@@ -111,9 +111,8 @@ var index=0;
 		<form name="f" method="post" action="goView.do" enctype="multipart/form-data">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
-					<td width="5%">board_num</td>
-
-				"WebContent/WEB-INF/web.xml"	<td whidth="50%" height="100%">
+					<td width="5%">board_num</td>	
+					<td whidth="50%" height="100%">
 						<!-- <div style="overflow-y: scroll; height: 100%; width: 100%">-->
 						<!-- 여기에 subplan이 들어갑니다. --> 제목 <br> 
 						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;">
