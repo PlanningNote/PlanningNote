@@ -93,11 +93,18 @@ public class PlanController{
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		return mav;
 	}
+	@RequestMapping(value="/subPlanContent.do")//계획목록 페이지로 이동.
+	public ModelAndView contentPlan(HttpServletRequest arg0, 
+			HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/planning/subPlanContent.jsp");
+		return mav;
+	}
 	@RequestMapping(value="/updatePlan.do")//계획수정 페이지로 이동.
 	public ModelAndView updatePlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/planning/update.jsp");
+		mav.setViewName("WEB-INF/planning/updatePlan.jsp");
 		return mav;
 	}
 }

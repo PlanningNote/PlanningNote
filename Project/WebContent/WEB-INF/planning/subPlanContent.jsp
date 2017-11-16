@@ -20,8 +20,8 @@
 			<td colspan="2">map</td>
 		</tr>
 		<tr align="center">
-			<td colspan="2"><input type="button" value="뒤로가기"
-				onclick="window.location=''"></td>
+			<td colspan="2">
+			<button onclick="location='list.do'">뒤로가기</button></td>
 		</tr>
 	</table>
 </div>

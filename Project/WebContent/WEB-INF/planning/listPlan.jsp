@@ -6,6 +6,17 @@
 <head>
 <title>플랜리스트</title>
 </head>
+<script language="javascript">
+function renameForModelAttribute() {
+    $("#form").each( function (index) {
+        $(this).find("input[name=subject]").attr("name", "targets["+index+"].subject");
+        $(this).find("input[name=price]").attr("name", "targets["+index+"].price");
+        $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
+        $(this).find("input[name=traffic]").attr("name", "targets["+index+"].traffic");
+        $(this).find("input[name=img]").attr("name", "targets["+index+"].img");
+    });
+}
+</script>
 <body>
 	<div align="center">
 		<FORM name="f" method="post" action="list.do">
@@ -16,9 +27,9 @@
 						<INPUT TYPE="hidden" name="city" VALUE="${city}"></td>
 				</tr>
 				<tr>
-					<td><h2>
+					<td WIDTH="75%"><h2>
 							제목: <INPUT TYPE="hidden" name="city" VALUE="${subject}"></td>
-					<td ALIGN="RIGHT">
+					<td ALIGN="left">
 					기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br> 
 					시즌: <INPUT TYPE="hidden" name="travel_season" VALUE="${travel_season}"><br> 
 					테마: <INPUT TYPE="hidden" name="travel_theme" VALUE="${travel_theme}"><br>
@@ -36,13 +47,13 @@
 						/count:<INPUT TYPE="hidden" name="count" VALUE="count"></td>
 				</tr>
 				<tr>
-					<td>태그:<br>
+					<td WIDTH="75%">태그:<br>
 					<INPUT TYPE="hidden" name="tag1" VALUE="${tag1}">
 					<INPUT TYPE="hidden" name="tag2" VALUE="${tag2}">
 					<INPUT TYPE="hidden" name="tag3" VALUE="${tag3}">
 					<INPUT TYPE="hidden" name="tag4" VALUE="${tag4}">
 					<INPUT TYPE="hidden" name="tag5" VALUE="${tag5}"></td>
-					<td ALIGN="RIGHT">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원
+					<td ALIGN="left">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원
 					</td>
 				</tr>
 			</table>
@@ -64,12 +75,14 @@
 						<br>교통 <br>
 						<input type="hidden"name="targets[0].traffic" border="1"style="width: 100%; height: 25;" VALUE="${targets[0].traffic}">
 					</td>
-					<!-- <td width="10%" height="100%"><input type="image"name="targets[0].img"src="button_ok.gif"></td> -->
+					<td width="10%" height="100%">
+					<a href="subPlanContent.do">
+					<img alt="사진을 넣어 주세요" src="targets[0].img"></a></td>
 					<td width="3%"></td>
 				</tr>
-			</table>
+			</table><br>
 			<input type="button" value="글수정"
-				onclick="window.location='planning_updatePlan.do?num=${board_num}'">
+				onclick="window.location='updatePlan.do?no=${group_no}'">
 			<%-- <input type="button" value="글삭제"
 				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
 		</form>

@@ -96,9 +96,6 @@ var index=0;
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
 					</td>
-					<td ALIGN="RIGHT"><font color="white">총예산: 
-					<INPUT TYPE="hidden" NAME="totalprice">원
-					</font></td>
 				</tr>
 				<tr>
 					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">배경사진</font><INPUT
@@ -124,7 +121,6 @@ var index=0;
 						<br>교통 <br>
 						<input type="text"name="targets[0].traffic" border="1"style="width: 100%; height: 25;">
 					</td>
-
 					<td width="10%" height="100%"><input type="file"name="targets[0].img"></td>
 					<td width="3%"></td>
 				</tr>

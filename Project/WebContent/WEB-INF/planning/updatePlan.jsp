@@ -11,7 +11,7 @@ var index=0;
 	function addRow() {
 		index+=1;
 		var oRow = dyntbl1.insertRow();
-		//oRow.onmouseover = function(){dyntbl1.clickedRowIndex=this.rowIndex};
+		oRow.onmouseover = function(){dyntbl1.clickedRowIndex=this.rowIndex};
 		var oCell1 = oRow.insertCell();
 		var oCell2 = oRow.insertCell();
 		var oCell3 = oRow.insertCell();
@@ -30,7 +30,7 @@ var index=0;
 				+ "</textarea>"
 				+ "<br>교통 <br>"
 				+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-		oCell3.innerHTML = "<input type='file' name='targets["+index+"].img'>";
+		oCell3.innerHTML = "<a href='subPlanContent.do'><img alt='사진을 넣어 주세요' src='targets[0].img'></a><br><input type='file' name='targets["+index+"].img'>";
 		oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
 		document.recalc();
 	}
@@ -91,14 +91,11 @@ var index=0;
 				</tr>
 				<tr>
 					<td>태그: <br>
-					<INPUT TYPE="TEXT" NAME="tag1" value="${tag1}"><br>
-					<INPUT TYPE="TEXT" NAME="tag2" value="${tag2}"><br>
-					<INPUT TYPE="TEXT" NAME="tag3" value="${tag3}"><br>
-					<INPUT TYPE="TEXT" NAME="tag4" value="${tag4}"><br>
-					<INPUT TYPE="TEXT" NAME="tag5" value="${tag5}"><br>
-					</td>
-					<td ALIGN="RIGHT">총예산:
-					<INPUT TYPE="hidden" name="totalprice"  VALUE="${totalprice}">원
+					<INPUT TYPE="TEXT" NAME="tag1" value="#${tag1}"><br>
+					<INPUT TYPE="TEXT" NAME="tag2" value="#${tag2}"><br>
+					<INPUT TYPE="TEXT" NAME="tag3" value="#${tag3}"><br>
+					<INPUT TYPE="TEXT" NAME="tag4" value="#${tag4}"><br>
+					<INPUT TYPE="TEXT" NAME="tag5" value="#${tag5}"><br>
 					</td>
 				</tr>
 				<tr>
@@ -108,29 +105,32 @@ var index=0;
 			</table>
 	</div>
 	<div id="pre_set" align="center">
-		<form name="f" method="post" action="update.do" enctype="multipart/form-data">
+		<form name="f" method="post" action="goView.do" enctype="multipart/form-data">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
-					<td width="5%">board_num</td>
-
+					<td width="5%">board_num</td>	
 					<td whidth="50%" height="100%">
 						<!-- <div style="overflow-y: scroll; height: 100%; width: 100%">-->
 						<!-- 여기에 subplan이 들어갑니다. --> 제목 <br> 
-						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;">
+						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;" VALUE="${targets[0].subject}">
 						<br>비용 <br>
-						<input type="number" name="targets[0].price" border="1"style="width: 95%; height: 25;">원
+						<input type="number" name="targets[0].price" border="1"style="width: 95%; height: 25;"placeholder="숫자만 입력하세요" VALUE="${targets[0].price}">원
 						<br>내용 <br>
-						<textarea name="targets[0].content" rows="5" border="1"style="width: 95%; height: 80;">
+						<textarea name="targets[0].content" rows="5" border="1"style="width: 95%; height: 80;" VALUE="${targets[0].content}">
 						</textarea>
 						<br>교통 <br>
-						<input type="text"name="targets[0].traffic" border="1"style="width: 100%; height: 25;">
+						<input type="text"name="targets[0].traffic" border="1"style="width: 100%; height: 25;" VALUE="${targets[0].traffic}">
 					</td>
-
-					<td width="10%" height="100%"><input type="file"name="targets[0].img"></td>
-
+					<td width="10%" height="100%">
+					<a href="subPlanContent.do">
+					<img alt="사진을 넣어 주세요" src="targets[0].img"></a>
+					<input type="file"name="targets[0].img"></td>
 					<td width="3%"></td>
 				</tr>
 			</table>
+			<input type="button" value="+" onClick="addRow()"><br><br>
+			<input type="submit" value="저장">
+			<button onclick="location='list.do'">취소</button>
 			<%-- <input type="button" value="글수정"
 				onclick="window.location='board_updateForm.do?num=${getBoard.num}'">
 			<input type="button" value="글삭제"

@@ -3,6 +3,8 @@ package plan.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -36,7 +38,7 @@ public class PlanDAOImpl implements PlanDAO {
 		
 		Object[] values;
 		int res = 0;
-		System.out.println("DAOImpl: "+sdto.targets.get(0).getSubject());
+		System.out.println("PlanDAOImpl: "+sdto.targets.get(0).getSubject());
 		for(int i=0;i <1;i++) {
 			System.out.println("now is 'for':"+sdto.targets.get(i).getSubject());
 			sdto.setSubject(sdto.targets.get(i).getSubject());
@@ -110,8 +112,15 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	@Override
-	public List<PlanDTO> tagPlan(String tag) {
-		// TODO Auto-generated method stub
+	public List<PlanDTO> tagPlan(TagDTO dto) {
+		String sql ="select ";
+		dto.setTag1("tag1");
+		dto.setTag2("tag2");
+		dto.setTag3("tag3");
+		dto.setTag4("tag4");
+		dto.setTag5("tag5");
+		dto.setTag_no(Integer.parseInt(dto.getTag1())+Integer.parseInt(dto.getTag2())
+		+Integer.parseInt(dto.getTag3())+Integer.parseInt(dto.getTag4())+Integer.parseInt(dto.getTag5()));
 		return null;
 	}
 
