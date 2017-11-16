@@ -37,7 +37,7 @@ public class PlanController{
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/plan/addPlan.jsp");
+		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
 	}
 	
@@ -123,10 +123,10 @@ public class PlanController{
 		res = dao.insertsubPlan(dto);
 		if(res<0) {
 			writer.println("<scrip>alert('게시글 등록을 실패하였습니다.')</script>");
-			mav.setViewName("WEB-INF/plan/addPlan.jsp");
+			mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		}
 		else {
-			mav.setViewName("WEB-INF/plan/listPlan.jsp");
+			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
 		mav.addObject("dto", dto);
 		return mav;
