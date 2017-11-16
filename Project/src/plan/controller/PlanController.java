@@ -105,10 +105,10 @@ public class PlanController{
 		res = dao.insertsubPlan(dto);
 		if(res<0) {
 			writer.println("<scrip>alert('게시글 등록을 실패하였습니다.')</script>");
-			mav.setViewName("WEB-INF/plan/addPlan.jsp");
+			mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		}
 		else {
-			mav.setViewName("WEB-INF/plan/listPlan.jsp");
+			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
 		mav.addObject("dto", dto);
 		return mav;
