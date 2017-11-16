@@ -34,21 +34,15 @@ public class PlanDAOImpl implements PlanDAO {
 	
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
-		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
+		System.out.println("insertsubPlan ¡¯¿‘");
 		
+		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
 		Object[] values;
 		int res = 0;
-		System.out.println("PlanDAOImpl: "+sdto.targets.get(0).getSubject());
 		for(int i=0;i <1;i++) {
-			System.out.println("now is 'for':"+sdto.targets.get(i).getSubject());
-			sdto.setSubject(sdto.targets.get(i).getSubject());
-			sdto.setPrice(sdto.targets.get(i).getPrice());
-			sdto.setContent(sdto.targets.get(i).getContent());
-			sdto.setImg(sdto.targets.get(i).getImg());
-			sdto.setTraffic(sdto.targets.get(i).getTraffic());
-		
 			values = new Object[] {
-					sdto.getSubject(),sdto.getPrice(),sdto.getContent(),sdto.getImg(),sdto.getTraffic()
+					sdto.getTargets().get(i).getSubject(),sdto.getImgName().get(i),sdto.getTargets().get(i).getContent()
+					,sdto.getTargets().get(i).getPrice(),sdto.getTargets().get(i).getTraffic()
 			};
 			res=jdbcTemplate.update(sql, values);
 		}

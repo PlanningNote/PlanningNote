@@ -2,10 +2,14 @@ package plan.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
@@ -20,6 +24,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import plan.dao.PlanDAO;
+import subplan.dto.FileUpload;
 import subplan.dto.SubPlanDTO;
 import tag.dto.TagDTO;
 
@@ -44,39 +49,60 @@ public class PlanController{
 		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
 	}
+	protected SubPlanDTO mappingDTO(HttpServletRequest arg0, HttpServletResponse arg1,
+			FileUpload upload , SubPlanDTO dto) {
+		HttpSession session = arg0.getSession();
+		List<MultipartFile> files = upload.getFile();
+		
+		String img=null;
+		String filePath=null;
+		
+		List<String> imgName= new ArrayList<String>();
+		List<String> imgPath= new ArrayList<String>();
+		
+		//이미지 파일 저장
+		if (null != files && files.size() > 0) {
+			for (MultipartFile multipartFile : files) {
+				img=multipartFile.getOriginalFilename();
+				filePath =session.getServletContext().getRealPath("WEB-INF/imgFiles");
+				
+				imgName.add(img);
+				imgPath.add(filePath);
+				
+				File file = new File(filePath, img);
+				try {
+					multipartFile.transferTo(file);
+				} catch (IOException e) {
+					System.err.println("파일전송실패!!");
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		//이미지파일 정보 dto에 담기▽▽
+		dto.setImgName(imgName);
+		dto.setImgPath(imgPath);
+		//파일및 데이터 dto에 저장.
+		for(int i=0;i<dto.getImgName().size();i++) {
+			System.out.println("dto 이미지"+dto.getImgName().get(i));
+		}
+		return dto;
+	}
+	
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addPlan(HttpServletRequest arg0, HttpServletResponse arg1,
-			@ModelAttribute SubPlanDTO dto) throws Exception {		
-		/*//전달 받은 Request값을 MultipartHttpServletRequest로 바인딩 시킨다.
-				MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) arg0;
-				
-				//request의 "file"을 찾아 file객체에 세팅한다.
-				MultipartFile file = multipartRequest.getFile("file");
-				String fileName = file.getOriginalFilename();
-				File destination = File.createTempFile("file", fileName, destinationDir);
-				
-				//파일카피
-				FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(destination));
-				
-				//새로운 파일 속성 세팅
-				SubPlanDTO vo = (SubPlanDTO) command; ==>Object command
-				vo.setFilePath(destination.getAbsolutePath());
-				vo.setName(file.getOriginalFilename());
-				vo.setSize(file.getSize());
-				vo.setFile(file);
-				helloworldService.getMessage1(vo);
-				return new ModelAndView("result", "message", vo)*/
-		//이 위는 사진 업로드용 코딩. 
-		////----------이미지 업로드 구현중----------
-
-		int res =0;	
-		for(int i=0;i<dto.targets.size();i++) {
-		System.out.println("Controller: "+dto.targets.get(i).getContent());
-		}
-		res = dao.insertsubPlan(dto);
-		ModelAndView mav = new ModelAndView();
-		PrintWriter writer=arg1.getWriter();
+			@ModelAttribute("file") FileUpload upload , SubPlanDTO dto) throws Exception {
 		
+		PrintWriter writer=arg1.getWriter();
+		ModelAndView mav = new ModelAndView();
+		
+		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
+		mappingDTO(arg0,arg1,upload,dto);
+		
+		//▽ DAOImpl working..
+		int res =0;	
+		
+		res = dao.insertsubPlan(dto);
 		if(res<0) {
 			writer.println("<scrip>alert('게시글 등록을 실패하였습니다.')</script>");
 			mav.setViewName("WEB-INF/plan/addPlan.jsp");
@@ -84,8 +110,10 @@ public class PlanController{
 		else {
 			mav.setViewName("WEB-INF/plan/listPlan.jsp");
 		}
+		mav.addObject("dto", dto);
 		return mav;
 	}
+	
 	@RequestMapping(value="/list.do")//계획목록 페이지로 이동.
 	public ModelAndView list(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {

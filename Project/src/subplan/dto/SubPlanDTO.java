@@ -1,5 +1,6 @@
 package subplan.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -8,40 +9,26 @@ public class SubPlanDTO {
 	private int group_no;
 	private int board_num;
 	private String subject;
-	private String img;//이미지 이름
+	private String img;//이미지 이름 1개
 	private String content;
 	private int price;
 	private String traffic;
-	public List<SubPlanDTO> targets;
-	private MultipartFile file;
-	private Long size;//이미지 사이즈
-	private String filePath;//이미지 경로
+	private  List<SubPlanDTO> targets;
+	private List<String> imgName = new ArrayList<String>();//이미지 이름 여러개
+	private List<String> imgPath = new ArrayList<String>();//이미지 경로 여러개
 	
 	
-	
-	public MultipartFile getFile() {
-		return file;
+	public List<String> getImgPath() {
+		return imgPath;
 	}
-	public void setFile(MultipartFile file) {
-		this.file = file;
+	public void setImgPath(List<String> imgPath) {
+		this.imgPath = imgPath;
 	}
-	public Long getSize() {
-		return size;
+	public List<String> getImgName() {
+		return imgName;
 	}
-	public void setSize(Long size) {
-		this.size = size;
-	}
-	public String getFilePath() {
-		return filePath;
-	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-	public List<SubPlanDTO> getTargets() {
-		return targets;
-	}
-	public void setTargets(List<SubPlanDTO> targets) {
-		this.targets = targets;
+	public void setImgName(List<String> imgList) {
+		this.imgName = imgList;
 	}
 	public int getGroup_no() {
 		return group_no;
@@ -85,6 +72,11 @@ public class SubPlanDTO {
 	public void setTraffic(String traffic) {
 		this.traffic = traffic;
 	}
-	
+	public List<SubPlanDTO> getTargets() {
+		return targets;
+	}
+	public void setTargets(List<SubPlanDTO> targets) {
+		this.targets = targets;
+	}
 	
 }
