@@ -107,7 +107,7 @@ public class PlanController{
 		return mav;
 	}
 	
-	@RequestMapping(value = "/goView.do") // ∞Ë»π ¿˙¿Â
+	@RequestMapping(value = "/goSubPlan.do") // ∞Ë»π ¿˙¿Â
 	public ModelAndView addPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute("file") FileUpload upload , SubPlanDTO dto) throws Exception {
 		
