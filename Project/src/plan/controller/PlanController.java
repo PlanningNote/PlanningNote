@@ -30,25 +30,17 @@ import tag.dto.TagDTO;
 
 @org.springframework.stereotype.Controller
 public class PlanController{
-	private static final Log LOG = LogFactory.getLog(PlanController.class);
-	private File destinationDir;
 	
-	/** 
-	 * 파일업로드를 위한 빈 설정의 property로 지정해준 
-	 * destinationDir setter injection
-	 */
-	public void setDestinationDir(File destinationDir) {
-        this.destinationDir = destinationDir;
-    }
 	@Autowired
 	private PlanDAO dao;
 	
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/planning/addPlan.jsp");
+		mav.setViewName("WEB-INF/plan/addPlan.jsp");
 		return mav;
 	}
+	
 	protected SubPlanDTO mappingDTO(HttpServletRequest arg0, HttpServletResponse arg1,
 			FileUpload upload , SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
@@ -87,6 +79,32 @@ public class PlanController{
 			System.out.println("dto 이미지"+dto.getImgName().get(i));
 		}
 		return dto;
+	}
+	
+	@RequestMapping(value = "/goView.do") // 계획 저장
+	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
+			@ModelAttribute("file") FileUpload upload , SubPlanDTO dto) throws Exception {
+		
+		PrintWriter writer=arg1.getWriter();
+		ModelAndView mav = new ModelAndView();
+		
+		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
+		mappingDTO(arg0,arg1,upload,dto);
+		
+		//▽ DAOImpl working..
+		int res =0;	
+		
+		res = dao.insertsubPlan(dto);
+		if(res<0) {
+			writer.println("<scrip>alert('게시글 등록을 실패하였습니다.')</script>");
+			mav.setViewName("WEB-INF/plan/addPlan.jsp");
+		}
+		else {
+			mav.setViewName("WEB-INF/plan/listPlan.jsp");
+		}
+		
+		mav.addObject("dto", dto);
+		return mav;
 	}
 	
 	@RequestMapping(value = "/goView.do") // 계획 저장

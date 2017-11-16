@@ -42,8 +42,7 @@ public class PlanDAOImpl implements PlanDAO {
 		for(int i=0;i <1;i++) {
 			values = new Object[] {
 					sdto.getTargets().get(i).getSubject(),sdto.getImgName().get(i),sdto.getTargets().get(i).getContent()
-					,sdto.getTargets().get(i).getPrice(),sdto.getTargets().get(i).getTraffic()
-			};
+					,sdto.getTargets().get(i).getPrice(),sdto.getTargets().get(i).getTraffic()	};
 			res=jdbcTemplate.update(sql, values);
 		}
 		
