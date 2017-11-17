@@ -96,7 +96,7 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">배경사진</font>
-					<INPUT TYPE="FILE" name="thumbnail"></td>
+					<INPUT TYPE="FILE" name="thumbfile"></td>
 				</tr>
 			</table>
 			<br>

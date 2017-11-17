@@ -23,9 +23,10 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public int insertPlan(PlanDTO dto) {
+		System.out.println(dto.getSubject());
 		String sql = "insert into PN_planning values(group_no.nextval, " + "?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Object[] values = new Object[] { dto.getSubject(), dto.getDay(), dto.getWriter(), dto.getCount(), dto.getPwd(),
-				/*dto.getTag_no()*/"ss", dto.getCountry(), dto.getCity(), dto.getThumbnail(), dto.getTotalprice(),
+				dto.getTag_no_sequence(), dto.getCountry(), dto.getCity(), dto.getThumbnail(), dto.getTotalprice(),
 				dto.getTravel_period(), dto.getTravel_seasion(), dto.getTravel_theme(), dto.getRecom() };
 
 		int res = jdbcTemplate.update(sql, values);
@@ -61,7 +62,7 @@ public class PlanDAOImpl implements PlanDAO {
 				+ "totalprice=?,travel_period=?,travel_seasion=?,travel_theme=?,recom=?" + " where group_no=?)";
 
 		Object[] values = new Object[] { dto.getSubject(), dto.getDay(), dto.getWriter(), dto.getCount(), dto.getPwd(),
-				dto.getTag_no(), dto.getCountry(), dto.getCity(), dto.getThumbnail(), dto.getTotalprice(),
+				dto.getTag_no_sequence(), dto.getCountry(), dto.getCity(), dto.getThumbnail(), dto.getTotalprice(),
 				dto.getTravel_period(), dto.getTravel_seasion(), dto.getTravel_theme(), dto.getRecom(),
 				dto.getGroup_no() };
 
@@ -106,7 +107,7 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public int tagPlan(TagDTO dto) {
-		String sql ="insert into PN_tag (tag_no,tag) values(tag_no.nextval, " + "?)";
+		String sql ="insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
 		String tag = dto.getTag1()+" "+dto.getTag2()+" "+dto.getTag3()+" "+dto.getTag4()+" "+dto.getTag5();
 		String[] arr = tag.split("\\s");
 		Object[] values = new Object[] {tag};

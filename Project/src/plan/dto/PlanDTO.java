@@ -1,5 +1,7 @@
 package plan.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class PlanDTO {
 	private int group_no;
 	private String writer;
@@ -7,7 +9,7 @@ public class PlanDTO {
 	private String day;
 	private String pwd;
 	private int count;
-	private int tag_no;
+	private int tag_no_sequence;
 	private String country;
 	private String city;
 	private String thumbnail;
@@ -16,6 +18,28 @@ public class PlanDTO {
 	private String travel_seasion;
 	private String travel_theme;
 	private int recom;
+	private MultipartFile thumbfile;
+	private String thumbPath;
+
+	
+	public int getTag_no_sequence() {
+		return tag_no_sequence;
+	}
+	public void setTag_no_sequence(int tag_no_sequence) {
+		this.tag_no_sequence = tag_no_sequence;
+	}
+	public String getThumbPath() {
+		return thumbPath;
+	}
+	public void setThumbPath(String thumbPath) {
+		this.thumbPath = thumbPath;
+	}
+	public MultipartFile getThumbfile() {
+		return thumbfile;
+	}
+	public void setThumbfile(MultipartFile thumbfile) {
+		this.thumbfile = thumbfile;
+	}
 	public int getGroup_no() {
 		return group_no;
 	}
@@ -51,12 +75,6 @@ public class PlanDTO {
 	}
 	public void setCount(int count) {
 		this.count = count;
-	}
-	public int getTag_no() {
-		return tag_no;
-	}
-	public void setTag_no(int tag_no) {
-		this.tag_no = tag_no;
 	}
 	public String getCountry() {
 		return country;
