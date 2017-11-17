@@ -33,8 +33,8 @@ public class PlanDAOImpl implements PlanDAO {
 		Object[] values = new Object[] { dto.getWriter(),dto.getSubject(),dto.getDay(),dto.getPwd(),
 				dto.getCount(),dto.getTag_no_sequence(),dto.getCountry(),dto.getCity(),dto.getThumbnail(),
 				dto.getTotalprice(),dto.getTravel_period(),dto.getTravel_seasion(),dto.getTravel_theme()};
-
 		res = jdbcTemplate.update(sql, values);
+		
 		return res;
 	}
 	
