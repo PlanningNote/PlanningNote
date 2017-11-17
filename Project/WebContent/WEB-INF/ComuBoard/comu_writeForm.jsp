@@ -4,7 +4,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>공지사항쓰기</title>
+	<title>커뮤 글쓰기</title>
 	
 	<style type="text/css">
 		#title{
@@ -41,11 +41,11 @@
 	
 
 		<form name="f" method="post"  
-			action="notice_write.do" onsubmit="return checkMember()">
+			action="comu_write.do" onsubmit="return checkMember()">
 		
 		<table border="1" width="600">
 			<tr bgcolor="pink">
-				<th colspan="2">공 지  쓰 기</th>
+				<th colspan="2">커뮤니티 글  쓰 기</th>
 			</tr> 
 		
 			<tr>
@@ -74,7 +74,7 @@
 					<input type="submit" value="글쓰기">
 					<input type="reset" value="다시작성">
 					<input type="button" value="목록보기" 
-												onclick="window.location='notice_list.do'">
+												onclick="window.location='comu_list.do'">
 				</td>
 				
 			</tr>

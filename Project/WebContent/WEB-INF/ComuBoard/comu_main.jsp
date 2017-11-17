@@ -11,15 +11,12 @@
 <body>
 	<div align="center">
 
-		
 		<table>
 		<td>
 
 		<img src="img/co_main.jpg" border="0">
 		</td>
 		
-		
-		 
 		</table>
 		
 			<table>

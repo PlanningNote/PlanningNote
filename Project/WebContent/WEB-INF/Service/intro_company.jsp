@@ -4,27 +4,14 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="sidetop.jsp"%>
-<html>
-<head>
-<title>커뮤니티 게시판</title>
-</head>
+
+
 <body>
-<style>
-<font face="굴림체" color="green"  text-decoration:none>
-</style>
+
 	<div align="center">
 
 
-		<table>
-
-<tr>
-
-			<td><img src="img/introduce.jpg" border="0"></td>
-
-</tr>
-
-<table >
-
+			<img src="img/introduce.jpg" border="0">
 
 <br>
 		문의 대표전화 : 02-1234-5678<br>
@@ -49,7 +36,7 @@
 
 	</div>
 </body>
-</html>
+
 
 
 <%@ include file="../../bottom.jsp"%>

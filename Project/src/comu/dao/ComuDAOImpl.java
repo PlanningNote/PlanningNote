@@ -21,7 +21,7 @@ public class ComuDAOImpl implements ComuDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	class MyRowMapper implements RowMapper<ComuDTO> {
-		@Override
+		@Override 
 		public ComuDTO mapRow(ResultSet arg0, int arg1) throws SQLException {
 			ComuDTO dto = new ComuDTO();
 			dto.setNo(arg0.getInt("no"));
