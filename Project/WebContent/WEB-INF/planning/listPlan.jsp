@@ -48,7 +48,7 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="hidden" name="" VALUE="${tag_no}"></td>
+					<INPUT TYPE="hidden" name="" VALUE="${dto.tag}"></td>
 					<td ALIGN="left">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원
 					</td>
 				</tr>
