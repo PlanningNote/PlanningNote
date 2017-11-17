@@ -52,7 +52,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<form name="f" method="post" action="goView.do">
+		<form name="f" class="f" method="post" action="goView.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
@@ -102,14 +102,13 @@ function renameForModelAttribute() {
 			<br>
 	</div>
 		<div id="pre_set" align="center">
-		<form name="f" class="f" method="post" action="goSubPlan.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
 					<td width="5%">board_num</td>
 
 				<td whidth="50%" height="100%">
-						<!-- <div style="overflow-y: scroll; height: 100%; width: 100%">-->
-						<!-- 여기에 subplan이 들어갑니다. --> 제목 <br> 
+						<div style="overflow-y: scroll; height: 100%; width: 100%">
+						여기에 subplan이 들어갑니다. 제목 <br> 
 						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;">
 						<br>비용 <br>
 						<input type="number" name="targets[0].price" border="1"style="width: 95%; height: 25;"placeholder="숫자만 입력하세요">원
@@ -120,7 +119,7 @@ function renameForModelAttribute() {
 						<input type="text"name="targets[0].traffic" border="1"style="width: 100%; height: 25;">
 					</td>
 
-					<td width="10%" height="100%"><input type="file"name="file"></td>
+					<td width="10%" height="100%"><input type="file"name="imgfile"></td>
 
 					<td width="3%"></td>
 				</tr>
@@ -129,7 +128,8 @@ function renameForModelAttribute() {
 			<input type="submit" value="저장">
 			<input type="reset" value="취소">
 		</form>
-	</div>
+	</div> 
 	</form>
+</div>
 </body>
 </html>
