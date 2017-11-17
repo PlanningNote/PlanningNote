@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import plan.dao.PlanDAO;
+import plan.dto.PlanDTO;
 import subplan.dto.FileUpload;
 import subplan.dto.SubPlanDTO;
 import tag.dto.TagDTO;
@@ -41,11 +42,12 @@ public class PlanController{
 		return mav;
 	}
 	
-	protected SubPlanDTO mappingDTO(HttpServletRequest arg0, HttpServletResponse arg1,
+	//subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
+	protected SubPlanDTO mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1,
 			FileUpload upload , SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
-		List<MultipartFile> files = upload.getFile();
-		
+		List<MultipartFile> files = upload.getImgfile();
+		System.out.println("3");
 		String img=null;
 		String filePath=null;
 		
@@ -57,15 +59,13 @@ public class PlanController{
 			for (MultipartFile multipartFile : files) {
 				img=multipartFile.getOriginalFilename();
 				filePath =session.getServletContext().getRealPath("WEB-INF/imgFiles");
-				
 				imgName.add(img);
 				imgPath.add(filePath);
-				
 				File file = new File(filePath, img);
 				try {
 					multipartFile.transferTo(file);
 				} catch (IOException e) {
-					System.err.println("파일전송실패!!");
+					System.err.println("sub파일전송실패!!");
 					e.printStackTrace();
 				}
 			}
@@ -81,29 +81,69 @@ public class PlanController{
 		return dto;
 	}
 	
+	//PlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
+	protected void mappingPlanDTO(HttpServletRequest arg0,HttpServletResponse arg1,PlanDTO dtoP) {
+		
+		HttpSession session = arg0.getSession();
+		MultipartFile files = dtoP.getThumbfile();
+		
+		String img=null;
+		String filePath=null;
+		
+		//이미지 파일 저장
+		if (null != files && files.getSize() > 0) {
+				img=files.getOriginalFilename();
+				filePath =session.getServletContext().getRealPath("WEB-INF/imgFiles");
+				
+				File file = new File(filePath, img);
+				try {
+					files.transferTo(file);
+				} catch (IOException e) {
+					System.err.println("plan파일전송실패!!");
+					e.printStackTrace();
+				}
+		}
+		
+		//이미지파일 정보 dto에 담기▽▽
+		dtoP.setThumbnail(img);
+		dtoP.setThumbPath(filePath);
+		//파일및 데이터 dto에 저장.
+	}
+	
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
-			@ModelAttribute("file") FileUpload upload , SubPlanDTO dto) throws Exception {
+			@ModelAttribute("file") FileUpload upload 
+			,@ModelAttribute SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
 		
+		System.out.println("일해라 이클립스");
+		System.out.println(dtoP.getSubject());
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
-		
+		  
 		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
-		mappingDTO(arg0,arg1,upload,dto);
+		mappingSubDTO(arg0,arg1,upload,dtoS);
+		mappingPlanDTO(arg0,arg1,dtoP);
 		
 		//▽ DAOImpl working..
-		int res =0;	
+		int resP =0,resS=0,resT=0;	
 		
-		res = dao.insertsubPlan(dto);
-		if(res<0) {
+		resT = dao.tagPlan(dtoT);// dtoT만 주는걸로
+		System.out.println("tag됨");
+		resP=dao.insertPlan(dtoP);
+		System.out.println("Plan 됨");
+		resS= dao.insertsubPlan(dtoS);
+		System.out.println("sub됨");
+		
+		if(resP>0&&resS>0&&resT>0) {
+			mav.setViewName("WEB-INF/planning/listPlan.jsp");
+		}
+		else {
 			writer.println("<scrip>alert('게시글 등록을 실패하였습니다.')</script>");
 			mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		}
-		else {
-			mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		}
 		
-		mav.addObject("dto", dto);
+		mav.addObject("dtoP", dtoP);
+		mav.addObject("dtoS", dtoS);
 		return mav;
 	}
 	

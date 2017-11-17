@@ -19,9 +19,9 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<FORM name="f" method="post" action="list.do">
+		<<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${backgroundimg}">
+				background="${thumbnail}">
 				<tr>
 					<td>나라: <INPUT TYPE="hidden" name="country" VALUE="${country}"> /도시:
 						<INPUT TYPE="hidden" name="city" VALUE="${city}"></td>
@@ -48,18 +48,13 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="hidden" name="tag1" VALUE="${tag1}">
-					<INPUT TYPE="hidden" name="tag2" VALUE="${tag2}">
-					<INPUT TYPE="hidden" name="tag3" VALUE="${tag3}">
-					<INPUT TYPE="hidden" name="tag4" VALUE="${tag4}">
-					<INPUT TYPE="hidden" name="tag5" VALUE="${tag5}"></td>
+					<INPUT TYPE="hidden" name="" VALUE="${dto.tag}"></td>
 					<td ALIGN="left">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원
 					</td>
 				</tr>
 			</table>
 	</div>
 	<div id="pre_set" align="center">
-		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr>
 					<td width="5%">board_num</td>
@@ -82,7 +77,6 @@ function renameForModelAttribute() {
 				onclick="window.location='updatePlan.do?no=${group_no}'">
 			<%-- <input type="button" value="글삭제"
 				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
-		</form>
 	</div>
 	</FORM>
 </body>

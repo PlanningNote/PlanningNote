@@ -13,7 +13,7 @@ public class SubPlanDTO {
 	private String content;
 	private int price;
 	private String traffic;
-	private  List<SubPlanDTO> targets;
+	private List<SubPlanDTO> targets;
 	private List<String> imgName = new ArrayList<String>();//이미지 이름 여러개
 	private List<String> imgPath = new ArrayList<String>();//이미지 경로 여러개
 	

@@ -10,7 +10,7 @@
 			<value>jdbc/oracle</value>
 		</property>
 		<property name="resourceRef" value="true" />
-	</bean> -->
+	</bean> -->	
 	<context:annotation-config/>
 	<!-- 여기서 선언된 bean 만 받는다. -->
 	
@@ -27,6 +27,8 @@
 	</bean>
 	<bean id = "controller" class="plan.controller.PlanController">
 	</bean>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
 	<bean id="planDAO" class="plan.dao.PlanDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
@@ -47,7 +49,6 @@
 	<bean class="ask.controller.AskController">
 	</bean>   
 	
-	
 	<bean class="center.controller.CenterController">
 	</bean> 
 	
@@ -58,13 +59,10 @@
 	<bean class="comu.controller.ComuController">
 	</bean>
 
-
 	<bean id="FAQDAO" class="FAQ.dao.FAQDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 
 	<bean class="FAQ.controller.FAQController">
 	</bean>
-	
-	
 </beans>

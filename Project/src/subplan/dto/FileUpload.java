@@ -7,13 +7,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileUpload {
 
-	private List<MultipartFile> file;
-	
-	public List<MultipartFile> getFile() {
-		return file;
+	private List<MultipartFile> imgfile;
+
+	public List<MultipartFile> getImgfile() {
+		return imgfile;
 	}
 
-	public void setFile(List<MultipartFile> file) {
-		this.file = file;
+	public void setImgfile(List<MultipartFile> imgfile) {
+		this.imgfile = imgfile;
 	}
+	
+	
 }
