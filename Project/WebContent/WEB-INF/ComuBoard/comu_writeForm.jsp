@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    
+    <%@ include file="sidetop.jsp"%>  
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">

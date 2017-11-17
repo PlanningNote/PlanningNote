@@ -93,7 +93,7 @@ protected void plusReadCount(int no) {
 				dto.setCount(arg0.getInt("count"));
 				dto.setDay(arg0.getString("day"));
 				dto.setImg(arg0.getString("img"));
-				dto.setPwd(arg0.getString("pwd"));
+			/*	dto.setPwd(arg0.getString("pwd"));*/
 				return dto;
 			}
 			throw new DataRetrievalFailureException("해당 객체를 찾을수가 없습니다.");

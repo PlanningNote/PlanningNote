@@ -4,7 +4,7 @@
  <%@ include file="sidetop.jsp"%>  
 <html>
 <head>
-<title>문의하기게시판</title>
+<title>문의하기게시판</title> 
 </head>
 <body>
 	<div align="center">
