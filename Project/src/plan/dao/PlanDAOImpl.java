@@ -105,16 +105,16 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	@Override
-	public List<PlanDTO> tagPlan(TagDTO dto) {
-		String sql ="insert into PN_planning values(tag_no.nextval, " + "?,?,?,?,?)";
-		dto.setTag1("tag1");
-		dto.setTag2("tag2");
-		dto.setTag3("tag3");
-		dto.setTag4("tag4");
-		dto.setTag5("tag5");
-		dto.setTag_no(Integer.parseInt(dto.getTag1())+Integer.parseInt(dto.getTag2())
-		+Integer.parseInt(dto.getTag3())+Integer.parseInt(dto.getTag4())+Integer.parseInt(dto.getTag5()));
-		return null;
+	public int tagPlan(TagDTO dto,String tag,String[] arr) {
+		String sql ="insert into PN_tag values(tag_no.nextval, " + "?)";
+		tag = dto.getTag1()+" "+dto.getTag2()+" "+dto.getTag3()+" "+dto.getTag4()+" "+dto.getTag5();
+		arr = tag.split("\\s");
+		Object[] values = new Object[] {tag,dto.getTag1(),dto.getTag2(),dto.getTag3(),dto.getTag4(),dto.getTag5()};
+		for(String a : arr) {
+			System.out.print(a);
+		}
+		int result = jdbcTemplate.update(sql,values);
+		return result;
 	}
 
 	@Override
