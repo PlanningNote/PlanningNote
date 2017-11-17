@@ -58,9 +58,11 @@ public class PlanController{
 		if (null != files && files.size() > 0) {
 			for (MultipartFile multipartFile : files) {
 				img=multipartFile.getOriginalFilename();
-				filePath =session.getServletContext().getRealPath("WEB-INF/imgFiles");
+				filePath =session.getServletContext().getRealPath("WEB-INF/planning/imgFile");
+				
 				imgName.add(img);
 				imgPath.add(filePath);
+				
 				File file = new File(filePath, img);
 				try {
 					multipartFile.transferTo(file);
@@ -93,7 +95,7 @@ public class PlanController{
 		//이미지 파일 저장
 		if (null != files && files.getSize() > 0) {
 				img=files.getOriginalFilename();
-				filePath =session.getServletContext().getRealPath("WEB-INF/imgFiles");
+				filePath =session.getServletContext().getRealPath("WEB-INF/planning/imgFile");
 				
 				File file = new File(filePath, img);
 				try {
