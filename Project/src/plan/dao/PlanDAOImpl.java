@@ -40,8 +40,6 @@ public class PlanDAOImpl implements PlanDAO {
 	
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
-		System.out.println("insertsubPlan ¡¯¿‘");
-		
 		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
 		Object[] values;
 		int res = 0;
@@ -116,9 +114,6 @@ public class PlanDAOImpl implements PlanDAO {
 		String tag = dto.getTag1()+" "+dto.getTag2()+" "+dto.getTag3()+" "+dto.getTag4()+" "+dto.getTag5();
 		String[] arr = tag.split("\\s");
 		Object[] values = new Object[] {tag};
-		for(String a : arr) {
-			System.out.print(a);
-		}
 		int result = jdbcTemplate.update(sql,values);
 		return result;
 	}
