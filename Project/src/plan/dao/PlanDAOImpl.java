@@ -106,10 +106,10 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public int tagPlan(TagDTO dto) {
-		String sql ="insert into PN_tag values(tag_no.nextval, " + "?)";
+		String sql ="insert into PN_tag (tag_no,tag) values(tag_no.nextval, " + "?)";
 		String tag = dto.getTag1()+" "+dto.getTag2()+" "+dto.getTag3()+" "+dto.getTag4()+" "+dto.getTag5();
 		String[] arr = tag.split("\\s");
-		Object[] values = new Object[] {tag,dto.getTag1(),dto.getTag2(),dto.getTag3(),dto.getTag4(),dto.getTag5()};
+		Object[] values = new Object[] {tag};
 		for(String a : arr) {
 			System.out.print(a);
 		}
