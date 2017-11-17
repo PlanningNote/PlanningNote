@@ -52,7 +52,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<form name="f" class="f" method="post" action="goView.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
+		<form name="f" class="f" method="post" action="goView.do" enctype="multipart/form-data">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
