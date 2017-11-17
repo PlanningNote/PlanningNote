@@ -19,12 +19,6 @@
 		 마케팅/제휴문의 :travel@trip.com<br>
 		 오류/기술문의 : travel@trip.com<br>
 		 
-	
-
-</table>
-	
-	
-	
 		<table>
 
 			<a href="center_main.do"><img src="img/gomain.jpg" border="0"></a>
