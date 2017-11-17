@@ -19,7 +19,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<FORM name="f" method="post" action="list.do">
+		<<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
 				background="${backgroundimg}">
 				<tr>
@@ -59,7 +59,6 @@ function renameForModelAttribute() {
 			</table>
 	</div>
 	<div id="pre_set" align="center">
-		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr>
 					<td width="5%">board_num</td>
@@ -82,7 +81,6 @@ function renameForModelAttribute() {
 				onclick="window.location='updatePlan.do?no=${group_no}'">
 			<%-- <input type="button" value="±Û»èÁ¦"
 				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
-		</form>
 	</div>
 	</FORM>
 </body>

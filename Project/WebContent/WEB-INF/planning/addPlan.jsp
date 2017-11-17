@@ -52,7 +52,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<form name="f" method="post" action="goView.do">
+		<form name="f" class="f" method="post" action="ggoView.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
@@ -102,7 +102,7 @@ function renameForModelAttribute() {
 			<br>
 	</div>
 		<div id="pre_set" align="center">
-		<form name="f" class="f" method="post" action="goSubPlan.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
+		
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
 					<td width="5%">board_num</td>
@@ -128,7 +128,6 @@ function renameForModelAttribute() {
 			<input type="button" value="+" onClick="addRow()"><br><br>
 			<input type="submit" value="저장">
 			<input type="reset" value="취소">
-		</form>
 	</div>
 	</form>
 </body>
