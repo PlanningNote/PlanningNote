@@ -59,15 +59,13 @@ public class PlanController{
 			for (MultipartFile multipartFile : files) {
 				img=multipartFile.getOriginalFilename();
 				filePath =session.getServletContext().getRealPath("WEB-INF/imgFiles");
-				
 				imgName.add(img);
 				imgPath.add(filePath);
-				
 				File file = new File(filePath, img);
 				try {
 					multipartFile.transferTo(file);
 				} catch (IOException e) {
-					System.err.println("파일전송실패!!");
+					System.err.println("sub파일전송실패!!");
 					e.printStackTrace();
 				}
 			}
@@ -101,7 +99,7 @@ public class PlanController{
 				try {
 					files.transferTo(file);
 				} catch (IOException e) {
-					System.err.println("파일전송실패!!");
+					System.err.println("plan파일전송실패!!");
 					e.printStackTrace();
 				}
 		}
@@ -121,8 +119,7 @@ public class PlanController{
 		System.out.println(dtoP.getSubject());
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
-		
-		System.out.println("2");
+		  
 		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
 		mappingSubDTO(arg0,arg1,upload,dtoS);
 		mappingPlanDTO(arg0,arg1,dtoP);
