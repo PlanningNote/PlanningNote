@@ -106,7 +106,7 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public List<PlanDTO> tagPlan(TagDTO dto) {
-		String sql ="select ";
+		String sql ="insert into PN_planning values(tag_no.nextval, " + "?,?,?,?,?)";
 		dto.setTag1("tag1");
 		dto.setTag2("tag2");
 		dto.setTag3("tag3");

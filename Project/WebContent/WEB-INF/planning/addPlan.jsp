@@ -52,11 +52,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-<<<<<<< HEAD
 		<form name="f" class="f" method="post" action="goView.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
-=======
-		<form name="f" class="f" method="post" action="ggoView.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
->>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
@@ -100,20 +96,13 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">배경사진</font>
-<<<<<<< HEAD
 					<INPUT TYPE="FILE" ></td>
-=======
-					<INPUT TYPE="FILE" name="backgroundimg"></td>
->>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
+					<INPUT TYPE="FILE" name="thumbnail"></td>
 				</tr>
 			</table>
 			<br>
 	</div>
 		<div id="pre_set" align="center">
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
 					<td width="5%">board_num</td>
@@ -139,12 +128,9 @@ function renameForModelAttribute() {
 			<input type="button" value="+" onClick="addRow()"><br><br>
 			<input type="submit" value="저장">
 			<input type="reset" value="취소">
-<<<<<<< HEAD
 		</form>
 	</div> 
-=======
 	</div>
->>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 	</form>
 </div>
 </body>

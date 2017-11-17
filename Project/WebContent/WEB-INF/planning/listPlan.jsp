@@ -21,7 +21,7 @@ function renameForModelAttribute() {
 	<div align="center">
 		<<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${backgroundimg}">
+				background="${thumbnail}">
 				<tr>
 					<td>나라: <INPUT TYPE="hidden" name="country" VALUE="${country}"> /도시:
 						<INPUT TYPE="hidden" name="city" VALUE="${city}"></td>
@@ -48,11 +48,7 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="hidden" name="tag1" VALUE="${tag1}">
-					<INPUT TYPE="hidden" name="tag2" VALUE="${tag2}">
-					<INPUT TYPE="hidden" name="tag3" VALUE="${tag3}">
-					<INPUT TYPE="hidden" name="tag4" VALUE="${tag4}">
-					<INPUT TYPE="hidden" name="tag5" VALUE="${tag5}"></td>
+					<INPUT TYPE="hidden" name="" VALUE="${tag_no}"></td>
 					<td ALIGN="left">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원
 					</td>
 				</tr>

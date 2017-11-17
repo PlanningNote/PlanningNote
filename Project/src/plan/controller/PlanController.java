@@ -85,7 +85,7 @@ public class PlanController{
 	@RequestMapping(value = "/goView.do") // ∞Ë»π ¿˙¿Â
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute("file") FileUpload upload 
-			,@ModelAttribute SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP) throws Exception {
+			,@ModelAttribute SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
 		
 		System.out.println("1");
 		PrintWriter writer=arg1.getWriter();
