@@ -13,6 +13,6 @@ public interface FAQDAO {
 	public List<FAQDTO> rankFAQ();
 	public FAQDTO getFAQBoard(int parseInt, String string);
 	
-
+ 
 
 }
