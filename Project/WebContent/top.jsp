@@ -21,7 +21,7 @@
 						<a href="howto_main.do"><img src="img/howto.PNG"  border="0"></a> <!--이용방법 --> 
 						<a href="center_main.do"> <img src="img/center.PNG"  border="0"></a> <!--고객센터 --> 
 						<a href="comu_main.do"> <img src="img/comu.PNG"  border="0"></a> <!--커뮤니티 --> 
-						<a href="index.jsp"><img src="img/make.PNG"  border="0"></a> <!--일정만들기-->
+						<a href="plan.do"><img src="img/make.PNG"  border="0"></a> <!--일정만들기-->
 				
 						<a href="index.jsp"><img src="img/share.PNG"  border="0"></a> <!--일정공유-->
 						
