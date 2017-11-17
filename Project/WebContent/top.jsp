@@ -11,10 +11,10 @@
 		<table border="1" width="900" height="70">
 		<tr height="10%">
 
-				<a href="index.jsp" > <img src="img/planlogo.jpg"  border="0" ></a> <!-- 로고 -->
-				<a href="index.jsp"> <img src="img/login2.PNG"  border="0" ></a> <!-- 로그인 -->
-					<a href="index.jsp"> <img src="img/join.PNG"  border="0" ></a> <!-- 회원가입 -->
-						<!-- <a href="index.jsp"> <img src="img/note.PNG"  border="0" > 회원가입 -->
+				<a href="index.jsp" ><img src="img/planlogo.jpg" border="0"></a> <!-- 로고 -->
+				<a href="index.jsp"><img src="img/login2.PNG" border="0"></a> <!-- 로그인 -->
+					<a href="index.jsp"><img src="img/join.PNG" border="0"></a> <!-- 회원가입 -->
+						<!-- <a href="index.jsp"> <img src="img/note.PNG" border="0" > 회원가입 -->
 						
 						<td colspan="2" align="center">
 						<a href="index.jsp"> <img src="img/main.PNG"  border="0"></a> <!--main --> 

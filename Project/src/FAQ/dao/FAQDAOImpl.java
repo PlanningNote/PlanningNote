@@ -68,7 +68,7 @@ public class FAQDAOImpl implements FAQDAO {
 
     
 protected void plusReadCount(int no) {
-	String sql = "update PN_notice set count = count+1 where no = ?";
+	String sql = "update PN_FAQ set count = count+1 where no = ?";
 	jdbcTemplate.update(sql, no);
 }
 
@@ -93,7 +93,7 @@ protected void plusReadCount(int no) {
 				dto.setCount(arg0.getInt("count"));
 				dto.setDay(arg0.getString("day"));
 				dto.setImg(arg0.getString("img"));
-			/*	dto.setPwd(arg0.getString("pwd"));*/
+				dto.setPwd(arg0.getString("pwd"));
 				return dto;
 			}
 			throw new DataRetrievalFailureException("해당 객체를 찾을수가 없습니다.");

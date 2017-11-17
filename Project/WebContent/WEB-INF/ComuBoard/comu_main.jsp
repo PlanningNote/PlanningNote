@@ -36,7 +36,7 @@
 </html>
 
 
- <%@ include file="bottom.jsp"%>
+ <%@ include file="../../bottom.jsp"%>
 
 
 

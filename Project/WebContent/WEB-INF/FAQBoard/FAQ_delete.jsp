@@ -9,7 +9,7 @@
 <body>
 <div align="center">
 	<b>글 삭 제</b>
-	<form name="f" action="notice_delete.do" method="post">
+	<form name="f" action="FAQ_delete.do" method="post">
 		<input type="hidden" name="no" value="${param.no}"/>
 		<table border="1" width="300">
 			<tr bgcolor="yellow">
@@ -24,7 +24,7 @@
 				<td align="center">
 					<input type="submit" value="글삭제">
 					<input type="button" value="글목록" 
-								onclick="window.location='notice_list.do'">
+								onclick="window.location='FAQ_list.do'">
 				</td>								
 			</tr>
 		</table>

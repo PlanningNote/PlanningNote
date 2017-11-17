@@ -6,10 +6,10 @@
    <%@ include file="sidetop.jsp"%>  
 <html>
 <head>
-	<title>FAQ 게시판</title>
+<title>문의하기게시판</title>
 </head>
 <body>
-	<div align="center">
+<div align="center">
 		<b> FAQ  </b>
 		<table border="0" width="600">
 			<tr bgcolor="sky blue">
@@ -25,7 +25,7 @@
 				<th>날짜</th>
 			</tr>
 			<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
-				<td>${dto.no}</td>
+				<%-- <td>${dto.no}</td> --%>
 		<c:if test="${empty FAQList}">
 			<tr> 
 			
@@ -56,12 +56,9 @@
 			<input type="text" size="20" name="condition"/>&nbsp;
 			<input type="submit" value="검색"/>
 		</form>	
-	</div>
-</body>
-</html>
 
 
- <%@ include file="bottom.jsp"%>
+ <%@ include file="../../bottom.jsp"%>
 
 
 

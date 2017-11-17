@@ -25,7 +25,7 @@
 				<th>날짜</th>
 			</tr>
 			<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
-				<td>${dto.no}</td>
+				<%-- <td>${dto.no}</td> --%>
 		<c:if test="${empty noticeList}">
 			<tr> 
 			
@@ -61,7 +61,7 @@
 </html>
 
 
- <%@ include file="bottom.jsp"%>
+ <%@ include file="../../bottom.jsp"%>
 
 
 

@@ -30,9 +30,9 @@
 <body>
 <div align="center">
 	<h3>글  수  정~~~~</h3>
-	<form name="f" action="notice_update.do" 
+	<form name="f" action="FAQ_update.do" 
 									method="post" onsubmit="return check()">
-	<input type="hidden" name="no" value="${getNoticeBoard.no}"/> 
+	<input type="hidden" name="no" value="${getFAQBoard.no}"/> 
 	<table border="1" width="600">
 <tr bgcolor="red">
 				<th colspan="2">공 지  수 정 란 입니다</th>
@@ -40,17 +40,17 @@
 		<tr>
 			<th bgcolor="pink" width="80%">제목</th>
 			<td><input type="text" name="subject" class="box" size="50" 
-													value="${getNoticeBoard.subject}"></td>
+													value="${getFAQBoard.subject}"></td>
 		
 
 		<tr>
 			<th bgcolor="pink" width="25%">내 용</th>
-			<td><textarea name="content"  rows="12" cols="65" size="50"  class="box">${getNoticeBoard.content}</textarea></td>
+			<td><textarea name="content"  rows="12" cols="65" size="50"  class="box">${getFAQBoard.content}</textarea></td>
 		</tr>
 				<tr>
 			<th bgcolor="pink" width="20%">이미지</th>
 			<td><input type="text" name="img" class="box" size="50" 
-													value="${getNoticeBoard.img}"></td>
+													value="${getFAQBoard.img}"></td>
 		</tr>
 		<tr>
 			<th bgcolor="pink" width="20%">비밀번호</th>
@@ -61,7 +61,7 @@
 				<input type="submit" value="글수정">
 				<input type="reset" value="취소">
 				<input type="button" value="목록보기" 
-										onclick="window.location='notice_list.do'">
+										onclick="window.location='FAQ_list.do'">
 			</td>
 		</tr>
 	</table>

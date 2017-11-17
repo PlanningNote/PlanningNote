@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@ include file="top.jsp"%>  
+ <%@ include file="sidetop.jsp"%>  
 <html>
 <head>
-<title>커뮤니티 게시판</title>
+<title>문의하기게시판</title>
 </head>
 <body>
 	<div align="center">
-		<b> 커뮤니티  </b>
+		<b> 문의  </b>
 		<table border="0" width="600">
 			<tr bgcolor="orange">
-				<td align="right"><a href="comu_write.do">커뮤니티 글쓰기</a></td>
+				<td align="right"><a href="comu_write.do">문의하기</a></td>
 			</tr>
 		</table>
 		<table border="1" width="600">
@@ -71,7 +71,7 @@
 
 
 
-<%@ include file="bottom.jsp"%>
+<%@ include file="../../bottom.jsp"%>
 
 
 
