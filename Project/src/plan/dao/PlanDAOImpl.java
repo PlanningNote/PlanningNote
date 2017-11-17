@@ -25,14 +25,13 @@ public class PlanDAOImpl implements PlanDAO {
 	public int insertPlan(PlanDTO dto) {
 		System.out.println("insertPlan ÁøÀÔ");
 		System.out.println("PlanDTO.getSubject(): "+dto.getSubject());
-		String sql = "insert into PN_planning values(group_no.nextval, " + 
-							"?,?,?,?"
-							+ ",?,?,?,?,?"
-							+ ",?,?,?,?,?)";
+		String sql = "insert into PN_planning "
+				+ "values(group_no.nextval, " + 
+							"?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
 		int res=0;
-		Object[] values = new Object[] { dto.getWriter(),dto.getSubject(),dto.getDay(),dto.getPwd(),
+		Object[] values = new Object[] { "³ª",dto.getSubject(),dto.getPwd(),
 				dto.getCount(),dto.getTag_no_sequence(),dto.getCountry(),dto.getCity(),dto.getThumbnail(),
-				dto.getTotalprice(),dto.getTravel_period(),dto.getTravel_seasion(),dto.getTravel_theme()};
+				dto.getTotalprice(),dto.getTravel_period(),dto.getTravel_seasion(),dto.getTravel_theme(),dto.getRecom()};
 		res = jdbcTemplate.update(sql, values);
 		
 		return res;
