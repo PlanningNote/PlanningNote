@@ -16,7 +16,7 @@
 	<input type="text" name="nation">
 		<input type="submit" value="등록">
 		<input type="reset" value="취소"><br> 
-	</table>
+	</table> 
 	<br>
 	<table align="center">   
 		<td>
