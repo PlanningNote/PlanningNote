@@ -50,4 +50,21 @@
 	
 	<bean class="center.controller.CenterController">
 	</bean> 
+	
+		<bean id="comuDAO" class="comu.dao.ComuDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+
+	<bean class="comu.controller.ComuController">
+	</bean>
+
+
+	<bean id="FAQDAO" class="FAQ.dao.FAQDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+
+	<bean class="FAQ.controller.FAQController">
+	</bean>
+	
+	
 </beans>

@@ -8,6 +8,10 @@ public class NoticeDTO {
 	private String day;
 	private String img;
 	private String pwd;
+	
+	
+	
+	
 	public int getNo() {
 		return no;
 	}
@@ -49,6 +53,10 @@ public class NoticeDTO {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public Object[] getRe_group() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

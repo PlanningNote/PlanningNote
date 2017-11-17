@@ -4,14 +4,14 @@
  <%@ include file="top.jsp"%>  
 <html>
 <head>
-<title>문의사항 게시판</title>
+<title>커뮤니티 게시판</title>
 </head>
 <body>
 	<div align="center">
-		<b>문 의 사 항 </b>
+		<b> 커뮤니티  </b>
 		<table border="0" width="600">
 			<tr bgcolor="orange">
-				<td align="right"><a href="ask_write.do">문의쓰기</a></td>
+				<td align="right"><a href="comu_write.do">커뮤니티 글쓰기</a></td>
 			</tr>
 		</table>
 		<table border="1" width="600">
@@ -54,6 +54,15 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<form>
+			<select name="opt">
+				<option value="0">제목</option>
+				
+				<option value="3">글쓴이</option>
+			</select>
+			<input type="text" size="20" name="condition"/>&nbsp;
+			<input type="submit" value="검색"/>
+		</form>	
 	</div>
 </body>
 </html>

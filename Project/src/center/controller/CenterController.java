@@ -16,8 +16,22 @@ import org.springframework.web.servlet.ModelAndView;
 public class CenterController {
 
 	@RequestMapping(value= "/center_main.do")
-	public ModelAndView replyBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	public ModelAndView centerBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/Service/center_main.jsp");
 	
 	}  
+	@RequestMapping(value= "/intro_company.do")
+	public ModelAndView introBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/Service/intro_company.jsp");
+	
+	}  
+	
+	@RequestMapping(value= "/howto_main.do")
+	public ModelAndView howtoBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/Service/howto_main.jsp");
+	
+	}  
+	
+	
+	
 }

@@ -3,7 +3,7 @@
     
    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-   <%@ include file="top.jsp"%>  
+   <%@ include file="sidetop.jsp"%>  
 <html>
 <head>
 	<title>공지사항 게시판</title>
@@ -46,6 +46,16 @@
 			</tr>		
 		</c:forEach>				
 		</table>
+		
+		<form>
+			<select name="opt">
+				<option value="0">제목</option>
+				
+				<option value="3">글쓴이</option>
+			</select>
+			<input type="text" size="20" name="condition"/>&nbsp;
+			<input type="submit" value="검색"/>
+		</form>	
 	</div>
 </body>
 </html>

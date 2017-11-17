@@ -5,7 +5,9 @@ public class ComuDTO {
 	private String writer;
 	private String subject;
 	private String content;
+	private int count;
 	private String day;
+
 	private String img;
 	private String pwd;
 	private int re_step;
@@ -35,6 +37,13 @@ public class ComuDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	public String getDay() {
 		return day;
 	}

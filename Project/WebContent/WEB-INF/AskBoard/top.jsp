@@ -18,11 +18,11 @@
 				<a href="index.jsp"> <img src="img/login2.PNG"  border="0"> <!-- 로그인 -->
 					<a href="index.jsp"> <img src="img/join.PNG"  border="0"> <!-- 회원가입 -->
 						
-						<td colspan="2" align="center">
+							<td colspan="2" align="center">
 						<a href="index.jsp"> <img src="img/main.PNG"  border="0"> <!--main --> 
-						<a href="index.jsp"><img src="img/howto.PNG"  border="0"> <!--이용방법 --> 
+						<a href="howto_main.do"><img src="img/howto.PNG"  border="0"> <!--이용방법 --> 
 						<a href="center_main.do"> <img src="img/center.PNG"  border="0"> <!--고객센터 --> 
-						<a href="index.jsp"> <img src="img/comu.PNG"  border="0"> <!--커뮤니티 --> 
+						<a href="comu_main.do"> <img src="img/comu.PNG"  border="0"> <!--커뮤니티 --> 
 						<a href="index.jsp"><img src="img/make.PNG"  border="0"> <!--일정만들기-->
 				
 						<a href="index.jsp"><img src="img/share.PNG"  border="0"> <!--일정공유-->
@@ -35,13 +35,13 @@
 				<br><br><br><li>
 				<a href="ask_list.do">문의사항</a> <br>
 				<br><li>
-				<a href="<%=request.getContextPath()%>/index.jsp">FAQ</a> <br>
+				<a href="FAQ_list.do">FAQ</a> <br>
 				<br><li>
 				<a href="notice_list.do">공지사항</a> <br>
 				<br><li>
-				<a href="<%=request.getContextPath()%>/index.jsp">이용방법</a> <br>
+				<a href="howto_main.do">이용방법</a> <br>
 				<br><li>
-				<a href="<%=request.getContextPath()%>/howto.jsp">회사소개</a> <br>
+				<a href="intro_company.do">회사소개</a> <br>
 				<br>
 				
 				</li>

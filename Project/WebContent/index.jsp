@@ -20,7 +20,7 @@
 	<br>
 	<table align="center">   
 		<td>
-		<a href="fileUpload_ok.do"> <img src="img/plain.png"> </a> <!-- 커뮤니티 -->
+		<a href="comu_list.do"> <img src="img/plain.png"> </a> <!-- 커뮤니티 -->
 		<a href="notice_list.do"> <img src="img/paris.jpg"></a> <!-- 공지사항-->
 		<a href="ask_list.do"> <img src="img/travel2.png">	</a> </td><!-- 문의하기 -->
 	

@@ -5,9 +5,12 @@
 </tr>
 
 <tr height ="5%" align = "center">
-
+<br><br>
+<br><br>
 <td colspan ="2" align="center">
-<img src="img/madeby.PNG"  border="0"> <!-- made by -->
+<br>
+<br>
+             　　　　　<img src="img/madeby.PNG"  border="0">     <!-- made by -->
 </td>
 
 </tr>
