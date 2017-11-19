@@ -1,0 +1,55 @@
+인터페이스
+
+
+
+MemberDAO
+
+public int insertMember(MemberDTO dto);
+public int updateMember(int no);
+public int deleteMember(int no);
+public List<MemberDTO> listMember();
+public String findPwd(String nickname,String email);
+
+
+ComuDAO
+
+public int insertComu(ComuDTO dto);
+public int updateComu(int no);
+public int deleteComu(int no);
+public List<ComuDTO> listComu();
+public ComuDTO findComu(String search,String searchString); //제목으로할건지 작성자로 할건지
+
+
+
+AskDAO
+
+public int insertAsk(AskDTO dto);
+public int updateAsk(int no);
+public int deleteAsk(int no);
+public List<AskDTO> listAsk();
+public AskDTO findAsk(String search,String searchString);
+public List<AskDTO> rankAsk();
+
+
+NoticeDAO
+
+public int insertNotice(NoticeDTO dto);
+public int updateNotice(int no);
+public int deleteNotice(int no);
+public List<NoticeDTO> listNotice();
+public NoticeDTO findNotice(String search,String searchString);
+public List<NoticeDTO> rankNotice();
+
+
+PlanDAO
+
+public int insertPlan(PlanDTO dto);
+public int updatePlan(int no);
+public int deletePlan(int no);
+public List<PlanDTO> listPlan(); //전체 그룹 게시물 리스트
+public PlanDTO findPlan(String search,String searchString); //제목으로할건지 작성자로 할건지
+public List<PlanDTO> rankPlan();
+public List<PlanDTO> tagPlan(String tag);
+public List<PlanDTO> findOption(String search,String searchString); //여행기간, 시기, 테마 검색
+public List<PlanDTO> subList(int group_no); //그룹에 해당하는 전체 서브리스트
+

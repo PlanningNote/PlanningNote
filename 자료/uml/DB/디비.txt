@@ -1,0 +1,108 @@
+PN_member - 가입
+nickname - 닉네임
+gender - 성별
+email - 이메일
+age - 나이
+pwd - 비번
+
+
+----------------------
+
+
+PN_community - 게시판
+no
+writer
+
+subject
+content
+count
+day
+img
+pwd
+re_step
+re_group
+re_level
+
+co_seq-커뮤니티 게시판 시퀀스
+
+-----------------------
+
+PN_notice
+no
+subject
+content
+count
+day
+img
+pwd
+
+no_seq -공지사항 시퀀스
+-------------------
+PN_ask
+
+no
+writer
+subject
+content
+count
+day
+img
+pwd
+re_step
+re_group
+re_level
+
+ask_seq -문의하기 시퀀스
+
+-------------------
+
+
+PN_plan
+
+
+group_no
+subject
+day
+writer
+count
+pwd
+tag_no
+country
+city
+thumbnail
+totalprice
+travel_period
+travel_season
+travel_theme
+recom
+
+group_seq-그룹 시퀀스
+tag_seq -태그 시퀀스
+----------------------
+
+PN_tag
+
+group_no
+tag1
+tag2
+tag3
+tag4
+tag5
+tag_no
+
+
+--------------------
+
+PN_subplan
+
+group_no
+board_no
+subject
+img
+content
+price
+traffic
+
+board_seq 
+
+
