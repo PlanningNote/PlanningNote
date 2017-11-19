@@ -36,14 +36,20 @@ public class LocationController {
 	@RequestMapping(value="/insert.do")
 	public ModelAndView insertContent(HttpServletRequest arg0, @ModelAttribute LocationDTO dto, BindingResult result) throws Exception {
 		if(result.hasErrors()) { 
-			dto.setNo(0);			
+			dto.setNo(0);		
 		}
 		
 		String location = dto.getLocation().substring(1, dto.getLocation().length()-1);
 		String a[] = location.split("\\s*,\\s*");
+		String lat = a[0];
+		String lng = a[1];
 		location = "lat: "+a[0]+", lng: "+a[1];
-		dto.setLocation(location);
 		
+		System.out.println("#######Controller#######");
+		System.out.println(lat +" // "+lng);
+		dto.setLat(lat);
+		dto.setLng(lng);
+		dto.setLocation(location);		
 		locationDAO.insertContent(dto);
 		return new ModelAndView("redirect:list.do");	
 	}

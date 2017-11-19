@@ -5,6 +5,9 @@ public class LocationDTO {
 	private String subject;
 	private String content;
 	private String location;
+	private String lat;
+	private String lng;
+	
 	public int getNo() {
 		return no;
 	}
@@ -29,6 +32,23 @@ public class LocationDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLng() {
+		return lng;
+	}
+	public void setLng(String lng) {
+		this.lng = lng;
+	}
+	
+	
+	
+	
+	
 	
 	
 

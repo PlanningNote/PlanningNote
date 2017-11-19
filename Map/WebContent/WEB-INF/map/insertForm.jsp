@@ -56,7 +56,6 @@
     
     function send(form){
     	 document.f.location.value = temp;
-    	 self.close();
     }
     
     
