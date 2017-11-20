@@ -9,20 +9,20 @@ pwd varchar2(50) not null
 
 create sequence memeber_seq;
 
-create table PN_community(
+create PN_community(
 no number primary key,
-writer varchar2(20) not null,
-subject varchar2(100) not null,
-content varchar2(4000),
-day varchar2(10),
+writer varchar2(10) not null,
+subject varchar2(50) not null,
+content varchar2(5000) not null,
 img varchar2(100),
-pwd varchar2(50) not null,
+day varchar2(10) not null,
+count default 0,
+passwd varchar2(10) not null,
 re_step number,
-re_group number,
-re_level number
-);
+re_level number,
+re_group number);
 
-create sequence co_seq;
+create sequence co_sequence;
 
 create table PN_notice(
 no number primary key,
@@ -54,11 +54,11 @@ re_level number
 
 create sequence ask_seq;
 
-create table PN_plan(
+create table PN_planning(
 group_no number primary key,
 writer varchar2(20) not null,
 subject varchar2(100) not null,
-day varchar2(10),
+day varchar2(20),
 pwd varchar2(50) not null,
 count number,
 tag_no number,
@@ -68,7 +68,7 @@ thumbnail varchar2(100),
 totalprice number,
 travel_period varchar2(50),
 travel_seasion varchar2(50),
-travel_theme varchar2(50),
+travel_theme varchar2(20),
 recom number
 );
 
