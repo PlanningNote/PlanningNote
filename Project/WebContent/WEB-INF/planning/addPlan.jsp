@@ -62,19 +62,19 @@ function renameForModelAttribute() {
 				<tr>
 					<td><h2>
 							제목: <INPUT TYPE="TEXT" NAME="subject"></td>
-					<td ALIGN="RIGHT"><INPUT TYPE="RADIO" NAME="travel_period"
-						VALUE="1~5일">1~5일 <INPUT TYPE="RADIO" NAME="travel_period"
-						VALUE="5~10일">5~10일 <INPUT TYPE="RADIO"
-						NAME="travel_period" VALUE="10~15일">10~15일 <INPUT
-						TYPE="RADIO" NAME="travel_period" VALUE="15일이상">15일이상<br>
-						<INPUT TYPE="RADIO" NAME="travel_season" VALUE="봄">봄 <INPUT
-						TYPE="RADIO" NAME="travel_season" VALUE="여름">여름 <INPUT
-						TYPE="RADIO" NAME="travel_season" VALUE="가을">가을 <INPUT
-						TYPE="RADIO" NAME="travel_season" VALUE="겨울">겨울 <br>
-						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="나 혼자">나 혼자
-						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="친구와 함께">친구와
-						함께 <INPUT TYPE="RADIO" NAME="travel_theme" VALUE="연인과 함께">연인과
-						함께 <INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
+					<td ALIGN="RIGHT">
+					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="1~5일">1~5일 
+					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="5~10일">5~10일 
+					<INPUT TYPE="RADIO"	NAME="travel_period" VALUE="10~15일">10~15일 
+					<INPUT TYPE="RADIO" NAME="travel_period" VALUE="15일이상">15일이상<br>
+					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="봄">봄 
+					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="여름">여름 
+					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="가을">가을 
+					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="겨울">겨울 <br>
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="나혼자">나 혼자
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="친구와함께">친구와	함께 
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="연인과함께">연인과	함께 
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
 				</tr>
 				<tr>
 					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer" value="${writer}">님

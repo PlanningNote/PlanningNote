@@ -29,7 +29,10 @@ public class PlanDAOImpl implements PlanDAO {
 				+ "values(group_no.nextval, " + 
 							"?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
 		int res=0;
-		Object[] values = new Object[] { "나",dto.getSubject(),dto.getPwd(),
+		/*Object[] values = new Object[] { "나",dto.getSubject(),dto.getPwd(),
+				dto.getCount(),dto.getTag_no_sequence(),dto.getCountry(),dto.getCity(),dto.getThumbnail(),
+				dto.getTotalprice(),dto.getTravel_period(),dto.getTravel_seasion(),dto.getTravel_theme(),dto.getRecom()};*/
+		Object[] values = new Object[] { "나",dto.getSubject(),"pwd",
 				dto.getCount(),dto.getTag_no_sequence(),dto.getCountry(),dto.getCity(),dto.getThumbnail(),
 				dto.getTotalprice(),dto.getTravel_period(),dto.getTravel_seasion(),dto.getTravel_theme(),dto.getRecom()};
 		res = jdbcTemplate.update(sql, values);
@@ -40,15 +43,14 @@ public class PlanDAOImpl implements PlanDAO {
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
 		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
-		Object[] values;
+		Object[] values = null;
 		int res = 0;
 		for(int i=0;i<sdto.getTargets().size();i++) {
 			values = new Object[] {
 					sdto.getTargets().get(i).getSubject(),sdto.getImgName().get(i),sdto.getTargets().get(i).getContent()
 					,sdto.getTargets().get(i).getPrice(),sdto.getTargets().get(i).getTraffic()	};
-			res=jdbcTemplate.update(sql, values);
 		}
-		
+		res=jdbcTemplate.update(sql, values);
 		 if(res!=sdto.getTargets().size()) {
 			 //res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
 			 res=-1;
