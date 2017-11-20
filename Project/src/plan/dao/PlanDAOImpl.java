@@ -45,14 +45,12 @@ public class PlanDAOImpl implements PlanDAO {
 		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
 		Object[] values = null;
 		int res = 0;
-		System.out.println("for문 도는 횟수: "+sdto.getTargets().size());
 		for(int i=0;i<sdto.getTargets().size();i++) {
 			values = new Object[] {
 					sdto.getTargets().get(i).getSubject(),sdto.getImgName().get(i),sdto.getTargets().get(i).getContent()
 					,sdto.getTargets().get(i).getPrice(),sdto.getTargets().get(i).getTraffic()	};
-			res=jdbcTemplate.update(sql, values);
 		}
-		
+		res=jdbcTemplate.update(sql, values);
 		 if(res!=sdto.getTargets().size()) {
 			 //res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
 			 res=-1;

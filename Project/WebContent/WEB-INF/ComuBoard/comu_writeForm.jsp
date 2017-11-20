@@ -62,7 +62,7 @@
 			
 		 <tr>
 				<th>юл╧лаЖ</th>
-				<td><input type="file" name="img"></td>
+				<td><input type="text" name="img"></td>
 			</tr>
 		
 			<tr>
