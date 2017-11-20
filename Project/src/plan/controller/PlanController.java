@@ -117,8 +117,7 @@ public class PlanController{
 			@ModelAttribute("file") FileUpload upload 
 			,@ModelAttribute SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
 		
-		System.out.println("일해라 이클립스");
-		System.out.println(dtoP.getSubject());
+		System.out.println("dtoP 시즌: "+dtoP.getTravel_seasion());
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
 		  
