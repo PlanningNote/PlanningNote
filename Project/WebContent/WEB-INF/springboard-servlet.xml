@@ -65,4 +65,11 @@
 
 	<bean class="FAQ.controller.FAQController">
 	</bean>
+	
+		<bean id="memberDAO" class="member.dao.MemberImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+	
+	<bean class="member.controller.MemberController">
+	</bean>
 </beans>
