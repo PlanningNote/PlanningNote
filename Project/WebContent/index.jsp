@@ -8,7 +8,7 @@
 	<table align="center" align ="center" >
 		<img src="img/back.jpg" align ="center"><br>
 		
-	</table><br>
+	</table><br>  <!-- sadfksldjfsd -->
 	
 	<table algin="center" >
 	검색할 나라를 입력하세요<br>
