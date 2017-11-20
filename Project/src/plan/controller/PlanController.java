@@ -47,7 +47,6 @@ public class PlanController{
 			FileUpload upload , SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
 		List<MultipartFile> files = upload.getImgfile();
-		System.out.println("3");
 		String img=null;
 		String filePath=null;
 		
@@ -77,9 +76,6 @@ public class PlanController{
 		dto.setImgName(imgName);
 		dto.setImgPath(imgPath);
 		//파일및 데이터 dto에 저장.
-		for(int i=0;i<dto.getImgName().size();i++) {
-			System.out.println("dto 이미지"+dto.getImgName().get(i));
-		}
 		return dto;
 	}
 	
@@ -123,7 +119,9 @@ public class PlanController{
 		  
 		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
 		mappingSubDTO(arg0,arg1,upload,dtoS);
+		System.out.println("서브플랜 맵핑 끝");
 		mappingPlanDTO(arg0,arg1,dtoP);
+		System.out.println("플랜 맵핑 끝");
 		
 		//▽ DAOImpl working..
 		int resP =0,resS=0,resT=0;	
