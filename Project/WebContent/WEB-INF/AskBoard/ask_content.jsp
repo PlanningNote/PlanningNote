@@ -17,7 +17,7 @@
 				<th bgcolor="yellow" width="15%">글제목</th>
 				<td align="center" width="85%" colspan="3">
 					${getAskBoard.subject}</td>
-			</tr>
+			</tr> 
 			<tr>
 			
 			<th bgcolor="yellow" width="20%">내 용</th>
