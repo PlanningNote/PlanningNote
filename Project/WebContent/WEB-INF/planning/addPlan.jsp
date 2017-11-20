@@ -100,7 +100,7 @@ function renameForModelAttribute() {
 				</tr>
 			</table>
 			<br>
-	</div>
+	</div>  
 		<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850" >
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
