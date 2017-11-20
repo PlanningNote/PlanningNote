@@ -19,11 +19,18 @@
 					${getNoticeBoard.subject}</td>
 			</tr>
 			<tr>
-				<tr>
+				
 			<th bgcolor="yellow" width="20%">내 용</th>
 			<td ><textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getNoticeBoard.content}</textarea></td>
 		
 				
+					</td>
+			</tr>
+			
+				<tr>
+				<th bgcolor="yellow" width="20%">이 미 지</th>
+				<td ><textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getNoticeBoard.content}</textarea></td>
+		
 					</td>
 			</tr>
 			
@@ -52,19 +59,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

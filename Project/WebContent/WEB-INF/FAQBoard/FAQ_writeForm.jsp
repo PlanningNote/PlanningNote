@@ -62,7 +62,7 @@
 			
 		 <tr>
 				<th>¿ÃπÃ¡ˆ</th>
-				<td><input type="text" name="img"></td>
+				<td><input type="file" name="img"></td>
 			</tr>
 		
 			<tr>
@@ -83,10 +83,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
