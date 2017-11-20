@@ -1,12 +1,19 @@
 package member.dto;
 
 public class MemberDTO {
+	private int no;
 	private String nickname;
 	private String gender;
 	private String email;
 	private int age;
 	private String pwd;
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getNickname() {
 		return nickname;
 	}

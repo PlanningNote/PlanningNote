@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName">
-			<value>jdbc/oracle</value>
-		</property>
-		<property name="resourceRef" value="true" />
-	</bean> -->	
-	<context:annotation-config/>
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+		<property name="jndiName"> <value>jdbc/oracle</value> </property> <property 
+		name="resourceRef" value="true" /> </bean> -->
+	<context:annotation-config />
 	<!-- 여기서 선언된 bean 만 받는다. -->
-	
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
@@ -23,36 +19,36 @@
 			<value>jdbc:oracle:thin:@127.0.0.1:1521:xe</value>
 		</property>
 		<property name="username" value="java07" />
-		<property name="password" value="java07" />	
+		<property name="password" value="java07" />
 	</bean>
-	<bean id = "controller" class="plan.controller.PlanController">
+	<bean id="controller" class="plan.controller.PlanController">
 	</bean>
 	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	<bean id="planDAO" class="plan.dao.PlanDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 	<bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
-		<bean id="noticeDAO" class="notice.dao.NoticeDAOImpl">
+
+	<bean id="noticeDAO" class="notice.dao.NoticeDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
-	
+
 	<bean class="notice.controller.NoticeController">
 	</bean>
-	
+
 	<bean id="askDAO" class="ask.dao.AskDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 	<bean class="ask.controller.AskController">
-	</bean>   
-	
+	</bean>
+
 	<bean class="center.controller.CenterController">
-	</bean> 
-	
-		<bean id="comuDAO" class="comu.dao.ComuDAOImpl">
+	</bean>
+
+	<bean id="comuDAO" class="comu.dao.ComuDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 
@@ -64,5 +60,13 @@
 	</bean>
 
 	<bean class="FAQ.controller.FAQController">
+	</bean>
+
+
+	<bean id="memberDAO" class="member.dao.MemberImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+
+	<bean class="member.controller.MemberController">
 	</bean>
 </beans>
