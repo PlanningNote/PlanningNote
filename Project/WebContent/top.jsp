@@ -16,6 +16,7 @@
 				<a href="join_member.do"><img src="img/join.PNG" border="0"></a><!-- 회원가입 -->
 				<!-- <a href="index.jsp"> <img src="img/note.PNG" border="0" > 회원가입 -->
 
+
 				<td colspan="2" align="center">
 					<a href="index.jsp"> <img src="img/main.PNG" border="0"></a> <!--main --> 
 					<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a>		<!--이용방법 -->
