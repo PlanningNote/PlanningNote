@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<html>
-<head>
-	
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>업데이트폼</title>
-	<script type="text/javascript">
+<%@ include file="../../top.jsp" %>
+<script type="text/javascript">
 	function checkMember(){
 		
 		if (f.subject.value==""){
@@ -26,50 +22,51 @@
 		return true
 	}
 	</script>
-</head>
-<body>
-<div align="center">
-	<h3>글  수  정~~~~</h3>
-	<form name="f" action="FAQ_update.do" 
-									method="post" onsubmit="return check()">
-	<input type="hidden" name="no" value="${getFAQBoard.no}"/> 
-	<table border="1" width="600">
-<tr bgcolor="red">
-				<th colspan="2">공 지  수 정 란 입니다</th>
-			</tr> 
-		<tr>
-			<th bgcolor="pink" width="80%">제목</th>
-			<td><input type="text" name="subject" class="box" size="50" 
-													value="${getFAQBoard.subject}"></td>
-		
-
-		<tr>
-			<th bgcolor="pink" width="25%">내 용</th>
-			<td><textarea name="content"  rows="12" cols="65" size="50"  class="box">${getFAQBoard.content}</textarea></td>
-		</tr>
+<tr>
+	<td>
+		<div align="center">
+			<h3>글  수  정~~~~</h3>
+			<form name="f" action="FAQ_update.do" 
+											method="post" onsubmit="return check()">
+			<input type="hidden" name="no" value="${getFAQBoard.no}"/> 
+			<table border="1" width="600">
+				<tr bgcolor="red">
+					<th colspan="2">공 지  수 정 란 입니다</th>
+				</tr> 
 				<tr>
-			<th bgcolor="pink" width="20%">이미지</th>
-			<td><input type="text" name="img" class="box" size="50" 
-													value="${getFAQBoard.img}"></td>
-		</tr>
-		<tr>
-			<th bgcolor="pink" width="20%">비밀번호</th>
-			<td><input type="password" name="passwd" class="box"></td>
-		</tr>
-		<tr bgcolor="pink">
-			<td align="center" colspan="2">
-				<input type="submit" value="글수정">
-				<input type="reset" value="취소">
-				<input type="button" value="목록보기" 
-										onclick="window.location='FAQ_list.do'">
-			</td>
-		</tr>
-	</table>
-	</form>	
-</div>
-</body>
-</html>
-
+					<th bgcolor="pink" width="80%">제목</th>
+					<td><input type="text" name="subject" class="box" size="50" 
+															value="${getFAQBoard.subject}"></td>		
+				<tr>
+					<th bgcolor="pink" width="25%">내 용</th>
+					<td><textarea name="content"  rows="12" cols="65" size="50"  class="box">${getFAQBoard.content}</textarea></td>
+				</tr>
+				
+				<tr>
+					<th bgcolor="pink" width="20%">이미지</th>
+					<td><input type="text" name="img" class="box" size="50" 
+															value="${getFAQBoard.img}"></td>
+				</tr>
+				
+				<tr>
+					<th bgcolor="pink" width="20%">비밀번호</th>
+					<td><input type="password" name="passwd" class="box"></td>
+				</tr>
+				
+				<tr bgcolor="pink">
+					<td align="center" colspan="2">
+						<input type="submit" value="글수정">
+						<input type="reset" value="취소">
+						<input type="button" value="목록보기" 
+												onclick="window.location='FAQ_list.do'">
+					</td>
+				</tr>
+				</table>
+			</form>	
+		</div>
+	</td>
+</tr>
+<%@ include file="../../bottom.jsp" %>
 
 
 
