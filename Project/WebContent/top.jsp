@@ -18,7 +18,7 @@
 		</div>		
 		<div align="center">			
 			<table border="1" width="1100" >
-				<tr height="100" align="center">
+				<tr height="80" align="center">
 					<td>
 						<a href="index.jsp"><img src="img/main.PNG" border="0"></a> <!--main --> 
 						<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a><!--이용방법 --> 
