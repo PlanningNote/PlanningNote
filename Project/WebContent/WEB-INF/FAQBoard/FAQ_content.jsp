@@ -3,7 +3,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>공 지 사 항 보 기</title>
+<title>FAQ 보 기</title>
 </head>
 <body>
 	<div align="center">
