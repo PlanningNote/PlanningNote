@@ -1,19 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <!-- bottom.jsp -->
-</td>
-</tr>
-
-<tr height ="5%" align = "center">
-<br>
-<br>
-<td colspan ="2" align="center">
-             　　　　　<img src="img/madeby.PNG"  border="0">     <!-- made by -->
-</td>
-
-</tr>
-
-
-</table>
-
-</div></body>
+				<tr height="50%" align="center">
+					<td>
+						<img src="img/madeby.PNG"  border="0">  
+					</td>
+				</tr>
+			</table>
+		</div> 
+</body>
+</html>

@@ -2,34 +2,24 @@
 	pageEncoding="EUC-KR"%>
 
 <%@ include file="top.jsp"%>
+	<tr height="30%">
+		<td align="center">   
+				<img src="img/back.jpg" align ="center" width="100%" height="100%">
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			검색할 나라를 입력하세요<p>
+			<form name="f">
+				<input type="text" name="nation">
+				<input type="submit" value="등록">
+				<input type="reset" value="취소">
+			</form>
+			<br><br>
+			<a href="comu_list.do"> <img src="img/plain.png"> </a> <!-- 커뮤니티 -->
+			<a href="notice_list.do"> <img src="img/paris.jpg"></a> <!-- 공지사항-->
+			<a href="ask_list.do"> <img src="img/travel2.png">	</a> </td><!-- 문의하기 -->
+		</td>
+	</tr>
 
-<div align="center" >
-
-	<table align="center" align ="center" >
-		<img src="img/back.jpg" align ="center"><br>
-		
-	</table><br>  <!-- sadfksldjfsd -->
-	
-	<table algin="center" >
-	검색할 나라를 입력하세요<br> 
-	<br>
-	<input type="text" name="nation">
-		<input type="submit" value="등록">
-		<input type="reset" value="취소"><br> 
-	</table> 
-	<br>
-	<table align="center">   
-		<td>
-		<a href="comu_list.do"> <img src="img/plain.png"> </a> <!-- 커뮤니티 -->
-		<a href="notice_list.do"> <img src="img/paris.jpg"></a> <!-- 공지사항-->
-		<a href="ask_list.do"> <img src="img/travel2.png">	</a> </td><!-- 문의하기 -->
-	
-	</table><br> 
-
-
-	<h4><br>
-			<a href="index.jsp"> 메인 돌아가기 </a>
-		</h4>
-
-</div> 
-	<%@ include file="bottom.jsp"%>
+<%@ include file="bottom.jsp"%>
