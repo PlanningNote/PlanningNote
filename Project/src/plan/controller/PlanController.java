@@ -47,7 +47,6 @@ public class PlanController{
 			FileUpload upload , SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
 		List<MultipartFile> files = upload.getImgfile();
-		System.out.println("3");
 		String img=null;
 		String filePath=null;
 		
@@ -77,9 +76,7 @@ public class PlanController{
 		dto.setImgName(imgName);
 		dto.setImgPath(imgPath);
 		//파일및 데이터 dto에 저장.
-		for(int i=0;i<dto.getImgName().size();i++) {
-			System.out.println("dto 이미지"+dto.getImgName().get(i));
-		}
+		System.out.println("sub 이미지 매핑:"+dto.getImgName().size());
 		return dto;
 	}
 	
@@ -117,7 +114,6 @@ public class PlanController{
 			@ModelAttribute("file") FileUpload upload 
 			,@ModelAttribute SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
 		
-		System.out.println("dtoP 시즌: "+dtoP.getTravel_seasion());
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
 		  
@@ -129,11 +125,8 @@ public class PlanController{
 		int resP =0,resS=0,resT=0;	
 		
 		resT = dao.tagPlan(dtoT);// dtoT만 주는걸로
-		System.out.println("tag됨");
 		resP=dao.insertPlan(dtoP);
-		System.out.println("Plan 됨");
 		resS= dao.insertsubPlan(dtoS);
-		System.out.println("sub됨");
 		
 		if(resP>0&&resS>0&&resT>0){
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
