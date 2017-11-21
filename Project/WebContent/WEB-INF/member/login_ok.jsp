@@ -9,6 +9,7 @@
 		<form>
 			<b>로그인되었습니다:)</b>
 			<a href="index.jsp">메인으로 이동</a>
+			<a href="admin_main.do">관리자모드</a>
 		</form>
 	</div>
 </body>

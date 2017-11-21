@@ -69,4 +69,7 @@
 
 	<bean class="member.controller.MemberController">
 	</bean>
+	
+	<bean class="admin.controller.AdminController">
+	</bean>
 </beans>
