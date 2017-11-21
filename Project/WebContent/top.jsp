@@ -4,8 +4,8 @@
 <html>
 <head>
 <title>녀행자들홈페이지</title>
-
-</head>
+  
+</head>  
 <body>
 	<div align="center">
 		<table border="1" width="900" height="70">

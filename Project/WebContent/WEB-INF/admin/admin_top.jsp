@@ -1,3 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@include file="../../top.jsp" %>
+<html>
+	<head>
+		<title>관리자페이지</title>
+	</head>
+<body>
+
+</body>
+</html>
