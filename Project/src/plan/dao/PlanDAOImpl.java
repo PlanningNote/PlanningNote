@@ -45,9 +45,15 @@ public class PlanDAOImpl implements PlanDAO {
 		String sql = "insert into PN_subplan values(group_no.nextval,board_no_sequence.nextval, ?,?,?,?,?)";
 		Object[] values = null;
 		int res = 0;
+<<<<<<< HEAD
 		for(int i=0;i<sdto.getTargets().size();i++) {
+=======
+		for(int i=0;i<sdto.getImgName().size();i++) {
+			sdto.setImg(sdto.getImgName().get(i));
+			
+>>>>>>> refs/remotes/origin/master
 			values = new Object[] {
-					sdto.getTargets().get(i).getSubject(),sdto.getImgName().get(i),sdto.getTargets().get(i).getContent()
+					sdto.getTargets().get(i).getSubject(),sdto.getImg(),sdto.getTargets().get(i).getContent()
 					,sdto.getTargets().get(i).getPrice(),sdto.getTargets().get(i).getTraffic()	};
 		}
 		res=jdbcTemplate.update(sql, values);
