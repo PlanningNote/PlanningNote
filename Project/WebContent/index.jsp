@@ -11,7 +11,7 @@
 	</table><br>  <!-- sadfksldjfsd -->
 	
 	<table algin="center" >
-	검색할 나라를 입력하세요<br>
+	검색할 나라를 입력하세요<br> 
 	<br>
 	<input type="text" name="nation">
 		<input type="submit" value="등록">
