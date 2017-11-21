@@ -135,7 +135,7 @@ public class PlanController{
 		resS= dao.insertsubPlan(dtoS);
 		System.out.println("subµÊ");
 		
-		if(resP>0&&resS>0&&resT>0) {
+		if(resP>0&&resS>0&&resT>0){
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
 		else {
