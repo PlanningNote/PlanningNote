@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 
 <%@ include file="top.jsp"%>
-	<tr height="30%">
+	<tr height="50%">
 		<td align="center">   
 				<img src="img/back.jpg" align ="center" width="100%" height="100%">
 		</td>
