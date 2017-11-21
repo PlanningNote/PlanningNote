@@ -104,27 +104,10 @@ function renameForModelAttribute() {
 		<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
-					<td width="5%">board_num</td>
-
-				<td whidth="50%" height="100%">
-						<div style="overflow-y: scroll; height: 100%; width: 100%">
-						여기에 subplan이 들어갑니다. 제목 <br> 
-						<input type="text"name="targets[0].subject" border="1"style="width: 100%; height: 25;">
-						<br>비용 <br>
-						<input type="number" name="targets[0].price" border="1"style="width: 95%; height: 25;"placeholder="숫자만 입력하세요">원
-						<br>내용 <br>
-						<textarea name="targets[0].content" rows="5" border="1"style="width: 95%; height: 80;">
-						</textarea>
-						<br>교통 <br>
-						<input type="text"name="targets[0].traffic" border="1"style="width: 100%; height: 25;">
-					</td>
-
-					<td width="10%" height="100%"><input type="file"name="imgfile"></td>
-
-					<td width="3%"></td>
+				
 				</tr>
 			</table>
-			<input type="button" value="+" onClick="addRow()"><br><br>
+			<input type="button" value="일정추가" onClick="addRow()"><br><br>
 			<input type="submit" value="저장">
 			<input type="reset" value="취소">
 		</form>
