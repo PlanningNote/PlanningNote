@@ -1,5 +1,6 @@
 package plan.controller;
 
+import java.awt.image.SampleModel;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,9 +16,11 @@ import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
@@ -155,6 +158,14 @@ public class PlanController{
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		return mav;
 	}
+	@RequestMapping(value="/listPlanA.do")//계획목록 페이지로 이동.
+	public ModelAndView listPlanA(HttpServletRequest arg0, 
+			HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
+		return mav;
+	}
+	
 	@RequestMapping(value="/subPlanContent.do")//계획목록 페이지로 이동.
 	public ModelAndView contentPlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {

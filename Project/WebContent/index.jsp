@@ -12,7 +12,7 @@
 			검색할 나라를 입력하세요<p>
 			<form name="f">
 				<input type="text" name="nation">
-				<input type="submit" value="등록">
+				<input type="submit" value="검색">
 				<input type="reset" value="취소">
 			</form>
 			<br><br>

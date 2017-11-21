@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<title>플랜리스트</title>
+<title>플랜리스트자세보기</title>
 </head>
 <script language="javascript">
 function renameForModelAttribute() {
@@ -19,7 +19,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<<form name="f" method="post" action="list.do" enctype="multipart/form-data">
+		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
 				background="${thumbnail}">
 				<tr>
