@@ -28,5 +28,3 @@
 						<a href="index.jsp"><img src="img/share.PNG" border="0"></a>	<!--일정공유-->
 					</td>
 				</tr>
-				 
-					
