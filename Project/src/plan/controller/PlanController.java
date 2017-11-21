@@ -72,7 +72,7 @@ public class PlanController{
 				}
 			}
 		}
-		
+		 
 		//이미지파일 정보 dto에 담기▽▽
 		dto.setImgName(imgName);
 		dto.setImgPath(imgPath);
