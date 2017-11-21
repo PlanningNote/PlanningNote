@@ -5,7 +5,7 @@
 	<title>녀행자들홈페이지</title>
 </head>
 <body> 
-		<div style="padding:0px 0px 0px 150px;">
+		<div style="padding:0px 0px 0px 300px;">
 			<table border="0"  >
 				<tr>
 					<td>
@@ -18,7 +18,7 @@
 		</div>		
 		<div align="center">			
 			<table border="1" width="1100" >
-				<tr height="80" align="center">
+				<tr height="60" align="center">
 					<td>
 						<a href="index.jsp"><img src="img/main.PNG" border="0"></a> <!--main --> 
 						<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a><!--이용방법 --> 

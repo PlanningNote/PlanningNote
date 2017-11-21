@@ -4,6 +4,8 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -28,14 +30,19 @@ public class MemberController {
 	
 	
 	@RequestMapping(value= "/login_ok.do")
-	protected ModelAndView LoginOk(@RequestParam String email, @RequestParam String pwd) throws Exception {
+	protected ModelAndView LoginOk(HttpSession session,@RequestParam String email, @RequestParam String pwd) throws Exception {
 		if(email==null || pwd==null) {
 			return new ModelAndView("redirect:login.do");
 		}
 		
 		boolean result = memberDAO.checkMember(email, pwd);
 		if(result) {
-			return new ModelAndView("WEB-INF/member/login_ok.jsp");
+			 session.setAttribute("loginKey", email);
+			 if(email.equals("admin")) {
+				 return new ModelAndView("admin_main.do");
+			 }else {
+				 return new ModelAndView("index.jsp");
+			 }
 		}else {
 			//JOptionPane.showMessageDialog(null, "로그인에 실패하였습니다.");
 			System.out.println("실패");
