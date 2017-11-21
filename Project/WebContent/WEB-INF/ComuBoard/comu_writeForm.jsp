@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <%@ include file="sidetop.jsp"%>  
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>커뮤 글쓰기</title>
-	
-	<style type="text/css">
+<%@ include file="../../top.jsp" %>
+<style type="text/css">
 		#title{
 			height : 16;
 			font-family :'궁서';
@@ -35,51 +30,48 @@
 			return true
 		}
 	</script>
-</head>
-<body>
-	<div align="center">
-	
-
-		<form name="f" method="post"  
-			action="comu_write.do" onsubmit="return checkMember()">
-		
-		<table border="1" width="600">
-			<tr bgcolor="pink">
-				<th colspan="2">커뮤니티 글  쓰 기</th>
-			</tr> 
-		
-			<tr>
-				<th bgcolor="pink" width="20%">제 목</th>
-				<td width="80%"><input type="text" name="subject" size="50"></td>
-			</tr>
-			
-			<tr>
-				<th bgcolor="pink" width="20%">내 용</th>
-				<td width="80%">
-					<textarea name="content" rows="10" cols="50"></textarea>
-				</td>
-			</tr>
-			
-		 <tr>
-				<th>이미지</th>
-				<td><input type="file" name="img"></td>
-			</tr>
-		
-			<tr>
-				<th bgcolor="pink" width="20%">비밀번호</th>
-				<td width="80%"><input type="password" name="pwd"></td>
-			</tr>
-			<tr>
-				<td bgcolor="pink" colspan="2" align="center">
-					<input type="submit" value="글쓰기">
-					<input type="reset" value="다시작성">
-					<input type="button" value="목록보기" 
-												onclick="window.location='comu_list.do'">
-				</td>
+<tr>
+	<td>
+		<div align="center">
+			<form name="f" method="post"  
+				action="comu_write.do" onsubmit="return checkMember()">							
+				<table border="1" width="600">
+					<tr bgcolor="pink">
+						<th colspan="2">커뮤니티 글  쓰 기</th>
+					</tr> 
 				
-			</tr>
-		</table>
-		</form>
-	</div>
-</body>
-</html>
+					<tr>
+						<th bgcolor="pink" width="20%">제 목</th>
+						<td width="80%"><input type="text" name="subject" size="50"></td>
+					</tr>
+					
+					<tr>
+						<th bgcolor="pink" width="20%">내 용</th>
+						<td width="80%">
+							<textarea name="content" rows="10" cols="50"></textarea>
+						</td>
+					</tr>
+					
+					 <tr>
+						<th>이미지</th>
+						<td><input type="file" name="img"></td>
+					</tr>
+				
+					<tr>
+						<th bgcolor="pink" width="20%">비밀번호</th>
+						<td width="80%"><input type="password" name="pwd"></td>
+					</tr>
+					<tr>
+						<td bgcolor="pink" colspan="2" align="center">
+							<input type="submit" value="글쓰기">
+							<input type="reset" value="다시작성">
+							<input type="button" value="목록보기" 
+														onclick="window.location='comu_list.do'">
+						</td>						
+					</tr>
+				</table>
+			</form>
+		</div>
+	</td>
+</tr>
+<%@ include file="../../bottom.jsp" %>
