@@ -5,7 +5,7 @@
 	<title>녀행자들홈페이지</title>
 </head>
 <body> 
-		<div style="padding:0px 0px 0px 150px;">
+		<div style="padding:0px 0px 0px 300px;">
 			<table border="0"  >
 				<tr>
 					<td>

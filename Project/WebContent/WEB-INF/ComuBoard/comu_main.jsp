@@ -5,7 +5,7 @@
 <tr>
 	<td>
 		<div align="center">
-			<img src="img/co_main.jpg" border="0">
+			<img src="img/co_main.jpg" border="0"><br><br>
 			<a href="comu_list.do"><img src="img/bu1.jpg" border="0"></a>	
 		</div>
 	</td>
