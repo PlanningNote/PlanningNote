@@ -133,7 +133,7 @@ public class PlanController{
 		if(resP>0&&resS>0&&resT>0){
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
-		else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
+		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
 				&&dtoP.getThumbnail().equals(null)&&dtoP.getTravel_period().equals(null)
 				&&dtoP.getTravel_seasion().equals(null)&&dtoP.getTravel_theme().equals(null)
 				&&dtoS.getSubject().equals(null)&&dtoS.getImg().equals(null)&&dtoS.getContent().equals(null)
@@ -141,7 +141,7 @@ public class PlanController{
 				){
 			writer.print("필수 항목을 입력해주세요");
 			mav.setViewName("plan.do");
-		}else {
+		}*/else {
 			writer.println("게시글 등록을 실패하였습니다.");
 			mav.setViewName("plan.do");
 		}
