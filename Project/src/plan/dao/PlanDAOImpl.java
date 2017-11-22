@@ -44,7 +44,7 @@ public class PlanDAOImpl implements PlanDAO {
 		int res = 0;
 		
 		System.out.println("sub플랜 for문 도는 횟수: "+sdto.getImgName().size());
-		System.out.println("서브플랜 subject: "+sdto.getTargets().get(0).getSubject());
+		
 		for(int i=0;i<sdto.getImgName().size();i++) {
 			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
 			values = new Object[] {
