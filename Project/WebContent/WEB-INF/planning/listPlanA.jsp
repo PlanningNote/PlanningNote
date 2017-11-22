@@ -10,7 +10,7 @@
 			<tr>
 				<th COLSPAN="3" HEIGHT="7%" ALIGN="MIDDLE">
 					<form name="f">
-						<input type="text" name="nation" size="30"> 
+				 		<input type="text" name="nation" size="30"> 
 						<input type="submit" value="검색">
 						<input type="reset" value="취소">
 					</form>
