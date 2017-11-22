@@ -1,11 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@page import="java.util.*"%>
-<%
-    request.setCharacterEncoding("UTF-8");
-%>
 <html>
 <head>
 <title>플랜리스트자세보기</title>
@@ -39,8 +34,14 @@
 				</tr>
 				<tr>
 					<td WIDTH="75%">태그:<br>
+<<<<<<< HEAD
 					${dtoT.tag1}# ${dtoT.tag2}# ${dtoT.tag3}# ${dtoT.tag4}# ${dtoT.tag5}</td>
 					<td ALIGN="left">총예산: ${dtoP.totalprice} 원</td>
+=======
+					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4}   ${dtoT.tag5}"></td>
+					<td ALIGN="left">총예산: <INPUT TYPE="label" name="totalprice" VALUE="${dtoP.totalprice}">원
+					</td>
+>>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 				</tr>
 			</table>
 	</div> 
