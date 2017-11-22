@@ -69,9 +69,7 @@ public class PlanController{
 		//이미지파일 정보 dto에 담기▽▽
 		dto.setImgName(imgName);
 		dto.setImgPath(imgPath);
-		System.out.println("서브이미지가 비었니?:"+dto.getImgName().isEmpty());
 		//파일및 데이터 dto에 저장.
-		System.out.println("sub 이미지 매핑:"+dto.getImgName().size());
 	}
 	
 	//PlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
@@ -122,10 +120,6 @@ public class PlanController{
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
 		 
-		System.out.println(dtoS.getTargets().get(0).getSubject());
-		System.out.println(dtoS.getTargets().get(0).getContent());
-		System.out.println(dtoS.getTargets().get(0).getPrice());
-		System.out.println(dtoS.getTargets().get(0).getTraffic());
 		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
 		mappingSubDTO(arg0,arg1,upload,dtoS);
 		mappingPlanDTO(arg0,arg1,dtoP);

@@ -30,7 +30,7 @@ var index=0;
 				+ "</textarea>"
 				+ "<br>교통 <br>"
 				+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-		oCell3.innerHTML = "<a href='subPlanContent.do'><img alt='사진을 넣어 주세요' src='targets[0].img'></a><br><input type='file' name='targets["+index+"].img'>";
+		oCell3.innerHTML = "<img alt='사진을 넣어 주세요' src='targets[0].img'><br><input type='file' name='targets["+index+"].img'>";
 		oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
 		document.recalc();
 	}

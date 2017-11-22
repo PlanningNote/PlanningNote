@@ -2,6 +2,10 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page import="java.util.*"%>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
 <html>
 <head>
 <title>플랜리스트자세보기</title>
@@ -42,7 +46,7 @@
 					</td>
 				</tr>
 			</table>
-	</div>
+	</div> 
 	<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850">
 			<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
