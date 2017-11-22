@@ -30,12 +30,11 @@ function addRow() {
 			+ "</textarea>"
 			+ "<br>(*필수)교통 <br>"
 			+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-	oCell3.innerHTML = "(*필수)<input type='image'  src='recom.png' name='${dto.img}'>"
+	oCell3.innerHTML = "(*필수)<input type='file' name='file'>"
 	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
 	document.recalc();
 }
 function delRow() {
-
 	dyntbl1.deleteRow(dyntbl1.clickedRowIndex);
 }
 function renameForModelAttribute() {
@@ -44,7 +43,7 @@ function renameForModelAttribute() {
         $(this).find("input[name=price]").attr("name", "targets["+index+"].price");
         $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
         $(this).find("input[name=traffic]").attr("name", "traffic");
-        /* $(this).find("input[name=file]").attr("name", "file"); */
+        $(this).find("input[name=file]").attr("name", "file");
     });
 }
 
@@ -52,7 +51,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<form name="f" class="f" method="post" action="goView.do" modelAttribute="SubPlanDTO" enctype="multipart/form-data">
+		<form name="f" class="f" method="post" action="goView.do" enctype="multipart/form-data">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
@@ -67,10 +66,12 @@ function renameForModelAttribute() {
 					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="5~10일">5~10일 
 					<INPUT TYPE="RADIO"	NAME="travel_period" VALUE="10~15일">10~15일 
 					<INPUT TYPE="RADIO" NAME="travel_period" VALUE="15일이상">15일이상<br>
+					
 					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="봄">봄 
 					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="여름">여름 
 					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="가을">가을 
 					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="겨울">겨울 <br>
+					
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="나혼자">나 혼자
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="친구와함께">친구와	함께 
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="연인과함께">연인과	함께 

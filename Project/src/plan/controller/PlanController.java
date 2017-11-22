@@ -79,6 +79,7 @@ public class PlanController{
 		HttpSession session = arg0.getSession();
 		MultipartFile files = dtoP.getThumbfile();
 		
+		
 		String img=null;
 		String filePath=null;
 		
@@ -109,7 +110,7 @@ public class PlanController{
 		
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
-		
+		System.out.println(dtoS.getTargets().get(0).getSubject());
 		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
 		mappingSubDTO(arg0,arg1,upload,dtoS);
 		mappingPlanDTO(arg0,arg1,dtoP);
