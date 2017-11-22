@@ -46,7 +46,7 @@ public class PlanController{
 	}
 	
 	//subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
-	protected SubPlanDTO mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1,
+	protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1,
 			FileUpload upload , SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
 		List<MultipartFile> files = upload.getImgfile();
@@ -80,7 +80,6 @@ public class PlanController{
 		dto.setImgPath(imgPath);
 		//파일및 데이터 dto에 저장.
 		System.out.println("sub 이미지 매핑:"+dto.getImgName().size());
-		return dto;
 	}
 	
 	//PlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
@@ -134,8 +133,16 @@ public class PlanController{
 		if(resP>0&&resS>0&&resT>0){
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
-		else {
-			writer.println("<scrip>alert('게시글 등록을 실패하였습니다.')</script>");
+		else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
+				&&dtoP.getThumbnail().equals(null)&&dtoP.getTravel_period().equals(null)
+				&&dtoP.getTravel_seasion().equals(null)&&dtoP.getTravel_theme().equals(null)
+				&&dtoS.getSubject().equals(null)&&dtoS.getImg().equals(null)&&dtoS.getContent().equals(null)
+				&&dtoS.getPrice()>0&&dtoS.getTraffic().equals(null)
+				){
+			writer.print("필수 항목을 입력해주세요");
+			
+		}else {
+			writer.println("게시글 등록을 실패하였습니다.");
 			mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		}
 		
