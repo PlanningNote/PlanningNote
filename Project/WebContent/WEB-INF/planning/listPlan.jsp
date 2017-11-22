@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
@@ -9,7 +9,7 @@
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${dto.thumbnail}">
+				background="${dtoP.thumbnail}">
 				<tr>
 					<td>나라: <INPUT TYPE="label" name="country" VALUE="${dtoP.country}"> /도시:
 						<INPUT TYPE="label" name="city" VALUE="${dtoP.city}"></td>
@@ -36,7 +36,7 @@
 				</tr>
 				<tr>
 					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4}   ${dtoT.tag5}"></td>
+					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}"></td>
 					<td ALIGN="left">총예산: <INPUT TYPE="label" name="totalprice" VALUE="${dtoP.totalprice}">원
 					</td>
 				</tr>
