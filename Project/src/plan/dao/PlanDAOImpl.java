@@ -41,10 +41,7 @@ public class PlanDAOImpl implements PlanDAO {
 	public int insertsubPlan(SubPlanDTO sdto) {
 		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?)";
 		Object[] values;
-		int res = 0;
-		
-		System.out.println("sub플랜 for문 도는 횟수: "+sdto.getImgName().size());
-		
+		int res = 0;		
 		for(int i=0;i<sdto.getImgName().size();i++) {
 			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
 			values = new Object[] { 
@@ -55,7 +52,6 @@ public class PlanDAOImpl implements PlanDAO {
 					sdto.getTargets().get(i).getTraffic()	};
 			res=jdbcTemplate.update(sql, values);
 		}
-		System.out.println("서브:"+res);
 		if(res<0) {
 			 //res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
 			 res=-1;
