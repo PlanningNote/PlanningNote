@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class SubPlanDTO {
 	private int group_no;
 	private int board_num;
-	private String s_subject;
+	private String subject;
 	private String img;//이미지 이름 1개
 	private String content;
 	private int price;
@@ -42,12 +42,11 @@ public class SubPlanDTO {
 	public void setBoard_num(int board_num) {
 		this.board_num = board_num;
 	}
-	
-	public String getS_subject() {
-		return s_subject;
+	public String getSubject() {
+		return subject;
 	}
-	public void setS_subject(String s_subject) {
-		this.s_subject = s_subject;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	public String getImg() {
 		return img;
