@@ -140,10 +140,10 @@ public class PlanController{
 				&&dtoS.getPrice()>0&&dtoS.getTraffic().equals(null)
 				){
 			writer.print("필수 항목을 입력해주세요");
-			
+			mav.setViewName("plan.do");
 		}else {
 			writer.println("게시글 등록을 실패하였습니다.");
-			mav.setViewName("WEB-INF/planning/addPlan.jsp");
+			mav.setViewName("plan.do");
 		}
 		
 		mav.addObject("dtoP", dtoP);
