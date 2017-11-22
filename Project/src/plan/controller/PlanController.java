@@ -1,29 +1,19 @@
 package plan.controller;
 
-import java.awt.image.SampleModel;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import plan.dao.PlanDAO;
@@ -49,11 +39,9 @@ public class PlanController{
 	protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1,
 			FileUpload upload , SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
-		List<MultipartFile> files = upload.getImgfile();
+		List<MultipartFile> files = upload.getFile();
 		String img=null;
 		String filePath=null;
-		
-		
 		
 		List<String> imgName= new ArrayList<String>();
 		List<String> imgPath= new ArrayList<String>();
@@ -62,7 +50,7 @@ public class PlanController{
 		if (null != files && files.size() > 0) {
 			for (MultipartFile multipartFile : files) {
 				img=multipartFile.getOriginalFilename();
-				filePath =session.getServletContext().getRealPath("WEB-INF/planning/imgFile");
+				filePath =session.getServletContext().getRealPath("img");
 				
 				imgName.add(img);
 				imgPath.add(filePath);
@@ -80,8 +68,8 @@ public class PlanController{
 		//이미지파일 정보 dto에 담기▽▽
 		dto.setImgName(imgName);
 		dto.setImgPath(imgPath);
+		System.out.println("서브이미지가 비었니?:"+dto.getImgName().isEmpty());
 		//파일및 데이터 dto에 저장.
-		System.out.println("sub 이미지 매핑:"+dto.getImgName().size());
 	}
 	
 	//PlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
@@ -96,7 +84,7 @@ public class PlanController{
 		//이미지 파일 저장
 		if (null != files && files.getSize() > 0) {
 				img=files.getOriginalFilename();
-				filePath =session.getServletContext().getRealPath("WEB-INF/planning/imgFile");
+				filePath =session.getServletContext().getRealPath("img");
 				
 				File file = new File(filePath, img);
 				try {
@@ -132,7 +120,7 @@ public class PlanController{
 		resP=dao.insertPlan(dtoP);
 		resS= dao.insertsubPlan(dtoS);
 		
-		if(resP>0&&resS>0&&resT>0){
+		if(resP>0&&resT>0&&resS>0){
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
 		else {

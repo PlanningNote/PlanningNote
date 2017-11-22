@@ -23,8 +23,13 @@
 	</bean>
 	<bean id="controller" class="plan.controller.PlanController">
 	</bean>
+	
+	<!-- 파일 업로드 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	<alias name="multipartResolver" alias="multipartResolver" />
+	<!-- 파일 업로드 -->
+	
 	<bean id="planDAO" class="plan.dao.PlanDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>

@@ -43,13 +43,15 @@ public class PlanDAOImpl implements PlanDAO {
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
 		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?)";
-		Object[] values = null;
+		Object[] values;
 		int res = 0;
+		
+		System.out.println("sub플랜 for문 도는 횟수: "+sdto.getImgName().size());
+		
 		for(int i=0;i<sdto.getImgName().size();i++) {
 			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
-			System.out.println("daoImpl 서브이미지: "+sdto.getTargets().get(i).getImg());
 			values = new Object[] {
-					sdto.getTargets().get(i).getSubject(),
+					sdto.getTargets().get(i).getSubject(),//not null
 					sdto.getTargets().get(i).getImg(),
 					sdto.getTargets().get(i).getContent(),
 					sdto.getTargets().get(i).getPrice(),
