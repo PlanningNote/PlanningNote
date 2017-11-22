@@ -21,25 +21,25 @@ function renameForModelAttribute() {
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${thumbnail}">
+				background="${dto.thumbnail}">
 				<tr>
-					<td>나라: <INPUT TYPE="hidden" name="country" VALUE="${country}"> /도시:
-						<INPUT TYPE="hidden" name="city" VALUE="${city}"></td>
+					<td>나라: <INPUT TYPE="hidden" name="country" VALUE="${dto.country}"> /도시:
+						<INPUT TYPE="hidden" name="city" VALUE="${dto.city}"></td>
 				</tr>
 				<tr>
 					<td WIDTH="75%"><h2>
-							제목: <INPUT TYPE="hidden" name="city" VALUE="${subject}"></td>
+							제목: <INPUT TYPE="hidden" name="city" VALUE="${dto.subject}"></td>
 					<td ALIGN="left">
-					기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br> 
-					시즌: <INPUT TYPE="hidden" name="travel_season" VALUE="${travel_season}"><br> 
-					테마: <INPUT TYPE="hidden" name="travel_theme" VALUE="${travel_theme}"><br>
+					기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${dto.travel_period}"><br> 
+					시즌: <INPUT TYPE="hidden" name="travel_season" VALUE="${dto.travel_season}"><br> 
+					테마: <INPUT TYPE="hidden" name="travel_theme" VALUE="${dto.ravel_theme}"><br>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" name="writer" VALUE="${writer}">님
+					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" name="writer" VALUE="${dto.writer}">님
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성일: <INPUT TYPE="hidden" name="day" VALUE="${day}">
+					<td COLSPAN="2">작성일: <INPUT TYPE="hidden" name="day" VALUE="${dto.day}">
 					</td>
 				</tr>
 				<tr>
@@ -49,7 +49,7 @@ function renameForModelAttribute() {
 				<tr>
 					<td WIDTH="75%">태그:<br>
 					<INPUT TYPE="hidden" name="" VALUE="${dto.tag}"></td>
-					<td ALIGN="left">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원
+					<td ALIGN="left">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${dto.totalprice}">원
 					</td>
 				</tr>
 			</table>
