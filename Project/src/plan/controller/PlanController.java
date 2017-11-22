@@ -46,12 +46,14 @@ public class PlanController{
 	}
 	
 	//subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
-	protected SubPlanDTO mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1,
+	protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1,
 			FileUpload upload , SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
 		List<MultipartFile> files = upload.getImgfile();
 		String img=null;
 		String filePath=null;
+		
+		
 		
 		List<String> imgName= new ArrayList<String>();
 		List<String> imgPath= new ArrayList<String>();
@@ -80,7 +82,6 @@ public class PlanController{
 		dto.setImgPath(imgPath);
 		//파일및 데이터 dto에 저장.
 		System.out.println("sub 이미지 매핑:"+dto.getImgName().size());
-		return dto;
 	}
 	
 	//PlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
@@ -119,13 +120,13 @@ public class PlanController{
 		
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
-		  
+		
 		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
 		mappingSubDTO(arg0,arg1,upload,dtoS);
 		mappingPlanDTO(arg0,arg1,dtoP);
 		
 		//▽ DAOImpl working..
-		int resP =0,resS=0,resT=0;	
+		int resP =0,resS=0,resT=0;
 		
 		resT = dao.tagPlan(dtoT);// dtoT만 주는걸로
 		resP=dao.insertPlan(dtoP);

@@ -7,7 +7,7 @@
 <title>플랜리스트</title>
 </head>
 <script language="javascript">
-var index=0;
+var index=2;
 function addRow() {
 	index+=1;
 	var oRow = dyntbl1.insertRow();
@@ -52,7 +52,7 @@ function renameForModelAttribute() {
 </script>
 <body>
 	<div align="center">
-		<form name="f" class="f" method="post" action="goView.do" enctype="multipart/form-data">
+		<form name="f" class="f" method="post" action="goView.do" modelAttribute="FileUpload" enctype="multipart/form-data">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
@@ -104,7 +104,7 @@ function renameForModelAttribute() {
 		<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
-				
+					<td width="5%">board_num</td>
 				</tr>
 			</table>
 			<input type="button" value="일정추가" onClick="addRow()"><br><br>

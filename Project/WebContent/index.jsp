@@ -8,6 +8,7 @@
 		</td>
 	</tr>
 	<tr>
+	
 		<td align="center">
 			검색할 나라를 입력하세요<p>
 			<form name="f">
