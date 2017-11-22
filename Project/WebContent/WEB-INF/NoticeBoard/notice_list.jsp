@@ -19,9 +19,7 @@
 					<th>사진</th>
 					<th>날짜</th>
 				</tr>
-				<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
-					<%-- <td>${dto.no}</td> --%>
-			<c:if test="${empty noticeList}">
+					<c:if test="${empty noticeList}">
 				<tr> 
 				
 					<td colspan="5">게시된 글이 없습니다.</td>

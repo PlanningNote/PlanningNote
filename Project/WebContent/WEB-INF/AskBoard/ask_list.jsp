@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
  <%@ include file="../../top.jsp" %>
-<tr align="center" height="600">
-	<td>
+<tr height="600">
+	<td valign="top">
 		<div align="center">
 			<b> 문의 </b>
 			<table border="0" width="600">
@@ -29,6 +29,7 @@
 			<c:forEach var="dto" items="${askList}">
 				<tr>
 					<td>${dto.no}</td>
+						<td>	<a href="ask_content.do?no=${dto.no}">
 					<td>${dto.writer}</td>
 					<td>
 						<c:if test="${dto.re_level>0}">
@@ -53,8 +54,9 @@
 				<option value="0">제목</option>
 	
 				<option value="3">글쓴이</option>
-			</select> <input type="text" size="20" name="condition" />&nbsp; <input
-				type="submit" value="검색" />
+			</select> 
+			<input type="text" size="20" name="condition" />&nbsp;
+			 <input type="submit" value="검색" />
 		</form>
 	</div>
 		</td>

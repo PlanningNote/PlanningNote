@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ include file="../../top.jsp" %>
 <tr>
-	<td>
+	<td valign="top">
 		<div align="center">
 			<b> FAQ  </b>
 			<table border="0" width="600">
@@ -19,8 +19,7 @@
 					<th>사진</th>
 					<th>날짜</th>
 				</tr>
-				<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
-					<%-- <td>${dto.no}</td> --%>
+		
 			<c:if test="${empty FAQList}">
 				<tr> 
 				
@@ -31,8 +30,8 @@
 			<c:forEach var="dto" items="${FAQList}">
 				<tr>
 					<td>${dto.no}</td>
-					<td>	
-						<a href="FAQ_content.do?no=${dto.no}">	${dto.subject}</a>
+					<td> <a href="FAQ_content.do?no=${dto.no}">	
+						${dto.subject}</a>
 					</td>
 					<td>${dto.count}</td>
 					<td>${dto.img}</td>

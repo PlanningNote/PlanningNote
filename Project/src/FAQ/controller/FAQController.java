@@ -29,7 +29,7 @@ public class FAQController {
 	public ModelAndView listFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<FAQDTO> list = faqDAO.listFAQ(); // 가져오는거
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("faqDAOList", list);
+		mav.addObject("FAQDAOList", list);
 		mav.setViewName("WEB-INF/FAQBoard/FAQ_list.jsp");
 		return mav;
 	}
