@@ -7,7 +7,9 @@
 <title>플랜리스트</title>
 </head>
 <script language="javascript">
-var index=0;
+
+var index=-1;
+
 function addRow() {
 	index+=1;
 	var oRow = dyntbl1.insertRow();
@@ -24,7 +26,7 @@ function addRow() {
 	oCell2.innerHTML = "(*필수)제목 <br>"
 			+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
 			+ "<br>(*필수)비용 <br>"
-			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;' placeholder='숫자만 입력하세요'>원"
+			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;'>원"
 			+ "<br>(*필수)내용 <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"

@@ -106,11 +106,15 @@ public class PlanController{
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute("file") FileUpload upload 
-			,@ModelAttribute SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
+			,@ModelAttribute("targets") SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
 		
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
+		
 		System.out.println(dtoS.getTargets().get(0).getSubject());
+		System.out.println(dtoS.getTargets().get(0).getContent());
+		System.out.println(dtoS.getTargets().get(0).getPrice());
+		System.out.println(dtoS.getTargets().get(0).getTraffic());
 		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
 		mappingSubDTO(arg0,arg1,upload,dtoS);
 		mappingPlanDTO(arg0,arg1,dtoP);

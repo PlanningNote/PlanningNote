@@ -3,7 +3,7 @@
 
 <%@ include file="top.jsp"%>
 	<tr height="50%">
-		<td align="center">   
+		<td align="center">
 				<img src="img/a1.jpg" align ="center" width="100%" height="100%">
 		</td>
 	</tr>
