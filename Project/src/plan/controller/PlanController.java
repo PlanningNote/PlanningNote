@@ -95,20 +95,16 @@ public class PlanController{
 					e.printStackTrace();
 				}
 		}
-		
 		//이미지파일 정보 dto에 담기▽▽
 		dtoP.setThumbnail(img);
 		dtoP.setThumbPath(filePath);
-		//파일및 데이터 dto에 저장.
 	}
 	
 	protected int totalPrice(SubPlanDTO dto) {
 		int total=0,num=0;
-		
 		for(SubPlanDTO i: dto.getTargets()) {
 			num=i.getPrice();
-			total+=num;
-		}
+			total+=num; 	}
 		return total;
 	}
 	
@@ -162,6 +158,14 @@ public class PlanController{
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
+		List<PlanDTO> dtoP = new ArrayList<PlanDTO>();
+		List<SubPlanDTO> dtoS = new ArrayList<SubPlanDTO>();
+		
+		/*dtoP = dao.listPlan(group_no);
+		dtoS = dao.subList();*/
+		
+		mav.addObject("dtoP", dtoP);
+		mav.addObject("dtoS",dtoS);
 		return mav;
 	}
 	@RequestMapping(value="/listPlanA.do")//계획목록 페이지로 이동.

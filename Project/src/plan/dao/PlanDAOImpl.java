@@ -36,7 +36,6 @@ public class PlanDAOImpl implements PlanDAO {
 		res = jdbcTemplate.update(sql, values);
 		return res;
 	}
-	
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
 		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?)";
@@ -60,7 +59,16 @@ public class PlanDAOImpl implements PlanDAO {
 		 }
 		 return res; 
 	}
-
+	@Override
+	public int tagPlan(TagDTO dto) {
+		String sql ="insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
+		String tag = dto.getTag1()+" "+dto.getTag2()+" "+dto.getTag3()+" "+dto.getTag4()+" "+dto.getTag5();
+		String[] arr = tag.split("\\s");
+		Object[] values = new Object[] {tag};
+		int result = jdbcTemplate.update(sql,values);
+		return result;
+	}
+	
 	@Override
 	public int updatePlan(int no, PlanDTO dto) {
 		String sql = "update PN_planning"
@@ -84,12 +92,16 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	@Override
-	public List<PlanDTO> listPlan(int group_no, PlanDTO dto) {
+	public List<PlanDTO> listPlan(int group_no) {
 		String sql = "select * from PN_planning where group_no = ?";
 		List<PlanDTO> result = jdbcTemplate.query(sql, mapper);
 		return result;
 	}
-
+	@Override
+	public List<SubPlanDTO> subList(int group_no) {
+		String sql = "select * from PN_subplan where board_num=?";
+		return null;
+	}
 	private class MyRowMapper implements RowMapper<PlanDTO>{
 		@Override
 		public PlanDTO mapRow(ResultSet rs, int arg1) throws SQLException {
@@ -112,23 +124,7 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	@Override
-	public int tagPlan(TagDTO dto) {
-		String sql ="insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
-		String tag = dto.getTag1()+" "+dto.getTag2()+" "+dto.getTag3()+" "+dto.getTag4()+" "+dto.getTag5();
-		String[] arr = tag.split("\\s");
-		Object[] values = new Object[] {tag};
-		int result = jdbcTemplate.update(sql,values);
-		return result;
-	}
-
-	@Override
 	public List<PlanDTO> findOption(String search, String searchString) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<PlanDTO> subList(int group_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -138,5 +134,7 @@ public class PlanDAOImpl implements PlanDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }
