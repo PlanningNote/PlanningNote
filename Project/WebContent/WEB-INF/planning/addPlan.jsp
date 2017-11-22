@@ -16,7 +16,7 @@ function addRow() {
 	oRow.onmouseover = function(){dyntbl1.clickedRowIndex=this.rowIndex};
 	var oCell1 = oRow.insertCell();
 	var oCell2 = oRow.insertCell();
-	var oCell3 = oRow.insertCell();
+	var oCell3 = oRow.insertCell(); 
 	var oCell4 = oRow.insertCell();
 	oCell1.width = "5%";
 	oCell2.width = "50%";
