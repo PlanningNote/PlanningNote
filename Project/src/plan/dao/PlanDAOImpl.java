@@ -53,7 +53,6 @@ public class PlanDAOImpl implements PlanDAO {
 					sdto.getTargets().get(i).getTraffic()	};
 			res=jdbcTemplate.update(sql, values);
 		}
-		
 		System.out.println("서브:"+res);
 		if(res<0) {
 			 //res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
