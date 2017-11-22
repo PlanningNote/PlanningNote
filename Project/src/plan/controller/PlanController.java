@@ -110,7 +110,7 @@ public class PlanController{
 		
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
-		
+		 
 		System.out.println(dtoS.getTargets().get(0).getSubject());
 		System.out.println(dtoS.getTargets().get(0).getContent());
 		System.out.println(dtoS.getTargets().get(0).getPrice());

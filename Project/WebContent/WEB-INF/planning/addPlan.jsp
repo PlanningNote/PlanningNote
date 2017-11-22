@@ -20,7 +20,7 @@ function addRow() {
 	var oCell4 = oRow.insertCell();
 	oCell1.width = "5%";
 	oCell2.width = "50%";
-	oCell3.width = "10%";
+	oCell3.width = "10%"; 
 	oCell4.width = "3%";
 	oCell1.innerHTML = "board_num";
 	oCell2.innerHTML = "(*필수)제목 <br>"

@@ -7,7 +7,7 @@
 				<img src="img/a1.jpg" align ="center" width="100%" height="100%">
 		</td>
 	</tr>
-	<tr>
+	<tr> 
 	 
 		<td align="center">
 			검색할 나라를 입력하세요<p>
