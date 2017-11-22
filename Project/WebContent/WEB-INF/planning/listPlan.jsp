@@ -6,40 +6,29 @@
 <head>
 <title>플랜리스트자세보기</title>
 </head>
-<script language="javascript">
-function renameForModelAttribute() {
-    $("#form").each( function (index) {
-        $(this).find("input[name=subject]").attr("name", "targets["+index+"].subject");
-        $(this).find("input[name=price]").attr("name", "targets["+index+"].price");
-        $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
-        $(this).find("input[name=traffic]").attr("name", "targets["+index+"].traffic");
-        $(this).find("input[name=img]").attr("name", "targets["+index+"].img");
-    });
-}
-</script>
 <body>
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
 				background="${dto.thumbnail}">
 				<tr>
-					<td>나라: <INPUT TYPE="hidden" name="country" VALUE="${dto.country}"> /도시:
-						<INPUT TYPE="hidden" name="city" VALUE="${dto.city}"></td>
+					<td>나라: <INPUT TYPE="label" name="country" VALUE="${dtoP.country}"> /도시:
+						<INPUT TYPE="label" name="city" VALUE="${dtoP.city}"></td>
 				</tr>
 				<tr>
 					<td WIDTH="75%"><h2>
-							제목: <INPUT TYPE="hidden" name="city" VALUE="${dto.subject}"></td>
+							제목: <INPUT TYPE="label" name="city" VALUE="${dtoP.subject}"></td>
 					<td ALIGN="left">
-					기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${dto.travel_period}"><br> 
-					시즌: <INPUT TYPE="hidden" name="travel_season" VALUE="${dto.travel_season}"><br> 
-					테마: <INPUT TYPE="hidden" name="travel_theme" VALUE="${dto.ravel_theme}"><br>
+					기간: <INPUT TYPE="label" name="travel_period" VALUE="${dtoP.travel_period}"><br> 
+					시즌: <INPUT TYPE="label" name="travel_season" VALUE="${dtoP.travel_seasion}"><br> 
+					테마: <INPUT TYPE="label" name="travel_theme" VALUE="${dtoP.travel_theme}"><br>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" name="writer" VALUE="${dto.writer}">님
+					<td COLSPAN="2">작성자: <INPUT TYPE="label" name="writer" VALUE="${dtoP.writer}">님
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성일: <INPUT TYPE="hidden" name="day" VALUE="${dto.day}">
+					<td COLSPAN="2">작성일: <INPUT TYPE="label" name="day" VALUE="${dtoP.day}">
 					</td>
 				</tr>
 				<tr>
@@ -48,30 +37,32 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="hidden" name="" VALUE="${dto.tag}"></td>
-					<td ALIGN="left">총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${dto.totalprice}">원
+					<INPUT TYPE="label" name="tag" VALUE="# ${dtoT.tag1}# ${dtoT.tag2}# ${dtoT.tag3}# ${dtoT.tag4}# ${dtoT.tag5}"></td>
+					<td ALIGN="left">총예산: <INPUT TYPE="label" name="totalprice" VALUE="${dtoP.totalprice}">원
 					</td>
 				</tr>
 			</table>
-	</div>
+	</div> 
 	<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850">
+			<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
 				<tr>
 					<td width="5%">board_num</td>
 					<td whidth="50%" height="100%">
 						<!-- <div style="overflow-y: scroll; height: 100%; width: 100%">-->
 						<!-- 여기에 subplan이 들어갑니다. --> 
-						제목 <br>${dto.getTargets().get(0).getSubject()}<br>
-						비용 <br>${dto.getTargets().get(0).getPrice() }
+						제목 <br>${dtoS.subject}<br>
+						비용 <br>${dtoS.price }
 						<br>내용 <br>
-						${dto.getTargets().get(0).getContent() }
+						${dtoS.content}
 						<br>교통 <br>
-						${dto.getTargets().get(0).getTraffic() }</td>
+						${dtoS.traffic}</td>
 					<td width="10%" height="100%">
 					<a href="subPlanContent.do">
-					<img src="${dto.getImgName().get(0) }"></a></td>
+					<img src="${dtoS.path}/${dtoS.img}"></a></td>
 					<td width="3%"></td>
 				</tr>
+			</c:forEach>
 			</table><br>
 			<input type="button" value="글수정"
 				onclick="window.location='updatePlan.do?no=${group_no}'">

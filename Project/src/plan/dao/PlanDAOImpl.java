@@ -44,6 +44,7 @@ public class PlanDAOImpl implements PlanDAO {
 		int res = 0;		
 		for(int i=0;i<sdto.getImgName().size();i++) {
 			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
+			sdto.getTargets().get(i).setPath(sdto.getImgPath().get(i));
 			values = new Object[] { 
 					sdto.getTargets().get(i).getSubject(),//not null
 					sdto.getTargets().get(i).getImg(),
