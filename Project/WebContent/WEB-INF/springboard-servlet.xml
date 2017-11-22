@@ -9,7 +9,6 @@
 		name="resourceRef" value="true" /> </bean> -->
 	<context:annotation-config />
 	<!-- 여기서 선언된 bean 만 받는다. -->
-
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
@@ -23,13 +22,13 @@
 	</bean>
 	<bean id="controller" class="plan.controller.PlanController">
 	</bean>
-	
+
 	<!-- 파일 업로드 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	<alias name="multipartResolver" alias="multipartResolver" />
 	<!-- 파일 업로드 -->
-	
+
 	<bean id="planDAO" class="plan.dao.PlanDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
@@ -74,7 +73,7 @@
 
 	<bean class="member.controller.MemberController">
 	</bean>
-	
+
 	<bean class="admin.controller.AdminController">
 	</bean>
 </beans>

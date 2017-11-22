@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="java.util.*"%>
 <%
-    request.setCharacterEncoding("UTF-8");
+    request.setCharacterEncoding("EUC-KR");
 %>
 <html>
 <head>
@@ -36,7 +36,7 @@ function addRow() {
 			+ "</textarea>"
 			+ "<br>(*필수)교통 <br>"
 			+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-	oCell3.innerHTML = "(*필수)<input type='file' name='file'>"
+	oCell3.innerHTML = "(*필수)<br><input type='file' name='file'>"
 	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
 	document.recalc();
 }

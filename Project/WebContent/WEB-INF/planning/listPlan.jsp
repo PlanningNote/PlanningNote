@@ -2,10 +2,6 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@page import="java.util.*"%>
-<%
-    request.setCharacterEncoding("UTF-8");
-%>
 <html>
 <head>
 <title>플랜리스트자세보기</title>
