@@ -23,8 +23,6 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public int insertPlan(PlanDTO dto) {
-		System.out.println("insertPlan 진입");
-		System.out.println("PlanDTO.getSubject(): "+dto.getSubject());
 		String sql = "insert into PN_planning "
 				+ "values(group_no.nextval, " + 
 							"?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
@@ -36,7 +34,6 @@ public class PlanDAOImpl implements PlanDAO {
 				dto.getCount(),dto.getTag_no_sequence(),dto.getCountry(),dto.getCity(),dto.getThumbnail(),
 				dto.getTotalprice(),dto.getTravel_period(),dto.getTravel_seasion(),dto.getTravel_theme(),dto.getRecom()};
 		res = jdbcTemplate.update(sql, values);
-		System.out.println("플랜:"+res);
 		return res;
 	}
 	
@@ -58,7 +55,6 @@ public class PlanDAOImpl implements PlanDAO {
 					sdto.getTargets().get(i).getTraffic()	};
 			res=jdbcTemplate.update(sql, values);
 		}
-		
 		System.out.println("서브:"+res);
 		if(res<0) {
 			 //res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
@@ -125,7 +121,6 @@ public class PlanDAOImpl implements PlanDAO {
 		String[] arr = tag.split("\\s");
 		Object[] values = new Object[] {tag};
 		int result = jdbcTemplate.update(sql,values);
-		System.out.println("태그:"+result);
 		return result;
 	}
 

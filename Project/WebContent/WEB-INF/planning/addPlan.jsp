@@ -21,16 +21,16 @@ function addRow() {
 	oCell3.width = "10%";
 	oCell4.width = "3%";
 	oCell1.innerHTML = "board_num";
-	oCell2.innerHTML = "제목 <br>"
+	oCell2.innerHTML = "(*필수)제목 <br>"
 			+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
-			+ "<br>비용 <br>"
+			+ "<br>(*필수)비용 <br>"
 			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;' placeholder='숫자만 입력하세요'>원"
-			+ "<br>내용 <br>"
+			+ "<br>(*필수)내용 <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
-			+ "<br>교통 <br>"
+			+ "<br>(*필수)교통 <br>"
 			+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-	oCell3.innerHTML = "<input type='file' name='file'>";
+	oCell3.innerHTML = "(*필수)<input type='image'  src='recom.png' name='${dto.img}'>"
 	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
 	document.recalc();
 }
@@ -44,7 +44,7 @@ function renameForModelAttribute() {
         $(this).find("input[name=price]").attr("name", "targets["+index+"].price");
         $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
         $(this).find("input[name=traffic]").attr("name", "traffic");
-        $(this).find("input[name=file]").attr("name", "file");
+        /* $(this).find("input[name=file]").attr("name", "file"); */
     });
 }
 
@@ -56,13 +56,13 @@ function renameForModelAttribute() {
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
-					<td>나라: <INPUT TYPE="TEXT" NAME="country"> /도시: <INPUT
+					<td>(*필수)나라: <INPUT TYPE="TEXT" NAME="country"> /(*필수)도시: <INPUT
 						TYPE="TEXT" NAME="city"></td>
 				</tr>
 				<tr>
-					<td><h2>
+					<td>(*필수)<h2>
 							제목: <INPUT TYPE="TEXT" NAME="subject"></td>
-					<td ALIGN="RIGHT">
+					<td ALIGN="RIGHT">(*필수)<br>
 					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="1~5일">1~5일 
 					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="5~10일">5~10일 
 					<INPUT TYPE="RADIO"	NAME="travel_period" VALUE="10~15일">10~15일 
@@ -95,7 +95,7 @@ function renameForModelAttribute() {
 					</td>
 				</tr>
 				<tr>
-					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">배경사진</font>
+					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">(*필수)배경사진</font>
 					<INPUT TYPE="FILE" name="thumbfile"></td>
 				</tr>
 			</table> 

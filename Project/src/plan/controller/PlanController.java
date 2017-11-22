@@ -70,6 +70,10 @@ public class PlanController{
 		dto.setImgPath(imgPath);
 		System.out.println("서브이미지가 비었니?:"+dto.getImgName().isEmpty());
 		//파일및 데이터 dto에 저장.
+<<<<<<< HEAD
+=======
+		System.out.println("sub 이미지 매핑:"+dto.getImgName().size());
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	//PlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
@@ -123,9 +127,17 @@ public class PlanController{
 		if(resP>0&&resT>0&&resS>0){
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
-		else {
-			writer.println("<scrip>alert('게시글 등록을 실패하였습니다.')</script>");
-			mav.setViewName("WEB-INF/planning/addPlan.jsp");
+		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
+				&&dtoP.getThumbnail().equals(null)&&dtoP.getTravel_period().equals(null)
+				&&dtoP.getTravel_seasion().equals(null)&&dtoP.getTravel_theme().equals(null)
+				&&dtoS.getSubject().equals(null)&&dtoS.getImg().equals(null)&&dtoS.getContent().equals(null)
+				&&dtoS.getPrice()>0&&dtoS.getTraffic().equals(null)
+				){
+			writer.print("필수 항목을 입력해주세요");
+			mav.setViewName("plan.do");
+		}*/else {
+			writer.println("게시글 등록을 실패하였습니다.");
+			mav.setViewName("plan.do");
 		}
 		
 		mav.addObject("dtoP", dtoP);
