@@ -70,10 +70,7 @@ public class PlanController{
 		dto.setImgPath(imgPath);
 		System.out.println("서브이미지가 비었니?:"+dto.getImgName().isEmpty());
 		//파일및 데이터 dto에 저장.
-<<<<<<< HEAD
-=======
 		System.out.println("sub 이미지 매핑:"+dto.getImgName().size());
->>>>>>> refs/remotes/origin/master
 	}
 	
 	//PlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
