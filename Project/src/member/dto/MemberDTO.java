@@ -1,5 +1,7 @@
 package member.dto;
 
+import plan.dto.LikePlanDTO;
+
 public class MemberDTO {
 	private int no;
 	private String nickname;
@@ -44,6 +46,4 @@ public class MemberDTO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	
-	
 }

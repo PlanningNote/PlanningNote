@@ -35,27 +35,11 @@
 	            map: map //map을 선택 안해주면 마커는 생성되지만 표시는 안됨 이 경우는 setmap으로 나중에 호출할 수 있음
 	        });   
 	       
-	        $(function(){
-	        	var result = new Array();
-	        	<c:out value="function들어옴"/>
-	        	<c:forEach items="${contentList}" var="list">
-	        		var json = new Object();
-	        		json.lat ="${list.lat}";
-	        		json.lng ="${list.lng}";
-	        		json.subject = "${list.subject}";
-	        		<c:out value="${json.lat}"/>
-	        	</c:forEach>
-	        })
-	        <c:forEach var="list" items="${contentList}" >
-	        
- 				var lat = Number("${list.lat}");
- 				var lng = Numeber("${list.lng}");
- 				window.alert(lat+"//"+lng);
- 				
- 			var coords =  new google.maps.LatLng(lat,lng);
- 			window.alert("coords"+coords);
- 			addMarker(coords);	 		
- 			</c:forEach>
+	       var size = ${listSize};
+ 		 	widow.alert('size: '+size);
+ 			//var coords =  new google.maps.LatLng(lat,lng);
+ 			//window.alert("coords"+coords);
+ 			//addMarker(coords);	 	
 	        
 	 		 function addMarker(location){
 	 			 window.alert('들어옴 : '+location);

@@ -5,8 +5,8 @@ public class LocationDTO {
 	private String subject;
 	private String content;
 	private String location;
-	private String lat;
-	private String lng;
+	private double lat;
+	private double lng;
 	
 	public int getNo() {
 		return no;
@@ -32,18 +32,19 @@ public class LocationDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public String getLat() {
+	public double getLat() {
 		return lat;
 	}
-	public void setLat(String lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
 	}
-	public String getLng() {
+	public double getLng() {
 		return lng;
 	}
-	public void setLng(String lng) {
+	public void setLng(double lng) {
 		this.lng = lng;
 	}
+	
 	
 	
 	

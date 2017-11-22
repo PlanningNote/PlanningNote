@@ -23,10 +23,22 @@ public class LocationController {
 		List<LocationDTO> list = locationDAO.listContent();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("contentList", list);
-		mav.setViewName("WEB-INF/map/list.jsp");
+		mav.addObject("listSize",list.size());
+		mav.setViewName("WEB-INF/map/showList.jsp");
 		return mav;		
 	}
 	
+		@RequestMapping(value="/goList.do")
+	public ModelAndView goList(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		List<LocationDTO> list = locationDAO.listContent();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("contentList", list);
+		mav.addObject("listSize",list.size());
+		mav.setViewName("WEB-INF/map/list.jsp");
+		return mav;		
+	}	
+		
+		
 	@RequestMapping(value="/insertForm.do")
 	public ModelAndView insertForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/map/insertForm.jsp");
@@ -47,11 +59,14 @@ public class LocationController {
 		
 		System.out.println("#######Controller#######");
 		System.out.println(lat +" // "+lng);
-		dto.setLat(lat);
-		dto.setLng(lng);
+		dto.setLat(Double.parseDouble(lat));
+		dto.setLng(Double.parseDouble(lng));
+		System.out.println("lat : "+ lat + "lng : "+lng);
 		dto.setLocation(location);		
 		locationDAO.insertContent(dto);
 		return new ModelAndView("redirect:list.do");	
 	}
+	
+	
 
 }

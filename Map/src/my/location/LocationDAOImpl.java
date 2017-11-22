@@ -24,6 +24,8 @@ public class LocationDAOImpl implements LocationDAO{
 			dto.setSubject(arg0.getString("subject"));
 			dto.setContent(arg0.getString("content"));
 			dto.setLocation(arg0.getString("location"));
+			dto.setLat(arg0.getDouble("lat"));
+			dto.setLng(arg0.getDouble("lng"));
 			return dto;
 		}		
 	}
@@ -32,8 +34,9 @@ public class LocationDAOImpl implements LocationDAO{
 
 	@Override
 	public int insertContent(LocationDTO dto) {
-		String sql ="insert into test values(test_seq.nextval, ?, ?, ?)";
-		Object[] values = new Object[] {dto.getSubject(),dto.getContent(), dto.getLocation() };
+		String sql ="insert into test values(test_seq.nextval, ?, ?, ?, ?, ?)";
+		Object[] values = new Object[] {dto.getSubject(),dto.getContent(), dto.getLocation(), dto.getLat()
+				, dto.getLng()};
 		int res = jdbcTemplate.update(sql, values);
 		return res;
 	}
