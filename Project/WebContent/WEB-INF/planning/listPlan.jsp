@@ -13,26 +13,24 @@
 <body>
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
-			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${dto.thumbnail}">
+			<table WIDTH="800" HEIGHT="500" class="outline" background="${dtoS.path}/${dtoP.thumbnail}">
 				<tr>
-					<td>나라: <INPUT TYPE="label" name="country" VALUE="${dtoP.country}"> /도시:
-						<INPUT TYPE="label" name="city" VALUE="${dtoP.city}"></td>
+					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
 				<tr>
 					<td WIDTH="75%"><h2>
-							제목: <INPUT TYPE="label" name="city" VALUE="${dtoP.subject}"></td>
+							제목:${dtoP.subject}</td>
 					<td ALIGN="left">
-					기간: <INPUT TYPE="label" name="travel_period" VALUE="${dtoP.travel_period}"><br> 
-					시즌: <INPUT TYPE="label" name="travel_season" VALUE="${dtoP.travel_seasion}"><br> 
-					테마: <INPUT TYPE="label" name="travel_theme" VALUE="${dtoP.travel_theme}"><br>
+					기간: ${dtoP.travel_period}<br> 
+					시즌: ${dtoP.travel_seasion}<br> 
+					테마: ${dtoP.travel_theme}<br>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성자: <INPUT TYPE="label" name="writer" VALUE="${dtoP.writer}">님
+					<td COLSPAN="2">작성자: ${dtoP.writer} 님
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성일: <INPUT TYPE="label" name="day" VALUE="${dtoP.day}">
+					<td COLSPAN="2">작성일: ${dtoP.day}
 					</td>
 				</tr>
 				<tr>
@@ -41,9 +39,8 @@
 				</tr>
 				<tr>
 					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="label" name="tag" VALUE="# ${dtoT.tag1}# ${dtoT.tag2}# ${dtoT.tag3}# ${dtoT.tag4}# ${dtoT.tag5}"></td>
-					<td ALIGN="left">총예산: <INPUT TYPE="label" name="totalprice" VALUE="${dtoP.totalprice}">원
-					</td>
+					${dtoT.tag1}# ${dtoT.tag2}# ${dtoT.tag3}# ${dtoT.tag4}# ${dtoT.tag5}</td>
+					<td ALIGN="left">총예산: ${dtoP.totalprice} 원</td>
 				</tr>
 			</table>
 	</div> 
@@ -51,10 +48,8 @@
 			<table id=dyntbl1 border=1 height="290" width="850">
 			<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
 				<tr>
-					<td width="5%">board_num</td>
+					<td width="5%">${dtoS.board_num}</td>
 					<td whidth="50%" height="100%">
-						<!-- <div style="overflow-y: scroll; height: 100%; width: 100%">-->
-						<!-- 여기에 subplan이 들어갑니다. --> 
 						제목 <br>${dtoS.subject}<br>
 						비용 <br>${dtoS.price }
 						<br>내용 <br>

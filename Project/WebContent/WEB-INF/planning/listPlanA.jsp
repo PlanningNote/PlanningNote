@@ -22,11 +22,13 @@
 				기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br>
 				총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원<br>
 				작성자: <INPUT TYPE="hidden" name="writer" VALUE="${writer}">님</td>
+				
 				<td><a href="list.do"><img src="recom.png"></a><br>
 				나라: <INPUT TYPE="hidden" name="country" VALUE="${country}"><br>
 				기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br>
 				총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원<br>
 				작성자: <INPUT TYPE="hidden" name="writer" VALUE="${writer}">님</td>
+				
 				<td><a href="list.do"><img src="recom.png"></a><br>
 				나라: <INPUT TYPE="hidden" name="country" VALUE="${country}"><br>
 				기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br>
@@ -39,11 +41,13 @@
 				기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br>
 				총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원<br>
 				작성자: <INPUT TYPE="hidden" name="writer" VALUE="${writer}">님</td>
+				
 				<td><a href="list.do"><img src="recom.png"></a><br>
 				나라: <INPUT TYPE="hidden" name="country" VALUE="${country}"><br>
 				기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br>
 				총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${totalprice}">원<br>
 				작성자: <INPUT TYPE="hidden" name="writer" VALUE="${writer}">님</td>
+				
 				<td><a href="list.do"><img src="recom.png"></a><br>
 				나라: <INPUT TYPE="hidden" name="country" VALUE="${country}"><br>
 				기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${travel_period}"><br>
