@@ -53,7 +53,7 @@ public class PlanDAOImpl implements PlanDAO {
 		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,"
 				+ "tag_no_sequence.nextval,?,?,?,?,?,?,?,?)";
 		int res = 0;
-		Object[] values = new Object[] { "³ª", dto.getSubject(), "pwd", dto.getCount(),dto.getCountry(), 
+		Object[] values = new Object[] { dto.getWriter(), dto.getSubject(), "pwd", dto.getCount(),dto.getCountry(), 
 				dto.getCity(), dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(),
 				dto.getTravel_seasion(), dto.getTravel_theme(), dto.getRecom() };
 		res = jdbcTemplate.update(sql, values);

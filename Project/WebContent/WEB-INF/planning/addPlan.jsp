@@ -83,7 +83,7 @@ function renameForModelAttribute() {
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer" value="${writer}">님
+					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer" value="나">님
 					</td>
 				</tr>
 				<tr>
@@ -116,9 +116,6 @@ function renameForModelAttribute() {
 			<input type="button" value="일정추가" onClick="addRow()"><br><br>
 			<input type="submit" value="저장">
 			<input type="reset" value="취소">
-		</form>
-	</div> 
-	</div>
 	</form>
 </div>
 </body>

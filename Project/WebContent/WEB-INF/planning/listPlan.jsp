@@ -63,7 +63,7 @@
 				onclick="window.location='updatePlan.do?no=${dtoP.group_no}'">
 			<input type="button" value="±Û»èÁ¦"
 				onclick="window.location='deletePlan.do?no=${dtoP.group_no}'"> 
-	</div>
 	</FORM>
+	</div>
 </body>
 </html>
