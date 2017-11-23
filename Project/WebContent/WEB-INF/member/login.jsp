@@ -5,10 +5,23 @@
 <html>
 <head>
 	<title>로그인</title>
+	<script type="text/javascript">
+		function check(){
+			var f = document.userInfo;
+			if(!f.email.value){
+				alert("이메일을 입력하세요.");
+				return false;
+			}
+			if(!f.pwd.value){
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+		}
+	</script>
 </head>
 <body>
 	<div align="center">
-		<form name="f" method="post" action="login_ok.do">
+		<form name="userInfo" onsubmit="return check()" method="post" action="login_ok.do">
 			<table align="center"  height="70%">
 			
 				<tr>
