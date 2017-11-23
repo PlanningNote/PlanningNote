@@ -31,8 +31,14 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public int tagPlan(TagDTO dto) {
+<<<<<<< HEAD
 		String sql = "insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
 		String tag = dto.getTag1() + dto.getTag2() + dto.getTag3() + dto.getTag4() + dto.getTag5();
+=======
+		String sql = "insert into PN_tag values(tag_no_sequence.nextval, " + ",?,?,?,?,?,?)";
+		String tag = dto.getTag1() + "#" + dto.getTag2() + "#" + dto.getTag3()
+							+ "#" + dto.getTag4() + "#"+ dto.getTag5();
+>>>>>>> refs/remotes/origin/master
 		//String[] arr = tag.split("#");
 		Object[] values = new Object[] { tag };
 		int result = jdbcTemplate.update(sql, values);

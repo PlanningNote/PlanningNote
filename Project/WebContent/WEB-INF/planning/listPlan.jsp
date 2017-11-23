@@ -34,11 +34,8 @@
 						/count:<INPUT TYPE="hidden" name="count" VALUE="count"></td>
 				</tr>
 				<tr>
-					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}"></td>
+					<td WIDTH="75%">태그:<br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 					<td ALIGN="left">총예산: ${dtoP.totalprice} 원</td>
-					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4}   ${dtoT.tag5}"></td>
-					<td ALIGN="left">총예산: <INPUT TYPE="label" name="totalprice" VALUE="${dtoP.totalprice}">원
 					</td>
 				</tr>
 			</table>
@@ -64,8 +61,8 @@
 			</table><br>
 			<input type="button" value="글수정"
 				onclick="window.location='updatePlan.do?no=${dtoP.group_no}'">
-			<%-- <input type="button" value="글삭제"
-				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
+			<input type="button" value="글삭제"
+				onclick="window.location='deletePlan.do?no=${dtoP.group_no}'"> 
 	</div>
 	</FORM>
 </body>

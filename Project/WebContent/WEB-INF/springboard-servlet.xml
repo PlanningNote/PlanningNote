@@ -24,7 +24,7 @@
 			<constructor-arg name="sqlSessionFactory"
 				ref="sqlSessionFactory"/>
 		</bean> -->
-		
+		 
 	</bean>
 	<bean id="
 				controller " class="plan.controller.PlanController">
