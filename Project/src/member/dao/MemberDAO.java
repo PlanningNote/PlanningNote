@@ -15,4 +15,5 @@ public interface MemberDAO {
 	public boolean duplicateEmailCheck(String email);
 	public String getNickname(String email);
 	public List<MemberDTO> fineMember(String search, String searchString);
+	public boolean checkPwd(String nickname, String pwd);
 }

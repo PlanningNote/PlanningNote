@@ -7,6 +7,7 @@ public class MemberDTO {
 	private String email;
 	private int age;
 	private String pwd;
+	private String img;
 	
 	public int getNo() {
 		return no;
@@ -44,4 +45,11 @@ public class MemberDTO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img  = img;
+	}
+	
 }
