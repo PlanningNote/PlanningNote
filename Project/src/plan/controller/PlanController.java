@@ -31,7 +31,7 @@ public class PlanController{
 	
 	@Autowired
 	private PlanDAO dao;
-	
+	 
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
