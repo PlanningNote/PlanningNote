@@ -159,6 +159,8 @@ public class PlanController{
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
+		List<PlanDTO> dtoP = dao.listAPlan();
+		mav.addObject("dtoP",dtoP);
 		return mav;
 	}
 	
