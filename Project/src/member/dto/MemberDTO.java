@@ -1,7 +1,5 @@
 package member.dto;
 
-import plan.dto.LikePlanDTO;
-
 public class MemberDTO {
 	private int no;
 	private String nickname;
