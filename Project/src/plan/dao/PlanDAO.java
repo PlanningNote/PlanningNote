@@ -12,6 +12,7 @@ public interface PlanDAO {
 	public int tagPlan(TagDTO dto);
 	//-----insert---------
 	public int updatePlan(int no, PlanDTO dto);
+	public int updateSubPlan(int no, SubPlanDTO dto);
 	//update------
 	public int deletePlan(int no);
 	//delete------
@@ -23,7 +24,7 @@ public interface PlanDAO {
 	public List<PlanDTO> rankPlan();
 	public List<PlanDTO> findOption(String search,String searchString); //여행기간, 시기, 테마 검색
 	
-	public PlanDTO getContent(int no);//자세히 보기 페이지로 이동
+	public SubPlanDTO getSubContent(int no);//자세히 보기 페이지로 이동
 	
 	
 }

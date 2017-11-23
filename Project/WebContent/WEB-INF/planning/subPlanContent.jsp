@@ -25,7 +25,7 @@
 			</tr>
 			<tr align="center">
 				<td colspan="2">
-					<button onclick="location='list.do?no=${dtoP.groupno}'">뒤로가기</button>
+					<button onclick="location='list.do?no=${dtoS.group_no}'">뒤로가기</button>
 				</td>
 			</tr>
 		</table>

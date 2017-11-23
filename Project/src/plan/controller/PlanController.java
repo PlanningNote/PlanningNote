@@ -189,10 +189,8 @@ public class PlanController{
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/subPlanContent.jsp");
-		List<PlanDTO> dtoP = new ArrayList<PlanDTO>();
-		List<SubPlanDTO> dtoS = new ArrayList<SubPlanDTO>();
+		SubPlanDTO dtoS = new SubPlanDTO();
 		
-		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS",dtoS);
 		return mav;
 	}

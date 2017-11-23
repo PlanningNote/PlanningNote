@@ -98,6 +98,13 @@ public class PlanDAOImpl implements PlanDAO {
 		int res = jdbcTemplate.update(sql, values);
 		return res;
 	}
+	@Override
+	public int updateSubPlan(int no, SubPlanDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 	@Override
 	public int deletePlan(int group_no) {
@@ -127,6 +134,14 @@ public class PlanDAOImpl implements PlanDAO {
 		return result;
 	}
 
+	@Override
+	public SubPlanDTO getSubContent(int board_num) {
+		String sql = "select * from PN_subplan where board_num = ?";
+		SubPlanDTO result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(board_num),
+				new SubResultSetExtractor());
+		return null;
+	}
+	
 	// PlanDTO 의 RowMapper
 	private class MyRowMapper implements RowMapper<PlanDTO> {
 		@Override
@@ -188,7 +203,24 @@ public class PlanDAOImpl implements PlanDAO {
 				dto.setTravel_theme(rs.getString("travel_theme"));
 				return dto;
 			}
-			throw new DataRetrievalFailureException("해당 객체를 찾을수가 없습니다.");
+			throw new DataRetrievalFailureException("PlanDTO를 찾을수가 없습니다.");
+		}
+	}
+	class SubResultSetExtractor implements ResultSetExtractor<SubPlanDTO> {
+		@Override
+		public SubPlanDTO extractData(ResultSet rs) throws SQLException, DataAccessException {
+			if (rs.next()) {
+				SubPlanDTO dto = new SubPlanDTO();
+				dto.setGroup_no(rs.getInt("group_no"));
+				dto.setBoard_num(rs.getInt("board_num"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setImg(rs.getString("img"));
+				dto.setContent(rs.getString("content"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setTraffic(rs.getString("traffic"));
+				return dto;
+			}
+			throw new DataRetrievalFailureException("SubPlanDTO를 찾을수가 없습니다.");
 		}
 	}
 
@@ -225,10 +257,6 @@ public class PlanDAOImpl implements PlanDAO {
 		return null;
 	}
 
-	@Override
-	public PlanDTO getContent(int no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
