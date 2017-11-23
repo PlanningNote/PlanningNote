@@ -3,6 +3,8 @@
 <html>
 <head>
 	<title>녀행자들홈페이지</title>
+	<link rel="stylesheet" href="style.css">
+
 </head>
 <body> 
 		<div style="padding:0px 0px 0px 300px;">
