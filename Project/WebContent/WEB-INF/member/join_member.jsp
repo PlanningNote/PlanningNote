@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../../top.jsp" %>
 <html>
 <head>
 	<title>회원가입</title>
@@ -78,7 +79,7 @@
 <body>
 <div align="center">
 		<br><br>
-		<b><font size="6" color="gray">회원가입</font></b>
+		
 		<br><br><br>
 		
 		
@@ -86,7 +87,7 @@
 		<!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 JoinPro.jsp -->
 		<form method="post" action="join_member.do" 
 				name="userInfo" onsubmit="return checkValue()">
-			<table>
+			<table align="center"  height="60%">
 				<tr>
 					<td id="title">이메일</td>
 					<td>
@@ -139,3 +140,4 @@
 </div>
 </body>
 </html>
+<%@ include file="../../bottom.jsp" %>
