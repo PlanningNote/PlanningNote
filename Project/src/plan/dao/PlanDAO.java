@@ -17,7 +17,7 @@ public interface PlanDAO {
 	//delete------
 	public List<PlanDTO> listAPlan(); //listPlanA에 나올 PlanDTO리스트 꺼내옴. 
 	public List<SubPlanDTO> subList(int group_no); //그룹에 해당하는 전체 서브리스트
-	public List<PlanDTO> listPlan(int group_no);
+	public PlanDTO listPlan(int group_no);
 	//list-----
 	public PlanDTO findPlan(String search,String searchString); //제목으로할건지 작성자로 할건지
 	public List<PlanDTO> rankPlan();
