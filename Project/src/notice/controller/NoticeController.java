@@ -29,6 +29,13 @@ public class NoticeController {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
+	
+	@RequestMapping("/submit")
+	public void submit(HttpServletRequest request){
+	    System.out.println("에디터 컨텐츠값:"+request.getParameter("editor"));
+	}
+
+
 	@RequestMapping(value="/notice_list.do")
 	public ModelAndView listNotice(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<NoticeDTO> list = noticeDAO.listNotice(); // 가져오는거
