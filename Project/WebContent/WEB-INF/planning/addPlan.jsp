@@ -93,11 +93,11 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td>еб╠в:<br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag1" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag2" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag3" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
 					</td>
 				</tr>
 				<tr>

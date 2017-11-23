@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="admin_top.jsp" %>
-<div align="center">
-	<table border="1">
+<script>
+	function deleteMember(){
+		
+	}
+</script>
+<div align="center" >
+	<table border="1" width="600">
 		<tr>
 			<th>회원번호</th>
 			<th>닉네임</th>
-			<th>이메일</th>
+			<th width="50%">이메일</th>
 			<th>성별</th>
 			<th>삭제</th>
 		</tr>
@@ -17,7 +23,7 @@
 				<td>${dto.nickname}</td>
 				<td>${dto.email}</td>
 				<td>${dto.gender}</td>
-				<td><input type="button" value="삭제" onclick=""></td>
+				<td><input type="button" value="삭제" onclick="deleteMember()"></td>
 			</tr>
 		</c:forEach>
 	</table>
