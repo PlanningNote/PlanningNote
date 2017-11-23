@@ -28,12 +28,26 @@ public class PlanDAOImpl implements PlanDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+
+	@Override
+	public int tagPlan(TagDTO dto) {
+		String sql = "insert into PN_tag values(tag_no_sequence.nextval, " + ",?,?,?,?,?,?)";
+		String tag = dto.getTag1() + "#" + dto.getTag2() + "#" + dto.getTag3()
+							+ "#"+ dto.getTag4() + "#"	+ dto.getTag5();
+		//String[] arr = tag.split("#");
+		Object[] values = new Object[] { dto.getTag1(), dto.getTag2(), dto.getTag3(),
+				 							dto.getTag4(), dto.getTag5(),tag };
+		int result = jdbcTemplate.update(sql, values);
+		return result;
+	}	
+	
 	@Override
 	public int insertPlan(PlanDTO dto) {
-		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,"
+				+ "tag_no_sequence.currval,?,?,?,?,?,?,?,?)";
 		int res = 0;
-		Object[] values = new Object[] { "³ª", dto.getSubject(), "pwd", dto.getCount(), dto.getTag_no_sequence(),
-				dto.getCountry(), dto.getCity(), dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(),
+		Object[] values = new Object[] { "³ª", dto.getSubject(), "pwd", dto.getCount(),dto.getCountry(), 
+				dto.getCity(), dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(),
 				dto.getTravel_seasion(), dto.getTravel_theme(), dto.getRecom() };
 		res = jdbcTemplate.update(sql, values);
 		return res;
@@ -41,7 +55,7 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
-		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?)";
+		String sql = "insert into PN_subplan values(group_no.currval,board_num.nextval, ?,?,?,?,?)";
 		Object[] values;
 		int res = 0;
 		for (int i = 0; i < sdto.getImgName().size(); i++) {
@@ -58,17 +72,6 @@ public class PlanDAOImpl implements PlanDAO {
 			return res;
 		}
 		return res;
-	}
-
-	@Override
-	public int tagPlan(TagDTO dto) {
-		String sql = "insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
-		String tag = dto.getTag1() + " " + dto.getTag2() + " " + dto.getTag3() + " " + dto.getTag4() + " "
-				+ dto.getTag5();
-		String[] arr = tag.split("\\s");
-		Object[] values = new Object[] { tag };
-		int result = jdbcTemplate.update(sql, values);
-		return result;
 	}
 
 	@Override
@@ -93,6 +96,14 @@ public class PlanDAOImpl implements PlanDAO {
 		return res;
 	}
 
+
+	@Override
+	public List<PlanDTO> listAPlan() {
+		String sql = "select * from PN_planning";
+		List<PlanDTO> result=jdbcTemplate.query(sql, mapper);
+		return result;
+	}
+	
 	@Override
 	public List<PlanDTO> listPlan(int group_no) {
 		String sql = "select * from PN_planning where group_no = ?";
@@ -176,19 +187,19 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public PlanDTO findPlan(String search, String searchString) {
-		// TODO Auto-generated method stub
+		String sql = "";
 		return null;
 	}
 
 	@Override
 	public List<PlanDTO> rankPlan() {
-		// TODO Auto-generated method stub
+		String sql="";
 		return null;
 	}
 
 	@Override
 	public List<PlanDTO> findOption(String search, String searchString) {
-		// TODO Auto-generated method stub
+		String sql="";
 		return null;
 	}
 
@@ -197,5 +208,6 @@ public class PlanDAOImpl implements PlanDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
