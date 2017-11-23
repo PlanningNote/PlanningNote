@@ -54,9 +54,15 @@ public class PlanDAOImpl implements PlanDAO {
 		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,"
 				+ "tag_no_sequence.nextval,?,?,?,?,?,?,?,?)";
 		int res = 0;
+<<<<<<< HEAD
 		Object[] values = new Object[] { "³ª", dto.getSubject(), "pwd", dto.getCount(), dto.getCountry(), dto.getCity(),
 				dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(), dto.getTravel_seasion(),
 				dto.getTravel_theme(), dto.getRecom() };
+=======
+		Object[] values = new Object[] { dto.getWriter(), dto.getSubject(), "pwd", dto.getCount(),dto.getCountry(), 
+				dto.getCity(), dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(),
+				dto.getTravel_seasion(), dto.getTravel_theme(), dto.getRecom() };
+>>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 		res = jdbcTemplate.update(sql, values);
 		return res;
 	}
