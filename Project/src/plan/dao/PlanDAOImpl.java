@@ -35,18 +35,9 @@ public class PlanDAOImpl implements PlanDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-<<<<<<< HEAD
-	
 	
 	@Override
 	public int tagPlan(TagDTO dto) {
-		
-=======
-
-
-	@Override
-	public int tagPlan(TagDTO dto) {
->>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 		String sql = "insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
 		String tag = dto.getTag1() + dto.getTag2() + dto.getTag3() + dto.getTag4() + dto.getTag5();
 		//String[] arr = tag.split("#");
