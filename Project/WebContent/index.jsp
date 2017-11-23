@@ -9,8 +9,9 @@
 	</tr>
 	<tr>
 	  
-		<td align="center">
+		<td align="center"><br>
 			검색할 나라를 입력하세요<p>
+			<hr color="yellow">
 			<form name="f">
 				<input type="text" name="nation">
 				<input type="submit" value="검색">

@@ -76,4 +76,7 @@
 
 	<bean class="admin.controller.AdminController">
 	</bean>
+	
+	<bean class="fileUpload.FileUploadController">
+</bean>
 </beans>

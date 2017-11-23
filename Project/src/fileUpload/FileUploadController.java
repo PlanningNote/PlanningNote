@@ -1,7 +1,11 @@
 package fileUpload;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,9 +15,83 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FileUploadController {
+	
+	@RequestMapping("/upload.do")
+    public ModelAndView mybatistest(HttpServletRequest request) throws IOException{
+        
+        System.out.println("파일업로드테스트");
+        
+        ModelAndView mav = new ModelAndView();
+        
+        MultipartHttpServletRequest multi = (MultipartHttpServletRequest) request;
+        MultipartFile file = multi.getFile("fileNm");
+                
+         String path="request.getRealPath()/files/notice";
+         UUID randomeUUID = UUID.randomUUID();
+                  
+         if(file!=null){
+        
+          System.out.println("파라미터명" + file.getName());
+          System.out.println("파일크기" + file.getSize());
+          System.out.println("파일 존재" + file.isEmpty());
+          System.out.println("오리지날 파일 이름" + file.getOriginalFilename());
+        
+          
+          path = "F:\\springTest";
+          InputStream inputStream = null;
+          OutputStream outputStream = null;
+          
+          String organizedfilePath="";
+          
+          try {
+              
+ 
+              if (file.getSize() > 0) {
+                  inputStream = file.getInputStream();
+                  File realUploadDir = new File(path);
+                  
+                  if (!realUploadDir.exists()) {
+                      realUploadDir.mkdirs();//폴더생성.
+                  }
+                  
+                  
+                  organizedfilePath = path + randomeUUID + "_" + file.getOriginalFilename();
+                  System.out.println(organizedfilePath);//파일이 저장된경로 + 파일 명
+                  
+                  outputStream = new FileOutputStream(organizedfilePath);
+ 
+                  int readByte = 0;
+                  byte[] buffer = new byte[8192];
+ 
+                  while ((readByte = inputStream.read(buffer, 0, 8120)) != -1) {
+                      outputStream.write(buffer, 0, readByte); //파일 생성 ! 
+                      
+                  }
+            
+                  
+              }
+              
+          } catch (Exception e) {
+              // TODO: handle exception
+              e.printStackTrace();
+ 
+          } finally {
+ 
+              outputStream.close();
+              inputStream.close();
+          }
+          
+      
+                 
+         }    
+          mav.setViewName("test3.jsp");
+        return mav;
+                
+    }
 
 	@RequestMapping(value="fileUpload_ok.do")
 	public void fileUpload(HttpServletRequest req, HttpServletResponse resp) {
