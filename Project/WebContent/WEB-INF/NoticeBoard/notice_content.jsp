@@ -25,7 +25,9 @@
 				<tr>
 					<th bgcolor="yellow" width="20%">ÀÌ ¹Ì Áö</th>
 					<td >
-						<textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getNoticeBoard.content}</textarea></td>
+					
+					<img src="${request.getRealPath()}files/notice/${getNoticeBoard.img}" width="300" /> 
+					
 					</td>
 				</tr>
 				
