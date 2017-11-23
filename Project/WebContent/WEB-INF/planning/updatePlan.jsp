@@ -50,7 +50,7 @@
 				 	<td whidth="50%" height="100%">
 						제목 <br>${dtoS.subject}<br>
 						비용 <br>${dtoS.price }
-						<br>내용 <br>
+						<br>내용 <br> 
 						${dtoS.content}
 						<br>교통 <br>
 						${dtoS.traffic}</td>
