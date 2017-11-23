@@ -20,10 +20,10 @@
 			<c:forEach items="${dtoP}" var="dtoP">
 			<tr WIDTH="100">
 				<td><a href="list.do"><img src="recom.png"></a><br>
-				나라: <INPUT TYPE="hidden" name="country" VALUE="${dtoP.country}"><br>
-				기간: <INPUT TYPE="hidden" name="travel_period" VALUE="${dtoP.travel_period}"><br>
-				총예산: <INPUT TYPE="hidden" name="totalprice" VALUE="${dtoP.totalprice}">원<br>
-				작성자: <INPUT TYPE="hidden" name="writer" VALUE="${dtoP.writer}">님</td>
+				나라: ${dtoP.country}<br>
+				기간: ${dtoP.travel_period}<br>
+				총예산: ${dtoP.totalprice} 원<br>
+				작성자: ${dtoP.writer}님</td>
 			</tr>
 			</c:forEach>
 			<tr HEIGHT="5%">

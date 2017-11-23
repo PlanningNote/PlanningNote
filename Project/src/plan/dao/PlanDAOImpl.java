@@ -31,38 +31,40 @@ public class PlanDAOImpl implements PlanDAO {
 	private JdbcTemplate jdbcTemplate;
 	private MyRowMapper mapper = new MyRowMapper();
 	private SubRowMapper submapper = new SubRowMapper();
-	
+
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	
+
 	@Override
 	public int tagPlan(TagDTO dto) {
 		String sql = "insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
 		String tag = dto.getTag1() + dto.getTag2() + dto.getTag3() + dto.getTag4() + dto.getTag5();
-		//String[] arr = tag.split("#");
+		// String[] arr = tag.split("#");
 		Object[] values = new Object[] { tag };
 		int result = jdbcTemplate.update(sql, values);
 		return result;
-	}	
-	
+	}
+
 	@Override
 	public int insertPlan(PlanDTO dto) {
-		//String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,"
-			//	+ "tag_no_sequence.currval,?,?,?,?,?,?,?,?)";
+		// String sql = "insert into PN_planning " + "values(group_no.nextval, " +
+		// "?,?,sysdate,?,?,"
+		// + "tag_no_sequence.currval,?,?,?,?,?,?,?,?)";
 		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,"
 				+ "tag_no_sequence.nextval,?,?,?,?,?,?,?,?)";
 		int res = 0;
-		Object[] values = new Object[] { "나", dto.getSubject(), "pwd", dto.getCount(),dto.getCountry(), 
-				dto.getCity(), dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(),
-				dto.getTravel_seasion(), dto.getTravel_theme(), dto.getRecom() };
+		Object[] values = new Object[] { "나", dto.getSubject(), "pwd", dto.getCount(), dto.getCountry(), dto.getCity(),
+				dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(), dto.getTravel_seasion(),
+				dto.getTravel_theme(), dto.getRecom() };
 		res = jdbcTemplate.update(sql, values);
 		return res;
 	}
 
 	@Override
 	public int insertsubPlan(SubPlanDTO sdto) {
-		//String sql = "insert into PN_subplan values(group_no.currval,board_num.nextval, ?,?,?,?,?)";
+		// String sql = "insert into PN_subplan
+		// values(group_no.currval,board_num.nextval, ?,?,?,?,?)";
 		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?)";
 		Object[] values;
 		int res = 0;
@@ -107,24 +109,28 @@ public class PlanDAOImpl implements PlanDAO {
 	@Override
 	public List<PlanDTO> listAPlan() {
 		String sql = "select * from PN_planning order by group_no asc";
-		List<PlanDTO> result=jdbcTemplate.query(sql, mapper);
+		List<PlanDTO> result = jdbcTemplate.query(sql, mapper);
 		return result;
 	}
+
 	
+	//이거 완성안됨
 	@Override
 	public List<PlanDTO> listPlan(int group_no) {
 		String sql = "select * from PN_planning where group_no = ?";
 		List<PlanDTO> result = jdbcTemplate.query(sql, mapper);
 		return result;
 	}
-
+	//이거 완성안됨
 	@Override
 	public List<SubPlanDTO> subList(int group_no) {
 		String sql = "select * from PN_subplan where board_num=?";
 		List<SubPlanDTO> result = jdbcTemplate.query(sql, submapper);
 		return result;
 	}
-	//PlanDTO 의 RowMapper
+
+	
+	// PlanDTO 의 RowMapper
 	private class MyRowMapper implements RowMapper<PlanDTO> {
 		@Override
 		public PlanDTO mapRow(ResultSet rs, int arg1) throws SQLException {
@@ -135,61 +141,67 @@ public class PlanDAOImpl implements PlanDAO {
 			dto.setDay(rs.getString("day"));
 			dto.setPwd(rs.getString("pwd"));
 			dto.setCount(rs.getInt("count"));
-			dto.setTag_no_sequence(rs.getInt("tag_no"));
+			dto.setTag_no_sequence(rs.getInt("tag_no_sequence"));
 			dto.setCountry(rs.getString("country"));
 			dto.setCity(rs.getString("city"));
-			dto.setThumbnail(rs.getString("thmbnail"));
+			dto.setThumbnail(rs.getString("thumbnail"));
 			dto.setTotalprice(rs.getInt("totalprice"));
 			dto.setTravel_period(rs.getString("travel_period"));
 			dto.setTravel_seasion(rs.getString("travel_seasion"));
 			dto.setTravel_theme(rs.getString("travel_theme"));
+			System.out.println("++++++");
 			return dto;
 		}
 	}
-	//SubPlanDTO 의 RowMapper
-	private class SubRowMapper implements RowMapper<SubPlanDTO> {
-		@Override
-		public SubPlanDTO mapRow(ResultSet rs, int arg1) throws SQLException {
-			SubPlanDTO dto = new SubPlanDTO();
-			dto.setGroup_no(rs.getInt("group_no"));
-			dto.setBoard_num(rs.getInt("board_num"));
-			dto.setSubject(rs.getString("subject"));
-			dto.setImg(rs.getString("img"));
-			dto.setContent(rs.getString("content"));
-			dto.setPrice(rs.getInt("price"));
-			dto.setTraffic(rs.getString("traffic"));
-			return dto;
-		}
-	}
-	// 하나 가져올때.
-	class MyResultSetExtractor implements ResultSetExtractor<SubPlanDTO> {
-		@Override
-		public SubPlanDTO extractData(ResultSet arg0) throws SQLException, DataAccessException {
-			if (arg0.next()) {
-				SubPlanDTO dto = new SubPlanDTO();
-				dto.setBoard_num(arg0.getInt("board_num"));
-				dto.setSubject(arg0.getString("subject"));
-				dto.setImg(arg0.getString("img"));
-				dto.setContent(arg0.getString("content"));
-				dto.setPrice(arg0.getInt("price"));
-				dto.setTraffic(arg0.getString("Traffic"));
-				return dto;
-			}
-			throw new DataRetrievalFailureException("해당 객체를 찾을수가 없습니다.");
-		}
-	}
-	//하나 가져올때, 위에거랑 같이 씀.
-	class MyPreparedStatementSetterForPrimaryKey implements PreparedStatementSetter {
-		private Integer num;
 
-		public MyPreparedStatementSetterForPrimaryKey(Integer num) {
-			this.num = num;
+// SubPlanDTO 의 RowMapper
+private class SubRowMapper implements RowMapper<SubPlanDTO> {
+	@Override
+	public SubPlanDTO mapRow(ResultSet rs, int arg1) throws SQLException {
+		SubPlanDTO dto = new SubPlanDTO();
+		dto.setGroup_no(rs.getInt("group_no"));
+		dto.setBoard_num(rs.getInt("board_num"));
+		dto.setSubject(rs.getString("subject"));
+		dto.setImg(rs.getString("img"));
+		dto.setContent(rs.getString("content"));
+		dto.setPrice(rs.getInt("price"));
+		dto.setTraffic(rs.getString("traffic"));
+		return dto;
+	}
+}
+
+// 하나 가져올때.
+class MyResultSetExtractor implements ResultSetExtractor<SubPlanDTO> {
+	@Override
+	public SubPlanDTO extractData(ResultSet arg0) throws SQLException, DataAccessException {
+		if (arg0.next()) {
+			SubPlanDTO dto = new SubPlanDTO();
+			dto.setBoard_num(arg0.getInt("board_num"));
+			dto.setSubject(arg0.getString("subject"));
+			dto.setImg(arg0.getString("img"));
+			dto.setContent(arg0.getString("content"));
+			dto.setPrice(arg0.getInt("price"));
+			dto.setTraffic(arg0.getString("Traffic"));
+			return dto;
 		}
-		@Override
-		public void setValues(PreparedStatement arg0) throws SQLException {
-			// TODO Auto-generated method stub
-			arg0.setInt(1, num);
-		}
+		throw new DataRetrievalFailureException("해당 객체를 찾을수가 없습니다.");
+	}
+}
+
+// 하나 가져올때, 위에거랑 같이 씀.
+class MyPreparedStatementSetterForPrimaryKey implements PreparedStatementSetter {
+	private Integer num;
+
+	public MyPreparedStatementSetterForPrimaryKey(Integer num) {
+		this.num = num;
+	}
+
+	@Override
+	public void setValues(PreparedStatement arg0) throws SQLException {
+		// TODO Auto-generated method stub
+		arg0.setInt(1, num);
+	}
+
 	}
 
 	@Override
@@ -200,13 +212,13 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public List<PlanDTO> rankPlan() {
-		String sql="";
+		String sql = "";
 		return null;
 	}
 
 	@Override
 	public List<PlanDTO> findOption(String search, String searchString) {
-		String sql="";
+		String sql = "";
 		return null;
 	}
 
@@ -215,6 +227,5 @@ public class PlanDAOImpl implements PlanDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }
