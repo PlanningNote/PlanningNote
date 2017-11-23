@@ -1,5 +1,5 @@
 package member.dto;
-
+  
 public class MemberDTO {
 	private int no;
 	private String nickname;
