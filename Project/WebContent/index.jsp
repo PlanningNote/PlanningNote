@@ -13,7 +13,7 @@
 		
 		
 		<table background="ka1.png">
-		<tr>
+		<tr> 
 		<td>
 			<b>검색할 나라를 입력하세요</b>
 			
