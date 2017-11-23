@@ -36,7 +36,6 @@
 				<tr>
 					<td WIDTH="75%">태그:<br>
 					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}"></td>
-					${dtoT.tag1}# ${dtoT.tag2}# ${dtoT.tag3}# ${dtoT.tag4}# ${dtoT.tag5}</td>
 					<td ALIGN="left">총예산: ${dtoP.totalprice} 원</td>
 					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4}   ${dtoT.tag5}"></td>
 					<td ALIGN="left">총예산: <INPUT TYPE="label" name="totalprice" VALUE="${dtoP.totalprice}">원
