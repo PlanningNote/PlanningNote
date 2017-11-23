@@ -9,8 +9,7 @@
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${dtoP.thumbnail}">
-			<table WIDTH="800" HEIGHT="500" class="outline" background="${dtoS.path}/${dtoP.thumbnail}">
+				background="${dtoS.path}/${dtoP.thumbnail}">
 				<tr>
 					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
@@ -35,12 +34,8 @@
 						/count:<INPUT TYPE="hidden" name="count" VALUE="count"></td>
 				</tr>
 				<tr>
-					<td WIDTH="75%">태그:<br>
-					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}"></td>
-					${dtoT.tag1}# ${dtoT.tag2}# ${dtoT.tag3}# ${dtoT.tag4}# ${dtoT.tag5}</td>
+					<td WIDTH="75%">태그:<br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 					<td ALIGN="left">총예산: ${dtoP.totalprice} 원</td>
-					<INPUT TYPE="label" name="tag" VALUE=" ${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4}   ${dtoT.tag5}"></td>
-					<td ALIGN="left">총예산: <INPUT TYPE="label" name="totalprice" VALUE="${dtoP.totalprice}">원
 					</td>
 				</tr>
 			</table>
@@ -65,9 +60,9 @@
 			</c:forEach>
 			</table><br>
 			<input type="button" value="글수정"
-				onclick="window.location='updatePlan.do?no=${group_no}'">
-			<%-- <input type="button" value="글삭제"
-				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
+				onclick="window.location='updatePlan.do?no=${dtoP.group_no}'">
+			<input type="button" value="글삭제"
+				onclick="window.location='deletePlan.do?no=${dtoP.group_no}'"> 
 	</div>
 	</FORM>
 </body>

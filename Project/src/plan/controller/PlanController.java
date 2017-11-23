@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -122,7 +125,6 @@ public class PlanController{
 		
 		//▽ DAOImpl working..
 		int resP =0,resS=0,resT=0;
-		
 		resT = dao.tagPlan(dtoT);
 		resP=dao.insertPlan(dtoP);
 		resS= dao.insertsubPlan(dtoS);
@@ -153,26 +155,29 @@ public class PlanController{
 		return mav;
 	}
 	
-	@RequestMapping(value="/list.do")//계획목록 페이지로 이동.
-	public ModelAndView list(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		List<PlanDTO> dtoP = new ArrayList<PlanDTO>();
-		List<SubPlanDTO> dtoS = new ArrayList<SubPlanDTO>();
-		
-		/*dtoP = dao.listPlan(group_no);
-		dtoS = dao.subList();*/
-		
-		mav.addObject("dtoP", dtoP);
-		mav.addObject("dtoS",dtoS);
-		return mav;
-	}
 	@RequestMapping(value="/listPlanA.do")//계획목록 페이지로 이동.
 	public ModelAndView listPlanA(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
+		List<PlanDTO> dtoP = dao.listAPlan();
+		mav.addObject("dtoP",dtoP);
+		return mav;
+	}
+	
+	@RequestMapping(value="/list.do")//계획목록 페이지로 이동.
+	public ModelAndView list(HttpServletRequest arg0, 
+			HttpServletResponse arg1,@RequestParam("group_no")int group_no) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/planning/listPlan.jsp");
+		List<PlanDTO> dtoP = new ArrayList<PlanDTO>();
+		List<SubPlanDTO> dtoS = new ArrayList<SubPlanDTO>();
+		
+		dtoP = dao.listPlan(group_no);
+		dtoS = dao.subList(group_no);
+		
+		mav.addObject("dtoP", dtoP);
+		mav.addObject("dtoS",dtoS);
 		return mav;
 	}
 	
