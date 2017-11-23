@@ -108,4 +108,23 @@ public class MemberImpl implements MemberDAO{
 			return false;
 		}	
 	}
+
+	@Override
+	public String getNickname(String email) {
+		String sql ="select nickname from PN_member where email = ?";
+		try {
+			String result = (String) this.jdbcTemplate.queryForObject(
+			       sql,    new Object[]{email}, String.class);
+			return result;
+		}catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<MemberDTO> fineMember(String search, String searchString) {
+		String sql="select * from PN_member where "+search+" = ?";
+		List<MemberDTO> result = jdbcTemplate.query(sql, mapper, searchString);
+		return result;
+	}
 }
