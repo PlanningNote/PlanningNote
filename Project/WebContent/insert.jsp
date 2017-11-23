@@ -12,6 +12,6 @@
 %>
  
 제목 : <%=title %><br>
-내용 : <br>
-<%=content %>
+내용 : <%=content %> <br>
+
 
