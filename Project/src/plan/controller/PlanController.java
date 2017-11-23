@@ -31,7 +31,7 @@ public class PlanController{
 	
 	@Autowired
 	private PlanDAO dao;
-	
+	 
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -170,12 +170,15 @@ public class PlanController{
 			HttpServletResponse arg1,@RequestParam("group_no")int group_no) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		List<PlanDTO> dtoP = new ArrayList<PlanDTO>();
-		List<SubPlanDTO> dtoS = new ArrayList<SubPlanDTO>();
+		System.out.println("group_no: "+group_no);
+		PlanDTO dtoP = new PlanDTO();
+		SubPlanDTO dtoS = new SubPlanDTO();
+		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
 		
 		dtoP = dao.listPlan(group_no);
-		dtoS = dao.subList(group_no);
+		listS = dao.subList(group_no);
 		
+		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS",dtoS);
 		return mav;
@@ -186,10 +189,8 @@ public class PlanController{
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/subPlanContent.jsp");
-		List<PlanDTO> dtoP = new ArrayList<PlanDTO>();
-		List<SubPlanDTO> dtoS = new ArrayList<SubPlanDTO>();
+		SubPlanDTO dtoS = new SubPlanDTO();
 		
-		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS",dtoS);
 		return mav;
 	}

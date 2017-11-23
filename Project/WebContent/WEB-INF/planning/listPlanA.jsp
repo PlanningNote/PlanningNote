@@ -19,7 +19,7 @@
 			</tr>
 			<c:forEach items="${dtoP}" var="dtoP">
 			<tr WIDTH="100">
-				<td><a href="list.do"><img src="recom.png"></a><br>
+				<td><a href="list.do?group_no=${dtoP.getGroup_no()}"><img src="recom.png"></a><br>
 				나라: ${dtoP.country}<br>
 				기간: ${dtoP.travel_period}<br>
 				총예산: ${dtoP.totalprice} 원<br>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%String path = session.getServletContext().getRealPath("img"); %>
 <html>
 <head>
 <title>플랜리스트자세보기</title>
@@ -9,7 +10,7 @@
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${dtoS.path}/${dtoP.thumbnail}">
+				background="${path}/${dtoP.thumbnail}">
 				<tr>
 					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
@@ -53,8 +54,8 @@
 						<br>교통 <br>
 						${dtoS.traffic}</td>
 					<td width="10%" height="100%">
-					<a href="subPlanContent.do">
-					<img src="${dtoS.path}/${dtoS.img}"></a></td>
+					<a href="subPlanContent.do?board_num=${dtoS.getBoard_num()}">
+					<img src="${path}/${dtoS.img}"></a></td>
 					<td width="3%"></td>
 				</tr>
 			</c:forEach>
