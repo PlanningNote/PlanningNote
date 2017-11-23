@@ -8,8 +8,12 @@
 <body>
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
+<<<<<<< HEAD
 			<table WIDTH="800" HEIGHT="500" class="outline"
 				background="${dtoS.path}/${dtoP.thumbnail}">
+=======
+			<table WIDTH="800" HEIGHT="500" class="outline" background="${dtoS.path}/${dtoP.thumbnail}">
+>>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 				<tr>
 					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
@@ -63,10 +67,11 @@
 			</c:forEach>
 			</table><br>
 			<input type="button" value="글수정"
-				onclick="window.location='updatePlan.do?no=${group_no}'">
+				onclick="window.location='updatePlan.do?no=${dtoP.group_no}'">
 			<%-- <input type="button" value="글삭제"
 				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
 	</div>
+
 	</FORM>
 </body>
 </html>
