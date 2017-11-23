@@ -19,68 +19,61 @@
 		</property>
 		<property name="username" value="java07" />
 		<property name="password" value="java07" />
-
-		<!-- <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-			<constructor-arg name="sqlSessionFactory"
-				ref="sqlSessionFactory"/>
-		</bean> -->
-		 
 	</bean>
-	<bean id="
-				controller " class="plan.controller.PlanController">
-		</bean>
+	<bean id="controller" class="plan.controller.PlanController">
+	</bean>
 
-		<!-- 파일 업로드 -->
-		<bean id="multipartResolver"
-			class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-		<alias name="multipartResolver" alias="multipartResolver" />
-		<!-- 파일 업로드 -->
+	<!-- 파일 업로드 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	<alias name="multipartResolver" alias="multipartResolver" />
+	<!-- 파일 업로드 -->
 
-		<bean id="planDAO" class="plan.dao.PlanDAOImpl">
-			<property name="jdbcTemplate" ref="springJdbcTemplate" />
-		</bean>
-		<bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-			<property name="dataSource" ref="dataSource" />
-		</bean>
+	<bean id="planDAO" class="plan.dao.PlanDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+	<bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
-		<bean id="noticeDAO" class="notice.dao.NoticeDAOImpl">
-			<property name="jdbcTemplate" ref="springJdbcTemplate" />
-		</bean>
+	<bean id="noticeDAO" class="notice.dao.NoticeDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
 
-		<bean class="notice.controller.NoticeController">
-		</bean>
+	<bean class="notice.controller.NoticeController">
+	</bean>
 
-		<bean id="askDAO" class="ask.dao.AskDAOImpl">
-			<property name="jdbcTemplate" ref="springJdbcTemplate" />
-		</bean>
-		<bean class="ask.controller.AskController">
-		</bean>
+	<bean id="askDAO" class="ask.dao.AskDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+	<bean class="ask.controller.AskController">
+	</bean>
 
-		<bean class="center.controller.CenterController">
-		</bean>
+	<bean class="center.controller.CenterController">
+	</bean>
 
-		<bean id="comuDAO" class="comu.dao.ComuDAOImpl">
-			<property name="jdbcTemplate" ref="springJdbcTemplate" />
-		</bean>
+	<bean id="comuDAO" class="comu.dao.ComuDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
 
-		<bean class="comu.controller.ComuController">
-		</bean>
+	<bean class="comu.controller.ComuController">
+	</bean>
 
-		<bean id="FAQDAO" class="FAQ.dao.FAQDAOImpl">
-			<property name="jdbcTemplate" ref="springJdbcTemplate" />
-		</bean>
+	<bean id="FAQDAO" class="FAQ.dao.FAQDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
 
-		<bean class="FAQ.controller.FAQController">
-		</bean>
+	<bean class="FAQ.controller.FAQController">
+	</bean>
 
 
-		<bean id="memberDAO" class="member.dao.MemberImpl">
-			<property name="jdbcTemplate" ref="springJdbcTemplate" />
-		</bean>
+	<bean id="memberDAO" class="member.dao.MemberImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
 
-		<bean class="member.controller.MemberController">
-		</bean>
+	<bean class="member.controller.MemberController">
+	</bean>
 
-		<bean class="admin.controller.AdminController">
-		</bean>
+	<bean class="admin.controller.AdminController">
+	</bean>
 </beans>

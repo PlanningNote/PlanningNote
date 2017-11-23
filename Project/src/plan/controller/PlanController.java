@@ -113,7 +113,7 @@ public class PlanController{
 	
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
-			@ModelAttribute("file") FileUpload upload 
+			@ModelAttribute("file") FileUpload upload
 			,@ModelAttribute("targets") SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
 		
 		PrintWriter writer=arg1.getWriter();
@@ -123,6 +123,10 @@ public class PlanController{
 		mappingSubDTO(arg0,arg1,upload,dtoS);
 		mappingPlanDTO(arg0,arg1,dtoP);
 		
+		//총 여행비 계산▽
+		int total = totalPrice(dtoS);
+		dtoP.setTotalprice(total);
+		
 		//▽ DAOImpl working..
 		int resP =0,resS=0,resT=0;
 		resT = dao.tagPlan(dtoT);
@@ -130,10 +134,6 @@ public class PlanController{
 		resS= dao.insertsubPlan(dtoS);
 		
 		if(resP>0&&resT>0&&resS>0){
-			int total = totalPrice(dtoS);
-			System.out.println("total 값: "+total);
-			dtoP.setTotalprice(total);
-			System.out.println("totalPrice 값: "+dtoP.getTotalprice());
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
 		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
