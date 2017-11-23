@@ -33,7 +33,7 @@ public class PlanDAOImpl implements PlanDAO {
 	public int tagPlan(TagDTO dto) {
 		String sql = "insert into PN_tag values(tag_no_sequence.nextval, " + ",?,?,?,?,?,?)";
 		String tag = dto.getTag1() + "#" + dto.getTag2() + "#" + dto.getTag3()
-							+ "#"+ dto.getTag4() + "#"	+ dto.getTag5();
+							+ "#" + dto.getTag4() + "#"+ dto.getTag5();
 		//String[] arr = tag.split("#");
 		Object[] values = new Object[] { dto.getTag1(), dto.getTag2(), dto.getTag3(),
 				 							dto.getTag4(), dto.getTag5(),tag };
