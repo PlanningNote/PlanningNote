@@ -10,7 +10,7 @@
 				<tr>
 					<td>
 						<a href="admin_main.do"><img src="img/planlogo.jpg" border="0"></a><!-- ·Î°í -->
-						<a href=""><img src="img/login2.PNG" border="0"></a><!-- ·Î±×¾Æ¿ô--> <!-- ¡Ú -->
+						<a href="admin_logout.do"><img src="img/logout.PNG" border="0"></a><!-- ·Î±×¾Æ¿ô--> 						
 					</td>
 				</tr>
 			</table>	
