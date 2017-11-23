@@ -47,7 +47,7 @@
 			<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
 				<tr>
 					<td width="5%">${dtoS.board_num}</td>
-					<td whidth="50%" height="100%">
+				 	<td whidth="50%" height="100%">
 						제목 <br>${dtoS.subject}<br>
 						비용 <br>${dtoS.price }
 						<br>내용 <br>
