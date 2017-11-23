@@ -61,8 +61,8 @@
 			</table><br>
 			<input type="button" value="글수정"
 				onclick="window.location='updatePlan.do?no=${dtoP.group_no}'">
-			<%-- <input type="button" value="글삭제"
-				onclick="window.location='planning_deletePlan.do?num=${getBoard.num}'"> --%>
+			<input type="button" value="글삭제"
+				onclick="window.location='deletePlan.do?no=${dtoP.group_no}'"> 
 	</div>
 	</FORM>
 </body>
