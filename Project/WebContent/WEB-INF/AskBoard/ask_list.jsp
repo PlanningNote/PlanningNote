@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
  <%@ include file="../../top.jsp" %>
+ <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <tr height="600">
 	<td valign="top">
 		<div align="center">
