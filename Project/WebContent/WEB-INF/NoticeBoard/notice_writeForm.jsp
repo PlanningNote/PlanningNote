@@ -34,7 +34,7 @@
 	<td>
 		<div align="center">
 			<form name="f" method="post"  
-				action="notice_write.do" onsubmit="return checkMember()">
+				action="notice_write.do" onsubmit="return checkMember()" enctype="multipart/form-data">
 			
 				<table border="1" width="600">
 					<tr bgcolor="pink">
