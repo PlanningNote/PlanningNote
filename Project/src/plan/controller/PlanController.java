@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -123,7 +125,6 @@ public class PlanController{
 		
 		//¡ä DAOImpl working..
 		int resP =0,resS=0,resT=0;
-		
 		resT = dao.tagPlan(dtoT);
 		resP=dao.insertPlan(dtoP);
 		resS= dao.insertsubPlan(dtoS);
