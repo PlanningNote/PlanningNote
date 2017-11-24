@@ -17,7 +17,7 @@
 					<th>작성자</th>
 					<th width="50%">제목</th>
 					<th>조회수</th>
-					<th>사진</th>
+				
 					<th>날짜</th>
 				</tr>
 			<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
@@ -30,8 +30,7 @@
 			<c:forEach var="dto" items="${askList}">
 				<tr>
 					<td>${dto.no}</td>
-						<td>	<a href="ask_content.do?no=${dto.no}">
-					<td>${dto.writer}</td>
+						<td>${dto.writer}</td>
 					<td>
 						<c:if test="${dto.re_level>0}">
 							<img src="../img/level.gif" width="${dto.re_level*10}">
@@ -43,7 +42,7 @@
 						</c:if>
 					</td>
 					<td>${dto.count}</td>
-					<td>${dto.img}</td>
+				
 					<td>${dto.day}</td>	
 				</tr>
 			</c:forEach>

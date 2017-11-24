@@ -17,7 +17,7 @@
 					<th>번호</th>
 					<th width="50%">제목</th>
 					<th>조회수</th>
-					<th>사진</th>
+					
 					<th>날짜</th>
 				</tr>
 				<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
@@ -36,7 +36,7 @@
 					</a>
 					</td>
 					<td>${dto.count}</td>
-					<td>${dto.img}</td>
+			
 					<td>${dto.day}</td>	
 				</tr>		
 			</c:forEach>				
