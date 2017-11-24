@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	String path = session.getServletContext().getRealPath("img");
+	int index=0;
 %>
 <script language="javascript">
-
-var index=0;
-
 function addRow() {
 	index+=1;
 	var oRow = dyntbl1.insertRow();
@@ -22,17 +20,17 @@ function addRow() {
 	oCell3.width = "10%"; 
 	oCell4.width = "3%";
 	oCell1.innerHTML = "${dtoS.board_num}";
-	oCell2.innerHTML = "(*ÇÊ¼ö)Á¦¸ñ <br>"
-			+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
-			+ "<br>(*ÇÊ¼ö)ºñ¿ë <br>"
-			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;'>¿ø"
-			+ "<br>(*ÇÊ¼ö)³»¿ë <br>"
-			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
+	oCell2.innerHTML = "(*í•„ìˆ˜)ì œëª© <br>"
+			+ "<input type='text' name='targets["<%=index%>"].subject' border='1' style='width: 100%; height: 25;'>"
+			+ "<br>(*í•„ìˆ˜)ë¹„ìš© <br>"
+			+ "<input type='number' name='targets["<%=index%>"].price' border='1' style='width: 95%; height: 25;'>ì›"
+			+ "<br>(*í•„ìˆ˜)ë‚´ìš© <br>"
+			+ "<textarea name='targets["<%=index%>"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
-			+ "<br>(*ÇÊ¼ö)±³Åë <br>"
-			+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-	oCell3.innerHTML = "(*ÇÊ¼ö)<br><input type='file' name='file'>"
-	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' »èÁ¦ ' onClick='delRow()'>";
+			+ "<br>(*í•„ìˆ˜)êµí†µ <br>"
+			+ "<input type='text'name='targets["<%=index%>"].traffic' border='1' style='width: 100%; height: 25;'>";
+	oCell3.innerHTML = "(*í•„ìˆ˜)<br><input type='file' name='file'>"
+	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' ì‚­ì œ ' onClick='delRow()'>";
 	document.recalc();
 }
 function delRow() {
@@ -40,9 +38,9 @@ function delRow() {
 }
 function renameForModelAttribute() {
     $("#form").each( function (index) {
-        $(this).find("input[name=subject]").attr("name", "targets["+index+"].subject");
-        $(this).find("input[name=price]").attr("name", "targets["+index+"].price");
-        $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
+        $(this).find("input[name=subject]").attr("name", "targets[<%=index%>].subject");
+        $(this).find("input[name=price]").attr("name", "targets[<%=index%>].price");
+        $(this).find("input[name=content]").attr("name", "targets[<%=index%>].content");
         $(this).find("input[name=traffic]").attr("name", "traffic");
         $(this).find("input[name=file]").attr("name", "file");
     });
@@ -51,7 +49,7 @@ function renameForModelAttribute() {
 </script>
 <html>
 <head>
-<title>ÇÃ·£¸®½ºÆ®ÀÚ¼¼º¸±â</title>
+<title>í”Œëœë¦¬ìŠ¤íŠ¸ìì„¸ë³´ê¸°</title>
 </head>
 <body>
 	<div align="center">
@@ -59,45 +57,45 @@ function renameForModelAttribute() {
 			<table WIDTH="800" HEIGHT="500" class="outline"
 				background="${path}/${dtoP.thumbnail}">
 				<tr>
-					<td>(*ÇÊ¼ö)³ª¶ó: <INPUT TYPE="TEXT" NAME="country"
-						value="${dtoP.country}">/(*ÇÊ¼ö)µµ½Ã: <INPUT TYPE="TEXT"
+					<td>(*í•„ìˆ˜)ë‚˜ë¼: <INPUT TYPE="TEXT" NAME="country"
+						value="${dtoP.country}">/(*í•„ìˆ˜)ë„ì‹œ: <INPUT TYPE="TEXT"
 						NAME="city" value="${dtoP.city}"></td>
 				</tr>
 				<tr>
-					<td>(*ÇÊ¼ö)
+					<td>(*í•„ìˆ˜)
 						<h2>
-							Á¦¸ñ: <INPUT TYPE="TEXT" NAME="subject" value="${dtoP.subject}">
+							ì œëª©: <INPUT TYPE="TEXT" NAME="subject" value="${dtoP.subject}">
 					</td>
-					<td ALIGN="RIGHT">(*ÇÊ¼ö)<br> <INPUT TYPE="RADIO"
-						NAME="travel_period" VALUE="1~5ÀÏ">1~5ÀÏ <INPUT TYPE="RADIO"
-						NAME="travel_period" VALUE="5~10ÀÏ">5~10ÀÏ <INPUT
-						TYPE="RADIO" NAME="travel_period" VALUE="10~15ÀÏ">10~15ÀÏ <INPUT
-						TYPE="RADIO" NAME="travel_period" VALUE="15ÀÏÀÌ»ó">15ÀÏÀÌ»ó<br>
+					<td ALIGN="RIGHT">(*í•„ìˆ˜)<br> <INPUT TYPE="RADIO"
+						NAME="travel_period" VALUE="1~5ì¼">1~5ì¼ <INPUT TYPE="RADIO"
+						NAME="travel_period" VALUE="5~10ì¼">5~10ì¼ <INPUT
+						TYPE="RADIO" NAME="travel_period" VALUE="10~15ì¼">10~15ì¼ <INPUT
+						TYPE="RADIO" NAME="travel_period" VALUE="15ì¼ì´ìƒ">15ì¼ì´ìƒ<br>
 
-						<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="º½">º½ <INPUT
-						TYPE="RADIO" NAME="travel_seasion" VALUE="¿©¸§">¿©¸§ <INPUT
-						TYPE="RADIO" NAME="travel_seasion" VALUE="°¡À»">°¡À» <INPUT
-						TYPE="RADIO" NAME="travel_seasion" VALUE="°Ü¿ï">°Ü¿ï <br>
+						<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="ë´„">ë´„ <INPUT
+						TYPE="RADIO" NAME="travel_seasion" VALUE="ì—¬ë¦„">ì—¬ë¦„ <INPUT
+						TYPE="RADIO" NAME="travel_seasion" VALUE="ê°€ì„">ê°€ì„ <INPUT
+						TYPE="RADIO" NAME="travel_seasion" VALUE="ê²¨ìš¸">ê²¨ìš¸ <br>
 
-						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="³ªÈ¥ÀÚ">³ª È¥ÀÚ <INPUT
-						TYPE="RADIO" NAME="travel_theme" VALUE="Ä£±¸¿ÍÇÔ²²">Ä£±¸¿ÍÇÔ²² <INPUT
-						TYPE="RADIO" NAME="travel_theme" VALUE="¿¬ÀÎ°úÇÔ²²">¿¬ÀÎ°úÇÔ²² <INPUT
-						TYPE="RADIO" NAME="travel_theme" VALUE="°¡Á·¿©Çà">°¡Á·¿©Çà
+						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="ë‚˜í˜¼ì">ë‚˜ í˜¼ì <INPUT
+						TYPE="RADIO" NAME="travel_theme" VALUE="ì¹œêµ¬ì™€í•¨ê»˜">ì¹œêµ¬ì™€í•¨ê»˜ <INPUT
+						TYPE="RADIO" NAME="travel_theme" VALUE="ì—°ì¸ê³¼í•¨ê»˜">ì—°ì¸ê³¼í•¨ê»˜ <INPUT
+						TYPE="RADIO" NAME="travel_theme" VALUE="ê°€ì¡±ì—¬í–‰">ê°€ì¡±ì—¬í–‰
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">ÀÛ¼ºÀÚ: <INPUT TYPE="hidden" NAME="writer"
-						value="${dtoP.writer}" disabled>´Ô
+					<td COLSPAN="2">ì‘ì„±ì: <INPUT TYPE="hidden" NAME="writer"
+						value="${dtoP.writer}" disabled>ë‹˜
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">ÀÛ¼ºÀÏ: <c:set var="day"
+					<td COLSPAN="2">ì‘ì„±ì¼: <c:set var="day"
 							value="<%=new java.util.Date()%>" /> <fmt:formatDate
 							value="${day}" type="date" dateStyle="full" />
 					</td>
 				</tr>
 				<tr>
-					<td>ÅÂ±×:<br> &nbsp;<INPUT TYPE="TEXT" NAME="tag1"
+					<td>íƒœê·¸:<br> &nbsp;<INPUT TYPE="TEXT" NAME="tag1"
 						value="#"><br> &nbsp;<INPUT TYPE="TEXT" NAME="tag2"
 						value="#"><br> &nbsp;<INPUT TYPE="TEXT" NAME="tag3"
 						value="#"><br> &nbsp;<INPUT TYPE="TEXT" NAME="tag4"
@@ -106,9 +104,9 @@ function renameForModelAttribute() {
 					</td>
 				</tr>
 				<tr>
-					<td ALIGN="RIGHT" COLSPAN="2"><font color="black">(*ÇÊ¼ö)¹è°æ»çÁø</font>
+					<td ALIGN="RIGHT" COLSPAN="2"><font color="black">(*í•„ìˆ˜)ë°°ê²½ì‚¬ì§„</font>
 						<INPUT TYPE="FILE" name="thumbfile"
-						value="${path}/${dtoP.thumbnail}"></td>
+						value="<%=path%>/${dtoP.thumbnail}"></td>
 				</tr>
 			</table>
 	</div>
@@ -116,27 +114,27 @@ function renameForModelAttribute() {
 		<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850">
 				<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
-				<input type="hidden" name="targets[${index}].board_num" value="${dtoS.board_num }">
-					(*ÇÊ¼ö)Á¦¸ñ <br>
-					<input type='text' name='targets[${index}].subject' value="${dtoS.subject }" border='1' style='width: 100%; height: 25;'>
-					<br>ºñ¿ë <br>
-					<input type='number' name='targets[${index}].price' value="${dtoS.price }"border='1' style='width: 95%; height: 25;'>¿ø
-					<br>³»¿ë <br>
-					<textarea name='targets[${index}].content' rows='5' value="${dtoS.content }"border='1' style='width: 95%; height: 80;'>
+				<input type="hidden" name="targets[<%= index %>].board_num" value="${dtoS.board_num }">
+					(*í•„ìˆ˜)ì œëª© <br>
+					<input type='text' name='targets[<%= index %>].subject' value="${dtoS.subject }" border='1' style='width: 100%; height: 25;'>
+					<br>ë¹„ìš© <br>
+					<input type='number' name='targets[<%= index %>].price' value="${dtoS.price }"border='1' style='width: 95%; height: 25;'>ì›
+					<br>ë‚´ìš© <br>
+					<textarea name='targets[<%= index %>].content' rows='5' value="${dtoS.content }"border='1' style='width: 95%; height: 80;'>
 					</textarea>
-					<br>±³Åë <br>
-					<input type='text'name='targets[${index}].traffic' value="${dtoS.traffic}"border='1' style='width: 100%; height: 25;'>
-					»çÁø<br>
-					<input type='file' name='file' value="${path}/${dtoS.img}">
-					<input type=button name=dyntbl1_delRow value=' »èÁ¦ ' onClick='delRow()'>
+					<br>êµí†µ <br>
+					<input type='text'name='targets[<%= index %>].traffic' value="${dtoS.traffic}"border='1' style='width: 100%; height: 25;'>
+					ì‚¬ì§„<br>
+					<input type='file' name='file' value="<%=path%>/${dtoS.img}">
+					<input type=button name=dyntbl1_delRow value=' ì‚­ì œ ' onClick='delRow()'>
 				</c:forEach>
 				
 				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
 				</tr>
 			</table>
-			<input type="button" value="ÀÏÁ¤Ãß°¡" onClick="addRow()"><br>
-			<input type="reset" value="Ãë¼Ò">   <input type="submit" value="¼öÁ¤">
-			<button onclick="location='list.do?group_no=${dtoS.getGroup_no()}'">Ãë¼Ò</button>
+			<input type="button" value="ì¼ì •ì¶”ê°€" onClick="addRow()"><br>
+			 <input type="submit" value="ìˆ˜ì •">
+			<button onclick="location='list.do?group_no=${dtoS.getGroup_no()}'">ì·¨ì†Œ</button>
 			</FORM>
 		</div>
 </body>

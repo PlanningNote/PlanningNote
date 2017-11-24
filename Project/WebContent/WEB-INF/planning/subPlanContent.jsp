@@ -8,7 +8,7 @@
 		enctype="multipart/form-data">
 		<table border="1" width="100%" height="100%">
 			<tr height="30%" align="center">
-				<td colspan="2">${dtoS.path}+${dtoS.img}</td>
+				<td colspan="2"><%=path %>/${dtoS.img}</td>
 			</tr>
 			<tr align="center">
 				<td colspan="2">${dtoS.subject}</td>

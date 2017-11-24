@@ -86,9 +86,9 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public int updatePlan(int no, PlanDTO dto) {
-		String sql = "update PN_planning"
-				+ "set subject=?, day=?, writer=?, count=?, pwd=?, tag_no=?,county=?,city=?,thumbnail=?,"
-				+ "totalprice=?,travel_period=?,travel_seasion=?,travel_theme=?,recom=?" + " where group_no=?)";
+		String sql = "update PN_planning set subject=?, day=?, writer=?, count=?, pwd=?"
+				+ ", tag_no_sequence=?,country=?,city=?,thumbnail=?,totalprice=?,"
+				+ "travel_period=?,travel_seasion=?,travel_theme=?,recom=? where group_no=?";
 
 		Object[] values = new Object[] { dto.getSubject(), dto.getDay(), dto.getWriter(), dto.getCount(), dto.getPwd(),
 				dto.getTag_no_sequence(), dto.getCountry(), dto.getCity(), dto.getThumbnail(), dto.getTotalprice(),
@@ -100,15 +100,18 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 	@Override
 	public int updateSubPlan(List num, SubPlanDTO sdto) {
-		String sql = "update PN_sbuplan set subject=?,img=?,content=?,price=?,traffic=? where board_num=?";
+		String sql = "update PN_subplan set subject=?,img=?,content=?,price=?,traffic=? where board_num=?";
 		Object[] values;
 		int res = 0;
 		for (int i = 0; i < sdto.getImgName().size(); i++) {
 			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
 			
 			values = new Object[] { sdto.getTargets().get(i).getSubject(),
-					sdto.getTargets().get(i).getImg(), sdto.getTargets().get(i).getContent(),
-					sdto.getTargets().get(i).getPrice(), sdto.getTargets().get(i).getTraffic() };
+					sdto.getTargets().get(i).getImg(),
+					sdto.getTargets().get(i).getContent(),
+					sdto.getTargets().get(i).getPrice(),
+					sdto.getTargets().get(i).getTraffic(),
+					num.get(i)};
 			res = jdbcTemplate.update(sql, values);
 		}
 		if (res < 0) {
