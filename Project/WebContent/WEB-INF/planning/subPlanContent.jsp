@@ -26,6 +26,6 @@
 					<button onclick="location='list.do?no=${dtoS.group_no}'">뒤로가기</button>
 				</td>
 			</tr>
-		</table>
+		</table> 
 	</form>
 </div>
