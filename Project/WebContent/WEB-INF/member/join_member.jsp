@@ -2,10 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../top.jsp" %>
-<html>
-<head>
-	<title>회원가입</title>
-	<script type="text/javascript">
+<script type="text/javascript">
 	
 		// 회원가입 화면의 입력값들을 검사한다.
 		function checkValue()
@@ -93,10 +90,6 @@
 </head>
 <body>
 <div align="center">
-		<br><br>
-		
-		<br><br><br>
-		
 		
 		<!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
 		<!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 JoinPro.jsp -->
@@ -138,8 +131,8 @@
 				<tr>
 					<td id="title">성별</td>
 					<td>
-						<input type="radio" name="gender" value="남" checked>남
-						<input type="radio" name="gender" value="여" >여
+						<input type="radio" name="gender" value="M" checked>남
+						<input type="radio" name="gender" value="W" >여
 					</td>
 				</tr>
 					
@@ -155,6 +148,6 @@
 			<input type="reset" value="다시작성">
 		</form>
 </div>
-</body>
-</html>
+</tr>
+
 <%@ include file="../../bottom.jsp" %>

@@ -20,11 +20,11 @@
 		location.href="insertForm.do";
 		//window.open("insertForm.do");
 	}	
-	
+	var map;
 	 function initMap() {		 
 		 	var initLatLng = {lat: 37.366184, lng: 127.107905};
 	        var geocoder = new google.maps.Geocoder;
-	        var map = new google.maps.Map(document.getElementById('map'), {
+	        map = new google.maps.Map(document.getElementById('map'), {
 	            center: initLatLng,
 	            zoom: 14
 	        });              
@@ -34,24 +34,28 @@
 	            position: initLatLng,
 	            map: map //map을 선택 안해주면 마커는 생성되지만 표시는 안됨 이 경우는 setmap으로 나중에 호출할 수 있음
 	        });   
-	       
-	       var size = ${listSize};
- 		 	widow.alert('size: '+size);
- 			//var coords =  new google.maps.LatLng(lat,lng);
- 			//window.alert("coords"+coords);
- 			//addMarker(coords);	 	
 	        
-	 		 function addMarker(location){
-	 			 window.alert('들어옴 : '+location);
-	 				var marker = new google.maps.Marker({
-	 					position: location,
-	 					map:map
-	 				});
-	 			}
+	        var size = ${listSize};
 	        
+	      	<c:forEach items="${contentList}" var="list">
+		      	var lat = ${list.lat};
+	        	var lng = ${list.lng};
+	        	var sub = "${list.subject}";
+	        	var c =  new google.maps.LatLng(lat,lng);
+	        	addMarker(c);
+	      	</c:forEach>
+	        
+	       function addMarker(location){
+	        	var marker = new google.maps.Marker({
+	   					position: location,
+	   					map:map
+	   			});
+	   			}	 		
+	   	 
 	      
 	    }
 	
+
 </script>
 </head>
 

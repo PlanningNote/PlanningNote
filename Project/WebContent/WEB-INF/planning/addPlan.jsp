@@ -1,17 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="java.util.*"%>
 <%
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
 %>
 <html>
 <head>
-<title>ÇÃ·£¸®½ºÆ®</title>
+<title>í”Œëœë¦¬ìŠ¤íŠ¸</title>
 </head>
 <script language="javascript">
-
 var index=-1;
 
 function addRow() {
@@ -27,17 +26,17 @@ function addRow() {
 	oCell3.width = "10%"; 
 	oCell4.width = "3%";
 	oCell1.innerHTML = "${dtoS.board_num}";
-	oCell2.innerHTML = "(*ÇÊ¼ö)Á¦¸ñ <br>"
+	oCell2.innerHTML = "(*í•„ìˆ˜)ì œëª© <br>"
 			+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
-			+ "<br>(*ÇÊ¼ö)ºñ¿ë <br>"
-			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;'>¿ø"
-			+ "<br>(*ÇÊ¼ö)³»¿ë <br>"
+			+ "<br>(*í•„ìˆ˜)ë¹„ìš© <br>"
+			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;'>ì›"
+			+ "<br>(*í•„ìˆ˜)ë‚´ìš© <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
-			+ "<br>(*ÇÊ¼ö)±³Åë <br>"
+			+ "<br>(*í•„ìˆ˜)êµí†µ <br>"
 			+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
-	oCell3.innerHTML = "(*ÇÊ¼ö)<br><input type='file' name='file'>"
-	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' »èÁ¦ ' onClick='delRow()'>";
+	oCell3.innerHTML = "(*í•„ìˆ˜)<br><input type='file' name='file'>"
+	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' ì‚­ì œ ' onClick='delRow()'>";
 	document.recalc();
 }
 function delRow() {
@@ -60,48 +59,62 @@ function renameForModelAttribute() {
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
-					<td>(*ÇÊ¼ö)³ª¶ó: <INPUT TYPE="TEXT" NAME="country"> /(*ÇÊ¼ö)µµ½Ã: <INPUT
+					<td>(*í•„ìˆ˜)ë‚˜ë¼: <INPUT TYPE="TEXT" NAME="country"> /(*í•„ìˆ˜)ë„ì‹œ: <INPUT
 						TYPE="TEXT" NAME="city"></td>
 				</tr>
 				<tr>
-					<td>(*ÇÊ¼ö)<h2>
-							Á¦¸ñ: <INPUT TYPE="TEXT" NAME="subject"></td>
-					<td ALIGN="RIGHT">(*ÇÊ¼ö)<br>
-					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="1~5ÀÏ">1~5ÀÏ 
-					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="5~10ÀÏ">5~10ÀÏ 
-					<INPUT TYPE="RADIO"	NAME="travel_period" VALUE="10~15ÀÏ">10~15ÀÏ 
-					<INPUT TYPE="RADIO" NAME="travel_period" VALUE="15ÀÏÀÌ»ó">15ÀÏÀÌ»ó<br>
+					<td>(*í•„ìˆ˜)<h2>
+							ì œëª©: <INPUT TYPE="TEXT" NAME="subject"></td>
+					<td ALIGN="RIGHT">(*í•„ìˆ˜)<br>
+					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="1~5ì¼">1~5ì¼ 
+					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="5~10ì¼">5~10ì¼ 
+					<INPUT TYPE="RADIO"	NAME="travel_period" VALUE="10~15ì¼">10~15ì¼ 
+					<INPUT TYPE="RADIO" NAME="travel_period" VALUE="15ì¼ì´ìƒ">15ì¼ì´ìƒ<br>
 					
-					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="º½">º½ 
-					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="¿©¸§">¿©¸§ 
-					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="°¡À»">°¡À» 
-					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="°Ü¿ï">°Ü¿ï <br>
+					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="ë´„">ë´„ 
+					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="ì—¬ë¦„">ì—¬ë¦„ 
+					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="ê°€ì„">ê°€ì„ 
+					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="ê²¨ìš¸">ê²¨ìš¸ <br>
 					
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="³ªÈ¥ÀÚ">³ª È¥ÀÚ
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="Ä£±¸¿ÍÇÔ²²">Ä£±¸¿Í	ÇÔ²² 
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="¿¬ÀÎ°úÇÔ²²">¿¬ÀÎ°ú	ÇÔ²² 
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="°¡Á·¿©Çà">°¡Á·¿©Çà</td>
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="ë‚˜í˜¼ì">ë‚˜ í˜¼ì
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="ì¹œêµ¬ì™€í•¨ê»˜">ì¹œêµ¬ì™€	í•¨ê»˜ 
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="ì—°ì¸ê³¼í•¨ê»˜">ì—°ì¸ê³¼	í•¨ê»˜ 
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="ê°€ì¡±ì—¬í–‰">ê°€ì¡±ì—¬í–‰</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">ÀÛ¼ºÀÚ: <INPUT TYPE="hidden" NAME="writer" value="${writer}">´Ô
+<<<<<<< HEAD
+					<td COLSPAN="2">ì‘ì„±ì: <INPUT TYPE="hidden" NAME="writer" value="ë‚˜">ë‹˜
+=======
+					<td COLSPAN="2">ÀÛ¼ºÀÚ: 
+					<INPUT TYPE="text" NAME="writer" value="³ª" readonly="readonly">´Ô
+>>>>>>> refs/remotes/origin/master
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">ÀÛ¼ºÀÏ: 
+					<td COLSPAN="2">ì‘ì„±ì¼: 
 					<c:set var="day" value="<%=new java.util.Date()%>" /> 
 					<fmt:formatDate value="${day}" type="date" dateStyle="full"/> </td>
 				</tr>
 				<tr>
-					<td>ÅÂ±×:<br>
+<<<<<<< HEAD
+					<td>íƒœê·¸:<br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag1" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag2" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag3" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
+=======
+					<td>ÅÂ±×:<br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
+>>>>>>> refs/remotes/origin/master
 					</td>
 				</tr>
 				<tr>
-					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">(*ÇÊ¼ö)¹è°æ»çÁø</font>
+					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">(*í•„ìˆ˜)ë°°ê²½ì‚¬ì§„</font>
 					<INPUT TYPE="FILE" name="thumbfile"></td>
 				</tr>
 			</table> 
@@ -113,12 +126,9 @@ function renameForModelAttribute() {
 
 				</tr>
 			</table>
-			<input type="button" value="ÀÏÁ¤Ãß°¡" onClick="addRow()"><br><br>
-			<input type="submit" value="ÀúÀå">
-			<input type="reset" value="Ãë¼Ò">
-		</form>
-	</div> 
-	</div>
+			<input type="button" value="ì¼ì •ì¶”ê°€" onClick="addRow()"><br><br>
+			<input type="submit" value="ì €ì¥">
+			<input type="reset" value="ì·¨ì†Œ">
 	</form>
 </div>
 </body>

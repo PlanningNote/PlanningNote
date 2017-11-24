@@ -16,6 +16,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +32,7 @@ public class PlanController{
 	
 	@Autowired
 	private PlanDAO dao;
-	
+	 
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -81,7 +82,7 @@ public class PlanController{
 		HttpSession session = arg0.getSession();
 		MultipartFile files = dtoP.getThumbfile();
 		
-		
+		 
 		String img=null;
 		String filePath=null;
 		
@@ -113,7 +114,7 @@ public class PlanController{
 	
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
-			@ModelAttribute("file") FileUpload upload 
+			@ModelAttribute("file") FileUpload upload
 			,@ModelAttribute("targets") SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
 		
 		PrintWriter writer=arg1.getWriter();
@@ -123,6 +124,10 @@ public class PlanController{
 		mappingSubDTO(arg0,arg1,upload,dtoS);
 		mappingPlanDTO(arg0,arg1,dtoP);
 		
+		//총 여행비 계산▽
+		int total = totalPrice(dtoS);
+		dtoP.setTotalprice(total);
+		
 		//▽ DAOImpl working..
 		int resP =0,resS=0,resT=0;
 		resT = dao.tagPlan(dtoT);
@@ -130,10 +135,6 @@ public class PlanController{
 		resS= dao.insertsubPlan(dtoS);
 		
 		if(resP>0&&resT>0&&resS>0){
-			int total = totalPrice(dtoS);
-			System.out.println("total 값: "+total);
-			dtoP.setTotalprice(total);
-			System.out.println("totalPrice 값: "+dtoP.getTotalprice());
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		}
 		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
@@ -170,29 +171,90 @@ public class PlanController{
 			HttpServletResponse arg1,@RequestParam("group_no")int group_no) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		List<PlanDTO> dtoP = new ArrayList<PlanDTO>();
-		List<SubPlanDTO> dtoS = new ArrayList<SubPlanDTO>();
+		PlanDTO dtoP = new PlanDTO();
+		SubPlanDTO dtoS = new SubPlanDTO();
+		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
 		
 		dtoP = dao.listPlan(group_no);
-		dtoS = dao.subList(group_no);
+		listS = dao.subList(group_no);
 		
+		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS",dtoS);
 		return mav;
 	}
-	
 	@RequestMapping(value="/subPlanContent.do")//계획목록 페이지로 이동.
 	public ModelAndView contentPlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/subPlanContent.jsp");
+		SubPlanDTO dtoS = new SubPlanDTO();
+		
+		mav.addObject("dtoS",dtoS);
 		return mav;
 	}
-	@RequestMapping(value="/updatePlan.do")//계획수정 페이지로 이동.
+	@RequestMapping(value="/updatePlan.do", method=RequestMethod.GET)//계획수정 페이지로 이동.
 	public ModelAndView updatePlan(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
+			HttpServletResponse arg1,@RequestParam("group_no")int group_no) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/updatePlan.jsp");
+		PlanDTO dtoP = new PlanDTO();
+		SubPlanDTO dtoS = new SubPlanDTO();
+		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
+		
+		dtoP = dao.listPlan(group_no);
+		listS = dao.subList(group_no);
+		
+		dtoS.setTargets(listS);
+		mav.addObject("dtoP", dtoP);
+		mav.addObject("dtoS",dtoS);
+		return mav;
+	}
+	@RequestMapping(value = "/updatePlan.do" , method=RequestMethod.POST) // 계획 저장
+	public ModelAndView updatePro(HttpServletRequest arg0, HttpServletResponse arg1,
+			@ModelAttribute("file") FileUpload upload
+			,@ModelAttribute("targets") SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
+		
+		PrintWriter writer=arg1.getWriter();
+		ModelAndView mav = new ModelAndView();
+		 
+		//↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드 
+		mappingSubDTO(arg0,arg1,upload,dtoS);
+		mappingPlanDTO(arg0,arg1,dtoP);
+		
+		//총 여행비 계산▽
+		int total = totalPrice(dtoS);
+		dtoP.setTotalprice(total);
+		//board_num을 담은 list
+		List numlist = new ArrayList();
+		for(int i=0;i<dtoS.getTargets().size();i++) {
+		numlist.add(dtoS.getTargets().get(i).getBoard_num());
+		}
+		//▽ DAOImpl working..
+		int resP =0,resS=0,resT=0;
+		resT = dao.tagPlan(dtoT);
+		resP=dao.updatePlan(dtoP.getGroup_no(),dtoP);
+		resS= dao.updateSubPlan(numlist,dtoS);
+		
+		if(resP>0&&resT>0&&resS>0){
+			mav.setViewName("WEB-INF/planning/listPlan.jsp");
+		}
+		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
+				&&dtoP.getThumbnail().equals(null)&&dtoP.getTravel_period().equals(null)
+				&&dtoP.getTravel_seasion().equals(null)&&dtoP.getTravel_theme().equals(null)
+				&&dtoS.getSubject().equals(null)&&dtoS.getImg().equals(null)&&dtoS.getContent().equals(null)
+				&&dtoS.getPrice()>0&&dtoS.getTraffic().equals(null)
+				){
+			writer.print("필수 항목을 입력해주세요");
+			mav.setViewName("plan.do");
+		}*/else {
+			writer.println("게시글 등록을 실패하였습니다.");
+			mav.setViewName("listPlanA.do");
+		}
+		
+		mav.addObject("dtoT", dtoT);
+		mav.addObject("dtoP", dtoP);
+		mav.addObject("dtoS", dtoS);
 		return mav;
 	}
 }

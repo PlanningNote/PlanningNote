@@ -36,26 +36,21 @@ public class MemberController {
 			return new ModelAndView("redirect:login.do");
 		}
 		
-		boolean result = memberDAO.checkMember(email, pwd);		
+		boolean result = memberDAO.checkMember(email, pwd);
 		ModelAndView mav = new ModelAndView();
 		if(result) {
+			String nickname = memberDAO.getNickname(email);
 			 session.setAttribute("loginKey", email);
-			 if(email.equals("admin")) {				 
-				 mav.addObject("message","관리자모드 성공");
-				 mav.setViewName("admin_main.do");
-				 return mav;
+			 session.setAttribute("mynick", nickname);
+			 if(email.equals("admin")) {
+				 return new ModelAndView("admin_main.do");
 			 }else {
-				 mav.addObject("message","회원모드 성공");
-				 mav.addObject("location","index.jsp");
-				 mav.setViewName("message.jsp");
-				 return mav;
+				 return new ModelAndView("index.jsp");
 			 }
-		}else {
-			mav.addObject("message","로그인 실패");
-			 mav.addObject("location","login.do");
-			 mav.setViewName("message.jsp");
-			 return mav;
-		}		
+		} 
+			 else{
+				return new ModelAndView("redirect:login.do"); 
+			 }
 	}
 	
 	@RequestMapping(value= "/email_check.do") //회원가입form으로 가기(join_member.jsp)

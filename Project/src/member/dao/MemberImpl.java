@@ -24,11 +24,13 @@ public class MemberImpl implements MemberDAO{
 		@Override
 		public MemberDTO mapRow(ResultSet arg0, int arg1) throws SQLException {
 			MemberDTO dto = new MemberDTO();
+			dto.setNo(arg0.getInt("no"));
 			dto.setNickname(arg0.getString("nickname"));
 			dto.setGender(arg0.getString("gender"));
 			dto.setEmail(arg0.getString("email"));
 			dto.setAge(arg0.getInt("age"));
 			dto.setPwd(arg0.getString("pwd"));
+			dto.setImg(arg0.getString("img"));
 			return dto;
 		}
 	}
@@ -37,8 +39,8 @@ public class MemberImpl implements MemberDAO{
 	
 	@Override
 	public void insertMember(MemberDTO dto) {
-		String sql = "insert into PN_member values(?,?,?,?,?)";
-		Object[] values = new Object[] {dto.getNickname(),dto.getGender(),dto.getEmail(),dto.getAge(),dto.getPwd()};
+		String sql = "insert into PN_member values(member_seq.nextval,?,?,?,?,?,?)";
+		Object[] values = new Object[] {dto.getNickname(),dto.getGender(),dto.getEmail(),dto.getAge(),dto.getPwd(), "profile_default.png"};
 		jdbcTemplate.update(sql,values);
 	}
 
@@ -50,8 +52,9 @@ public class MemberImpl implements MemberDAO{
 
 	@Override
 	public int deleteMember(int no) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "delete from PN_member where no = ?";
+		int result = jdbcTemplate.update(sql, no);
+		return result;
 	}
 
 	@Override
@@ -148,7 +151,20 @@ public class MemberImpl implements MemberDAO{
 			return true;
 
 		}catch(EmptyResultDataAccessException e) {
-			return false;
+			return false; 
 		}	
+		
+	}
+		//관리자모드에서 사용
+		@Override
+		public boolean checkPwd(String nickname, String pwd) {
+			String sql = "select pwd from  PN_member where nickname = ?";
+			String result = (String) this.jdbcTemplate.queryForObject(
+				       sql,    new Object[]{nickname}, String.class);
+			if(result.equals(pwd)) {
+				return true;
+			}else {
+				return false;
+			}
 	}
 }
