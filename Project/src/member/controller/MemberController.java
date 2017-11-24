@@ -47,7 +47,7 @@ public class MemberController {
 			 }else {
 				 return new ModelAndView("index.jsp");
 			 }
-		} 
+		}   
 			 else{
 				return new ModelAndView("redirect:login.do"); 
 			 }
