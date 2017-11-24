@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="top.jsp"%>
-	<tr height="30%">
+	<tr height="25%">
 		<td align="center">
 				<img src="img/a1.jpg" align ="center" width="100%" height="100%">
 		</td>
@@ -25,9 +25,6 @@
 		</td>
 		</tr>
 		</table><br><br>
-			
-			
-
 			
 			<b>여행자들의 일정보기 (예상)</b>
 			<table class="type07">

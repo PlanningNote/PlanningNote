@@ -49,12 +49,12 @@
 					</tr>
 					<tr>
 						<th bgcolor="pink" width="20%">이미지</th>
-						<td><input type="text" name="img" class="box" size="50" 
+						<td><input type="file" name="img"  size="50" 
 																value="${getAskBoard.img}"></td>
 					</tr>
 					<tr>
 						<th bgcolor="pink" width="20%">비밀번호</th>
-						<td><input type="password" name="passwd" class="box"></td>
+						<td><input type="password" name="pwd" class="box"></td>
 					</tr>
 					<tr bgcolor="pink">
 						<td align="center" colspan="2">

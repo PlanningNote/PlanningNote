@@ -12,7 +12,7 @@
 </head>
 <script language="javascript">
 var index=-1;
-var i=0;
+
 function addRow() {
 	index+=1;
 	var oRow = dyntbl1.insertRow();
@@ -27,9 +27,9 @@ function addRow() {
 	oCell4.width = "3%";
 	oCell1.innerHTML = "${dtoS.board_num}";
 	oCell2.innerHTML = "(*필수)제목 <br>"
-			+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
+			+ "<input type='text' name='targets["+index+"].subject' onkeydown=checkSubsubject() border='1' style='width: 100%; height: 25;'>"
 			+ "<br>(*필수)비용 <br>"
-			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;'>원"
+			+ "<input type='text' name='targets["+index+"].price' id='targets["+index+"].price' onkeydown=checkPrice() border='1' style='width: 95%; height: 25;'>원"
 			+ "<br>(*필수)내용 <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
@@ -49,38 +49,44 @@ function renameForModelAttribute() {
         $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
         $(this).find("input[name=traffic]").attr("name", "traffic");
         $(this).find("input[name=file]").attr("name", "file");
-    });
+    }); 
 }
-function alertError(){
-	for(i=0;i<index;i++){
-	var price = new Array();
-		price[i]=document.getElementById('targets['+index+'].price').value;
-	var subject = new Array();
-		subject = document.getElementById('targets['+index+'].subject').value;
-	if(isNum(price[i])==true){
-			alert("숫자만 입력해 주세요!");
-		}
-	if(subject[i].equals("")){
+function checkSubSubject(){
+	var subject = document.getElementById('targets['+index+'].subject')	;
+	if(subject.value==""||subject.value==null){
 		alert("빈칸을 채워주세요");
-	}
-	}
+		subject.focus();
+	}	
+}
+function checkPrice(){
+			 if(!((event.keyCode>=48&&event.keyCode<=57)||
+					(event.keyCode>=96&&event.keyCod<=105)||(event.keyCode==8))){
+				alert("숫자만 입력해 주세요!");
+				var price = document.getElementById("targets["+index+"].price");
+				price.value="";
+			}
+}
+
+function alertError(){
+	
 	var subject =document.getElementById('subject');
 	var country =document.getElementById('country');
 	var city =document.getElementById('city');
 	var thumbnail =document.getElementById('thumbfile').value;
 	var travel_period =document.getElementById('travel_period');
-	var Travel_seasion =document.getElementById('travel_seasion');
-	var Travel_theme =document.getElementById('travel_theme');
-	if(dtoP.getSubject().equals(null)||dtoP.getCountry().equals(null)||dtoP.getCity().equals(null)
-			||dtoP.getThumbnail().equals(null)||dtoP.getTravel_period().equals(null)
-			||dtoP.getTravel_seasion().equals(null)||dtoP.getTravel_theme().equals(null))
-			{alert("필수 항목을 입력해주세요");	}
+	var travel_seasion =document.getElementById('travel_seasion');
+	var travel_theme =document.getElementById('travel_theme');
+	if(subject.value==""||subject.value==null||country.value==""||country.value==null||city.value==""||
+			city.value==null||thumbnail==0||thumbnail==""||
+			travel_period.value==null||Travel_seasion.value==null||Travel_theme.value==null)
+			{alert("필수 항목을 입력해주세요");	
+			return false;}
 }
-</script>
 
+</script>
 <body>
 	<div align="center">
-		<form name="f" class="f" method="post" action="goView.do" enctype="multipart/form-data">
+		<form name="f" class="f" method="post" onsubmit="return alertError()" action="goView.do" enctype="multipart/form-data">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
