@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>   
 <%@ include file="../../top.jsp"%>
 <tr>
 	<td>
-		<!-- ÀÌ ¾È¿¡ ³»¿ë ³Ö±â -->
+		<!-- ì´ ì•ˆì— ë‚´ìš© ë„£ê¸° -->
 	</td>
 </tr>
 <%@ include file="../../bottom.jsp"%>

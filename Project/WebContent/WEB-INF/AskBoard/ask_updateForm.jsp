@@ -1,21 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="../../top.jsp" %>
 <script type="text/javascript">
 	function checkMember(){
 		
 		if (f.subject.value==""){
-			alert("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+			alert("ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 			f.subject.focus()
 			return false
 		}
 		if (f.content.value==""){
-			alert("³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+			alert("ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 			f.content.focus()
 			return false
 		}
 		if (f.passwd.value==""){
-			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 			f.passwd.focus()
 			return false
 		}
@@ -25,42 +25,42 @@
 <tr>
 	<td>
 		<div align="center">
-			<h3>±Û¼öÁ¤</h3>
+			<h3>ê¸€ìˆ˜ì •</h3>
 			<form name="f" action="ask_update.do" 
 									method="post" onsubmit="return check()">
 			<input type="hidden" name="no" value="${getAskBoard.no}"/>
 				<table border="1" width="600">
 					<tr bgcolor="pink">
-						<th colspan="2">¹® ÀÇ ¼ö Á¤ ¶õ ÀÔ´Ï´Ù</th>
+						<th colspan="2">ë¬¸ ì˜ ìˆ˜ ì • ë€ ì…ë‹ˆë‹¤</th>
 					</tr> 
 					<tr>
-						<th bgcolor="pink" width="80%">Á¦¸ñ</th>
+						<th bgcolor="pink" width="80%">ì œëª©</th>
 						<td><input type="text" name="subject" class="box" size="50" 
 																value="${getAskBoard.subject}"></td>
 					</tr>	
 					<tr>
-						<th bgcolor="pink" width="80%">ÀÛ¼ºÀÚ</th>
+						<th bgcolor="pink" width="80%">ì‘ì„±ì</th>
 						<td><input type="text" name="writer" class="box" size="50" 
 																value="${getAskBoard.writer}"></td>
 					</tr> 					
 					<tr>
-						<th bgcolor="pink" width="20%">³» ¿ë</th>
+						<th bgcolor="pink" width="20%">ë‚´ ìš©</th>
 						<td><textarea name="content" rows="12" cols="55" class="box">${getAskBoard.content}</textarea></td>
 					</tr>
 					<tr>
-						<th bgcolor="pink" width="20%">ÀÌ¹ÌÁö</th>
+						<th bgcolor="pink" width="20%">ì´ë¯¸ì§€</th>
 						<td><input type="text" name="img" class="box" size="50" 
 																value="${getAskBoard.img}"></td>
 					</tr>
 					<tr>
-						<th bgcolor="pink" width="20%">ºñ¹Ğ¹øÈ£</th>
+						<th bgcolor="pink" width="20%">ë¹„ë°€ë²ˆí˜¸</th>
 						<td><input type="password" name="passwd" class="box"></td>
 					</tr>
 					<tr bgcolor="pink">
 						<td align="center" colspan="2">
-							<input type="submit" value="±Û¼öÁ¤">
-							<input type="reset" value="´Ù½ÃÀÛ¼º">
-							<input type="button" value="¸ñ·Ïº¸±â" 
+							<input type="submit" value="ê¸€ìˆ˜ì •">
+							<input type="reset" value="ë‹¤ì‹œì‘ì„±">
+							<input type="button" value="ëª©ë¡ë³´ê¸°" 
 													onclick="window.location='ask_list.do'">
 						</td>
 					</tr>
