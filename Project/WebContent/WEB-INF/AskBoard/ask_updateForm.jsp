@@ -49,7 +49,7 @@
 					</tr>
 					<tr>
 						<th bgcolor="pink" width="20%">이미지</th>
-						<td><input type="text" name="img" class="box" size="50" 
+						<td><input type="file" name="img"  size="50" 
 																value="${getAskBoard.img}"></td>
 					</tr>
 					<tr>

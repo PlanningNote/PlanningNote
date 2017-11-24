@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ask.dao.AskDAO;
 import ask.dto.AskDTO;
 
+
 @Controller
 public class AskController {
 	@Autowired
@@ -115,6 +116,9 @@ public class AskController {
 		askDAO.insertAsk(dto);
 		return new ModelAndView("redirect:ask_list.do");
 	}
+	
+	
+	
 	
 	@RequestMapping(value= "/ask_update.do", method=RequestMethod.GET)
 	protected ModelAndView updateBoard(@RequestParam String no) throws Exception {

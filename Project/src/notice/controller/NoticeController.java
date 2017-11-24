@@ -121,6 +121,39 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value= "/notice_update.do", method=RequestMethod.GET)
+	protected ModelAndView updateNoticeBoard(@RequestParam String no) throws Exception {
+		if(no == null || no.trim().equals("")) {
+			return null;
+		}
+		NoticeDTO dto = noticeDAO.getNoticeBoard(Integer.parseInt(no), "update");
+		ModelAndView mav = new ModelAndView("WEB-INF/NoticeBoard/notice_updateForm.jsp","getNoticeBoard",dto); //값 하나일때 가능
+		return mav;
+	}
+	
+	@RequestMapping(value= "/notice_update.do", method=RequestMethod.POST)
+	protected ModelAndView updateProNoticeBoard(HttpServletRequest arg0, @ModelAttribute NoticeDTO dto, BindingResult result)	throws Exception {
+		if(result.hasErrors()) { 
+			dto.setNo(0);			
+		}
+		int res =noticeDAO.updateNotice(dto);
+		
+		ModelAndView mav = new ModelAndView();
+		if(res>0) {
+			return new ModelAndView("redirect:board_list.do");
+		}else if(res==-1) {
+			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("no", dto.getNo());
+			mav.setViewName("notice_update.do");
+		}else {
+			JOptionPane.showMessageDialog(null, "오류발생");
+			mav.addObject("no", dto.getNo());
+			mav.setViewName("notice_content.do");
+		}
+		return mav;
+	}
+
+	
+	/*@RequestMapping(value= "/notice_update.do", method=RequestMethod.GET)
 	protected ModelAndView updateBoard(@RequestParam String no) throws Exception {
 		if(no == null || no.trim().equals("")) {
 			return null;
@@ -151,7 +184,7 @@ public class NoticeController {
 		}
 		return mav;
 	}
-	
+	*/
 	@RequestMapping(value= "/notice_delete.do", method=RequestMethod.GET)
 	public ModelAndView deleteForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/NoticeBoard/notice_delete.jsp");
