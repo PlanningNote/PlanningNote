@@ -10,6 +10,7 @@
 var img = new Array("images1.png","images2.png")
 var cnt=0;
 function recom_click() {
+	
 	if(cnt==0){
 		document.recom.src=img[1];
 		cnt++;
