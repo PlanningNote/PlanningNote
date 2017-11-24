@@ -26,9 +26,6 @@
 		</tr>
 		</table><br><br>
 			
-			
-
-			
 			<b>여행자들의 일정보기 (예상)</b>
 			<table class="type07">
 			

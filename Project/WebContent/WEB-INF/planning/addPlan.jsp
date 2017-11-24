@@ -12,7 +12,7 @@
 </head>
 <script language="javascript">
 var index=-1;
-var i=0;
+
 function addRow() {
 	index+=1;
 	var oRow = dyntbl1.insertRow();
@@ -51,19 +51,29 @@ function renameForModelAttribute() {
         $(this).find("input[name=file]").attr("name", "file");
     });
 }
-function alertError(){
+
+function checkNum(){
 	for(i=0;i<index;i++){
-	var price = new Array();
-		price[i]=document.getElementById('targets['+index+'].price').value;
-	var subject = new Array();
-		subject = document.getElementById('targets['+index+'].subject').value;
-	if(isNum(price[i])==true){
-			alert("숫자만 입력해 주세요!");
+		var price = new Array();
+			price[i]=document.getElementById('targets['+i+'].price').value;
+		var subject = new Array();
+			subject = document.getElementById('targets['+i+'].subject').value;
+		
+			if(!((event.keyCode>=48&&event.keyCode<=57)||
+					(event.keyCode>=96&&event.keyCod<=105)||(event.keyCode==8))){
+				alert("숫자만 입력해 주세요!");
+				event.returnValue=false;
+			}
+		
+			if(subject[i].equals("")){
+			alert("빈칸을 채워주세요");
+			return false;
+			}
 		}
-	if(subject[i].equals("")){
-		alert("빈칸을 채워주세요");
-	}
-	}
+}
+
+function alertError(){
+	
 	var subject =document.getElementById('subject');
 	var country =document.getElementById('country');
 	var city =document.getElementById('city');
@@ -71,16 +81,17 @@ function alertError(){
 	var travel_period =document.getElementById('travel_period');
 	var Travel_seasion =document.getElementById('travel_seasion');
 	var Travel_theme =document.getElementById('travel_theme');
-	if(dtoP.getSubject().equals(null)||dtoP.getCountry().equals(null)||dtoP.getCity().equals(null)
-			||dtoP.getThumbnail().equals(null)||dtoP.getTravel_period().equals(null)
-			||dtoP.getTravel_seasion().equals(null)||dtoP.getTravel_theme().equals(null))
-			{alert("필수 항목을 입력해주세요");	}
+	if(subject.value==""||subject.value==null||country.value==""||country.value==null||city.value==""||
+			city.value==null||thumbnail==0||thumbnail==""||
+			travel_period.value==null||Travel_seasion.value==null||Travel_theme.value==null)
+			{alert("필수 항목을 입력해주세요");	
+			return false;}
 }
-</script>
 
+</script>
 <body>
 	<div align="center">
-		<form name="f" class="f" method="post" action="goView.do" enctype="multipart/form-data">
+		<form name="f" class="f" method="post" onsubmit="return alertError()" action="goView.do" enctype="multipart/form-data">
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
