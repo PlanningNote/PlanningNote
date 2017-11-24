@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>플랜리스트</title>
-</head>
+</head> 
 <body>
 	<div align="center">
 		<table border="1" WIDTH="800" HEIGHT="500">
