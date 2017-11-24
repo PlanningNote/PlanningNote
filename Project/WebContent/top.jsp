@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="style.css">
 
 </head>
-<<<<<<< HEAD
+
 <script>
 	function start(){
 		var url = "message.jsp";
@@ -20,13 +20,12 @@
 
 		
 <body onload="start()"> 
-=======
+
 <c:set var="isLogin" value="false" scope="session"/>
 <c:if test="${not empty sessionScope.mynick}">
 	<c:set var="isLogin" value="true" scope="session"/>
 </c:if>
 <body> 
->>>>>>> refs/remotes/origin/master
 		<div style="padding:0px 0px 0px 300px;">
 			<table border="0"  >
 				<tr>
