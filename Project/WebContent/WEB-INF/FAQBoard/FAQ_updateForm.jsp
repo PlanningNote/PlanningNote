@@ -50,7 +50,7 @@
 				
 				<tr>
 					<th bgcolor="pink" width="20%">비밀번호</th>
-					<td><input type="password" name="passwd" class="box"></td>
+					<td><input type="password" name="pwd" class="box"></td>
 				</tr>
 				
 				<tr bgcolor="pink">
