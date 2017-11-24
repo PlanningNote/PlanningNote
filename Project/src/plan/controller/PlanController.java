@@ -164,7 +164,7 @@ public class PlanController{
 		List<PlanDTO> dtoP = dao.listAPlan();
 		mav.addObject("dtoP",dtoP);
 		return mav;
-	}
+	} 
 	
 	@RequestMapping(value="/list.do")//계획목록 페이지로 이동.
 	public ModelAndView list(HttpServletRequest arg0, 
