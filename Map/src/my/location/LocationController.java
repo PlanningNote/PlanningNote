@@ -18,6 +18,7 @@ public class LocationController {
 	@Autowired
 	private LocationDAO locationDAO;
 	
+	/*
 	@RequestMapping(value="/list.do")
 	public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<LocationDTO> list = locationDAO.listContent();
@@ -26,11 +27,19 @@ public class LocationController {
 		mav.addObject("listSize",list.size());
 		mav.setViewName("WEB-INF/map/showList.jsp");
 		return mav;		
-	}
+	}*/
 	
-		@RequestMapping(value="/goList.do")
+		@RequestMapping(value="/list.do")
 	public ModelAndView goList(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<LocationDTO> list = locationDAO.listContent();
+		
+		System.out.println("controller test");
+		System.out.println(list.size());
+		for(int i=0;i<list.size();i++) {
+			System.out.println("lat : "+list.get(i).getLat() +"// subject : "+list.get(i).getSubject());
+		}
+		
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("contentList", list);
 		mav.addObject("listSize",list.size());

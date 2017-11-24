@@ -82,7 +82,7 @@ public class PlanController{
 		HttpSession session = arg0.getSession();
 		MultipartFile files = dtoP.getThumbfile();
 		
-		
+		 
 		String img=null;
 		String filePath=null;
 		

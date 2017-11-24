@@ -37,7 +37,9 @@ public class MemberController {
 		
 		boolean result = memberDAO.checkMember(email, pwd);
 		if(result) {
+			String nickname = memberDAO.getNickname(email);
 			 session.setAttribute("loginKey", email);
+			 session.setAttribute("mynick", nickname);
 			 if(email.equals("admin")) {
 				 return new ModelAndView("admin_main.do");
 			 }else {
