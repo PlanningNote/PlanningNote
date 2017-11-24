@@ -189,6 +189,7 @@ public class PlanDAOImpl implements PlanDAO {
 		public SubPlanDTO mapRow(ResultSet rs, int arg1) throws SQLException {
 			SubPlanDTO dto = new SubPlanDTO();
 			dto.setGroup_no(rs.getInt("group_no"));
+			System.out.println(dto.getBoard_num());
 			dto.setBoard_num(rs.getInt("board_num"));
 			dto.setSubject(rs.getString("subject"));
 			dto.setImg(rs.getString("img"));

@@ -142,15 +142,7 @@ public class PlanController{
 		if(resP>0&&resT>0&&resS>0){
 			mav.setViewName("WEB-INF/planning/list.jsp");
 		}
-		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
-				&&dtoP.getThumbnail().equals(null)&&dtoP.getTravel_period().equals(null)
-				&&dtoP.getTravel_seasion().equals(null)&&dtoP.getTravel_theme().equals(null)
-				&&dtoS.getSubject().equals(null)&&dtoS.getImg().equals(null)&&dtoS.getContent().equals(null)
-				&&dtoS.getPrice()>0&&dtoS.getTraffic().equals(null)
-				){
-			writer.print("필수 항목을 입력해주세요");
-			mav.setViewName("plan.do");
-		}*/else {
+		else {
 			writer.println("게시글 등록을 실패하였습니다.");
 			mav.setViewName("plan.do");
 		}
@@ -188,16 +180,19 @@ public class PlanController{
 		mav.addObject("dtoS",dtoS);
 		return mav;
 	}
+	
 	@RequestMapping(value="/subPlanContent.do")//계획목록 페이지로 이동.
-	public ModelAndView contentPlan(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
+	public ModelAndView subContentPlan(HttpServletRequest arg0, 
+			HttpServletResponse arg1,@RequestParam("board_num")int board_num) throws Exception {
+		System.out.println("아니 이게 지금 왜나와;;"+board_num);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/subPlanContent.jsp");
 		SubPlanDTO dtoS = new SubPlanDTO();
-		
+		dtoS = dao.getSubContent(board_num);
 		mav.addObject("dtoS",dtoS);
 		return mav;
 	}
+	
 	@RequestMapping(value="/updatePlan.do", method=RequestMethod.GET)//계획수정 페이지로 이동.
 	public ModelAndView updatePlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1,@RequestParam("group_no")int group_no) throws Exception {
@@ -243,16 +238,7 @@ public class PlanController{
 		
 		if(resP>0&&resT>0&&resS>0){
 			mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		}
-		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
-				&&dtoP.getThumbnail().equals(null)&&dtoP.getTravel_period().equals(null)
-				&&dtoP.getTravel_seasion().equals(null)&&dtoP.getTravel_theme().equals(null)
-				&&dtoS.getSubject().equals(null)&&dtoS.getImg().equals(null)&&dtoS.getContent().equals(null)
-				&&dtoS.getPrice()>0&&dtoS.getTraffic().equals(null)
-				){
-			writer.print("필수 항목을 입력해주세요");
-			mav.setViewName("plan.do");
-		}*/else {
+		}else {
 			writer.println("게시글 등록을 실패하였습니다.");
 			mav.setViewName("listPlanA.do");
 		}
