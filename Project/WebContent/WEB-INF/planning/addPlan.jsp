@@ -59,7 +59,8 @@ function renameForModelAttribute() {
 			<table WIDTH="1000" HEIGHT="450" class="outline"
 				background="Desert.jpg">
 				<tr>
-					<td>(*필수)나라: <INPUT TYPE="TEXT" NAME="country"> /(*필수)도시: <INPUT
+					<td>(*필수)나라: <INPUT TYPE="TEXT" NAME="country"><br>
+					(*필수)도시: <INPUT
 						TYPE="TEXT" NAME="city"></td>
 				</tr>
 				<tr>
@@ -82,10 +83,15 @@ function renameForModelAttribute() {
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
 				</tr>
 				<tr>
+<<<<<<< HEAD
 					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer" value="나">님
 =======
 					<td COLSPAN="2">�ۼ���: 
 					<INPUT TYPE="text" NAME="writer" value="��" readonly="readonly">��
+>>>>>>> refs/remotes/origin/master
+=======
+					<td COLSPAN="2">작성자: 
+					<INPUT TYPE="text" NAME="writer" value="��" readonly="readonly">
 >>>>>>> refs/remotes/origin/master
 					</td>
 				</tr>
@@ -95,8 +101,8 @@ function renameForModelAttribute() {
 					<fmt:formatDate value="${day}" type="date" dateStyle="full"/> </td>
 				</tr>
 				<tr>
-<<<<<<< HEAD
 					<td>태그:<br>
+<<<<<<< HEAD
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag1" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag2" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag3" value="#"><br>
@@ -104,12 +110,13 @@ function renameForModelAttribute() {
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
 =======
 					<td>�±�:<br>
+=======
+>>>>>>> refs/remotes/origin/master
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
->>>>>>> refs/remotes/origin/master
 					</td>
 				</tr>
 				<tr>
