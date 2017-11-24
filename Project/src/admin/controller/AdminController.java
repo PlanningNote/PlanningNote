@@ -17,7 +17,7 @@ import member.dao.MemberDAO;
 import member.dto.MemberDTO;
 
 @Controller
-public class AdminController {
+public class AdminController { 
 	@Autowired
 	private MemberDAO memberDAO;
 
