@@ -21,7 +21,7 @@ function addRow() {
 	oCell4.width = "3%";
 	oCell1.innerHTML = "${dtoS.board_num}";
 	oCell2.innerHTML = "(*필수)제목 <br>"
-			+ "<input type='text' name='targets["<%=index%>"].subject' border='1' style='width: 100%; height: 25;'>"
+			+ "<input type='text' name='targets[<%=index%>].subject' border='1' style='width: 100%; height: 25;'>"
 			+ "<br>(*필수)비용 <br>"
 			+ "<input type='number' name='targets["<%=index%>"].price' border='1' style='width: 95%; height: 25;'>원"
 			+ "<br>(*필수)내용 <br>"

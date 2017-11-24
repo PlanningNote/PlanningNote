@@ -55,15 +55,12 @@
 						${dtoS.traffic}</td>
 					<td width="10%" height="100%">
 					<a href="subPlanContent.do?board_num=${dtoS.getBoard_num()}">
-					<img src="<%=path %>/${dtoS.img}"style="max-width: 250; height: 250;"></a></td>
+					<img src="<%=path %>/${dtoS.img}" style="max-width: 250; height: 250;"></a></td>
 					<td width="3%"></td>
 				</tr>
 			</c:forEach>
 			</table><br>
-			<input type="button" value="글수정"
-				onclick="window.location='updatePlan.do?group_no=${dtoP.group_no}'">
-			<input type="button" value="글삭제"
-				onclick="window.location='deletePlan.do?group_no=${dtoP.group_no}'"> 
+			<input type="button" value="글목록"onclick="window.location='listPlanA.do'">
 	</FORM>
 	</div>
 </body>

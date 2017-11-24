@@ -11,9 +11,8 @@
 	  
 		<td align="center"><br>
 		
-		
 		<table background="ka1.png">
-		<tr> 
+		<tr>
 		<td>
 			<b>검색할 나라를 입력하세요</b>
 			
@@ -28,6 +27,7 @@
 		</table><br><br>
 			
 			
+
 			
 			<b>여행자들의 일정보기 (예상)</b>
 			<table class="type07">
