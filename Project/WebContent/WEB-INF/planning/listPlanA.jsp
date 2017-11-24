@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
-<title>ÇÃ·£¸®½ºÆ®</title>
+<title>í”Œëœë¦¬ìŠ¤íŠ¸</title>
 </head>
 <body>
 	<div align="center">
@@ -13,22 +13,22 @@
 				<td COLSPAN="3" HEIGHT="7%" ALIGN="MIDDLE">
 					<form name="f">
 				 		<input type="text" name="nation" size="30">
-						<input type="submit" value="°Ë»ö">
-						<input type="reset" value="Ãë¼Ò">
+						<input type="submit" value="ê²€ìƒ‰">
+						<input type="reset" value="ì·¨ì†Œ">
 					</form>
 				</td>
 			</tr>
 			<c:forEach items="${dtoP}" var="dtoP">
 			<tr WIDTH="100">
 				<td><a href="list.do?group_no=${dtoP.getGroup_no()}"><img src="recom.png"></a><br>
-				³ª¶ó: ${dtoP.country}<br>
-				±â°£: ${dtoP.travel_period}<br>
-				ÃÑ¿¹»ê: ${dtoP.totalprice} ¿ø<br>
-				ÀÛ¼ºÀÚ: ${dtoP.writer}´Ô</td>
+				ë‚˜ë¼: ${dtoP.country}<br>
+				ê¸°ê°„: ${dtoP.travel_period}<br>
+				ì´ì˜ˆì‚°: ${dtoP.totalprice} ì›<br>
+				ì‘ì„±ì: ${dtoP.writer}ë‹˜</td>
 			</tr>
 			</c:forEach>
 			<tr HEIGHT="5%">
-				<td ALIGN="center"  COLSPAN="3">ÀÌÀü 1 2 3 4 5 ´ÙÀ½</td>
+				<td ALIGN="center"  COLSPAN="3">ì´ì „ 1 2 3 4 5 ë‹¤ìŒ</td>
 			</tr>
 		</table>
 	</div>

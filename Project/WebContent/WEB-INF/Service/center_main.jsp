@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="../../top.jsp" %>
 		<tr align="center">
 			<td>
 				<br><br>
 				<img src="img/c11.PNG" border="0"><br>
-				<a href="notice_list.do"> <img src="img/notice.PNG" border="0"></a> <!-- °øÁö»çÇ× -->
+				<a href="notice_list.do"> <img src="img/notice.PNG" border="0"></a> <!-- ê³µì§€ì‚¬í•­ -->
 				<a href="FAQ_list.do"> <img src="img/FAQ.PNG" border="0"></a> <!-- FAQ-->
-				<a href="ask_list.do"> <img src="img/ask.PNG" border="0"></a> <!-- ¹®ÀÇÇÏ±â -->
-				<a href="howto_main.do"> <img src="img/howto2.PNG" border="0"></a> <!-- ÀÌ¿ë¹æ¹ý -->
-				<a href="intro_company.do"> <img src="img/intro.PNG" border="0"></a><!-- È¸»ç¼Ò°³°Ô½ÃÆÇ -->
+				<a href="ask_list.do"> <img src="img/ask.PNG" border="0"></a> <!-- ë¬¸ì˜í•˜ê¸° -->
+				<a href="howto_main.do"> <img src="img/howto2.PNG" border="0"></a> <!-- ì´ìš©ë°©ë²• -->
+				<a href="intro_company.do"> <img src="img/intro.PNG" border="0"></a><!-- íšŒì‚¬ì†Œê°œê²Œì‹œíŒ -->
 			</td>
 	</tr>
 	<%@ include file="../../bottom.jsp"%>

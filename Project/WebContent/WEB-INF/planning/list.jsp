@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
 <html>
 <head>
-<title>ÇÃ·£¸®½ºÆ®ÀÚ¼¼º¸±â</title>
+<title>í”Œëœë¦¬ìŠ¤íŠ¸ìì„¸ë³´ê¸°</title>
 </head>
 <body>
 	<div align="center">
@@ -12,22 +13,22 @@
 			<table WIDTH="800" HEIGHT="500" class="outline"
 				background="<%=path %>/${dtoP.thumbnail}">
 				<tr>
-					<td>³ª¶ó: ${dtoP.country} /µµ½Ã: ${dtoP.city}</td>
+					<td>ë‚˜ë¼: ${dtoP.country} /ë„ì‹œ: ${dtoP.city}</td>
 				</tr>
 				<tr>
 					<td WIDTH="75%"><h2>
-							Á¦¸ñ:${dtoP.subject}</td>
+							ì œëª©:${dtoP.subject}</td>
 					<td ALIGN="left">
-					±â°£: ${dtoP.travel_period}<br> 
-					½ÃÁğ: ${dtoP.travel_seasion}<br> 
-					Å×¸¶: ${dtoP.travel_theme}<br>
+					ê¸°ê°„: ${dtoP.travel_period}<br> 
+					ì‹œì¦Œ: ${dtoP.travel_seasion}<br> 
+					í…Œë§ˆ: ${dtoP.travel_theme}<br>
 				</tr>
 				<tr>
-					<td COLSPAN="2">ÀÛ¼ºÀÚ: ${dtoP.writer} ´Ô
+					<td COLSPAN="2">ì‘ì„±ì: ${dtoP.writer} ë‹˜
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">ÀÛ¼ºÀÏ: ${dtoP.day}
+					<td COLSPAN="2">ì‘ì„±ì¼: ${dtoP.day}
 					</td>
 				</tr>
 				<tr>
@@ -36,7 +37,7 @@
 				</tr>
 				<tr>
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
-					<td ALIGN="left">ÃÑ¿¹»ê: ${dtoP.totalprice} ¿ø</td>
+					<td ALIGN="left">ì´ì˜ˆì‚°: ${dtoP.totalprice} ì›</td>
 					</td>
 				</tr>
 			</table>
@@ -47,11 +48,11 @@
 				<tr>
 					<td width="5%">${dtoS.board_num}</td>
 					<td whidth="50%" height="100%">
-						Á¦¸ñ <br>${dtoS.subject}<br>
-						ºñ¿ë <br>${dtoS.price }
-						<br>³»¿ë <br>
+						ì œëª© <br>${dtoS.subject}<br>
+						ë¹„ìš© <br>${dtoS.price }
+						<br>ë‚´ìš© <br>
 						${dtoS.content}
-						<br>±³Åë <br>
+						<br>êµí†µ <br>
 						${dtoS.traffic}</td>
 					<td width="10%" height="100%">
 					<a href="subPlanContent.do?board_num=${dtoS.getBoard_num()}">
@@ -60,7 +61,7 @@
 				</tr>
 			</c:forEach>
 			</table><br>
-			<input type="button" value="±Û¸ñ·Ï"onclick="window.location='listPlanA.do'">
+			<input type="button" value="ê¸€ëª©ë¡"onclick="window.location='listPlanA.do'">
 	</FORM>
 	</div>
 </body>
