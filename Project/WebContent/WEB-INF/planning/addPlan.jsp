@@ -49,7 +49,7 @@ function renameForModelAttribute() {
         $(this).find("input[name=content]").attr("name", "targets["+index+"].content");
         $(this).find("input[name=traffic]").attr("name", "traffic");
         $(this).find("input[name=file]").attr("name", "file");
-    });
+    }); 
 }
 function checkSubSubject(){
 	var subject = document.getElementById('targets['+index+'].subject')	;
