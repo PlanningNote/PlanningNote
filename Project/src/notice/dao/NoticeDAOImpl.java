@@ -95,7 +95,7 @@ protected void plusReadCount(int no) {
 				dto.setCount(arg0.getInt("count"));
 				dto.setDay(arg0.getString("day"));
 				dto.setImg(arg0.getString("img"));
-			/*	dto.setPwd(arg0.getString("pwd"));*/
+				dto.setPwd(arg0.getString("pwd"));
 				return dto;
 			}
 			throw new DataRetrievalFailureException("해당 객체를 찾을수가 없습니다.");
@@ -128,7 +128,7 @@ protected void plusReadCount(int no) {
 	public int updateNotice(NoticeDTO dto) {
 		boolean isPass = isPassword(dto.getNo(), dto.getPwd());
 		if(isPass) {
-			String sql ="update PN_notice set subject=?,content=? ,img=? pwd=?  where no = ?";
+			String sql ="update PN_notice set subject=?,content=? ,img=?  where no = ?";
 			Object[] values = new Object[] {dto.getSubject(),dto.getContent(),dto.getImg(),dto.getNo()};
 			int res = jdbcTemplate.update(sql, values);
 			return res;

@@ -139,7 +139,7 @@ public class NoticeController {
 		
 		ModelAndView mav = new ModelAndView();
 		if(res>0) {
-			return new ModelAndView("redirect:board_list.do");
+			return new ModelAndView("redirect:notice_list.do");
 		}else if(res==-1) {
 			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
 			mav.addObject("no", dto.getNo());

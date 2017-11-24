@@ -33,12 +33,12 @@
 						<td>${dto.writer}</td>
 					<td>
 						<c:if test="${dto.re_level>0}">
-							<img src="../img/level.gif" width="${dto.re_level*10}">
-							<img src="../img/re.gif">
+							<img src="img/level.gif" width="${dto.re_level*10}">
+							<img src="img/re.gif">
 						</c:if> 
 						<a href="ask_content.do?no=${dto.no}"> ${dto.subject} </a> 
 						<c:if
-							test="${dto.count>10}">	<img src="../img/hot.gif">
+							test="${dto.count>10}">	<img src="img/hot.gif">
 						</c:if>
 					</td>
 					<td>${dto.count}</td>
