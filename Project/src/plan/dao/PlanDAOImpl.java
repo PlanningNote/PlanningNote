@@ -99,9 +99,24 @@ public class PlanDAOImpl implements PlanDAO {
 		return res;
 	}
 	@Override
-	public int updateSubPlan(int no, SubPlanDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateSubPlan(List num, SubPlanDTO sdto) {
+		String sql = "update PN_sbuplan set subject=?,img=?,content=?,price=?,traffic=? where board_num=?";
+		Object[] values;
+		int res = 0;
+		for (int i = 0; i < sdto.getImgName().size(); i++) {
+			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
+			
+			values = new Object[] { sdto.getTargets().get(i).getSubject(),
+					sdto.getTargets().get(i).getImg(), sdto.getTargets().get(i).getContent(),
+					sdto.getTargets().get(i).getPrice(), sdto.getTargets().get(i).getTraffic() };
+			res = jdbcTemplate.update(sql, values);
+		}
+		if (res < 0) {
+			// res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
+			res = -1;
+			return res;
+		}
+		return res;
 	}
 
 

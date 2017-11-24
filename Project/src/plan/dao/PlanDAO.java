@@ -12,7 +12,7 @@ public interface PlanDAO {
 	public int tagPlan(TagDTO dto);
 	//-----insert---------
 	public int updatePlan(int no, PlanDTO dto);
-	public int updateSubPlan(int no, SubPlanDTO dto);
+	public int updateSubPlan(List num, SubPlanDTO dto);
 	//update------
 	public int deletePlan(int no);
 	//delete------
