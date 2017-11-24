@@ -27,9 +27,9 @@ function addRow() {
 	oCell4.width = "3%";
 	oCell1.innerHTML = "${dtoS.board_num}";
 	oCell2.innerHTML = "(*필수)제목 <br>"
-			+ "<input type='text' name='targets["+index+"].subject' border='1' style='width: 100%; height: 25;'>"
+			+ "<input type='text' name='targets["+index+"].subject' onkeydown=checkSubsubject() border='1' style='width: 100%; height: 25;'>"
 			+ "<br>(*필수)비용 <br>"
-			+ "<input type='number' name='targets["+index+"].price' border='1' style='width: 95%; height: 25;'>원"
+			+ "<input type='text' name='targets["+index+"].price' id='targets["+index+"].price' onkeydown=checkPrice() border='1' style='width: 95%; height: 25;'>원"
 			+ "<br>(*필수)내용 <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
@@ -51,25 +51,20 @@ function renameForModelAttribute() {
         $(this).find("input[name=file]").attr("name", "file");
     });
 }
-
-function checkNum(){
-	for(i=0;i<index;i++){
-		var price = new Array();
-			price[i]=document.getElementById('targets['+i+'].price').value;
-		var subject = new Array();
-			subject = document.getElementById('targets['+i+'].subject').value;
-		
-			if(!((event.keyCode>=48&&event.keyCode<=57)||
+function checkSubSubject(){
+	var subject = document.getElementById('targets['+index+'].subject')	;
+	if(subject.value==""||subject.value==null){
+		alert("빈칸을 채워주세요");
+		subject.focus();
+	}	
+}
+function checkPrice(){
+			 if(!((event.keyCode>=48&&event.keyCode<=57)||
 					(event.keyCode>=96&&event.keyCod<=105)||(event.keyCode==8))){
 				alert("숫자만 입력해 주세요!");
-				event.returnValue=false;
+				var price = document.getElementById("targets["+index+"].price");
+				price.value="";
 			}
-		
-			if(subject[i].equals("")){
-			alert("빈칸을 채워주세요");
-			return false;
-			}
-		}
 }
 
 function alertError(){
@@ -79,8 +74,8 @@ function alertError(){
 	var city =document.getElementById('city');
 	var thumbnail =document.getElementById('thumbfile').value;
 	var travel_period =document.getElementById('travel_period');
-	var Travel_seasion =document.getElementById('travel_seasion');
-	var Travel_theme =document.getElementById('travel_theme');
+	var travel_seasion =document.getElementById('travel_seasion');
+	var travel_theme =document.getElementById('travel_theme');
 	if(subject.value==""||subject.value==null||country.value==""||country.value==null||city.value==""||
 			city.value==null||thumbnail==0||thumbnail==""||
 			travel_period.value==null||Travel_seasion.value==null||Travel_theme.value==null)
