@@ -135,7 +135,7 @@ public class PlanController{
 		resS= dao.insertsubPlan(dtoS);
 		
 		if(resP>0&&resT>0&&resS>0){
-			mav.setViewName("WEB-INF/planning/listPlan.jsp");
+			mav.setViewName("WEB-INF/planning/list.jsp");
 		}
 		/*else if(dtoP.getSubject().equals(null)&&dtoP.getCountry().equals(null)&&dtoP.getCity().equals(null)
 				&&dtoP.getThumbnail().equals(null)&&dtoP.getTravel_period().equals(null)
