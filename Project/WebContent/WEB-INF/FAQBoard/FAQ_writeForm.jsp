@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ include file="../../top.jsp" %>
 <style type="text/css">
 		#title{
 			height : 16;
-			font-family :'±Ã¼­';
+			font-family :'ê¶ì„œ';
 			font-size : 12;
 			text-align :center;
 		}
@@ -13,17 +13,17 @@
 		function checkMember(){
 			
 			if (f.subject.value==""){
-				alert("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+				alert("ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 				f.subject.focus()
 				return false
 			}
 			if (f.content.value==""){
-				alert("³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+				alert("ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 				f.content.focus()
 				return false
 			}
 			if (f.passwd.value==""){
-				alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!!")
+				alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!!")
 				f.passwd.focus()
 				return false
 			}
@@ -38,35 +38,35 @@
 			
 				<table border="1" width="600">
 					<tr bgcolor="pink">
-						<th colspan="2">FAQ  ¾² ±â</th>
+						<th colspan="2">FAQ  ì“° ê¸°</th>
 					</tr> 
 				
 					<tr>
-						<th bgcolor="pink" width="20%">Á¦ ¸ñ</th>
+						<th bgcolor="pink" width="20%">ì œ ëª©</th>
 						<td width="80%"><input type="text" name="subject" size="50"></td>
 					</tr>
 					
 					<tr>
-						<th bgcolor="pink" width="20%">³» ¿ë</th>
+						<th bgcolor="pink" width="20%">ë‚´ ìš©</th>
 						<td width="80%">
 							<textarea name="content" rows="10" cols="50"></textarea>
 						</td>
 					</tr>
 					
 				 	<tr>
-						<th>ÀÌ¹ÌÁö</th>
+						<th>ì´ë¯¸ì§€</th>
 						<td><input type="file" name="img"></td>
 					</tr>
 				
 					<tr>
-						<th bgcolor="pink" width="20%">ºñ¹Ğ¹øÈ£</th>
+						<th bgcolor="pink" width="20%">ë¹„ë°€ë²ˆí˜¸</th>
 						<td width="80%"><input type="password" name="pwd"></td>
 					</tr>
 					<tr>
 						<td bgcolor="pink" colspan="2" align="center">
-							<input type="submit" value="±Û¾²±â">
-							<input type="reset" value="´Ù½ÃÀÛ¼º">
-							<input type="button" value="¸ñ·Ïº¸±â" 
+							<input type="submit" value="ê¸€ì“°ê¸°">
+							<input type="reset" value="ë‹¤ì‹œì‘ì„±">
+							<input type="button" value="ëª©ë¡ë³´ê¸°" 
 														onclick="window.location='FAQ_list.do'">
 						</td>						
 					</tr>
