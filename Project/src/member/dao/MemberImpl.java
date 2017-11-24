@@ -1,6 +1,5 @@
 package member.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -126,5 +125,30 @@ public class MemberImpl implements MemberDAO{
 		String sql="select * from PN_member where "+search+" = ?";
 		List<MemberDTO> result = jdbcTemplate.query(sql, mapper, searchString);
 		return result;
+	}
+
+	@Override
+	public boolean checkNickname(String nickname) {
+		String sql = "select * from PN_member where nickname = ?";
+		try {
+			List<MemberDTO> result = jdbcTemplate.query(sql, mapper);
+			if(result!=null) return true;
+			else return false;
+		}catch(EmptyResultDataAccessException e) {
+			return true;
+		}
+	}
+
+	@Override
+	public boolean duplicateNicknameCheck(String nickname) {
+		String sql = "select nickname from PN_member where nickname = ?";
+		try {
+			String result = (String) this.jdbcTemplate.queryForObject(
+			       sql,    new Object[]{nickname}, String.class);
+			return true;
+
+		}catch(EmptyResultDataAccessException e) {
+			return false;
+		}	
 	}
 }

@@ -38,8 +38,13 @@
 				return false;
 			}	
 			
-			if(!f.nickName.value){
+			if(!f.nickname.value){
 				alert("닉네임을 입력하세요.");
+				return false;
+			}
+			
+			if(f.nicknameDuplication.value != "nicknameCheck"){
+				alert("닉네임 중복체크를 해주세요.");
 				return false;
 			}
 			
@@ -73,6 +78,16 @@
 			document.userInfo.emailDuplication.value ="emailUncheck";
 		}
 		
+		// 닉네임 중복체크 화면open
+		function openNicknameChk(){
+			var a = document.userInfo.nickname.value;
+			window.name = "parentForm";
+			window.open("nickname_check.do?nickname="+a,"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
+		}
+		
+		function inputNicknameChk(){
+			document.userInfo.nicknameDuplication.value ="nicknameUncheck";
+		}
 	</script>
 	
 </head>
@@ -114,7 +129,9 @@
 				<tr>
 					<td id="title">닉네임</td>
 					<td>
-						<input type="text" name="nickname" maxlength="50">
+						<input type="text" name="nickname" maxlength="50" onkeydown="inputNicknameChk()">
+						<input type="button" value="중복확인" onclick="openNicknameChk()">	
+						<input type="hidden" name="nicknameDuplication" value="nicknameUncheck" >
 					</td>
 				</tr>
 					

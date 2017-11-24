@@ -4,7 +4,18 @@
 <head>
 	<title>녀행자들홈페이지</title>
 </head>
-<body> 
+<script>
+	function start(){
+		var url = "message.jsp";
+		var content = ${message};
+		if(content != null){
+		window.open(url,	content, "width=500, height=300, resizable = no, scrollbars = no");	
+		}
+	}
+</script>
+
+		
+<body onload="start()"> 
 		<div style="padding:0px 0px 0px 300px;">
 			<table border="0"  >
 				<tr>
