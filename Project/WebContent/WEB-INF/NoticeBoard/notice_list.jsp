@@ -16,8 +16,8 @@
 					<th>번호</th>
 					<th width="50%">제목</th>
 					<th>조회수</th>
-					<th>사진</th>
-					<th>날짜</th>
+				
+					<th>작성일</th>
 				</tr>
 					<c:if test="${empty noticeList}">
 				<tr> 
@@ -29,12 +29,13 @@
 			<c:forEach var="dto" items="${noticeList}">
 				<tr>
 					<td>${dto.no}</td>
-				<td>	<a href="notice_content.do?no=${dto.no}">
+				<td>	
+				<a href="notice_content.do?no=${dto.no}">
 						${dto.subject}
 					</a>
 					</td>
 					<td>${dto.count}</td>
-					<td>${dto.img}</td>
+					
 					<td>${dto.day}</td>	
 				</tr>		
 			</c:forEach>				
