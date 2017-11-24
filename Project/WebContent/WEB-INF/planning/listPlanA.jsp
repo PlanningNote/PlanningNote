@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
+
 <html>
 <head>
 <title>플랜리스트</title>
