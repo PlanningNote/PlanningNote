@@ -11,7 +11,6 @@
 <title>플랜리스트</title>
 </head>
 <script language="javascript">
-
 var index=-1;
 
 function addRow() {
@@ -83,7 +82,8 @@ function renameForModelAttribute() {
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer" value="나">님
+					<td COLSPAN="2">작성자: 
+					<INPUT TYPE="text" NAME="writer" value="나" readonly="readonly">님
 					</td>
 				</tr>
 				<tr>
@@ -93,11 +93,11 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td>태그:<br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag1" value="#"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag2" value="#"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag3" value="#"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
+						&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
 					</td>
 				</tr>
 				<tr>
