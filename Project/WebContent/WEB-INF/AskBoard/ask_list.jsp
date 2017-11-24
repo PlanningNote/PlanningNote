@@ -1,29 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
  <%@ include file="../../top.jsp" %>
  <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <tr height="600">
 	<td valign="top">
 		<div align="center">
-			<b> ¹®ÀÇ </b>
+			<b> ë¬¸ì˜ </b>
 			<table border="0" width="600">
 				<tr bgcolor="orange">
-					<td align="right"><a href="ask_write.do">¹®ÀÇÇÏ±â</a></td>
+					<td align="right"><a href="ask_write.do">ë¬¸ì˜í•˜ê¸°</a></td>
 				</tr>
 			</table>
 			<table border="1" width="600" >
 				<tr bgcolor="pink" >
-					<th>¹øÈ£</th>
-					<th>ÀÛ¼ºÀÚ</th>
-					<th width="50%">Á¦¸ñ</th>
-					<th>Á¶È¸¼ö</th>
-					<th>»çÁø</th>
-					<th>³¯Â¥</th>
+					<th>ë²ˆí˜¸</th>
+					<th>ìž‘ì„±ìž</th>
+					<th width="50%">ì œëª©</th>
+					<th>ì¡°íšŒìˆ˜</th>
+					<th>ì‚¬ì§„</th>
+					<th>ë‚ ì§œ</th>
 				</tr>
-			<!-- ¿©±â¿¡ dbÀÇ ÀÚ·á¸¦ ²¨³»¼­ Ç¥ÇöÀ» ÇÏÀÚ -->
+			<!-- ì—¬ê¸°ì— dbì˜ ìžë£Œë¥¼ êº¼ë‚´ì„œ í‘œí˜„ì„ í•˜ìž -->
 			<c:if test="${empty askList}">
 				<tr>
-					<td colspan="6">°Ô½ÃµÈ ±ÛÀÌ ¾ø½À´Ï´Ù.</td>
+					<td colspan="6">ê²Œì‹œëœ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 				</tr>
 			</c:if>
 			
@@ -52,12 +52,12 @@
 		
 		<form>
 			<select name="opt">
-				<option value="0">Á¦¸ñ</option>
+				<option value="0">ì œëª©</option>
 	
-				<option value="3">±Û¾´ÀÌ</option>
+				<option value="3">ê¸€ì“´ì´</option>
 			</select> 
 			<input type="text" size="20" name="condition" />&nbsp;
-			 <input type="submit" value="°Ë»ö" />
+			 <input type="submit" value="ê²€ìƒ‰" />
 		</form>
 	</div>
 		</td>

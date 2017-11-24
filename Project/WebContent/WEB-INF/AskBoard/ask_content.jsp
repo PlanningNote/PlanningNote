@@ -1,55 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="../../top.jsp" %>
 <tr>
 	<td>
 		<div align="center">
-			<b>±Û³»¿ë º¸±â</b>
+			<b>ê¸€ë‚´ìš© ë³´ê¸°</b>
 			<table border="1" width="600">
 				<tr>
-					<th bgcolor="yellow" width="15%">±Û¹øÈ£</th>
+					<th bgcolor="yellow" width="15%">ê¸€ë²ˆí˜¸</th>
 					<td align="center" width="35%">${getAskBoard.no}</td>
 				</tr>
 				<tr>
-					<th bgcolor="yellow" width="15%">±ÛÁ¦¸ñ</th>
+					<th bgcolor="yellow" width="15%">ê¸€ì œëª©</th>
 					<td align="center" width="85%" colspan="3">
 						${getAskBoard.subject}</td>
 				</tr> 
 				<tr>				
-					<th bgcolor="yellow" width="20%">³» ¿ë</th>
+					<th bgcolor="yellow" width="20%">ë‚´ ìš©</th>
 					<td>
 						<textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getAskBoard.content}</textarea></td>
 					</td>
 				</tr>
 				
 				<tr>
-					<th bgcolor="yellow" width="20%">ÀÌ ¹Ì Áö</th>
+					<th bgcolor="yellow" width="20%">ì´ ë¯¸ ì§€</th>
 					<td>
 						<textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getNoticeBoard.content}</textarea></td>
 					</td>
 				</tr>
 				
 				<tr>
-					<th bgcolor="yellow" width="15%">Á¶È¸¼ö</th>
+					<th bgcolor="yellow" width="15%">ì¡°íšŒìˆ˜</th>
 					<td align="center" width="35%">${getAskBoard.count}</td>
 				</tr>
 				
 				<tr>	
-					<th bgcolor="yellow" width="15%">ÀÛ¼ºÀÏ</th>
+					<th bgcolor="yellow" width="15%">ì‘ì„±ì¼</th>
 					<td align="center" width="35%">${getAskBoard.day}</td>
 				</tr>
 	
 	
 				<tr bgcolor="yellow">
 					<td colspan="4" align="right">
-						<input type="button" value="±Û¼öÁ¤"
+						<input type="button" value="ê¸€ìˆ˜ì •"
 						onclick="window.location='ask_update.do?no=${getAskBoard.no}'">
-						<input type="button" value="´ä±Û´Ş±â"
+						<input type="button" value="ë‹µê¸€ë‹¬ê¸°"
 						onclick="window.location='ask_reply.do?no=${getAskBoard.no}&re_group=${getAskBoard.re_group}&re_step=${getAskBoard.re_step}&re_level=${getAskBoard.re_level}'">
 						
-						<input type="button" value="±Û»èÁ¦"
+						<input type="button" value="ê¸€ì‚­ì œ"
 						onclick="window.location='ask_delete.do?no=${getAskBoard.no}'">
-						<input type="button" value="±Û¸ñ·Ï"
+						<input type="button" value="ê¸€ëª©ë¡"
 						onclick="window.location='ask_list.do'"></td>
 				</tr>
 			</table>

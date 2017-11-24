@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-	<title>³àÇàÀÚµéÈ¨ÆäÀÌÁö</title>
+	<title>ë…€í–‰ìë“¤í™ˆí˜ì´ì§€</title>
 	<link rel="stylesheet" href="style.css">
 
 </head>
@@ -30,14 +31,14 @@
 			<table border="0"  >
 				<tr>
 					<td>
-						<a href="index.jsp"><img src="img/planlogo.jpg" border="0"></a><!-- ·Î°í -->
+						<a href="index.jsp"><img src="img/planlogo.jpg" border="0"></a><!-- ë¡œê³  -->
 						<c:if test="${isLogin eq false}">
-							<a href="login.do"><img src="img/login2.PNG" border="0"></a><!-- ·Î±×ÀÎ -->
-							<a href="join_member.do"><img src="img/join.PNG" border="0"></a><!-- È¸¿ø°¡ÀÔ -->
+							<a href="login.do"><img src="img/login2.PNG" border="0"></a><!-- ë¡œê·¸ì¸ -->
+							<a href="join_member.do"><img src="img/join.PNG" border="0"></a><!-- íšŒì›ê°€ì… -->
 						</c:if>
 						<c:if test="${isLogin eq true}">
-							<a href=""><img src="img/logout.PNG" border="0"></a><!-- ·Î±×¾Æ¿ô --> 
-							<a href=""><font face="verdana"  size="5">${sessionScope.mynick}´Ô</font></a><!-- ¸¶ÀÌÆäÀÌÁö -->
+							<a href=""><img src="img/logout.PNG" border="0"></a><!-- ë¡œê·¸ì•„ì›ƒ --> 
+							<a href=""><font face="verdana"  size="5">${sessionScope.mynick}ë‹˜</font></a><!-- ë§ˆì´í˜ì´ì§€ -->
 						</c:if>  
 						
 					</td>
@@ -49,10 +50,10 @@
 				<tr height="60" align="center">
 					<td>
 						<a href="index.jsp"><img src="img/main.PNG" border="0"></a> <!--main --> 
-						<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a><!--ÀÌ¿ë¹æ¹ı --> 
-						<a href="center_main.do"><img src="img/center.PNG" border="0"></a> <!--°í°´¼¾ÅÍ --> 
-						<a href="comu_main.do"> <img src="img/comu.PNG" border="0"></a> <!--Ä¿¹Â´ÏÆ¼ --> 
-						<a href="plan.do"><img src="img/make.PNG" border="0"></a> <!--ÀÏÁ¤¸¸µé±â-->
-						<a href="listPlanA.do"><img src="img/share.PNG" border="0"></a>	<!--ÀÏÁ¤°øÀ¯-->
+						<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a><!--ì´ìš©ë°©ë²• --> 
+						<a href="center_main.do"><img src="img/center.PNG" border="0"></a> <!--ê³ ê°ì„¼í„° --> 
+						<a href="comu_main.do"> <img src="img/comu.PNG" border="0"></a> <!--ì»¤ë®¤ë‹ˆí‹° --> 
+						<a href="plan.do"><img src="img/make.PNG" border="0"></a> <!--ì¼ì •ë§Œë“¤ê¸°-->
+						<a href="listPlanA.do"><img src="img/share.PNG" border="0"></a>	<!--ì¼ì •ê³µìœ -->
 					</td>
 				</tr>

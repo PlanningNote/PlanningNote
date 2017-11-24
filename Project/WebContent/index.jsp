@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ include file="top.jsp"%>
 	<tr height="30%">
@@ -15,12 +15,12 @@
 		<table background="ka1.png">
 		<tr> 
 		<td>
-			<b>°Ë»öÇÒ ³ª¶ó¸¦ ÀÔ·ÂÇÏ¼¼¿ä</b>
+			<b>ê²€ìƒ‰í•  ë‚˜ë¼ë¥¼ ìž…ë ¥í•˜ì„¸ìš”</b>
 			
 			<form name="f">
 				<input type="text" name="nation">
-				<input type="submit" value="°Ë»ö">
-				<input type="reset" value="Ãë¼Ò">
+				<input type="submit" value="ê²€ìƒ‰">
+				<input type="reset" value="ì·¨ì†Œ">
 			</form>
 			
 		</td>
@@ -29,11 +29,11 @@
 			
 			
 			
-			<b>¿©ÇàÀÚµéÀÇ ÀÏÁ¤º¸±â (¿¹»ó)</b>
+			<b>ì—¬í–‰ìžë“¤ì˜ ì¼ì •ë³´ê¸° (ì˜ˆìƒ)</b>
 			<table class="type07">
 			
 			<tr>
-			<th>¿©ÇàÁö</th>
+			<th>ì—¬í–‰ì§€</th>
 			<td><a href="notice_list.do"> <img src="img/la1.PNG" border="0"></a></td>
 			<td><a href="notice_list.do"> <img src="img/la2.PNG" border="0"></a></td>
 			<td><a href="notice_list.do"> <img src="img/la3.PNG" border="0"></a></td>
@@ -44,7 +44,7 @@
 			</tr>
 			<tr>
 				
-			<th>¿©Çà½Ã±â</th>
+			<th>ì—¬í–‰ì‹œê¸°</th>
 			<td><a href="notice_list.do"> <img src="img/we1.PNG" border="0"></a></td>
 			<td><a href="notice_list.do"> <img src="img/we2.PNG" border="0"></a></td>
 			<td><a href="notice_list.do"> <img src="img/we3.PNG" border="0"></a></td>
@@ -54,7 +54,7 @@
 			
 					<tr>
 				
-			<th>¿©ÇàÅ×¸¶</a></th>
+			<th>ì—¬í–‰í…Œë§ˆ</a></th>
 			<td><a href="notice_list.do"> <img src="img/th1.PNG" border="0"></td>
 			<td><a href="notice_list.do"> <img src="img/th2.PNG" border="0"></td>
 			<td><a href="notice_list.do"> <img src="img/th3.PNG" border="0"></td>
@@ -66,8 +66,8 @@
 			<br><br>
 			
 			<br>
-			<b>ÀÎ±â ¿©ÇàÀÏÁ¤<br><br></b>
-´Ù¸¥ ¿©ÇàÀÚµéÀÇ ÀÏÁ¤À» Âü°íÇØ ³ª¸¸ÀÇ ¿©ÇàÀ» °èÈ¹ÇØº¸¼¼¿ä!<br><br>
+			<b>ì¸ê¸° ì—¬í–‰ì¼ì •<br><br></b>
+ë‹¤ë¥¸ ì—¬í–‰ìžë“¤ì˜ ì¼ì •ì„ ì°¸ê³ í•´ ë‚˜ë§Œì˜ ì—¬í–‰ì„ ê³„íší•´ë³´ì„¸ìš”!<br><br>
 			
 			<table>
 			<tr>

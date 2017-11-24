@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
-		<title>°ü¸®ÀÚÆäÀÌÁö</title>
+		<title>ê´€ë¦¬ìžíŽ˜ì´ì§€</title>
 	</head>
 <body>
 	<div style="padding:0px 0px 0px 300px;">
 			<table border="0"  >
 				<tr>
 					<td>
-						<a href="admin_main.do"><img src="img/planlogo.jpg" border="0"></a><!-- ·Î°í -->
-						<a href="admin_logout.do"><img src="img/logout.PNG" border="0"></a><!-- ·Î±×¾Æ¿ô--> 						
+						<a href="admin_main.do"><img src="img/planlogo.jpg" border="0"></a><!-- ë¡œê³  -->
+						<a href="admin_logout.do"><img src="img/logout.PNG" border="0"></a><!-- ë¡œê·¸ì•„ì›ƒ--> 						
 					</td>
 				</tr>
 			</table>	
@@ -20,33 +20,33 @@
 				<tr height="60" align="center">
 					<td colspan="2">
 						<a href="admin_main.do"><img src="img/main.PNG" border="0"></a> <!--main --> 
-						<a href="admin_memberList.do"><img src="img/share.PNG" border="0"></a><!-- È¸¿ø°ü¸® -->  <!-- ¡Ú -->
-						<a href="center_main.do"><img src="img/center.PNG" border="0"></a> <!--°í°´¼¾ÅÍ --> 
-						<a href="comu_main.do"><img src="img/comu.PNG" border="0"></a> <!--Ä¿¹Â´ÏÆ¼ --> 
-						<a href=""><img src="img/share.PNG" border="0"></a>	<!--ÀÏÁ¤°øÀ¯-->  <!-- ¡Ú -->
-						<a href=""><img src="img/share.PNG" border="0"></a>	<!--½Å°í°ü¸®-->   <!-- ¡Ú -->
+						<a href="admin_memberList.do"><img src="img/share.PNG" border="0"></a><!-- íšŒì›ê´€ë¦¬ -->  <!-- â˜… -->
+						<a href="center_main.do"><img src="img/center.PNG" border="0"></a> <!--ê³ ê°ì„¼í„° --> 
+						<a href="comu_main.do"><img src="img/comu.PNG" border="0"></a> <!--ì»¤ë®¤ë‹ˆí‹° --> 
+						<a href=""><img src="img/share.PNG" border="0"></a>	<!--ì¼ì •ê³µìœ -->  <!-- â˜… -->
+						<a href=""><img src="img/share.PNG" border="0"></a>	<!--ì‹ ê³ ê´€ë¦¬-->   <!-- â˜… -->
 					</td>
 				</tr>
 				<tr>
 					<td width="15%">
 						<div align="left">
-							<h4>È¸¿ø°ü¸®</h4>
+							<h4>íšŒì›ê´€ë¦¬</h4>
 								<ul>
-									<a href="admin_memberList.do"><li>È¸¿ø¸ñ·Ï</li></a>
-									<a href="admin_memberFind.do"><li>È¸¿ø°Ë»ö</li></a>
+									<a href="admin_memberList.do"><li>íšŒì›ëª©ë¡</li></a>
+									<a href="admin_memberFind.do"><li>íšŒì›ê²€ìƒ‰</li></a>
 								</ul>
-							<h4>°í°´¼¾ÅÍ</h4>
+							<h4>ê³ ê°ì„¼í„°</h4>
 								<ul>
-									<a href=""><li>°øÁö»çÇ×</li></a>
+									<a href=""><li>ê³µì§€ì‚¬í•­</li></a>
 									<a href=""><li>FAQ</li></a>
 									<a href=""><li>Q&A</li></a>
 								</ul>
-							<a href=""><h4>Ä¿¹Â´ÏÆ¼</h4></a>
-							<a href=""><h4>ÀÏÁ¤°øÀ¯</h4></a>
-							<h4>½Å°í°ü¸®</h4>
+							<a href=""><h4>ì»¤ë®¤ë‹ˆí‹°</h4></a>
+							<a href=""><h4>ì¼ì •ê³µìœ </h4></a>
+							<h4>ì‹ ê³ ê´€ë¦¬</h4>
 								<ul>
-									<a href=""><li>È¸¿ø½Å°í</li></a>
-									<a href=""><li>°Ô½Ã¹°½Å°í</li></a>
+									<a href=""><li>íšŒì›ì‹ ê³ </li></a>
+									<a href=""><li>ê²Œì‹œë¬¼ì‹ ê³ </li></a>
 								</ul>
 						</div>
 					</td>
