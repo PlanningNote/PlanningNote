@@ -1,0 +1,136 @@
+create table PN_member(
+no number primary key,
+nickname varchar2(20) not null,
+gender varchar2(5),
+email varchar2(100) not null,
+age number,
+pwd varchar2(50) not null,
+img varchar2(50)
+);
+
+create sequence member_seq;
+
+create PN_community(
+no number primary key,
+writer varchar2(10) not null,
+subject varchar2(50) not null,
+content varchar2(5000) not null,
+img varchar2(100),
+day varchar2(10) not null,
+count default 0,
+passwd varchar2(10) not null,
+re_step number,
+re_level number,
+re_group number);
+
+create sequence co_sequence;
+
+create table PN_notice(
+no number primary key,
+subject varchar2(100) not null,
+content varchar2(4000),
+count number,
+day varchar2(10),
+img varchar2(100),
+pwd varchar2(50) not null
+);
+
+
+create sequence no_seq;
+
+create table PN_ask(
+no number primary key,
+writer varchar2(20) not null,
+subject varchar2(100) not null,
+content varchar2(4000),
+count number,
+day varchar2(10),
+img varchar2(100),
+pwd varchar2(50) not null,
+re_step number,
+re_group number,
+re_level number
+);
+
+
+create sequence ask_seq;
+
+create table PN_planning(
+group_no number primary key,
+writer varchar2(10) not null,
+subject varchar2(50) not null,
+day number(20) not null,
+pwd varchar2(10) not null,
+count number(10),
+tag_no number(10) not null,
+country varchar2(50) not null,
+city varchar2(50) not null,
+thumbnail varchar(50) not null,
+totalprice number(30) not null,
+travel_period varchar2(30) not null,
+travel_seasion varchar2(10) not null,
+travel_theme varchar2(30) not null,
+recom number(10)
+);
+
+create sequence group_no
+start with 1
+increment by 1
+nomaxvalue;
+
+create table PN_subplan(
+group_no number,
+board_num number primary key,
+subject varchar2(50) not null,
+img varchar2(80),
+content varchar2(300),
+price number(20),
+traffic varchar2(100)
+);
+
+create sequence sub_seq;
+
+create sequence tag_no_sequence
+start with 1
+increment by 1
+nomaxvalue;
+
+create table PN_tag(
+group_no number,
+tag1 varchar2(15),
+tag2 varchar2(15),
+tag3 varchar2(15),
+tag4 varchar2(15),
+tag5 varchar2(15)
+tag varchar2(100),
+tag_no_sequence number
+);
+
+
+
+
+
+
+
+
+
+
+======================Áöµµtest========
+create table test(
+no number,
+subject varchar2(50),
+content varchar2(50),
+location varchar2(100),
+lat number(30,20),
+lng number(30,20)
+);
+
+create sequence test_seq;
+
+
+
+
+
+
+
+
