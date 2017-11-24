@@ -163,7 +163,7 @@ public class PlanController{
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
 		List<PlanDTO> dtoP = dao.listAPlan();
 		mav.addObject("dtoP",dtoP);
-		return mav;
+		return mav; 
 	} 
 	
 	@RequestMapping(value="/list.do")//계획목록 페이지로 이동.
