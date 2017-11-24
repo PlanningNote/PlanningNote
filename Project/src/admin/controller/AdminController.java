@@ -27,15 +27,6 @@ public class AdminController {
 		return new ModelAndView("WEB-INF/admin/admin_main.jsp");
 	}
 
-	// 로그아웃
-	@RequestMapping(value = "/admin_logout.do")
-	public ModelAndView adminLogout(HttpSession session, HttpServletRequest arg0, HttpServletResponse arg1)
-			throws Exception {
-		String key = (String) session.getAttribute("loginKey");
-		session.removeAttribute(key);
-		// ★이동안됌 ㅠ★
-		return new ModelAndView("redirect:index.jsp");
-	}
 
 	/* 회원 관리 */
 

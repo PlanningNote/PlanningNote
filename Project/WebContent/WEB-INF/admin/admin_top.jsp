@@ -10,7 +10,7 @@
 				<tr>
 					<td>
 						<a href="admin_main.do"><img src="img/planlogo.jpg" border="0"></a><!-- 로고 -->
-						<a href="admin_logout.do"><img src="img/logout.PNG" border="0"></a><!-- 로그아웃--> 						
+						<a href="logout.do"><img src="img/logout.PNG" border="0"></a><!-- 로그아웃--> 						
 					</td>
 				</tr>
 			</table>	

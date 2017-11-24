@@ -53,6 +53,12 @@ public class MemberController {
 			 }
 	}
 	
+	@RequestMapping(value= "/logout.do")
+	protected ModelAndView logout(HttpSession session,HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		 session.invalidate(); 
+		return new ModelAndView("index.jsp");
+	}
+	
 	@RequestMapping(value= "/email_check.do") //회원가입form으로 가기(join_member.jsp)
 	protected ModelAndView emailCheck(HttpServletRequest arg0,@RequestParam String email) throws Exception {
 		ModelAndView mav = new ModelAndView();
