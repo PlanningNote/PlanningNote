@@ -82,11 +82,10 @@ function renameForModelAttribute() {
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="ê°€ì¡±ì—¬í–‰">ê°€ì¡±ì—¬í–‰</td>
 				</tr>
 				<tr>
-<<<<<<< HEAD
 					<td COLSPAN="2">ì‘ì„±ì: <INPUT TYPE="hidden" NAME="writer" value="ë‚˜">ë‹˜
 =======
-					<td COLSPAN="2">ÀÛ¼ºÀÚ: 
-					<INPUT TYPE="text" NAME="writer" value="³ª" readonly="readonly">´Ô
+					<td COLSPAN="2">ï¿½Û¼ï¿½ï¿½ï¿½: 
+					<INPUT TYPE="text" NAME="writer" value="ï¿½ï¿½" readonly="readonly">ï¿½ï¿½
 >>>>>>> refs/remotes/origin/master
 					</td>
 				</tr>
@@ -104,7 +103,7 @@ function renameForModelAttribute() {
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag4" value="#"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag5" value="#"><br>
 =======
-					<td>ÅÂ±×:<br>
+					<td>ï¿½Â±ï¿½:<br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
 						&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
