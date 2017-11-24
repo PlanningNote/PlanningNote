@@ -109,7 +109,7 @@ function alertError(){
 				</tr>
 				<tr>
 					<td COLSPAN="2">작성자:  
-					<INPUT TYPE="hidden" NAME="writer" value="나" readonly="readonly">${sessionScope.mynick}님
+					<INPUT TYPE="hidden" NAME="writer" value="나" readonly="readonly"><%-- ${sessionScope.mynick} --%>님
 					</td>
 				</tr>
 				<tr>
