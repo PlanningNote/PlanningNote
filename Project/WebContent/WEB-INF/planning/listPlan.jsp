@@ -6,6 +6,18 @@
 <head>
 <title>플랜리스트자세보기</title>
 </head>
+<script language="javascript">
+var img = new Array("images1.png","images2.png")
+var cnt=0;
+function recom_click() {
+	if(cnt==0){
+		document.recom.src=img[1];
+		cnt++;
+	}else if(cnt==1){
+		document.recom.src=img[0];
+	}
+}
+</script>
 <body>
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
@@ -31,7 +43,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2"><INPUT TYPE="IMAGE" name="recom" SRC="recom.png">
+					<td COLSPAN="2"><!-- <INPUT TYPE="IMAGE" name="recom" SRC="recom.png"> -->
+					<img src="images1.png" name="recom" style="max-width: 25; height: 25;" onclick="javascript:recom_click();">
 						/count:<INPUT TYPE="hidden" name="count" VALUE="count"></td>
 				</tr>
 				<tr>
