@@ -10,7 +10,7 @@
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${path}/${dtoP.thumbnail}">
+				background="<%=path %>/${dtoP.thumbnail}">
 				<tr>
 					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
