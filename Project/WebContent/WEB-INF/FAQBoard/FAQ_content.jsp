@@ -4,7 +4,7 @@
 <tr>
 	<td>
 		<div align="center">
-			<b>글내용 보기</b>
+			<b>FAQ내용 보기</b>
 			<table border="1" width="600">
 				<tr>
 					<th bgcolor="yellow" width="15%">글번호</th>
@@ -47,6 +47,8 @@
 					<td colspan="4" align="right"><input type="button" value="글수정"
 						onclick="window.location='FAQ_update.do?no=${getFAQBoard.no}'">
 					
+						<input type="button" value="글수정"
+					onclick="window.location='FAQ_update.do?no=${getFAQBoard.no}'">
 						<input type="button" value="글삭제"
 						onclick="window.location='FAQ_delete.do?no=${getFAQBoard.no}'">
 						<input type="button" value="글목록"

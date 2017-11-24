@@ -8,9 +8,7 @@ public class FAQDTO {
 	private String day;
 	private String img;
 	private String pwd;
-	
-	
-	
+
 	
 	public int getNo() {
 		return no;

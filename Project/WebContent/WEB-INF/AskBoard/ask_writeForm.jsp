@@ -60,7 +60,6 @@
 				<tr>
 					<td bgcolor="pink" colspan="2" align="center">
 						<input type="submit" value="글쓰기">
-						<input type="submit" value="답글달기">
 						<input type="reset" value="다시작성">
 						<input type="button" value="목록보기" 
 													onclick="window.location='ask_list.do'">

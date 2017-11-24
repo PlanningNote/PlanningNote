@@ -17,7 +17,7 @@
 					<th width="50%">제목</th>
 					<th>조회수</th>
 					<!-- <th>사진</th> -->
-					<th>날짜</th>
+					<th>작성일</th>
 				</tr>
 		
 			<c:if test="${empty FAQList}">
