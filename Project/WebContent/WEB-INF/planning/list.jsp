@@ -35,7 +35,7 @@
 						/count:<INPUT TYPE="hidden" name="count" VALUE="count"></td>
 				</tr>
 				<tr>
-					<td WIDTH="75%">태그:<br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
+					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 					<td ALIGN="left">총예산: ${dtoP.totalprice} 원</td>
 					</td>
 				</tr>
@@ -55,7 +55,7 @@
 						${dtoS.traffic}</td>
 					<td width="10%" height="100%">
 					<a href="subPlanContent.do?board_num=${dtoS.getBoard_num()}">
-					<img src="<%=path %>/${dtoS.img}"></a></td>
+					<img src="<%=path %>/${dtoS.img}" style="max-width: 250; height: 250;"></a></td>
 					<td width="3%"></td>
 				</tr>
 			</c:forEach>
