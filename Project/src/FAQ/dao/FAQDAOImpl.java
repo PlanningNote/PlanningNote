@@ -128,7 +128,7 @@ protected void plusReadCount(int no) {
 	public int updateFAQ(FAQDTO dto) {
 		boolean isPass = isPassword(dto.getNo(), dto.getPwd());
 		if(isPass) {
-			String sql ="update PN_FAQ set subject=?,content=? ,img=? pwd=?  where no = ?";
+			String sql ="update PN_FAQ set subject=?,content=? ,img=?  where no = ?";
 			Object[] values = new Object[] {dto.getSubject(),dto.getContent(),dto.getImg(),dto.getNo()};
 			int res = jdbcTemplate.update(sql, values);
 			return res;

@@ -31,7 +31,7 @@
 			<input type="hidden" name="no" value="${getFAQBoard.no}"/> 
 			<table border="1" width="600">
 				<tr bgcolor="red">
-					<th colspan="2">공 지  수 정 란 입니다</th>
+					<th colspan="2">FAQ  수 정 란 입니다</th>
 				</tr> 
 				<tr>
 					<th bgcolor="pink" width="80%">제목</th>
