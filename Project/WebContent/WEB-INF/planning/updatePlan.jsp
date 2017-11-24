@@ -55,10 +55,10 @@ function renameForModelAttribute() {
 	<div align="center">
 		<form name="f" method="post" action="updatePlan.do"enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="${path}/${dtoP.thumbnail}">
+				background="<%=path%>/${dtoP.thumbnail}">
 				<tr>
-					<td>(*필수)나라: <INPUT TYPE="TEXT" NAME="country"
-						value="${dtoP.country}">/(*필수)도시: <INPUT TYPE="TEXT"
+					<td>(*필수)나라: <INPUT TYPE="TEXT" NAME="country"value="${dtoP.country}"><br>
+					(*필수)도시: <INPUT TYPE="TEXT"
 						NAME="city" value="${dtoP.city}"></td>
 				</tr>
 				<tr>
@@ -85,7 +85,7 @@ function renameForModelAttribute() {
 				</tr>
 				<tr>
 					<td COLSPAN="2">작성자: <INPUT TYPE="hidden" NAME="writer"
-						value="${dtoP.writer}" disabled>님
+						value="${dtoP.writer}" readonly>님
 					</td>
 				</tr>
 				<tr>
