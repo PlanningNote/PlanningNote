@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 </head>
 <body>
-<h1>ÀÌµ¿~</h1>
+<h1>ì´ë™~</h1>
 <table>
 <tr>
-					<th bgcolor="yellow" width="20%">ÀÌ ¹Ì Áö</th>
+					<th bgcolor="yellow" width="20%">ì´ ë¯¸ ì§€</th>
 					<td >
 					
 					<img src="${request.getRealPath()}files/notice/fileNm" width="300" /> 
-					³ª´Â ¸»ÇÏ°í ÀÖ´Ù°í ~~~~~ ¤»¤»¤»¤»º¸ÀÌ´Ï ~~ ? ¤¾¤¾ 
+					ë‚˜ëŠ” ë§í•˜ê³  ìžˆë‹¤ê³  ~~~~~ ã…‹ã…‹ã…‹ã…‹ë³´ì´ë‹ˆ ~~ ? ã…Žã…Ž 
 					</td>
 				</tr>
 

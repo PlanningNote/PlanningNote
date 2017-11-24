@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../top.jsp" %>
 <html>
 <head>
-	<title>·Î±×ÀÎ</title>
+	<title>ë¡œê·¸ì¸</title>
 	<script type="text/javascript">
 		function check(){
 			var f = document.userInfo;
 			if(!f.email.value){
-				alert("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+				alert("ì´ë©”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.");
 				return false;
 			}
 			if(!f.pwd.value){
-				alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+				alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 				return false;
 			}
 		}
@@ -25,11 +25,11 @@
 			<table align="center"  height="70%">
 			
 				<tr>
-					<td>ÀÌ¸ŞÀÏ: <input type="text" name="email"><br>
-					ºñ¹Ğ¹øÈ£: <input type="password" name="pwd"><br>
-					<input type="submit" value="·Î±×ÀÎ" ><br>
-					<a href="find_pwd.do">ºñ¹Ğ¹øÈ£ Ã£±â</a> |
-					<a href="join_member.do">È¸¿ø°¡ÀÔ</a>
+					<td>ì´ë©”ì¼: <input type="text" name="email"><br>
+					ë¹„ë°€ë²ˆí˜¸: <input type="password" name="pwd"><br>
+					<input type="submit" value="ë¡œê·¸ì¸" ><br>
+					<a href="find_pwd.do">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a> |
+					<a href="join_member.do">íšŒì›ê°€ì…</a>
 					</td>
 				</tr>
 			</table>

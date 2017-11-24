@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../admin_top.jsp" %>
 <script>
 	function deleteMember(memberNo){
-		if(confirm("Á¤¸» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?") == true){
-			if(confirm("ÁøÂ¥·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î??") == true){
+		if(confirm("ì •ë§ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == true){
+			if(confirm("ì§„ì§œë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ??") == true){
 				location.href="admin_memberDeleteForm.do?no="+memberNo;
 			}
 		}
@@ -15,11 +15,11 @@
 <div align="center" >
 	<table border="1" width="600">
 		<tr>
-			<th>È¸¿ø¹øÈ£</th>
-			<th>´Ğ³×ÀÓ</th>
-			<th width="50%">ÀÌ¸ŞÀÏ</th>
-			<th>¼ºº°</th>
-			<th>»èÁ¦</th>
+			<th>íšŒì›ë²ˆí˜¸</th>
+			<th>ë‹‰ë„¤ì„</th>
+			<th width="50%">ì´ë©”ì¼</th>
+			<th>ì„±ë³„</th>
+			<th>ì‚­ì œ</th>
 		</tr>
 				
 		<c:forEach var="dto" items="${getList}">
@@ -29,7 +29,7 @@
 					<td>${dto.nickname}</td>
 					<td>${dto.email}</td>
 					<td>${dto.gender}</td>
-					<td><input type="button" value="»èÁ¦" onclick="deleteMember(${dto.no})"></td>
+					<td><input type="button" value="ì‚­ì œ" onclick="deleteMember(${dto.no})"></td>
 				</tr>			
 			</c:if>
 			

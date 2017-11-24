@@ -1,26 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../../top.jsp" %>
 <tr>
 	<td>
 		<div align="center">
-			<b>±Û »è Á¦</b>
+			<b>ê¸€ ì‚­ ì œ</b>
 			<form name="f" action="notice_delete.do" method="post">
 				<input type="hidden" name="no" value="${param.no}"/>
 				<table border="1" width="300">
 					<tr bgcolor="yellow">
-						<th>ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä</th>
+						<th>ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”</th>
 					</tr>
 					<tr>
 						<td align="center">
-							ºñ¹Ð¹øÈ£ : <input type="password" name="pwd" class="box">
+							ë¹„ë°€ë²ˆí˜¸ : <input type="password" name="pwd" class="box">
 						</td>
 					</tr>
 					<tr bgcolor="yellow">
 						<td align="center">
-							<input type="submit" value="±Û»èÁ¦">
-							<input type="button" value="±Û¸ñ·Ï" 
+							<input type="submit" value="ê¸€ì‚­ì œ">
+							<input type="button" value="ê¸€ëª©ë¡" 
 										onclick="window.location='notice_list.do'">
 						</td>								
 					</tr>

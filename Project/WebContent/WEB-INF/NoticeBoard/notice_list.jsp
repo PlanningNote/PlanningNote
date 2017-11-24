@@ -1,28 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>   
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ include file="../../top.jsp" %>
 <tr height="600">
 	<td valign="top">
 		<div align="center">
-			<b> °ø Áö »ç Ç×  </b>
+			<b> ê³µ ì§€ ì‚¬ í•­  </b>
 			<table border="0" width="600">
 				<tr bgcolor="sky blue">
-					<td align="right"><a href="notice_write.do">°øÁö¾²±â</a></td>
+					<td align="right"><a href="notice_write.do">ê³µì§€ì“°ê¸°</a></td>
 				</tr>
 			</table>
 			<table border="1" width="600">
 				<tr bgcolor="pink">
-					<th>¹øÈ£</th>
-					<th width="50%">Á¦¸ñ</th>
-					<th>Á¶È¸¼ö</th>
-					<th>»çÁø</th>
-					<th>³¯Â¥</th>
+					<th>ë²ˆí˜¸</th>
+					<th width="50%">ì œëª©</th>
+					<th>ì¡°íšŒìˆ˜</th>
+					<th>ì‚¬ì§„</th>
+					<th>ë‚ ì§œ</th>
 				</tr>
 					<c:if test="${empty noticeList}">
 				<tr> 
 				
-					<td colspan="5">°Ô½ÃµÈ ±ÛÀÌ ¾ø½À´Ï´Ù.</td>
+					<td colspan="5">ê²Œì‹œëœ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 				</tr>
 			</c:if>	
 			
@@ -42,12 +42,12 @@
 			
 			<form>
 				<select name="opt">
-					<option value="0">Á¦¸ñ</option>
+					<option value="0">ì œëª©</option>
 					
-					<option value="3">±Û¾´ÀÌ</option>
+					<option value="3">ê¸€ì“´ì´</option>
 				</select>
 				<input type="text" size="20" name="condition"/>&nbsp;
-				<input type="submit" value="°Ë»ö"/>
+				<input type="submit" value="ê²€ìƒ‰"/>
 			</form>	
 	</div>
 	</td>

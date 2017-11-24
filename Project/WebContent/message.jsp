@@ -1,17 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<<<<<<< HEAD
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>¸Ş½ÃÁö</title>
+	<title>ë©”ì‹œì§€</title>
 </head>
 <body>
 	<h1>${message}</h1>
-	<input type="button" value="È®ÀÎ" onclick="window.close()">
+	<input type="button" value="í™•ì¸" onclick="window.close()">
 </body>
 </html>
-=======
 
 <script type="text/javascript">
 	var message = '${request.getParameter("msg")}';
@@ -21,4 +19,3 @@
 	}
 	document.location.href=url;
 </script>
->>>>>>> refs/remotes/origin/master

@@ -20,8 +20,12 @@
 			</tr>
 			<c:forEach items="${dtoP}" var="dtoP">
 			<tr WIDTH="100">
+<<<<<<< HEAD
 				<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
 				<img src="<%=path %>/${dtoS.img}style="max-width: 250; height: 250;""></a><br>
+=======
+				<td><a href="list.do?group_no=${dtoP.getGroup_no()}"><img src="recom.png"></a><br>
+>>>>>>> refs/remotes/origin/master
 				나라: ${dtoP.country}<br>
 				기간: ${dtoP.travel_period}<br>
 				총예산: ${dtoP.totalprice} 원<br>
