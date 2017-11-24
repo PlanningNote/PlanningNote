@@ -35,8 +35,13 @@
 				return false;
 			}	
 			
-			if(!f.nickName.value){
+			if(!f.nickname.value){
 				alert("닉네임을 입력하세요.");
+				return false;
+			}
+			
+			if(f.nicknameDuplication.value != "nicknameCheck"){
+				alert("닉네임 중복체크를 해주세요.");
 				return false;
 			}
 			
@@ -70,10 +75,21 @@
 			document.userInfo.emailDuplication.value ="emailUncheck";
 		}
 		
-</script>
-
-<tr>
-	<div align="center">		
+		// 닉네임 중복체크 화면open
+		function openNicknameChk(){
+			var a = document.userInfo.nickname.value;
+			window.name = "parentForm";
+			window.open("nickname_check.do?nickname="+a,"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
+		}
+		
+		function inputNicknameChk(){
+			document.userInfo.nicknameDuplication.value ="nicknameUncheck";
+		}
+	</script>
+	
+</head>
+<body>
+<div align="center">
 		
 		<!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
 		<!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 JoinPro.jsp -->
@@ -106,7 +122,9 @@
 				<tr>
 					<td id="title">닉네임</td>
 					<td>
-						<input type="text" name="nickname" maxlength="50">
+						<input type="text" name="nickname" maxlength="50" onkeydown="inputNicknameChk()">
+						<input type="button" value="중복확인" onclick="openNicknameChk()">	
+						<input type="hidden" name="nicknameDuplication" value="nicknameUncheck" >
 					</td>
 				</tr>
 					

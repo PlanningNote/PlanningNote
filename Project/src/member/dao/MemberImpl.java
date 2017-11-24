@@ -1,6 +1,5 @@
 package member.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -131,17 +130,41 @@ public class MemberImpl implements MemberDAO{
 		return result;
 	}
 
-	//관리자모드에서 사용
 	@Override
-	public boolean checkPwd(String nickname, String pwd) {
-		String sql = "select pwd from  PN_member where nickname = ?";
-		String result = (String) this.jdbcTemplate.queryForObject(
-			       sql,    new Object[]{nickname}, String.class);
-		if(result.equals(pwd)) {
+	public boolean checkNickname(String nickname) {
+		String sql = "select * from PN_member where nickname = ?";
+		try {
+			List<MemberDTO> result = jdbcTemplate.query(sql, mapper);
+			if(result!=null) return true;
+			else return false;
+		}catch(EmptyResultDataAccessException e) {
 			return true;
-		}else {
-			return false;
 		}
+	}
+
+	@Override
+	public boolean duplicateNicknameCheck(String nickname) {
+		String sql = "select nickname from PN_member where nickname = ?";
+		try {
+			String result = (String) this.jdbcTemplate.queryForObject(
+			       sql,    new Object[]{nickname}, String.class);
+			return true;
+
+		}catch(EmptyResultDataAccessException e) {
+			return false; 
+		}	
 		
+	}
+		//관리자모드에서 사용
+		@Override
+		public boolean checkPwd(String nickname, String pwd) {
+			String sql = "select pwd from  PN_member where nickname = ?";
+			String result = (String) this.jdbcTemplate.queryForObject(
+				       sql,    new Object[]{nickname}, String.class);
+			if(result.equals(pwd)) {
+				return true;
+			}else {
+				return false;
+			}
 	}
 }

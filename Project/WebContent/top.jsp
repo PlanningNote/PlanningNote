@@ -7,6 +7,20 @@
 	<link rel="stylesheet" href="style.css">
 
 </head>
+
+<script>
+	function start(){
+		var url = "message.jsp";
+		var content = ${message};
+		if(content != null){
+		window.open(url,	content, "width=500, height=300, resizable = no, scrollbars = no");	
+		}
+	}
+</script>
+
+		
+<body onload="start()"> 
+
 <c:set var="isLogin" value="false" scope="session"/>
 <c:if test="${not empty sessionScope.mynick}">
 	<c:set var="isLogin" value="true" scope="session"/>

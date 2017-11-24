@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,7 @@ public class MemberController {
 		}
 		
 		boolean result = memberDAO.checkMember(email, pwd);
+		ModelAndView mav = new ModelAndView();
 		if(result) {
 			String nickname = memberDAO.getNickname(email);
 			 session.setAttribute("loginKey", email);
@@ -45,11 +47,10 @@ public class MemberController {
 			 }else {
 				 return new ModelAndView("index.jsp");
 			 }
-		}else {
-			//JOptionPane.showMessageDialog(null, "로그인에 실패하였습니다.");
-			System.out.println("실패");
-			return new ModelAndView("redirect:login.do");
-		}		
+		}   
+			 else{
+				return new ModelAndView("redirect:login.do"); 
+			 }
 	}
 	
 	@RequestMapping(value= "/email_check.do") //회원가입form으로 가기(join_member.jsp)
@@ -57,6 +58,15 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("getEmail",email);		
 		mav.setViewName("WEB-INF/member/EmailCheckForm.jsp");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value= "/nickname_check.do") //회원가입form으로 가기(join_member.jsp)
+	protected ModelAndView nicknameCheck(HttpServletRequest arg0,@RequestParam String nickname) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("getNickname",nickname);		
+		mav.setViewName("WEB-INF/member/NicknameCheckForm.jsp");
 		
 		return mav;
 	}
@@ -98,6 +108,20 @@ public class MemberController {
 		return null;
 	}
 		
+	@RequestMapping(value= "/MemberNicknameCheckAction.do") 
+	protected ModelAndView NicknameCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String nickname = request.getParameter("nickname");
+		boolean result = memberDAO.duplicateNicknameCheck(nickname);
+		response.setContentType("text/html;charset=euc-kr");
+		PrintWriter out = response.getWriter();
+
+		if(result)	out.println("0"); // 아이디 중복
+		else		out.println("1");
+		
+		out.close();				
+		
+		return null;
+	}
 	
 	
 	
