@@ -74,7 +74,9 @@ protected void plusReadCount(int no) {
 
 	@Override 
 	public NoticeDTO getNoticeBoard(int no, String mode) {
-		
+		if(mode.equals("content")) {
+			plusReadCount(no);
+		}	
 		String sql = "select * from PN_notice where no = ?";
 		NoticeDTO dto = jdbcTemplate.query
 				(sql, new MyPreparedStatementSetterForPrimaryKey(no), new MyResultSetExtractor());

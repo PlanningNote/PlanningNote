@@ -74,7 +74,9 @@ protected void plusReadCount(int no) {
 
 	@Override 
 	public FAQDTO getFAQBoard(int no, String mode) {
-		
+		if(mode.equals("content")) {
+			plusReadCount(no);
+		}	
 		String sql = "select * from PN_FAQ where no = ?";
 		FAQDTO dto = jdbcTemplate.query
 				(sql, new MyPreparedStatementSetterForPrimaryKey(no), new MyResultSetExtractor());
