@@ -53,7 +53,12 @@
 						<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a><!--이용방법 --> 
 						<a href="center_main.do"><img src="img/center.PNG" border="0"></a> <!--고객센터 --> 
 						<a href="comu_main.do"> <img src="img/comu.PNG" border="0"></a> <!--커뮤니티 --> 
+						<c:if test="${isLogin eq false}">
+						<a href="login.do"><img src="img/make.PNG" border="0"></a><!--일정만들기--><!-- 로그인 후 이용가능 -->
+						</c:if>
+						<c:if test="${isLogin eq true}">
 						<a href="plan.do"><img src="img/make.PNG" border="0"></a> <!--일정만들기-->
+						</c:if>
 						<a href="listPlanA.do"><img src="img/share.PNG" border="0"></a>	<!--일정공유-->
 					</td>
 				</tr>
