@@ -33,7 +33,7 @@
 	</c:if>	
 		<c:forEach var="dto" items="${getList}">
 			<tr>
-				<td></td>
+				<td>${dto.no}</td>
 				<td>${dto.nickname}</td>
 				<td>${dto.email}</td>
 				<td>${dto.gender}</td>
