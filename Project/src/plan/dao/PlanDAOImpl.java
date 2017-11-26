@@ -155,9 +155,11 @@ public class PlanDAOImpl implements PlanDAO {
 	@Override
 	public SubPlanDTO getSubContent(int board_num) {
 		String sql = "select * from PN_subplan where board_num = ?";
-		SubPlanDTO result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(board_num),
-				new SubResultSetExtractor());
-		return null;
+		System.out.println("getSubcontent: "+board_num);
+		SubPlanDTO result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(board_num)
+				, new SubResultSetExtractor());
+		System.out.println("4: "+result.getContent());
+		return result;
 	}
 	
 	// PlanDTO ÀÇ RowMapper
@@ -233,6 +235,7 @@ public class PlanDAOImpl implements PlanDAO {
 				dto.setGroup_no(rs.getInt("group_no"));
 				dto.setBoard_num(rs.getInt("board_num"));
 				dto.setSubject(rs.getString("subject"));
+				System.out.println("3: "+dto.getSubject());
 				dto.setImg(rs.getString("img"));
 				dto.setContent(rs.getString("content"));
 				dto.setPrice(rs.getInt("price"));
@@ -253,7 +256,7 @@ public class PlanDAOImpl implements PlanDAO {
 
 		@Override
 		public void setValues(PreparedStatement arg0) throws SQLException {
-			// TODO Auto-generated method stub
+			System.out.println("getS2: "+num);
 			arg0.setInt(1, num);
 		}
 	}
