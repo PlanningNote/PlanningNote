@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -150,11 +152,24 @@ public class PlanController{
 	
 	@RequestMapping(value="/listPlanA.do")//계획목록 페이지로 이동.
 	public ModelAndView listPlanA(HttpServletRequest arg0, 
-			HttpServletResponse arg1) throws Exception {
+			HttpServletResponse arg1,@RequestParam("sarchPlan")String searching) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
 		List<PlanDTO> dtoP = dao.listAPlan();
-		mav.addObject("dtoP",dtoP);
+		List list = new ArrayList();
+		Map map = new HashMap(); 
+		if(searching ==null) {
+		mav.addObject("dtoP",dtoP);}
+		else if(searching.equals("제목")) {
+			map.put("dtoP", dtoP);
+			map.get("dtoP").equals(searching);
+		}else if(searching.equals("작성자")) {
+			
+		}else if(searching.equals("내용")) {
+			
+		}else if(searching.equals("제목+작성자")) {
+			
+		}
 		return mav; 
 	} 
 	
