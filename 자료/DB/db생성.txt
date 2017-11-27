@@ -10,7 +10,7 @@ img varchar2(50)
 
 create sequence member_seq;
 
-create PN_community(
+create table PN_community(
 no number primary key,
 writer varchar2(10) not null,
 subject varchar2(50) not null,
