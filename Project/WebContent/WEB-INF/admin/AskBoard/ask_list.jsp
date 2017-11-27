@@ -8,7 +8,7 @@
 		<tr bgcolor="orange">
 			<td align="right"><a href="ask_write.do">문의하기</a></td>
 		</tr>
-	</table>
+	</table> 
 	<table border="1" width="600">
 		<tr bgcolor="pink">
 			<th>번호</th>
