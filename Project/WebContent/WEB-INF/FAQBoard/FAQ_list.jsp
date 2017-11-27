@@ -6,11 +6,6 @@
 	<td valign="top">
 		<div align="center">
 			<b> FAQ  </b>
-			<table border="0" width="600">
-				<tr bgcolor="sky blue">
-					<td align="right"><a href="FAQ_write.do">FAQ</a></td>
-				</tr>
-			</table>
 			<table border="1" width="600">
 				<tr bgcolor="pink">
 					<th>번호</th>

@@ -21,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import FAQ.dao.FAQDAO;
+import FAQ.dto.FAQDTO;
 import member.dao.MemberDAO;
 import member.dto.MemberDTO;
 import notice.dao.NoticeDAO;
@@ -34,6 +36,9 @@ public class AdminController {
 	@Autowired
 	private NoticeDAO noticeDAO;
 
+	@Autowired
+	private FAQDAO faqDAO;
+	
 	// 관리자 메인화면
 	@RequestMapping(value = "/admin_main.do")
 	public ModelAndView adminMain(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -242,6 +247,113 @@ public class AdminController {
 			JOptionPane.showMessageDialog(null, "오류발생");
 			mav.addObject("no", no);
 			mav.setViewName("admin_noticeContent.do");
+		}		
+		return mav;
+	}
+	
+	/* FAQ */	
+		
+		@RequestMapping(value="/admin_FAQList.do")
+	public ModelAndView listFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		List<FAQDTO> list = faqDAO.listFAQ(); // 가져오는거
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("FAQList", list);
+		mav.setViewName("WEB-INF/admin/FAQBoard/FAQ_list.jsp");
+		return mav;
+	}
+	
+
+	
+	@RequestMapping(value= "/admin_FAQWrite.do", method=RequestMethod.GET)
+	protected ModelAndView writeFormFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_writeForm.jsp");
+	}
+	
+	@RequestMapping(value= "/admin_FAQWrite.do",method=RequestMethod.POST)
+	protected ModelAndView writeProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)
+			throws Exception {
+		//이제 arg2로 dto 한번에 값 못받아온다.		
+		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+			dto.setNo(0);		
+			dto.setCount(0);
+		}
+		faqDAO.insertFAQ(dto);
+		return new ModelAndView("redirect:admin_FAQList.do");
+	}
+	
+	@RequestMapping(value= "/admin_FAQContent.do")
+	public ModelAndView contentFAQ(@RequestParam String no) throws Exception {
+		//@RequestParam Map<String, String> params
+		// Set<Entry<String, String>> set = params.entrySet();
+		// for(Entry<String,String> entry = set){
+		// System.out.println(entry.getKey() + "=" + entry.getValues());
+		// }
+		if(no == null || no.trim().equals("")) {
+			return null;
+		}
+		
+		FAQDTO dto = faqDAO.getFAQBoard(Integer.parseInt(no), "content");
+		
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_content.jsp");
+		mav.addObject("getFAQBoard", dto);
+		return mav;
+	}
+	
+	@RequestMapping(value= "/admin_FAQUpdate.do", method=RequestMethod.GET)
+	protected ModelAndView updateFAQ(@RequestParam String no) throws Exception {
+		if(no == null || no.trim().equals("")) {
+			return null;
+		}
+		FAQDTO dto = faqDAO.getFAQBoard(Integer.parseInt(no), "update");
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_updateForm.jsp","getFAQBoard",dto); //값 하나일때 가능
+		return mav;
+	}
+	
+	@RequestMapping(value= "/admin_FAQUpdate.do", method=RequestMethod.POST)
+	protected ModelAndView updateProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)	throws Exception {
+		if(result.hasErrors()) { 
+			dto.setNo(0);			
+		}
+		int res =faqDAO.updateFAQ(dto);
+		
+		ModelAndView mav = new ModelAndView();
+		if(res>0) {
+			return new ModelAndView("redirect:admin_FAQList.do");
+		}else if(res==-1) {
+			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("no", dto.getNo());
+			mav.setViewName("admin_FAQUpdate.do");
+		}else {
+			JOptionPane.showMessageDialog(null, "오류발생");
+			mav.addObject("no", dto.getNo());
+			mav.setViewName("admin_FAQContent.do");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value= "/admin_FAQDelete.do", method=RequestMethod.GET)
+	public ModelAndView deleteFormFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_delete.jsp");
+	}
+	
+	@RequestMapping(value= "/admin_FAQDelete.do", method=RequestMethod.POST)
+	protected ModelAndView deleteProFAQ(@RequestParam String no, @RequestParam String pwd) throws Exception {
+		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
+			return null;
+		}
+		
+		int res = faqDAO.deleteFAQ(Integer.parseInt(no), pwd);
+		ModelAndView mav = new ModelAndView();
+		if(res>0) {
+			return new ModelAndView("redirect:admin_FAQList.do");
+		}else if(res==-1) {
+			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("no", no);
+			mav.setViewName("admin_FAQDelete.do");
+		}else {
+			JOptionPane.showMessageDialog(null, "오류발생");
+			mav.addObject("no", no);
+			mav.setViewName("admin_FAQContent.do");
 		}		
 		return mav;
 	}

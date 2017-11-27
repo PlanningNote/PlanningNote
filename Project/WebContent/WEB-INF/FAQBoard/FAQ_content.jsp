@@ -44,13 +44,7 @@
 	
 	
 				<tr bgcolor="yellow">
-					<td colspan="4" align="right"><input type="button" value="글수정"
-						onclick="window.location='FAQ_update.do?no=${getFAQBoard.no}'">
-					
-						<input type="button" value="글수정"
-					onclick="window.location='FAQ_update.do?no=${getFAQBoard.no}'">
-						<input type="button" value="글삭제"
-						onclick="window.location='FAQ_delete.do?no=${getFAQBoard.no}'">
+					<td colspan="4" align="right">
 						<input type="button" value="글목록"
 						onclick="window.location='FAQ_list.do'"></td>
 				</tr>
