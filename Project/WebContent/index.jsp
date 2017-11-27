@@ -11,7 +11,7 @@
 	   
 		<td align="center"><br>
 		
-		<table background="ka1.png">
+		<table background="/img/ka1.png">
 		<tr>
 		<td>
 			<b>검색할 나라를 입력하세요</b>
