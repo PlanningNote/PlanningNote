@@ -28,10 +28,10 @@ public class FileUploadController {
         ModelAndView mav = new ModelAndView();
         
         MultipartHttpServletRequest multi = (MultipartHttpServletRequest) request;
-        MultipartFile file = multi.getFile("img");
+        MultipartFile file = multi.getFile("img");//writeForm 에서 input 이미지이름
         HttpSession session = request.getSession();       
        
-        String path=session.getServletContext().getRealPath("img");//사진 저장위치
+        String path=session.getServletContext().getRealPath("files/askimg");//사진 저장위치
          UUID randomeUUID = UUID.randomUUID();
         
          String filename = file.getOriginalFilename();// 실제 파일 이름 가져오기
@@ -44,7 +44,7 @@ public class FileUploadController {
           System.out.println("오리지날 파일 이름" + file.getOriginalFilename());
         
           
-          path = "D:\\imgs"; //내컴퓨터에저장
+          path = "files/askimg";//    		  "D:\\imgs"; //내컴퓨터에저장
           InputStream inputStream = null;
           OutputStream outputStream = null;
           
@@ -76,9 +76,9 @@ public class FileUploadController {
                   outputStream = new FileOutputStream(organizedfilePath);
  
                   int readByte = 0;
-                  byte[] buffer = new byte[8192];
+                  byte[] buffer = new byte[20000];//8192
  
-                  while ((readByte = inputStream.read(buffer, 0, 8120)) != -1) {
+                  while ((readByte = inputStream.read(buffer, 0, 20000)) != -1) {
                       outputStream.write(buffer, 0, readByte); //파일 생성 ! 
                       
                   }
@@ -123,7 +123,7 @@ public class FileUploadController {
 	//파일이 받아졌다면 경로지정 session? request ? 
 	
 	HttpSession session = req.getSession();
-	String upPath = session.getServletContext().getRealPath("/files"); //파일즈라는 폴더를 하나만들겠다.
+	String upPath = session.getServletContext().getRealPath("/files/askimg"); //파일즈라는 폴더를 하나만들겠다.
 	
 	
 	//서버에 파일을 옮겨 적기 . (파일쓰기)
