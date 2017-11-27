@@ -12,7 +12,7 @@
 		<table border="1" WIDTH="800" HEIGHT="500">
 			<tr>
 				<td COLSPAN="3" HEIGHT="7%" ALIGN="MIDDLE">
-					<form name="f" action="">
+					<form name="f">
 					<select name="searchPlan">
 					<option value="제목">제목</option>
 					<option value="작성자">작성자</option>

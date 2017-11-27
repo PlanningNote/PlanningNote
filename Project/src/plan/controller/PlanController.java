@@ -152,24 +152,11 @@ public class PlanController{
 	
 	@RequestMapping(value="/listPlanA.do")//계획목록 페이지로 이동.
 	public ModelAndView listPlanA(HttpServletRequest arg0, 
-			HttpServletResponse arg1,@RequestParam("sarchPlan")String searching) throws Exception {
+			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
 		List<PlanDTO> dtoP = dao.listAPlan();
-		List list = new ArrayList();
-		Map map = new HashMap(); 
-		if(searching ==null) {
-		mav.addObject("dtoP",dtoP);}
-		else if(searching.equals("제목")) {
-			map.put("dtoP", dtoP);
-			map.get("dtoP").equals(searching);
-		}else if(searching.equals("작성자")) {
-			
-		}else if(searching.equals("내용")) {
-			
-		}else if(searching.equals("제목+작성자")) {
-			
-		}
+		mav.addObject("dtoP",dtoP);
 		return mav; 
 	} 
 	
