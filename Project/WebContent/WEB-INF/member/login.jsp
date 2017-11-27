@@ -18,20 +18,20 @@
 			}
 		}
 		
-		
 	</script>
 </head>
 <body>
 	<div align="center">
+	
 		<form name="userInfo" onsubmit="return check()" method="post" action="login_ok.do">
-			<table align="center"  height="70%">
-			
+			<table align="center"  height="30%">
 				<tr>
+				<img src="img/joinImg.PNG" border="0">
 					<td>이메일: <input type="text" name="email"><br>
 					비밀번호: <input type="password" name="pwd"><br>
 					<input type="submit" value="로그인" ><br>
-					<a href="find_pwd.do">비밀번호 찾기</a> |
-					<a href="join_member.do">회원가입</a>
+					<a href="find_pwd.do"><img src="img/findpw.png" border="0"></a> 
+					<a href="join_member.do"><img src="img/joinmember.png" border="0"></a>
 					</td>
 				</tr>
 			</table>
