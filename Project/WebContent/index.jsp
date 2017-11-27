@@ -2,22 +2,25 @@
 	pageEncoding="UTF-8"%>
   <%@page import="java.util.*"%>
 <%@ include file="top.jsp"%>
-	<tr height="25%">
+	<tr height="25%" >
 		<td align="center">
 				<img src="img/a1.jpg" align ="center" width="100%" height="100%">
 		</td>
 	</tr>
 	<tr>
 	   
-		<td align="center"><br>
+		<td align="center">
 		
-		<table background="/img/ka1.png">
+		<table WIDTH="1100" HEIGHT="150" 
+		background="img/pink2.jpg">
 		<tr>
-		<td>
+		<td align="center">
 			<b>검색할 나라를 입력하세요</b>
 			
 			<form name="f">
-				<input type="text" name="nation">
+			<input type="text" value="  가고픈 나라 입력해보세요!"  name="nation" size="50"
+			onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		
 				<input type="submit" value="검색">
 				<input type="reset" value="취소">
 			</form>

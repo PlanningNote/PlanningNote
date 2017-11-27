@@ -47,7 +47,7 @@
 			</table>	
 		</div>		
 		<div align="center">			
-			<table border="1" width="1100" >
+			<table border="1" width="1100"  >
 				<tr height="60" align="center">
 					<td>
 						<c:if test="${isLogin eq false}">
@@ -67,6 +67,5 @@
 							<a href="listPlanA.do"><img src="img/share.PNG" border="0"></a>	<!--일정공유-->
 						</c:if>
 					
-						
 					</td>
 				</tr>
