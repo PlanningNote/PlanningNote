@@ -12,7 +12,7 @@
 		<td align="center">
 		
 		<table WIDTH="1100" HEIGHT="150" 
-		background="img/pink2.jpg">
+		background="img/pink3.jpg">
 		<tr>
 		<td align="center">
 			<b>검색할 나라를 입력하세요</b>

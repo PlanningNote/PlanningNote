@@ -37,7 +37,8 @@
 							<a href="join_member.do"><img src="img/join.PNG" border="0"></a><!-- 회원가입 -->
 						</c:if>
 						<c:if test="${isLogin eq true}">
-						<a href="mypage.do?nickname=${sessionScope.nickname}"><font face="verdana"  size="5">${sessionScope.mynick}님</font></a><!-- 마이페이지 -->
+						<a href="mypage.do?nickname=${sessionScope.nickname}"><font face="verdana"  size="5" style="text-decoration:none">
+						${sessionScope.mynick} 님 환영합니다.<img src="img/mypage.png" border="0"> </font></a><!-- 마이페이지 -->
 							<a href="logout.do"><img src="img/logout.PNG" border="0"></a><!-- 로그아웃 --> 
 							
 						</c:if>  

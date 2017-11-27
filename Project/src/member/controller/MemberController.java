@@ -28,6 +28,11 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value= "/mypage.do")
+	protected ModelAndView Mypage(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/Mypage/mypage_main.jsp");
+	}
+	
 	
 	@RequestMapping(value= "/login.do")
 	protected ModelAndView Login(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {

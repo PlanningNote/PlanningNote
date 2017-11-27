@@ -46,8 +46,8 @@
 							<a href=""><img src="img/no10.PNG" border="0"><h4></h4></a>
 							<h4><img src="img/mana1.PNG" border="0"></h4><!-- 신고관리 -->
 								<ul>
-									<a href="report_member.do"><li><img src="img/no7.PNG" border="0"></li></a><!-- 회원신고 -->
-									<a href="report_post.do"><li><img src="img/no8.PNG" border="0"></li></a><!-- 게시물신고 -->
+									<a href=""><li><img src="img/no7.PNG" border="0"></li></a><!-- 회원신고 -->
+									<a href=""><li><img src="img/no8.PNG" border="0"></li></a><!-- 게시물신고 -->
 								</ul>
 						</div>
 					</td>
