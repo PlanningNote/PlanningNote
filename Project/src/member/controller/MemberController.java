@@ -22,7 +22,14 @@ import member.dto.MemberDTO;
 public class MemberController {   
 	@Autowired
 	private MemberDAO memberDAO;
-	 
+	
+	@RequestMapping(value = "/notLogin.do") // 계획적는 페이지로 이동.
+	public ModelAndView login(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("notLogin.jsp");
+		return mav;
+	}
+	
 	
 	@RequestMapping(value= "/login.do")
 	protected ModelAndView Login(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {

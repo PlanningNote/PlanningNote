@@ -7,5 +7,6 @@
 <body>
 로그인 후 이용해주세요
 <a href="index.jsp">뒤로가기</a>
+<a href="login.do">로그인</a>
 </body>
 </html>
