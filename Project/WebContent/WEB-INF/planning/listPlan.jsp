@@ -16,6 +16,7 @@ function recom_click() {
 		cnt++;
 	}else if(cnt==1){
 		document.recom.src=img[0];
+		cnt--;
 	}
 }
 </script>
