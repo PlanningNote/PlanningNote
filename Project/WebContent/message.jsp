@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 	var message = '${msg}';
-	var url ='${url}';
+	var url ='${location}';
 	if(message != null){
 		alert(message);
 	}
