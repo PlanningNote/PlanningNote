@@ -19,6 +19,7 @@ function recom_click() {
 		cnt--;
 	}
 }
+
 </script>
 <body>
 	<div align="center">
