@@ -37,7 +37,7 @@
 								</ul>
 							<h4>고객센터</h4>
 								<ul>
-									<a href=""><li>공지사항</li></a>
+									<a href="admin_noticeList.do"><li>공지사항</li></a>
 									<a href=""><li>FAQ</li></a>
 									<a href=""><li>Q&A</li></a>
 								</ul>
