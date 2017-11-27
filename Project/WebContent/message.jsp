@@ -7,13 +7,12 @@
 </head>
 <body>
 	<h1>${message}</h1>
-	<input type="button" value="확인" onclick="window.close()">
 </body>
 </html>
 
 <script type="text/javascript">
-	var message = '${request.getParameter("msg")}';
-	var url ='${request.getParameter("url")}';
+	var message = '${msg}';
+	var url ='${url}';
 	if(message != null){
 		alert(message);
 	}
