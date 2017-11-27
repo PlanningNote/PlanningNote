@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import FAQ.dao.FAQDAO;
 import FAQ.dto.FAQDTO;
-import ask.dto.AskDTO;
+
 
 
 @Controller

@@ -40,6 +40,9 @@ public class AskDAOImpl implements AskDAO{
 			dto.setDay(arg0.getString("day"));
 			dto.setImg(arg0.getString("img"));
 			dto.setPwd(arg0.getString("pwd"));
+			dto.setRe_group(arg0.getInt("re_group"));
+			dto.setRe_step(arg0.getInt("re_step"));
+			dto.setRe_level(arg0.getInt("re_level"));
 
 			return dto;
 		}

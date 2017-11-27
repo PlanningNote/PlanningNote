@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
   
 <%@ include file="top.jsp"%>
-	<tr height="25%">
+	<tr height="20%">
 		<td align="center">
 				<img src="img/a1.jpg" align ="center" width="100%" height="100%">
 		</td>
