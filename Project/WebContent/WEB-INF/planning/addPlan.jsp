@@ -6,6 +6,7 @@
 <%
     request.setCharacterEncoding("UTF-8");
 %>
+<%@ include file="/top.jsp"%>
 <html>
 <head>
 <title>플랜리스트</title>
@@ -152,3 +153,4 @@ function alertError(){
 </div>
 </body>
 </html>
+<%@ include file="/bottom.jsp"%>

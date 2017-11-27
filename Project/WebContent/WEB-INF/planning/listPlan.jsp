@@ -19,6 +19,7 @@ function recom_click() {
 	}
 }
 </script>
+<%@ include file="/top.jsp"%>
 <body>
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
@@ -82,3 +83,4 @@ function recom_click() {
 	</div>
 </body>
 </html>
+<%@ include file="/bottom.jsp"%>

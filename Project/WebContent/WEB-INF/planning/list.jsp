@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
+<%@ include file="/top.jsp"%>
 <html>
 <head>
 <title>플랜리스트자세보기</title>
@@ -65,3 +66,4 @@
 	</div>
 </body>
 </html>
+<%@ include file="/bottom.jsp"%>

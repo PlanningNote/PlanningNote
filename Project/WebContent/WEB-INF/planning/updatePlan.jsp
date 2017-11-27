@@ -6,6 +6,7 @@
 	String path = session.getServletContext().getRealPath("img");
 	int index=0;
 %>
+<%@ include file="/top.jsp"%>
 <script language="javascript">
 function addRow() {
 	index+=1;
@@ -139,3 +140,4 @@ function renameForModelAttribute() {
 		</div>
 </body>
 </html>
+<%@ include file="/bottom.jsp"%>
