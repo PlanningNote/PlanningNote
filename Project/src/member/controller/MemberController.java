@@ -52,7 +52,7 @@ public class MemberController {
 			 session.setAttribute("mynick", nickname);
 			 if(email.equals("admin")) {
 				
-				 mav.addObject("msg", "관리자");
+				 mav.addObject("msg", "관리자모드로 로그인되었습니다.");
 				 mav.addObject("location","admin_main.do");
 				 return mav;
 			 }else {

@@ -40,7 +40,7 @@
 								<ul>
 									<a href="admin_noticeList.do"><li>공지사항</li></a>
 									<a href="admin_FAQList.do"><li>FAQ</li></a>
-									<a href=""><li>Q&A</li></a>
+									<a href="admin_askList.do"><li>Q&A</li></a>
 								</ul>
 							<a href=""><h4>커뮤니티</h4></a>
 							<a href=""><h4>일정공유</h4></a>

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%String path = session.getServletContext().getRealPath("files/askimg"); %>
-<%@ include file="../../top.jsp" %>
-
+<%@ include file="../admin_top.jsp"%>
 <tr>
 	<td>
 		<div align="center">
@@ -57,4 +56,4 @@
 		</div>
 	</td>
 </tr>
-<%@ include file="../../bottom.jsp" %>
+<%@ include file="../admin_bottom.jsp"%>

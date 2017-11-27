@@ -23,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import FAQ.dao.FAQDAO;
 import FAQ.dto.FAQDTO;
+import ask.dao.AskDAO;
+import ask.dto.AskDTO;
 import member.dao.MemberDAO;
 import member.dto.MemberDTO;
 import notice.dao.NoticeDAO;
@@ -38,6 +40,9 @@ public class AdminController {
 
 	@Autowired
 	private FAQDAO faqDAO;
+	
+	@Autowired
+	private AskDAO askDAO;
 	
 	// 관리자 메인화면
 	@RequestMapping(value = "/admin_main.do")
@@ -358,5 +363,134 @@ public class AdminController {
 		return mav;
 	}
 
+	
+	/* Q&A */
+	
+
+	@RequestMapping(value="/admin_askList.do")
+	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		System.out.println("여기는 왔쇼");
+		List<AskDTO> list = askDAO.listAsk();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("askList", list);
+		mav.setViewName("WEB-INF/admin/AskBoard/ask_list.jsp");		
+		return mav;		
+	}
+	
+	@RequestMapping(value= "/admin_askContent.do")
+	public ModelAndView contentAsk(@RequestParam String no) throws Exception {
+		//@RequestParam Map<String, String> params
+		// Set<Entry<String, String>> set = params.entrySet();
+		// for(Entry<String,String> entry = set){
+		// System.out.println(entry.getKey() + "=" + entry.getValues());
+		// }
+		if(no == null || no.trim().equals("")) {
+			return null;
+		}
+		
+		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "content");
+		
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_content.jsp");
+		mav.addObject("getAskBoard", dto);
+		return mav;
+	}
+
+	
+	@RequestMapping(value= "/admin_askWrite.do", method=RequestMethod.GET)
+	protected ModelAndView writeFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/AskBoard/ask_writeForm.jsp");
+	}
+	@RequestMapping(value= "/admin_askWrite.do",method=RequestMethod.POST)
+	protected ModelAndView writeProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
+			throws Exception {
+		//이제 arg2로 dto 한번에 값 못받아온다.		
+		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+			dto.setNo(0);
+			
+		}
+		
+		 askDAO.insertAsk(dto);
+		return new ModelAndView("redirect:admin_askList.do");
+	}
+	
+	@RequestMapping(value= "/admin_askDelete.do", method=RequestMethod.GET)
+	public ModelAndView deleteFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/AskBoard/ask_delete.jsp");
+	}
+	
+	@RequestMapping(value= "/admin_askDelete.do", method=RequestMethod.POST)
+	protected ModelAndView deleteProAsk(@RequestParam String no, @RequestParam String pwd) throws Exception {
+		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
+			return null;
+		}
+		
+		int res = askDAO.deleteAsk(Integer.parseInt(no), pwd);
+		ModelAndView mav = new ModelAndView();
+		if(res>0) {
+			return new ModelAndView("redirect:admin_askList.do");
+		}else if(res==-1) {
+			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("no", no);
+			mav.setViewName("admin_askDelete.do");
+		}else {
+			JOptionPane.showMessageDialog(null, "오류발생");
+			mav.addObject("no", no);
+			mav.setViewName("admin_askContent.do");
+		}		
+		return mav;
+	}
+	
+	@RequestMapping(value= "/admin_askReply.do", method=RequestMethod.GET)
+	public ModelAndView replyAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/admin/AskBoard/ask_replyForm.jsp");
+	}
+	
+	@RequestMapping(value= "/admin_askReply.do", method=RequestMethod.POST)
+	protected ModelAndView replyProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result) throws Exception {
+		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+			dto.setNo(0);
+			dto.setRe_group(0);
+			dto.setRe_level(0);
+			dto.setRe_step(0);
+		}		
+		
+		askDAO.insertAsk(dto);
+		return new ModelAndView("redirect:admin_askList.do");
+	}
+	
+	
+	
+	
+	@RequestMapping(value= "/admin_askUpdate.do", method=RequestMethod.GET)
+	protected ModelAndView updateAsk(@RequestParam String no) throws Exception {
+		if(no == null || no.trim().equals("")) {
+			return null;
+		}
+		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "update");
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_updateForm.jsp","getAskBoard",dto); //값 하나일때 가능
+		return mav;
+	}
+	
+	@RequestMapping(value= "/admin_askUpdate.do", method=RequestMethod.POST)
+	protected ModelAndView updateProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)	throws Exception {
+		if(result.hasErrors()) { 
+			dto.setNo(0);			
+		}
+		int res =askDAO.updateAsk(dto);
+		
+		ModelAndView mav = new ModelAndView();
+		if(res>0) {
+			return new ModelAndView("redirect:admin_askList.do");
+		}else if(res==-1) {
+			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("no", dto.getNo());
+			mav.setViewName("admin_askUpdate.do");
+		}else {
+			JOptionPane.showMessageDialog(null, "오류발생");
+			mav.addObject("no", dto.getNo());
+			mav.setViewName("admin_askContent.do");
+		}
+		return mav;
+	}
 
 }
