@@ -5,8 +5,6 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -135,7 +133,7 @@ public class MemberController {
 		boolean result = memberDAO.duplicateNicknameCheck(nickname);
 		response.setContentType("text/html;charset=euc-kr");
 		PrintWriter out = response.getWriter();
-
+	
 		if(result)	out.println("0"); // 아이디 중복
 		else		out.println("1");
 		

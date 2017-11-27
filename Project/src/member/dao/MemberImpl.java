@@ -1,6 +1,5 @@
 package member.dao;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -167,4 +166,10 @@ public class MemberImpl implements MemberDAO{
 				return false;
 			}
 	}
+
+		@Override
+		public MemberDTO profile(String nickname) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

@@ -18,4 +18,5 @@ public interface MemberDAO {
 	public String getNickname(String email);
 	public List<MemberDTO> fineMember(String search, String searchString);
 	public boolean checkPwd(String nickname, String pwd);
+	public MemberDTO profile(String nickname);
 }
