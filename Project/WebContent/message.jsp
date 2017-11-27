@@ -15,7 +15,7 @@
 	var message = '${request.getParameter("msg")}';
 	var url ='${request.getParameter("url")}';
 	if(message != null){
-		alert(message);
+		'<h1>${message}</h1>'
 	}
 	document.location.href=url;
 </script>
