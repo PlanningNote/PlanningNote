@@ -49,6 +49,8 @@ public class AdminController {
 	public ModelAndView adminMain(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/admin_main.jsp");
 	}
+	
+
 
 	/* 회원 관리 */
 

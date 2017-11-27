@@ -39,15 +39,15 @@
 							<h4><img src="img/no11.PNG" border="0"></h4><!-- 고객센터 -->
 								<ul>
 									<a href="admin_noticeList.do"><li><img src="img/no1.PNG" border="0"></li></a><!-- 공지 -->
-									<a href="admin_FAQList.do"><li><img src="img/no2.PNG" border="0">FAQ</li></a>
-									<a href="admin_askList.do"><li><img src="img/no3.PNG" border="0">Q&A</li></a>
+									<a href="admin_FAQList.do"><li><img src="img/no2.PNG" border="0"></li></a>
+									<a href="admin_askList.do"><li><img src="img/no3.PNG" border="0"></li></a>
 								</ul>
 							<a href=""><img src="img/comu.PNG" border="0"><h4></h4></a>
 							<a href=""><img src="img/no10.PNG" border="0"><h4></h4></a>
 							<h4><img src="img/mana1.PNG" border="0"></h4><!-- 신고관리 -->
 								<ul>
-									<a href=""><li><img src="img/no7.PNG" border="0"></li></a><!-- 회원신고 -->
-									<a href=""><li><img src="img/no8.PNG" border="0"></li></a><!-- 게시물신고 -->
+									<a href="report_member.do"><li><img src="img/no7.PNG" border="0"></li></a><!-- 회원신고 -->
+									<a href="report_post.do"><li><img src="img/no8.PNG" border="0"></li></a><!-- 게시물신고 -->
 								</ul>
 						</div>
 					</td>
