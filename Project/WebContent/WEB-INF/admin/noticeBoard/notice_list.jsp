@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../admin_top.jsp"%>
-
+ <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div align="center">
 	<b> 공 지 사 항 </b>
 	<table border="0" width="600">
@@ -19,11 +19,9 @@
 		</tr>
 		<c:if test="${empty noticeList}">
 			<tr>
-
 				<td colspan="5">게시된 글이 없습니다.</td>
 			</tr>
 		</c:if>
-
 		<c:forEach var="dto" items="${noticeList}">
 			<tr>
 				<td>${dto.no}</td>

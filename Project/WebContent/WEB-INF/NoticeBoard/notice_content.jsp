@@ -42,10 +42,7 @@
 				</tr>
 	
 				<tr bgcolor="yellow">
-					<td colspan="4" align="right"><input type="button" value="글수정"
-						onclick="window.location='notice_update.do?no=${getNoticeBoard.no}'">					
-						<input type="button" value="글삭제"
-						onclick="window.location='notice_delete.do?no=${getNoticeBoard.no}'">
+					<td colspan="4" align="right">
 						<input type="button" value="글목록"
 						onclick="window.location='notice_list.do'">
 					</td>
