@@ -7,6 +7,7 @@
 <head>
 <title>플랜리스트자세보기</title>
 </head>
+
 <script language="javascript">
 var img = new Array("images1.png","images2.png")
 var cnt=0;
