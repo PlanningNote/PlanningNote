@@ -45,18 +45,26 @@ public class MemberController {
 		
 		boolean result = memberDAO.checkMember(email, pwd);
 		ModelAndView mav = new ModelAndView();
+		 mav.setViewName("message.jsp");
 		if(result) {
 			String nickname = memberDAO.getNickname(email);
 			 session.setAttribute("loginKey", email);
 			 session.setAttribute("mynick", nickname);
 			 if(email.equals("admin")) {
-				 return new ModelAndView("admin_main.do");
+				
+				 mav.addObject("msg", "관리자");
+				 mav.addObject("location","admin_main.do");
+				 return mav;
 			 }else {
-				 return new ModelAndView("index.jsp");
+				 mav.addObject("msg", "로그인에 성공하셨습니다.");
+				 mav.addObject("location","index.jsp");
+				 return mav;				
 			 }
 		}   
 			 else{
-				return new ModelAndView("redirect:login.do"); 
+				 mav.addObject("msg", "로그인실패");
+				 mav.addObject("location","redirect:login.do");
+				 return mav;
 			 }
 	}
 	
