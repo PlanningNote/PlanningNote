@@ -3,7 +3,7 @@ package ask.dao;
 import java.util.List;
 
 import ask.dto.AskDTO;
-import notice.dto.NoticeDTO;
+
 
 
 public interface AskDAO {

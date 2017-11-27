@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ask.dto.AskDTO;
-import notice.dto.NoticeDTO;
+
 import ask.dao.AskDAOImpl.MyRowMapper;
 import ask.dto.AskDTO;
 
@@ -181,6 +181,12 @@ public class AskDAOImpl implements AskDAO{
 		return null;
 	}
 
+	public int getCount() throws SQLException{
+		String sql = "select count(*) from ask_list";
+		
+		int res = jdbcTemplate.update(sql);
+		return res ;
+	}
 	
 
 }

@@ -31,7 +31,7 @@ public class FileUploadController {
         MultipartFile file = multi.getFile("img");//writeForm 에서 input 이미지이름
         HttpSession session = request.getSession();       
        
-        String path=session.getServletContext().getRealPath("files/askimg");//사진 저장위치
+        String path=session.getServletContext().getRealPath("files/askImg");//사진 저장위치
          UUID randomeUUID = UUID.randomUUID();
         
          String filename = file.getOriginalFilename();// 실제 파일 이름 가져오기
@@ -44,7 +44,7 @@ public class FileUploadController {
           System.out.println("오리지날 파일 이름" + file.getOriginalFilename());
         
           
-          path = "files/askimg";//    		  "D:\\imgs"; //내컴퓨터에저장
+          path = "files/askImg";//    		  "D:\\imgs"; //내컴퓨터에저장
           InputStream inputStream = null;
           OutputStream outputStream = null;
           

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ include file="../../top.jsp" %>
+ 
  <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <tr height="600">
 	<td valign="top">
@@ -20,11 +21,31 @@
 				
 					<th>작성일</th>
 				</tr>
+				
+<%-- 		<%	int pageSize = 5;
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum==null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize - 1;
+/* 		int count = ${askList}.getCount();  
+<%-- 		if (endRow>count) endRow = count; %>  --%>
+		 */ --%>
+<!-- 		ArrayList<BoardDBBean> list =	bdao.listBoard(startRow, endRow); 
+		if (list==null || list.size()==0){
+		<tr> 
+			<td colspan="6">게시된 글이 없습니다.</td>
+		</tr>
+			 -->
 			<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
 			<c:if test="${empty askList}">
 				<tr>
 					<td colspan="6">게시된 글이 없습니다.</td>
 				</tr>
+				
+				
 			</c:if>
 			
 			<c:forEach var="dto" items="${askList}">
@@ -54,6 +75,27 @@
 			</c:forEach>
 		</table>
 		
+		
+			<!-- 페이지 넘버 부분 -->
+<%-- <%	if (count>0){ 
+			int pageCount = count/pageSize + (count%pageSize==0 ? 0 : 1);
+			int pageBlock = 3;
+			int startPage = (currentPage-1) / pageBlock * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage>pageCount) endPage = pageCount;
+			
+			if (startPage>pageBlock){%>
+				<a href="list.jsp?pageNum=<%=startPage-pageBlock%>">[이전]</a>
+	<%	}
+			for(int i=startPage; i<=endPage; ++i){%>
+				<a href="list.jsp?pageNum=<%=i%>">[<%=i%>]</a>
+<%		} 
+			if (endPage<pageCount){%>
+				<a href="list.jsp?pageNum=<%=startPage+pageBlock%>">[다음]</a>	
+<%		} %>				
+<%	}%>
+	 --%>
+	<!-- 검색부분 -->
 		
 		<form>
 			<select name="opt">
