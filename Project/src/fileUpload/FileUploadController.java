@@ -28,11 +28,14 @@ public class FileUploadController {
         ModelAndView mav = new ModelAndView();
         
         MultipartHttpServletRequest multi = (MultipartHttpServletRequest) request;
-        MultipartFile file = multi.getFile("fileNm");
-                
-         String path="request.getRealPath()/files/notice";
+        MultipartFile file = multi.getFile("img");
+        HttpSession session = request.getSession();       
+       
+        String path=session.getServletContext().getRealPath("img");//사진 저장위치
          UUID randomeUUID = UUID.randomUUID();
-                  
+        
+         String filename = file.getOriginalFilename();// 실제 파일 이름 가져오기
+         
          if(file!=null){
         
           System.out.println("파라미터명" + file.getName());
@@ -41,12 +44,20 @@ public class FileUploadController {
           System.out.println("오리지날 파일 이름" + file.getOriginalFilename());
         
           
-          path = "F:\\springTest";
+          path = "D:\\imgs"; //내컴퓨터에저장
           InputStream inputStream = null;
           OutputStream outputStream = null;
           
           String organizedfilePath="";
-          
+          File f = new File(path, filename);
+			try {
+				
+				file.transferTo(f);
+			} catch (IOException e) {
+				System.err.println("sub파일전송실패!!");
+				e.printStackTrace();
+			}
+			
           try {
               
  

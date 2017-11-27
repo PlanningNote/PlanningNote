@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%String path = session.getServletContext().getRealPath("img"); %>
 <%@ include file="../../top.jsp" %>
+
 <tr>
 	<td>
 		<div align="center">
@@ -26,7 +28,7 @@
 					<th bgcolor="yellow" width="20%">이 미 지</th>
 					<td >
 					
-					<img src="${request.getRealPath()}files/notice/${getAskBoard.img}" width="300" /> 
+					<img src="<%=path%>/${getAskBoard.img}" width="300" /> 
 					
 					</td>
 				</tr>
