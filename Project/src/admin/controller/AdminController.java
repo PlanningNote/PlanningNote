@@ -70,6 +70,8 @@ public class AdminController {
 	public ModelAndView memberDeleteCheck(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		String pwd = arg0.getParameter("pwd");
 		int no = Integer.parseInt(arg0.getParameter("no"));
+		System.out.println("########");
+		System.out.println("no : "+no);
 		boolean result = memberDAO.checkPwd("admin", pwd);
 		ModelAndView mav = new ModelAndView();
 		String msg = null, url = null;

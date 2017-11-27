@@ -11,31 +11,30 @@
 		}
 		
 	}
-	
 </script>
-	<table id="tablesort" border="1" width="100%"  >      
-        <thead>
-			<tr>
-				<th>회원번호</th>
-				<th>닉네임</th>
-				<th width="50%">이메일</th>
-				<th>성별</th>
-				<th>삭제</th>
-			</tr>
-		</thead>		
-		<tbody>		
-			<c:forEach var="dto" items="${getList}">
-				<c:if test="${dto.nickname != 'admin'}">	
-					<tr>
-						<td>${dto.no} </td>
-						<td>${dto.nickname}</td>
-						<td>${dto.email}</td>
-						<td>${dto.gender}</td>
-						<td><input type="button" value="삭제" onclick="deleteMember(${dto.no})"></td>
-					</tr>			
-				</c:if>					
-			</c:forEach>
-		</tbody>
+<div align="center" >
+	<table border="1" width="600">
+		<tr>
+			<th>회원번호</th>
+			<th>닉네임</th>
+			<th width="50%">이메일</th>
+			<th>성별</th>
+			<th>삭제</th>
+		</tr>
+				
+		<c:forEach var="dto" items="${getList}">
+			<c:if test="${dto.nickname != 'admin'}">	
+				<tr>
+					<td>${dto.no} </td>
+					<td>${dto.nickname}</td>
+					<td>${dto.email}</td>
+					<td>${dto.gender}</td>
+					<td><input type="button" value="삭제" onclick="deleteMember(${dto.no})"></td>
+				</tr>			
+			</c:if>
+			
+			
+		</c:forEach>
 	</table>
 </div>
 <%@ include file="../admin_bottom.jsp"%>
