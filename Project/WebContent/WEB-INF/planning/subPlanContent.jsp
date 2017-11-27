@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
+<%@ include file="/top.jsp"%>
 <div align="center">
 	<form name="f" method="post" action="list.do"
 		enctype="multipart/form-data">
@@ -29,3 +30,4 @@
 		</table> 
 	</form>
 </div>
+<%@ include file="/bottom.jsp"%>

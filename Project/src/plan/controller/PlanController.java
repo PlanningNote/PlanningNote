@@ -174,6 +174,7 @@ public class PlanController{
 		
 		dtoP = dao.listPlan(group_no);
 		listS = dao.subList(group_no);
+		System.out.println("리스트플랜: "+listS.size());
 		
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);

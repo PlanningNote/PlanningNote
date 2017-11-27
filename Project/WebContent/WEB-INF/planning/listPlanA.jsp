@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
-
+<%@ include file="/top.jsp"%>
 <html>
 <head>
 <title>플랜리스트</title>
@@ -38,3 +38,4 @@
 	</div>
 </body>
 </html>
+<%@ include file="/bottom.jsp"%>

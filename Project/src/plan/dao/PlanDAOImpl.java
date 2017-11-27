@@ -133,7 +133,7 @@ public class PlanDAOImpl implements PlanDAO {
 
 	@Override
 	public List<PlanDTO> listAPlan() {
-		String sql = "select * from PN_planning order by group_no asc";
+		String sql = "select * from PN_planning order by group_no desc";
 		List<PlanDTO> result = jdbcTemplate.query(sql, mapper);
 		return result;
 	}
@@ -146,9 +146,10 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 	@Override
 	public List<SubPlanDTO> subList(int group_no) {
-		String sql = "select * from PN_subplan where board_num=?";
+		String sql = "select * from PN_subplan where group_no=?";
 		List<SubPlanDTO> result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(group_no),
 				new SubRowMapper());
+		System.out.println("서브리스트다오임플 사이즈: "+result.size());
 		return result;
 	}
 
@@ -158,7 +159,6 @@ public class PlanDAOImpl implements PlanDAO {
 		System.out.println("getSubcontent: "+board_num);
 		SubPlanDTO result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(board_num)
 				, new SubResultSetExtractor());
-		System.out.println("4: "+result.getContent());
 		return result;
 	}
 	
@@ -191,13 +191,13 @@ public class PlanDAOImpl implements PlanDAO {
 		public SubPlanDTO mapRow(ResultSet rs, int arg1) throws SQLException {
 			SubPlanDTO dto = new SubPlanDTO();
 			dto.setGroup_no(rs.getInt("group_no"));
-			System.out.println(dto.getBoard_num());
 			dto.setBoard_num(rs.getInt("board_num"));
 			dto.setSubject(rs.getString("subject"));
 			dto.setImg(rs.getString("img"));
 			dto.setContent(rs.getString("content"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setTraffic(rs.getString("traffic"));
+			System.out.println("서브플랜리스트다오임플 그룹노: "+dto.getGroup_no());
 			return dto;
 		}
 	}
