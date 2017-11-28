@@ -57,7 +57,7 @@ public class AskController {
 	
 	@RequestMapping(value= "/ask_write.do", method=RequestMethod.GET)
 	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		return new ModelAndView("WEB-INF/AskBoard/ask_writeForm.jsp");
+		return new ModelAndView("WEB-INF/AskBoard/ask_write.jsp");
 	}
 	@RequestMapping(value= "/ask_write.do",method=RequestMethod.POST)
 	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)

@@ -32,7 +32,7 @@
 		int endRow = startRow + pageSize - 1;
 /* 		int count = ${askList}.getCount();  
 <%-- 		if (endRow>count) endRow = count; %>  --%>
-		 */ --%>
+
 <!-- 		ArrayList<BoardDBBean> list =	bdao.listBoard(startRow, endRow); 
 		if (list==null || list.size()==0){
 		<tr> 

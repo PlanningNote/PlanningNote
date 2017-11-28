@@ -39,8 +39,8 @@
 						</c:if>
 						<c:if test="${isLogin eq true}">
 						<a href="mypage.do?nickname=${sessionScope.nickname}"><font face="verdana"  size="5" style="text-decoration:none">
-						${sessionScope.mynick} 님 환영합니다.<img src="img/mypage2.png" border="0"> </font></a><!-- 마이페이지 -->
-							<a href="logout.do"><img src="img/logout2.png" border="0"></a><!-- 로그아웃 --> 
+						${sessionScope.mynick} 님 환영합니다.<img src="img/mypage.png" border="0"> </font></a><!-- 마이페이지 -->
+							<a href="logout.do"><img src="img/logout.PNG" border="0"></a><!-- 로그아웃 --> 
 							
 						</c:if>  
 						
@@ -53,20 +53,20 @@
 				<tr height="60" align="center">
 					<td>
 						<c:if test="${isLogin eq false}">
-							<a href="index.jsp"><img src="img/top1.png" border="0"></a> <!--main --> 
-							<a href="howto_main.do"><img src="img/top2.png" border="0"></a><!--이용방법 --> 
-							<a href="center_main.do"><img src="img/top3.png" border="0"></a> <!--고객센터 --> 
-							<a href="notLogin.do"> <img src="img/top4.png" border="0"></a> <!--커뮤니티 --> 
-							<a href="notLogin.do"><img src="img/top5.png" border="0"></a><!--일정만들기-->
-							<a href="notLogin.do"><img src="img/M4.png" border="0"></a><!--일정공유-->
+							<a href="index.jsp"><img src="img/main.PNG" border="0"></a> <!--main --> 
+							<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a><!--이용방법 --> 
+							<a href="center_main.do"><img src="img/no11.PNG" border="0"></a> <!--고객센터 --> 
+							<a href="notLogin.do"> <img src="img/comu.PNG" border="0"></a> <!--커뮤니티 --> 
+							<a href="notLogin.do"><img src="img/make.PNG" border="0"></a><!--일정만들기-->
+							<a href="notLogin.do"><img src="img/no10.PNG" border="0"></a><!--일정공유-->
 						</c:if>
 						<c:if test="${isLogin eq true}">
-							<a href="index.jsp"><img src="img/top1.png" border="0"></a> <!--main --> 
-							<a href="howto_main.do"><img src="img/top2.png" border="0"></a><!--이용방법 --> 
-							<a href="center_main.do"><img src="img/top3.png" border="0"></a> <!--고객센터 --> 
-							<a href="comu_main.do"> <img src="img/top4.png" border="0"></a> <!--커뮤니티 --> 
-							<a href="plan.do"><img src="img/top5.png" border="0"></a> <!--일정만들기-->
-							<a href="listPlanA.do"><img src="img/M4.png" border="0"></a>	<!--일정공유-->
+							<a href="index.jsp"><img src="img/main.PNG" border="0"></a> <!--main --> 
+							<a href="howto_main.do"><img src="img/howto.PNG" border="0"></a><!--이용방법 --> 
+							<a href="center_main.do"><img src="img/no11.PNG" border="0"></a> <!--고객센터 --> 
+							<a href="comu_main.do"> <img src="img/comu.PNG" border="0"></a> <!--커뮤니티 --> 
+							<a href="plan.do"><img src="img/make.PNG" border="0"></a> <!--일정만들기-->
+							<a href="listPlanA.do"><img src="img/no10.PNG" border="0"></a>	<!--일정공유-->
 						</c:if>
 					
 					</td>
