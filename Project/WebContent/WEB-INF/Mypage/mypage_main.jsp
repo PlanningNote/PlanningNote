@@ -63,10 +63,9 @@
 			<img src="img/mp2.PNG">
 			<tr>
 					<td id="title">닉네임</td>
-					<td><input type="text" name="nickname" maxlength="50"
-						onkeydown="inputNicknameChk()"> <input type="button"
-						value="중복확인" onclick="openNicknameChk()"> <input
-						type="hidden" name="nicknameDuplication" value="nicknameUncheck">
+					<td><input type="text" name="nickname" maxlength="50" onkeydown="inputNicknameChk()"> 
+							<input type="button" value="중복확인" onclick="openNicknameChk()"> 
+						    <input type="hidden" name="nicknameDuplication" value="nicknameUncheck">
 					</td>
 				</tr>
 				<tr>
@@ -103,8 +102,10 @@
 
 				<tr>
 					<td id="title">좋아요누른페이지</td>
-					<td><input type="text" name="age" maxlength="2" size="3" /></td>
-
+					<td><input type="text" name="age" maxlength="2" size="3" /><br>
+					<input type="submit" value="가입"/>  
+					<input type="reset" value="다시작성">
+					</td>
 				</tr>
 			</table>
 		</form>

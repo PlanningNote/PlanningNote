@@ -108,14 +108,7 @@ public class MemberController {
 		return new ModelAndView("redirect:login.do");
 	}
 	
-	/*
-	@RequestMapping(value= "/check_email.me", method=RequestMethod.POST) //join_member.jsp에서 입력처리한 후 db에 넣는 작업
-	protected ModelAndView checkEmail(@RequestParam String email) throws Exception {
-		memberDAO.checkEmail(email);
-		
-		return new ModelAndView("redirect:login.me");
-	}
-	*/
+	
 	
 	@RequestMapping(value= "/MemberEmailCheckAction.do") 
 	protected ModelAndView Check(HttpServletRequest request, HttpServletResponse response) throws Exception {
