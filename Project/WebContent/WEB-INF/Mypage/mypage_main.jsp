@@ -99,7 +99,7 @@
 				</tr>
 
 				</tr>
-
+ 
 				<tr>
 					<td id="title">좋아요누른페이지</td>
 					<td><input type="text" name="age" maxlength="2" size="3" /><br>
