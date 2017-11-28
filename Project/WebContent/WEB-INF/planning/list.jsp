@@ -48,7 +48,7 @@ function recom_click() {
 				<tr>
 					<td COLSPAN="2">
 					<img src="images1.png" name="recom" style="max-width: 25; height: 25;" onclick="javascript:recom_click();">
-						/count:<INPUT TYPE="hidden" name="count" VALUE="count"></td>
+						/조회수: ${dtoP.count}</td>
 				</tr>
 				<tr>
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}

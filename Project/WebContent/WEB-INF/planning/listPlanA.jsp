@@ -14,10 +14,11 @@
 				<td COLSPAN="3" HEIGHT="7%" ALIGN="MIDDLE">
 					<form name="f">
 					<select name="searchPlan">
-					<option value="제목">제목</option>
+					<option value="나라">나라</option>
 					<option value="작성자">작성자</option>
-					<option value="내용">내용</option>
-					<option value="제목+작성자">제목+작성자</option>
+					<option value="시기">시기</option>
+					<option value="기간">기간</option>
+					<option value="테마">테마</option>
 					</select>
 				 		<input type="text" name="searching" size="30">
 						<input type="submit" value="검색">
@@ -34,7 +35,8 @@
 				나라: ${dtoP.country}<br>
 				기간: ${dtoP.travel_period}<br>
 				총예산: ${dtoP.totalprice} 원<br>
-				작성자: ${dtoP.writer}님
+				작성자: ${dtoP.writer}님<br>
+				조회수: ${dtoP.count}
 			</td>
 			</tr>
 			</c:forEach>

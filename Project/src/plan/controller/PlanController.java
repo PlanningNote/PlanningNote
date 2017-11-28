@@ -117,8 +117,8 @@ public class PlanController{
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute("file") FileUpload upload
-			,@ModelAttribute("targets") SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,@ModelAttribute TagDTO dtoT) throws Exception {
-		
+			,@ModelAttribute("targets") SubPlanDTO dtoS,@ModelAttribute PlanDTO dtoP,
+			@ModelAttribute TagDTO dtoT) throws Exception {
 		PrintWriter writer=arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
 		 
@@ -182,7 +182,6 @@ public class PlanController{
 	@RequestMapping(value="/subPlanContent.do")//계획목록 페이지로 이동.
 	public ModelAndView subContentPlan(HttpServletRequest arg0, 
 			HttpServletResponse arg1,@RequestParam("board_num")int board_num) throws Exception {
-		System.out.println("아니 이게 지금 왜나와;;"+board_num);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/subPlanContent.jsp");
 		SubPlanDTO dtoS = new SubPlanDTO();
