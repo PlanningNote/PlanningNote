@@ -20,7 +20,6 @@ public class PlanDTO {
 	private int recom;
 	private MultipartFile thumbfile;
 	private String thumbPath;
-
 	
 	public int getTag_no_sequence() {
 		return tag_no_sequence;

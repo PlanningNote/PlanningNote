@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +101,7 @@ public class PlanDAOImpl implements PlanDAO {
 		int res = jdbcTemplate.update(sql, values);
 		return res;
 	}
+
 	@Override
 	public int updateSubPlan(List num, SubPlanDTO sdto) {
 		String sql = "update PN_subplan set subject=?,img=?,content=?,price=?,traffic=? where board_num=?";
@@ -107,13 +109,10 @@ public class PlanDAOImpl implements PlanDAO {
 		int res = 0;
 		for (int i = 0; i < sdto.getImgName().size(); i++) {
 			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
-			
-			values = new Object[] { sdto.getTargets().get(i).getSubject(),
-					sdto.getTargets().get(i).getImg(),
-					sdto.getTargets().get(i).getContent(),
-					sdto.getTargets().get(i).getPrice(),
-					sdto.getTargets().get(i).getTraffic(),
-					num.get(i)};
+
+			values = new Object[] { sdto.getTargets().get(i).getSubject(), sdto.getTargets().get(i).getImg(),
+					sdto.getTargets().get(i).getContent(), sdto.getTargets().get(i).getPrice(),
+					sdto.getTargets().get(i).getTraffic(), num.get(i) };
 			res = jdbcTemplate.update(sql, values);
 		}
 		if (res < 0) {
@@ -123,8 +122,6 @@ public class PlanDAOImpl implements PlanDAO {
 		}
 		return res;
 	}
-
-
 
 	@Override
 	public int deletePlan(int group_no) {
@@ -139,6 +136,7 @@ public class PlanDAOImpl implements PlanDAO {
 		List<PlanDTO> result = jdbcTemplate.query(sql, mapper);
 		return result;
 	}
+
 	@Override
 	public PlanDTO listPlan(int group_no) {
 		String sql = "select * from PN_planning where group_no = ?";
@@ -146,24 +144,25 @@ public class PlanDAOImpl implements PlanDAO {
 				new MyResultSetExtractor());
 		return result;
 	}
+
 	@Override
 	public List<SubPlanDTO> subList(int group_no) {
 		String sql = "select * from PN_subplan where group_no=?";
 		List<SubPlanDTO> result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(group_no),
 				new SubRowMapper());
-		System.out.println("서브리스트다오임플 사이즈: "+result.size());
+		System.out.println("서브리스트다오임플 사이즈: " + result.size());
 		return result;
 	}
 
 	@Override
 	public SubPlanDTO getSubContent(int board_num) {
 		String sql = "select * from PN_subplan where board_num = ?";
-		System.out.println("getSubcontent: "+board_num);
-		SubPlanDTO result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(board_num)
-				, new SubResultSetExtractor());
+		System.out.println("getSubcontent: " + board_num);
+		SubPlanDTO result = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(board_num),
+				new SubResultSetExtractor());
 		return result;
 	}
-	
+
 	// PlanDTO 의 RowMapper
 	private class MyRowMapper implements RowMapper<PlanDTO> {
 		@Override
@@ -199,7 +198,7 @@ public class PlanDAOImpl implements PlanDAO {
 			dto.setContent(rs.getString("content"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setTraffic(rs.getString("traffic"));
-			System.out.println("서브플랜리스트다오임플 그룹노: "+dto.getGroup_no());
+			System.out.println("서브플랜리스트다오임플 그룹노: " + dto.getGroup_no());
 			return dto;
 		}
 	}
@@ -229,6 +228,7 @@ public class PlanDAOImpl implements PlanDAO {
 			throw new DataRetrievalFailureException("PlanDTO를 찾을수가 없습니다.");
 		}
 	}
+
 	class SubResultSetExtractor implements ResultSetExtractor<SubPlanDTO> {
 		@Override
 		public SubPlanDTO extractData(ResultSet rs) throws SQLException, DataAccessException {
@@ -237,7 +237,7 @@ public class PlanDAOImpl implements PlanDAO {
 				dto.setGroup_no(rs.getInt("group_no"));
 				dto.setBoard_num(rs.getInt("board_num"));
 				dto.setSubject(rs.getString("subject"));
-				System.out.println("3: "+dto.getSubject());
+				System.out.println("3: " + dto.getSubject());
 				dto.setImg(rs.getString("img"));
 				dto.setContent(rs.getString("content"));
 				dto.setPrice(rs.getInt("price"));
@@ -258,7 +258,7 @@ public class PlanDAOImpl implements PlanDAO {
 
 		@Override
 		public void setValues(PreparedStatement arg0) throws SQLException {
-			System.out.println("getS2: "+num);
+			System.out.println("getS2: " + num);
 			arg0.setInt(1, num);
 		}
 	}

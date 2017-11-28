@@ -1,5 +1,6 @@
 package plan.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,7 +27,6 @@ public interface PlanDAO {
 	public PlanDTO findPlan(String search,String searchString); //제목으로할건지 작성자로 할건지
 	public List<PlanDTO> rankPlan();
 	public List<PlanDTO> findOption(String search,String searchString); //여행기간, 시기, 테마 검색
-	
 	
 	
 }
