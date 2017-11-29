@@ -5414,7 +5414,7 @@ nhn.husky.SE_EditingArea_HTMLSrc = jindo.$Class({
 	},
 
 	setIR : function(sIR) {
-		if(sIR.toLowerCase() === "<br>" || sIR.toLowerCase() === "<p>&nbsp;</p>" || sIR.toLowerCase() === "<p><br></p>" || sIR.toLowerCase() === "<p></p>"){
+		if(sIR.toLowerCase() === "<br>" || sIR.toLowerCase() === "&nbsp;" || sIR.toLowerCase() === "<p><br></p>" || sIR.toLowerCase() === "<p></p>"){
 			sIR="";
 		}
 		
@@ -5672,9 +5672,9 @@ nhn.husky.SE_EditingArea_TEXT = jindo.$Class({
 			}
 			
 			if (sTemp !== null && sTemp !== "") {
-				oContent.append('<P>');
+				oContent.append('');
 				oContent.append(aContent[i]);
-				oContent.append('</P>');
+				oContent.append('');
 			} else {
 				if (!jindo.$Agent().navigator().ie) {
 					oContent.append('<P><BR></P>');
@@ -6871,9 +6871,9 @@ nhn.husky.SE_EditingArea_WYSIWYG = jindo.$Class({
 
 		// 편집내용이 없는 경우
 		if((this.iframe.contentWindow.document.body.innerHTML).replace(/[\r\n\t\s]*/,"") === ""){
-			if(this.oApp.sLineBreaker !== "BR"){
+			/*if(this.oApp.sLineBreaker !== "BR"){
 				sCursorHolder = "<p>" + sCursorHolder + "</p>";
-			}
+			}*/
 			this.iframe.contentWindow.document.body.innerHTML = sCursorHolder;
 		}
 		// [COM-1142] IE의 경우 <p>&nbsp;</p> 를 <p></p> 로 변환
@@ -11125,7 +11125,7 @@ nhn.husky.SE2M_ExecCommand = jindo.$Class({
 
 		while(elNode){
 			if(elNode.tagName == "BLOCKQUOTE"){
-				this.elP1 = jindo.$("<p>&nbsp;</p>", this.oApp.getWYSIWYGDocument());
+				this.elP1 = jindo.$("<&nbsp;</p>", this.oApp.getWYSIWYGDocument());
 				elNode.parentNode.insertBefore(this.elP1, elNode);
 
 				this.elP2 = jindo.$("<p>&nbsp;</p>", this.oApp.getWYSIWYGDocument());

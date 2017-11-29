@@ -4,7 +4,6 @@
 <%
     String ctx = request.getContextPath();    //콘텍스트명 얻어오기.
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -38,7 +37,7 @@ $(function(){
           }, 
           fOnAppLoad : function(){
               //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-              oEditors.getById["ir1"].exec("PASTE_HTML", ["기존 DB에 저장된 내용을 에디터에 적용할 문구"]);
+              oEditors.getById["ir1"].exec("PASTE_HTML", [""]);
           },
           fCreator: "createSEditor2"
       });
@@ -46,7 +45,7 @@ $(function(){
       //저장버튼 클릭시 form 전송
       $("#save").click(function(){
           oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-          $("#frm").submit();
+          $("#f").submit();
       });    
 });
  
@@ -81,22 +80,22 @@ var oFileUploader = new jindo.FileUploader(jindo.$("file_select"), {
         <tr>
             <th bgcolor="pink" >내용</th>
             <td>
-                <textarea rows="10" cols="30" id="ir1" name="content" style="width:650px; height:350px; "></textarea>
+                <textarea id="ir1" name="content" style="width:650px; height:350px; "></textarea>
             </td>
         </tr>
         <tr>
         <th bgcolor="pink" >이미지</th>
-        <td><input type="file" id="img"></td>
+        <td><input type="file" id="img" name="img"></td>
         </tr>
         
         	<tr>
-					<th bgcolor="pink">비밀번호</th>
+					<th >비밀번호</th>
 					<td width="80%"><input type="password" name="pwd"></td>
 				</tr>
        
         <tr>
             <td colspan="2" align="center">
-                <input type="submit" value="글쓰기"/>
+                <input type="submit" id="save" value="글쓰기"/>
                 	<input type="reset" value="다시작성">
                 	<input type="button" value="목록보기" 
 													onclick="window.location='ask_list.do'">
@@ -109,4 +108,7 @@ var oFileUploader = new jindo.FileUploader(jindo.$("file_select"), {
 </div>
 </td>
 </tr>
+</head>
+</html>
+
 <%@ include file="../../bottom.jsp"%>

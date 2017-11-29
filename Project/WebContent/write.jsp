@@ -17,6 +17,9 @@ src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" scr="/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <script type="text/javascript">
+
+
+
 var oEditors = [];
 $(function(){
       nhn.husky.EZCreator.createInIFrame({
@@ -77,7 +80,7 @@ var oFileUploader = new jindo.FileUploader(jindo.$("file_select"), {
         <tr>
         <td>이미지</td>
         <td>
-        <input type="file" id="file_select"></td>
+        <input type="file" id="textAreaContent"></td>
        
         <tr>
             <td colspan="2">

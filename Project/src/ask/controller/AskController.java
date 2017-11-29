@@ -57,7 +57,7 @@ public class AskController {
 	
 	@RequestMapping(value= "/ask_write.do", method=RequestMethod.GET)
 	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		return new ModelAndView("WEB-INF/AskBoard/ask_write.jsp");
+		return new ModelAndView("WEB-INF/AskBoard/ask_writeForm.jsp");
 	}
 	@RequestMapping(value= "/ask_write.do",method=RequestMethod.POST)
 	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
@@ -65,9 +65,10 @@ public class AskController {
 		//이제 arg2로 dto 한번에 값 못받아온다.		
 		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
 			dto.setNo(0);
+		
+			
 			
 		}
-		
 		 askDAO.insertAsk(dto);
 		return new ModelAndView("redirect:ask_list.do");
 	}

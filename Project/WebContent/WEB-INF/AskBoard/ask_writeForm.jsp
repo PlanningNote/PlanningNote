@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@include file="../../top.jsp" %>
-
-
 
 <script type="text/javascript">
 		function checkMember(){
@@ -30,7 +28,7 @@
 	<td>
 	<div align="center">
 		<form name="f" method="post"  
-			action="ask_write.do" onsubmit="return checkMember()">	
+			action="ask_write.do" onsubmit="return checkMember()" enctype="multipart/form-data">	
 			<table border="1" width="600">
 				<tr bgcolor="orange">
 					<th colspan="2">문 의 쓰 기</th>
@@ -73,4 +71,6 @@
 	</div>
 	</td>
 </tr>
+
+
 <%@include file="../../bottom.jsp" %>
