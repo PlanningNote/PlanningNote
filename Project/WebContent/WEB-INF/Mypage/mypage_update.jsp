@@ -4,7 +4,7 @@
 <%@ include file="../../top.jsp" %>
 <html>
 <head>
-<title>마이페이지</title>
+<title>회원수정</title>
 <script type="text/javascript">
 	
 		// 회원가입 화면의 입력값들을 검사한다.
@@ -61,6 +61,7 @@
 		<form name="userInfo">
 			<table align="center" height="60%">
 			<img src="img/mp2.PNG">
+			<h1>회원수정</h1>
 			<tr>
 					<td id="title">닉네임</td>
 					<td><input type="text" name="nickname" maxlength="50" onkeydown="inputNicknameChk()"> 
@@ -103,7 +104,7 @@
 				<tr>
 					<td id="title">좋아요누른페이지</td>
 					<td><input type="text" name="age" maxlength="2" size="3" /><br>
-					<input type="submit" value="가입"/>  
+					<input type="submit" value="확인"/>  
 					<input type="reset" value="다시작성">
 					</td>
 				</tr>
