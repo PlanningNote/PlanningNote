@@ -20,7 +20,7 @@
 </script>
 
 		
-<body onload="start()"> 
+<body onload="start()">
 
 <c:set var="isLogin" value="false" scope="session"/>
 <c:if test="${not empty sessionScope.mynick}">
@@ -49,7 +49,7 @@
 			</table>	
 		</div>		
 		<div align="center">			
-			<table border="1" width="1100"  >
+			<table border="1" width="1100" >
 				<tr height="60" align="center">
 					<td>
 						<c:if test="${isLogin eq false}">

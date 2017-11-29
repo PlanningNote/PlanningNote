@@ -23,16 +23,6 @@
 				return false;
 			}	
 			
-			if(!f.nickname.value){
-				alert("닉네임을 입력하세요.");
-				return false;
-			}
-			
-			if(f.nicknameDuplication.value != "nicknameCheck"){
-				alert("닉네임 중복체크를 해주세요.");
-				return false;
-			}
-			
 			if(!f.age.value){
 				alert("나이를 입력하세요.");
 				return false;
@@ -42,33 +32,16 @@
 				alert("나이는 숫자만 입력가능합니다.");
 				return false;
 			}
-			
-			// 닉네임 중복체크 화면open
-			function openNicknameChk(){
-				var a = document.userInfo.nickname.value;
-				window.name = "parentForm";
-				window.open("nickname_check.do?nickname="+a,"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
-			}
-			
-			function inputNicknameChk(){
-				document.userInfo.nicknameDuplication.value ="nicknameUncheck";
-			}
 		}
 </script>
 </head>
 <body>
 	<div align="center">
-		<form name="userInfo">
+		<form method="post" action="mypage_update.do" 
+				name="userInfo" onsubmit="return checkValue()">
 			<table align="center" height="60%">
 			<img src="img/mp2.PNG">
 			<h1>회원수정</h1>
-			<tr>
-					<td id="title">닉네임</td>
-					<td><input type="text" name="nickname" maxlength="50" onkeydown="inputNicknameChk()"> 
-							<input type="button" value="중복확인" onclick="openNicknameChk()"> 
-						    <input type="hidden" name="nicknameDuplication" value="nicknameUncheck">
-					</td>
-				</tr>
 				<tr>
 					<td id="title">비밀번호</td>
 					<td><input type="password" name="pwd" maxlength="50">

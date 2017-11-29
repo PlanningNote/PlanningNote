@@ -82,6 +82,11 @@ public class MemberController {
 		return new ModelAndView("index.jsp");
 	}
 	
+	@RequestMapping(value= "/find_pwd.do")
+	protected ModelAndView Find_pwd(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/member/find_pwd.jsp");
+	}
+	
 	@RequestMapping(value= "/email_check.do") //회원가입form으로 가기(join_member.jsp)
 	protected ModelAndView emailCheck(HttpServletRequest arg0,@RequestParam String email) throws Exception {
 		ModelAndView mav = new ModelAndView();

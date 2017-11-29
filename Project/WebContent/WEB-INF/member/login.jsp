@@ -18,6 +18,12 @@
 			}
 		}
 		
+		// 비밀번호 찾기 화면open
+		function openFindPwd(){
+			window.name = "parentForm";
+			window.open("find_pwd.do","chkForm", "width=400, height=200, left=600, top=350, resizable = no, scrollbars = no");	
+		}
+		
 	</script>
 </head>
 <body>
@@ -30,7 +36,7 @@
 					<td>이메일: <input type="text" name="email"><br>
 					비밀번호: <input type="password" name="pwd"><br>
 					<input type="submit" value="로그인" ><br>
-					<a href="find_pwd.do"><img src="img/findpw.png" border="0"></a> 
+					<img src="img/findpw.png" onclick="openFindPwd()" border="0"> 
 					<a href="join_member.do"><img src="img/joinmember.png" border="0"></a>
 					</td>
 				</tr>

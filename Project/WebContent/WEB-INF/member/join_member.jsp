@@ -14,11 +14,6 @@
 				return false;
 			}
 			
-			if(f.email.value.length<4){
-				alert("이메일은 4자이상 입력하셔야 합니다.");
-				return false
-			}
-			
 			if(f.emailDuplication.value != "emailCheck"){
 				alert("이메일 중복체크를 해주세요.");
 				return false;
