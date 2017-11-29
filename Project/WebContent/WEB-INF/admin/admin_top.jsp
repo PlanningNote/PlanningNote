@@ -22,11 +22,11 @@
 				<tr height="60" align="center">
 					<td colspan="2">
 						<a href="admin_main.do"><img src="img/main.PNG" border="0"></a> <!--main --> 
-						<a href="admin_memberList.do"><img src="img/share.PNG" border="0"></a><!-- 회원관리 -->  <!-- ★ -->
+						<a href="admin_memberList.do"><img src="img/member.png" border="0"></a><!-- 회원관리 -->  <!-- ★ -->
 						<a href="center_main.do"><img src="img/center.PNG" border="0"></a> <!--고객센터 --> 
 						<a href="comu_main.do"><img src="img/comu.PNG" border="0"></a> <!--커뮤니티 --> 
 						<a href=""><img src="img/share.PNG" border="0"></a>	<!--일정공유-->  <!-- ★ -->
-						<a href=""><img src="img/share.PNG" border="0"></a>	<!--신고관리-->   <!-- ★ -->
+						<a href=""><img src="img/report.png" border="0"></a>	<!--신고관리-->   <!-- ★ -->
 					</td>
 				</tr>
 				<tr>
