@@ -89,23 +89,13 @@
 
 				<tr>
 					<td id="title">나이</td>
-					<td><input type="text" name="age" maxlength="2" size="3" /></td>
-
-				</tr>
-
+					<td><input type="text" name="age" maxlength="2" size="3" />
+					</td>
 				<tr>
-					<td id="title">내가작성한글보기</td>
-					<td><input type="text" name="age" maxlength="2" size="3" /></td>
-
-				</tr>
-
-				</tr>
- 
-				<tr>
-					<td id="title">좋아요누른페이지</td>
-					<td><input type="text" name="age" maxlength="2" size="3" /><br>
+					<td></td>
+					<td>
 					<input type="submit" value="확인"/>  
-					<input type="reset" value="다시작성">
+					<input type="reset" value="다시작성">	
 					</td>
 				</tr>
 			</table>
