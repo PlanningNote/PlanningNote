@@ -33,6 +33,11 @@ public class MemberController {
 		return new ModelAndView("WEB-INF/Mypage/mypage_main.jsp");
 	}
 	
+	@RequestMapping(value= "/mypage_update.do")
+	protected ModelAndView Mypage_update(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/Mypage/mypage_update.jsp");
+	}
+	
 	
 	@RequestMapping(value= "/login.do")
 	protected ModelAndView Login(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
