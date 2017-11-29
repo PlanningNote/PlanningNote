@@ -1,5 +1,7 @@
 package ask.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AskDTO {
 	private int no;
 	private String writer;
