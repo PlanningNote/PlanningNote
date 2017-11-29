@@ -68,7 +68,7 @@ var oFileUploader = new jindo.FileUploader(jindo.$("file_select"), {
 		<div align="center">
 			<b>글내용 보기</b>
 			<table border="1" width="600">
-					
+			 		
 			<tr>
 					<th bgcolor="yellow" width="15%">작성자</th>
 					<td align="center" width="35%">${getAskBoard.writer}</td>
