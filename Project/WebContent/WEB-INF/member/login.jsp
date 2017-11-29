@@ -21,7 +21,7 @@
 		// 비밀번호 찾기 화면open
 		function openFindPwd(){
 			window.name = "parentForm";
-			window.open("find_pwd.do","chkForm", "width=400, height=200, left=600, top=350, resizable = no, scrollbars = no");	
+			window.open("find_pwd.do","chkForm", "width=400, height=200, left=550, top=300, resizable = no, scrollbars = no");	
 		}
 		
 	</script>

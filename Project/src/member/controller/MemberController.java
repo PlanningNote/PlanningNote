@@ -151,14 +151,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value= "/findemail.do") 
-	public ModelAndView emailAuth(HttpServletResponse response,HttpServletRequest request) throws Exception{
+	public ModelAndView findemail(HttpServletResponse response,HttpServletRequest request) throws Exception{
 		String email = request.getParameter("email");
 		String pwd = memberDAO.findPwd(email);
 		memberDAO.sendEmail(email.toString(),pwd);
-		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("message.jsp");
-		
 		return mav;
 	}
 	

@@ -204,7 +204,7 @@ public class MemberImpl implements MemberDAO{
 				
 				Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("okokld518@gmail.com","");
+						return new PasswordAuthentication("okokld518@gmail.com","ji8792eun@");
 					}
 				});
 				
