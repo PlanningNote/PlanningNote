@@ -12,26 +12,24 @@
 		{
 			var f = document.userInfo;
 		
-			if(!f.password.value){
-				alert("비밀번호를 입력하세요.");
+			if(!f.oldPwd.value){
+				alert("현재 비밀번호를 입력하세요.");
 				return false;
 			}
-			
+			if(!f.newPwd.value){
+				alert("새 비밀번호를 입력하세요.");
+				return false;
+			}
+			if(!f.passwordcheck.value){
+				alert("새 비밀번호 확인 입력하세요.");
+				return false;
+			}
+				
 			// 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
-			if(f.password.value != form.passwordcheck.value ){
+			if(f.newPwd.value != form.passwordcheck.value ){
 				alert("비밀번호를 동일하게 입력하세요.");
 				return false;
 			}	
-			
-			if(!f.age.value){
-				alert("나이를 입력하세요.");
-				return false;
-			}
-			
-			if(isNaN(f.age.value)){
-				alert("나이는 숫자만 입력가능합니다.");
-				return false;
-			}
 		}
 </script>
 </head>
@@ -39,32 +37,25 @@
 	<div align="center">
 		<form method="post" action="mypage_update.do" 
 				name="userInfo" onsubmit="return checkValue()">
-			<table align="center" height="60%">
+			<table align="center" height="40%">
 			<img src="img/mp2.PNG">
-			<h1>회원수정</h1>
-				<tr>
-					<td id="title">비밀번호</td>
-					<td><input type="password" name="pwd" maxlength="50">
+			<h1>비밀번호 변경</h1>
+			<tr>
+					<td id="title">현재 비밀번호</td>
+					<td><input type="password" name="oldPwd" maxlength="50">
 					</td>
 				</tr>
-
 				<tr>
-					<td id="title">비밀번호 확인</td>
+					<td id="title">새 비밀번호</td>
+					<td><input type="password" name="newPwd" maxlength="50">
+					</td>
+				</tr>
+				<tr>
+					<td id="title">새 비밀번호 확인</td>
 					<td><input type="password" name="passwordcheck" maxlength="50">
 					</td>
-				</tr>			
+				</tr>	
 
-				<tr>
-					<td id="title">성별</td>
-					<td><input type="radio" name="gender" value="남" checked>남
-						<input type="radio" name="gender" value="여">여</td>
-				</tr>
-
-				<tr>
-					<td id="title">나이</td>
-					<td><input type="text" name="age" maxlength="2" size="3" />
-					</td>
-				<tr>
 					<td></td>
 					<td>
 					<input type="submit" value="확인"/>  

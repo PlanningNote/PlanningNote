@@ -30,7 +30,7 @@
 			<img src="img/mp2.PNG">
 			<div id="sidebar">
 				<tr>
-					<a href="mypage_update.do">회원수정</a>	
+					<a href="mypage_update.do">비밀번호 변경</a>	
 				</tr>
 			</div>
 			<div id="d1" >
