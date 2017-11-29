@@ -6,14 +6,14 @@
 </head>
 <body>
 	<div align="center">
-		<form>
+		<form name="f" action="findemail.do" method="post">
 			<table >
 			<b>비밀번호 찾기</b>
 			<hr color="gray" width="300">
 			<tr></tr>
 				<tr>
-					<td>이메일: <input type="text" maxlength="50">
-					<input type="button" value="확인"></td>
+					<td>이메일: <input type="text" maxlength="30" name="email">
+					<input type="submit" value="확인"></td>
 				</tr>
 			</table>
 		</form>

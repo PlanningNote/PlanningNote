@@ -9,7 +9,7 @@ public interface MemberDAO {
 	public int updateMember(int no);
 	public int deleteMember(int no);
 	public List<MemberDTO> listMember();
-	public String findPwd(String nickname,String email);
+	public String findPwd(String email);
 	public boolean checkMember(String email, String pwd);
 	public boolean checkEmail(String email);
 	public boolean duplicateEmailCheck(String email);
@@ -18,6 +18,6 @@ public interface MemberDAO {
 	public String getNickname(String email);
 	public List<MemberDTO> fineMember(String search, String searchString);
 	public boolean checkPwd(String nickname, String pwd);
-	public MemberDTO profile(String nickname);
+	public void sendEmail(String email,String pwd);
 	
 }

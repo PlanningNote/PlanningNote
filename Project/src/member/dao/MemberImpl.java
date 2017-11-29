@@ -3,6 +3,17 @@ package member.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -63,9 +74,14 @@ public class MemberImpl implements MemberDAO{
 	}
 
 	@Override
-	public String findPwd(String nickname, String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public String findPwd(String email) {
+		String sql ="select pwd from PN_member where email = ?";
+		try {
+			String result = jdbcTemplate.queryForObject(sql,new Object[] {email},String.class);
+			return result;
+		}catch(EmptyResultDataAccessException e) {
+			return null;
+		}
 	}
 
 	@Override
@@ -167,10 +183,47 @@ public class MemberImpl implements MemberDAO{
 	}
 
 		@Override
-		public MemberDTO profile(String nickname) {
-			// TODO Auto-generated method stub
-			return null;
+		public void sendEmail(String email, String pwd) {
+			String host = "smtp.gmail.com";
+			String subject = "녀행자들 인증번호 전달";
+			String fromName = "녀행자들 관리자";
+			String from = "okokld518@gmail.com";
+			String to1 = email;
+			String content = "비밀번호 [" + pwd + "]";
+			
+			try {
+				Properties props = new Properties();
+				// G-Mail SMTP 사용시
+				props.put("mail.smtp.starttls.enable", "true");
+				props.put("mail.transport.protocol", "smtp");
+				props.put("mail.smtp.host", host);
+				props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+				props.put("mail.smtp.port", "465");
+				props.put("mail.smtp.user", from);
+				props.put("mail.smtp.auth", "true");
+				
+				Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication("okokld518@gmail.com","ji8792eun");
+					}
+				});
+				
+				Message msg = new MimeMessage(mailSession);
+				msg.setFrom(new InternetAddress(from, MimeUtility.encodeText(fromName,"UTF-8","B"))); // 보내는 사람 설정
+				InternetAddress[] address1 = { new InternetAddress(to1) }; 
+				msg.setRecipients(Message.RecipientType.TO,  address1); // 받는 사람 설정1
+				msg.setSentDate(new java.util.Date()); //보내는 날짜 설정
+				msg.setContent(content,"text/html;charset=euc-kr"); //내용 설정(HTML형식)
+				
+				Transport.send(msg); //메일 보내기
+			}catch(MessagingException e) {
+				e.printStackTrace();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
+
 
 		
 		
