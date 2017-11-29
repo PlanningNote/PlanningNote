@@ -22,7 +22,7 @@
 	</beans:bean>
 	
 	<!-- 이거는 패키지를 만들거나 새로운 컨트롤러를 만들때마다 만들어줘야함. -->
-	<context:component-scan base-package="com.itbank.maven.PlanController"/>
+	<context:component-scan base-package="com.project.planning.PlanController"/>
 	
 	
 </beans:beans>

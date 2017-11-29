@@ -1,4 +1,4 @@
-package com.itbank.maven.model;
+package com.project.planning.model;
 
 import org.springframework.web.multipart.MultipartFile;
 

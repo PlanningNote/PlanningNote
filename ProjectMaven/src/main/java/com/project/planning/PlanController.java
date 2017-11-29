@@ -1,4 +1,4 @@
-package com.itbank.maven;
+package com.project.planning;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itbank.maven.model.FileUpload;
-import com.itbank.maven.model.PlanDTO;
-import com.itbank.maven.model.SubPlanDTO;
-import com.itbank.maven.model.TagDTO;
-import com.itbank.maven.service.PlanMapper;
+import com.project.planning.model.FileUpload;
+import com.project.planning.model.PlanDTO;
+import com.project.planning.model.SubPlanDTO;
+import com.project.planning.model.TagDTO;
+import com.project.planning.service.PlanMapper;
 
 @org.springframework.stereotype.Controller
 public class PlanController {

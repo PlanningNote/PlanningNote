@@ -1,4 +1,4 @@
-package com.itbank.maven.model;
+package com.project.planning.model;
 
 public class TagDTO {
 	private int tag_no;

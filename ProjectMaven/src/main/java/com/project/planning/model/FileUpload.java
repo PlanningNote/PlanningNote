@@ -1,4 +1,4 @@
-package com.itbank.maven.model;
+package com.project.planning.model;
 
 import java.util.List;
 import java.util.Map;

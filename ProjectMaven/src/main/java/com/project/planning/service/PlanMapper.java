@@ -1,4 +1,4 @@
-package com.itbank.maven.service;
+package com.project.planning.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itbank.maven.model.PlanDTO;
-import com.itbank.maven.model.SubPlanDTO;
-import com.itbank.maven.model.TagDTO;
+import com.project.planning.model.PlanDTO;
+import com.project.planning.model.SubPlanDTO;
+import com.project.planning.model.TagDTO;
 
 @Service
 public class PlanMapper {
