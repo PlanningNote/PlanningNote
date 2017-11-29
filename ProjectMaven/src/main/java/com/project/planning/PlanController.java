@@ -33,7 +33,7 @@ public class PlanController {
 
 	@Autowired
 	private PlanMapper dao;
-
+ 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
