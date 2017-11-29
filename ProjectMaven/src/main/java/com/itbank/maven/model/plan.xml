@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itbank.mvc.model">
+
+
+	<insert id="tagPlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		insert into PN_tag (tag_no_sequence,tag)
+		values(tag_no_sequence.nextval,#{tag})
+	</insert>
+	<insert id="insertPlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		insert into PN_planning
+		values(group_no.nextval,#{writer},#{subject},#{sysdate},#{pwd},#{count},tag_no_sequence.currval,
+		#{country},#{city},#{thumbnail},#{totalprice},#{travel_period},#{travel_seasion},#{travel_theme},#{recom})
+	</insert>
+	<insert id="insertsubPlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		insert into PN_subplan values(group_no.currval,board_num.nextval,#{subject},#{},#{},#{},#{})
+	</insert>
+
+
+
+	<select id="listPlanA" resultType="PlanDTO">
+		select * from spring_board order by group_no desc;
+	</select>
+	<select id="listWriter" resultType="PlanDTO">
+		select *from PN_planning where writer like'#{seraching}'; 
+	</select>
+	<select id="listSubject" resultType="PlanDTO">
+		select *from PN_planning where subject like'#{seraching}'; 
+	</select>
+	<select id="listCountry" resultType="PlanDTO">
+		select *from PN_planning where country like'#{seraching}'; 
+	</select>
+	<select id="listCity" resultType="PlanDTO">
+		select *from PN_planning where city like'#{seraching}'; 
+	</select>
+	<select id="listPeriod" resultType="PlanDTO">
+		select *from PN_planning where period like'#{seraching}'; 
+	</select>
+	<select id="listSeasion" resultType="PlanDTO">
+		select *from PN_planning where seasion like'#{seraching}'; 
+	</select>
+	<select id="listTheme" resultType="PlanDTO">
+		select *from PN_planning where theme like'#{seraching}'; 
+	</select>
+	
+	<select id="getPlanDTO" resultType="PlanDTO">
+		select * from PN_planning where group_no=#{group_no};
+	</select>
+	<select id="listSubPlanDTO" resultType="PlanDTO">
+		select * from PN_subplan where group_no=#{group_no};
+	</select>
+	
+	<select id="getSubPlanDTO" resultType="PlanDTO">
+		select * from PN_subplan where board_num=#{board_num};
+	</select>
+	
+	
+	
+	<update id="updatePlan">
+	<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+	"update PN_planning set subject=#{subject}, day=#{day}, writer=#{writer}, count=#{count}, pwd=#{pwd}
+				,country=#{country},city=#{city},thumbnail=#{thumbnail},totalprice=#{totalprice}
+				,travel_period=#{travel_period},travel_seasion=#{travel_seasion},travel_theme=#{travel_theme}
+				,recom=#{recom} where group_no=#{group_no};
+	</update>
+	<update id="updateSubPlan">
+	<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+	"update PN_subplan set subject=#{subject},img=#{img},content=#{content},price=#{price},traffic=#{traffic} where group_no=#{group_no};
+	</update>
+	<update id="updateTagPlan">
+	<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+	update PN_tag set tag1=${tag1},tag2=${tag2},tag3=${tag3},tag4=${tag4},tag5=${tag5},tag=${tag} where group_no=#{group_no};
+	</update>
+
+
+
+	<delete id="deletePlan">
+	delete from PN_planning where group_no = #{group_no};
+	</delete>
+	<delete id="deleteSub">
+	delete from PN_subplan where group_no = #{group_no};
+	</delete>
+	<delete id="deleteTag">
+	delete from PN_tag where group_no = #{group_no};
+	</delete>
+	
+	
+</mapper>
+
