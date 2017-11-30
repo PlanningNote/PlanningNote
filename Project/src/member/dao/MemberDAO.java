@@ -19,5 +19,5 @@ public interface MemberDAO {
 	public List<MemberDTO> fineMember(String search, String searchString);
 	public boolean checkPwd(String nickname, String pwd);
 	public void sendEmail(String email,String pwd);
-	
+	public int delete(String nickname);
 }

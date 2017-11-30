@@ -44,6 +44,11 @@ public class MemberController {
 		return new ModelAndView("WEB-INF/member/login.jsp");
 	}
 	
+	@RequestMapping(value= "/mypage_delete.do")
+	protected ModelAndView mypage_delete(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/Mypage/mypage_delete.jsp");
+	}
+	
 	
 	@RequestMapping(value= "/login_ok.do")
 	protected ModelAndView LoginOk(HttpSession session,@RequestParam String email, @RequestParam String pwd) throws Exception {
@@ -78,7 +83,7 @@ public class MemberController {
 	
 	@RequestMapping(value= "/logout.do")
 	protected ModelAndView logout(HttpSession session,HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		 session.invalidate(); 
+		session.invalidate(); 
 		return new ModelAndView("index.jsp");
 	}
 	
@@ -159,7 +164,31 @@ public class MemberController {
 		return mav;
 	}
 	
-	
+	@RequestMapping(value= "/delete.do") 
+	public ModelAndView delete(HttpSession session,@RequestParam String pwd) throws Exception{
+		String nickname = (String) session.getAttribute("mynick");
+		boolean bb = memberDAO.checkPwd(nickname, pwd); //닉네임과 비번을 가지고 회원정보 체크
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		if(bb) {
+			int result = memberDAO.delete(nickname); 
+			if(result>0) {
+				mav.addObject("msg","회원탈퇴되었습니다. 그동안 이용해주셔서 감사합니다~");
+				mav.addObject("url","index.jsp");		
+				session.invalidate();
+				return mav;
+				
+			}else {
+				mav.addObject("msg","회원탈퇴처리 실패... 죄송합니다 관리자에게 문의주세요");
+				mav.addObject("url","index.jsp");	
+				return mav;
+			}
+		}else {
+			mav.addObject("msg","비밀번호가 틀렸습니다. 다시 입력해주세요");
+			mav.addObject("url","mypage_delete.do");	
+			return mav;
+		}
+	}
 	
 	
 	

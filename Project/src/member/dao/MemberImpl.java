@@ -1,5 +1,6 @@
 package member.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -222,6 +223,19 @@ public class MemberImpl implements MemberDAO{
 				e.printStackTrace();
 			}
 			
+		}
+
+		@Override
+		public int delete(String nickname) {
+			String sql ="delete from PN_member where nickname = ?";
+			try {
+				int result = jdbcTemplate.update(sql, nickname);
+
+				return result;
+
+			}catch(EmptyResultDataAccessException e) {
+				return -1;
+			}		
 		}
 
 
