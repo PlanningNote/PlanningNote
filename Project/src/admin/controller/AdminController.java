@@ -143,7 +143,7 @@ public class AdminController {
 	//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
 	MultipartFile mf = mr.getFile("img");
 	
-				String filename= mf.getOriginalFilename(); //실제 파일이름 올라와짐
+				String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
 				
 				/*if(filename==null || filename.trim().equals(""))
 					return; //파일업로드가안되는거 
@@ -151,11 +151,11 @@ public class AdminController {
 				//파일이 받아졌다면 경로지정 session? request ? 
 				
 				HttpSession session = arg0.getSession();
-				String upPath = session.getServletContext().getRealPath("/files/notice"); //파일즈라는 폴더를 하나만들겠다.
+				String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); //파일즈라는 폴더를 하나만들겠다.
 				System.out.println(upPath);
 				
 				//서버에 파일을 옮겨 적기 . (파일쓰기)
-				File file = new File(upPath, filename);
+				File file = new File(upPath, img);
 				
 				try{
 					mf.transferTo(file); //실제 파일 전송
@@ -171,6 +171,8 @@ public class AdminController {
 			dto.setNo(0);		
 			dto.setCount(0);
 		}
+		
+		dto.setImg(img);
 		noticeDAO.insertNotice(dto);
 		return new ModelAndView("redirect:admin_noticeList.do");
 		
@@ -371,7 +373,7 @@ public class AdminController {
 
 	@RequestMapping(value="/admin_askList.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		System.out.println("여기는 왔쇼");
+		System.out.println("관리자admin_askList여기는 왔쇼");
 		List<AskDTO> list = askDAO.listAsk();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askList", list);
@@ -389,6 +391,7 @@ public class AdminController {
 		if(no == null || no.trim().equals("")) {
 			return null;
 		}
+		
 		
 		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "content");
 		
@@ -411,9 +414,43 @@ public class AdminController {
 			
 		}
 		
-		 askDAO.insertAsk(dto);
-		return new ModelAndView("redirect:admin_askList.do");
-	}
+		//파일받기
+				ModelAndView mav = new ModelAndView();
+					
+				MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
+				
+				//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
+				MultipartFile mf = mr.getFile("img");
+				
+				
+				//파일 제대로왔는지 확인
+				String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
+				
+				if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
+				
+				//파일이 받아졌다면 경로지정 session? request ? 
+				
+				HttpSession session = arg0.getSession();
+				String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); //파일즈라는 폴더를 하나만들겠다.
+				
+				
+				//서버에 파일을 옮겨 적기 . (파일쓰기)
+				File file = new File(upPath, img);
+				
+				try{
+					mf.transferTo(file); //실제 파일 전송
+					System.out.println("파일전송 성공! ");
+				}catch(IOException e) {
+					System.out.println("파일전송실패ㅠㅠ ");
+					e.printStackTrace();
+				}
+				
+				dto.setImg(img);
+			    askDAO.insertAsk(dto);
+				return new ModelAndView("admin_askList.do");
+			}
+
+		
 	
 	@RequestMapping(value= "/admin_askDelete.do", method=RequestMethod.GET)
 	public ModelAndView deleteFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -455,7 +492,38 @@ public class AdminController {
 			dto.setRe_level(0);
 			dto.setRe_step(0);
 		}		
+		//파일받기
+		ModelAndView mav = new ModelAndView();
+			
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
 		
+		//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
+		MultipartFile mf = mr.getFile("img");
+		
+		
+		//파일 제대로왔는지 확인
+		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
+		
+		if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
+		
+		//파일이 받아졌다면 경로지정 session? request ? 
+		
+		HttpSession session = arg0.getSession();
+		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); //파일즈라는 폴더를 하나만들겠다.
+		
+		
+		//서버에 파일을 옮겨 적기 . (파일쓰기)
+		File file = new File(upPath, img);
+		
+		try{
+			mf.transferTo(file); //실제 파일 전송
+			System.out.println("파일전송 성공! ");
+		}catch(IOException e) {
+			System.out.println("파일전송실패ㅠㅠ ");
+			e.printStackTrace();
+		}
+		
+		dto.setImg(img);
 		askDAO.insertAsk(dto);
 		return new ModelAndView("redirect:admin_askList.do");
 	}
@@ -478,6 +546,8 @@ public class AdminController {
 		if(result.hasErrors()) { 
 			dto.setNo(0);			
 		}
+		
+		
 		int res =askDAO.updateAsk(dto);
 		
 		ModelAndView mav = new ModelAndView();
@@ -494,5 +564,7 @@ public class AdminController {
 		}
 		return mav;
 	}
+	
+	
 
 }

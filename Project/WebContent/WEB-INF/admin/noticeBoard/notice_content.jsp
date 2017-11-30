@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../admin_top.jsp"%>
 <div align="center">
-	<b>글내용 보기</b>
+	<b>공지사항 글내용 보기(관리자)</b>
 	<table border="1" width="600">
 		<tr>
 			<th bgcolor="yellow" width="15%">글번호</th>
@@ -22,9 +22,11 @@
 
 		<tr>
 			<th bgcolor="yellow" width="20%">이 미 지</th>
-			<td><img
-				src="${request.getRealPath()}files/notice/${getNoticeBoard.img}"
-				width="300" /></td>
+			<td>
+					<img src="imgfile/noticeImg/${getNoticeBoard.img}" width="500">
+			
+<%-- 			<img src="${request.getRealPath()}files/notice/${getNoticeBoard.img}"	width="300" /> "
+ --%>			</td>
 		</tr>
 
 		<tr>

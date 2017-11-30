@@ -5,7 +5,7 @@
 <tr>
 	<td>
 		<div align="center">
-			<b>글내용 보기</b>
+			<b>문의글내용 보기</b>
 			<table border="1" width="600">
 				<tr>
 					<th bgcolor="yellow" width="15%">글번호</th>
@@ -26,8 +26,8 @@
 				<tr>
 					<th bgcolor="yellow" width="20%">이 미 지</th>
 					<td >
+					<img src="imgfile/askImg/${getAskBoard.img}" width="500">
 					
-					<img src="<%=path%>/${getAskBoard.img}" width="300" /> 
 					
 					</td>
 				</tr>
@@ -45,12 +45,15 @@
 	
 				<tr bgcolor="yellow">
 					<td colspan="4" align="right">
+					<input type="button" value="답글달기"
+						onclick="window.location='admin_askReply.do?no=${getAskBoard.no}'">	
+					
 						<input type="button" value="글수정"
-						onclick="window.location='ask_update.do?no=${getAskBoard.no}'">						
+						onclick="window.location='admin_ask_update.do?no=${getAskBoard.no}'">						
 						<input type="button" value="글삭제"
-						onclick="window.location='ask_delete.do?no=${getAskBoard.no}'">
+						onclick="window.location='admin_ask_delete.do?no=${getAskBoard.no}'">
 						<input type="button" value="글목록"
-						onclick="window.location='ask_list.do'"></td>
+						onclick="window.location='admin_ask_list.do'"></td>
 				</tr>
 			</table>
 		</div>

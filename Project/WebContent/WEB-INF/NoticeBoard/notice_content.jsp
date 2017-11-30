@@ -25,8 +25,9 @@
 				<tr>
 					<th bgcolor="yellow" width="20%">이 미 지</th>
 					<td >
+					<img src="imgfile/noticeImg/${getNotcieBoard.img}" width="500">
 					
-					<img src="${request.getRealPath()}files/notice/${getNoticeBoard.img}" width="300" /> 
+					<!--  <img src="${request.getRealPath()}files/notice/${getNoticeBoard.img}" width="300" /> -->
 					
 					</td>
 				</tr>
