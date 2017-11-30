@@ -64,9 +64,10 @@ public class AskDAOImpl implements AskDAO{
 			plusReadCount(no);
 		}		
 		String sql = "select * from PN_ask where no = ?";
-		AskDTO dto = jdbcTemplate.query
-				(sql, new MyPreparedStatementSetterForPrimaryKey(no), new MyResultSetExtractor());
+		AskDTO dto = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(no), new MyResultSetExtractor());
 		return dto;
+		//List<AskDTO> list =jdbcTemplate.query(sql, mapper, no);				
+		//return list.get(0);
 	}
 	
 	class MyResultSetExtractor implements ResultSetExtractor<AskDTO>{

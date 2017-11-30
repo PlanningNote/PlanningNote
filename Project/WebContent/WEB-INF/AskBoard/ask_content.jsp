@@ -38,7 +38,7 @@
 				<tr>
 					<th bgcolor="yellow" width="20%">이 미 지</th>
 					<td >
-					<img src="files/askImg/${filename}">
+					<img src="imgfile/askImg/${getAskBoard.img}" width="500">
 				<%-- 	<img src="<%=savePath%>/${getAskBoard.img}" width="300" />  --%>
 					
 					</td>

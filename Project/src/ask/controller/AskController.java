@@ -33,7 +33,8 @@ public class AskController {
 
 	@RequestMapping(value="/ask_list.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		System.out.println("여기는 왔쇼");
+		
+		System.out.println("ask_list.do 여기는 왔쇼");
 		List<AskDTO> list = askDAO.listAsk();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askList", list);
@@ -51,7 +52,6 @@ public class AskController {
 		if(no == null || no.trim().equals("")) {
 			return null;
 		}
-		
 		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "content");
 		
 		ModelAndView mav = new ModelAndView("WEB-INF/AskBoard/ask_content.jsp");
@@ -63,34 +63,39 @@ public class AskController {
 	@RequestMapping(value= "/ask_write.do", method=RequestMethod.GET)
 	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/AskBoard/ask_writeForm.jsp");
+		
 	}
 	@RequestMapping(value= "/ask_write.do",method=RequestMethod.POST)
 	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
+	
+		
 		//이제 arg2로 dto 한번에 값 못받아온다.		
 		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
 			dto.setNo(0);
-
+		}
 			//파일받기
+		ModelAndView mav = new ModelAndView();
+			
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
 		
 		//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
-		MultipartFile mf = mr.getFile("filename");
+		MultipartFile mf = mr.getFile("img");
 		
 		
 		//파일 제대로왔는지 확인
-		String filename= mf.getOriginalFilename(); //실제 파일이름 올라와짐
+		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
 		
-		if(filename==null || filename.trim().equals(""))return null; //파일업로드가안되는거 
+		if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
 		
 		//파일이 받아졌다면 경로지정 session? request ? 
 		
 		HttpSession session = arg0.getSession();
-		String upPath = session.getServletContext().getRealPath("/imgfile"); //파일즈라는 폴더를 하나만들겠다.
+		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); //파일즈라는 폴더를 하나만들겠다.
 		
 		
 		//서버에 파일을 옮겨 적기 . (파일쓰기)
-		File file = new File(upPath, filename);
+		File file = new File(upPath, img);
 		
 		try{
 			mf.transferTo(file); //실제 파일 전송
@@ -100,16 +105,9 @@ public class AskController {
 			e.printStackTrace();
 		}
 		
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("filename",filename);	
-		mav.setViewName("ask_list.jsp");		
-		return mav;
-			
-		}
-		
+		dto.setImg(img);
 	    askDAO.insertAsk(dto);
-		return new ModelAndView("redirect:ask_list.do");
+		return new ModelAndView("ask_list.do");
 	}
 	
 	@RequestMapping(value= "/ask_delete.do", method=RequestMethod.GET)
