@@ -31,7 +31,6 @@
 			<td><a href="notice_list.do"> <img src="img/la4.PNG" border="0"></a></td>
 			<td><a href="notice_list.do"> <img src="img/la5.PNG" border="0"></a></td>
 		
-			
 			</tr>
 			<tr>
 				
