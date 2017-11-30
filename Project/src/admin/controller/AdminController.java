@@ -213,25 +213,57 @@ public class AdminController {
 	
 	@RequestMapping(value= "/admin_noticeUpdate.do", method=RequestMethod.POST)
 	protected ModelAndView updateProNoticeBoard(HttpServletRequest arg0, @ModelAttribute NoticeDTO dto, BindingResult result)	throws Exception {
-		if(result.hasErrors()) { 
-			dto.setNo(0);			
+		//파일받기		
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
+			//파일 제대로왔는지 확인
+		//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
+		MultipartFile mf = mr.getFile("img");
+				
+		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
+		
+		if(img != null && !(img.trim().equals(""))) {
+			HttpSession session = arg0.getSession();
+			String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); //파일즈라는 폴더를 하나만들겠다.
+			System.out.println(upPath);
+			
+			//서버에 파일을 옮겨 적기 . (파일쓰기)
+			File file = new File(upPath, img);
+			
+			try{
+				mf.transferTo(file); //실제 파일 전송
+				System.out.println("파일전송 성공! ");
+			}catch(IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}		
+
+			dto.setImg(img);
+		}else {
+			dto.setImg(arg0.getParameter("beforeimg"));
 		}
+				
+			
+	
+		System.out.println(dto.getNo());
 		int res =noticeDAO.updateNotice(dto);
+
 		
 		ModelAndView mav = new ModelAndView();
 		if(res>0) {
 			return new ModelAndView("redirect:admin_noticeList.do");
 		}else if(res==-1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("admin_noticeUpdate.do");
+			mav.addObject("msg","비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("url","admin_noticeUpdate.do?no="+dto.getNo());
 		}else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("admin_noticeContent.do");
+			mav.addObject("msg","오류발생");
+			mav.addObject("url","admin_noticeContent.do?no="+dto.getNo());
 		}
+		mav.setViewName("message.jsp");
 		return mav;
+		
 	}
+	
+	
 	
 	@RequestMapping(value= "/admin_noticeDelete.do", method=RequestMethod.GET)
 	public ModelAndView deleteForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -350,7 +382,6 @@ public class AdminController {
 		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
 			return null;
 		}
-		
 		int res = faqDAO.deleteFAQ(Integer.parseInt(no), pwd);
 		ModelAndView mav = new ModelAndView();
 		if(res>0) {
@@ -367,7 +398,6 @@ public class AdminController {
 		return mav;
 	}
 
-	
 	/* Q&A */
 	
 

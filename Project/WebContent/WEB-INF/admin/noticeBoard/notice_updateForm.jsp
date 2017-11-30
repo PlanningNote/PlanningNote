@@ -24,13 +24,13 @@
 <%@ include file="../admin_top.jsp"%>
 
 <div align="center">
-	<h3>글 수 정~~~~</h3>
+	<h3>공지사항 글 수 정~~~~(관리자모드)</h3>
 	<form name="f" action="admin_noticeUpdate.do" method="post"
-		onsubmit="return check()">
+		onsubmit="return check()" enctype="multipart/form-data">
 		<input type="hidden" name="no" value="${getNoticeBoard.no}" />
 		<table border="1" width="600">
 			<tr bgcolor="red">
-				<th colspan="2">공 지 수 정 란 입니다</th>
+				<th colspan="2">공 지 수 정 란(관리자) 입니다</th>
 			</tr>
 			<tr>
 				<th bgcolor="pink" width="80%">제목</th>
@@ -44,8 +44,8 @@
 			</tr>
 			<tr>
 				<th bgcolor="pink" width="20%">이미지</th>
-				<td><input type="file" name="img" size="50"
-					value="${getNoticeBoard.img}"></td>
+				<td><input type="file" name="img" size="50"></td>
+					<input type="hidden" name="beforeimg" value="${getNoticeBoard.img}">
 			</tr>
 			<tr>
 				<th bgcolor="pink" width="20%">비밀번호</th>
