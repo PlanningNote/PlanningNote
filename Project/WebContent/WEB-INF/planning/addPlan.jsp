@@ -110,7 +110,7 @@ function alertError(){
 					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="가을">가을 
 					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="겨울">겨울 <br>
 					
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="나혼자">나 혼자
+					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="나 홀로 여행">나 홀로 여행
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="친구와함께">친구와 함께 
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="연인과함께">연인과 함께 
 					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
