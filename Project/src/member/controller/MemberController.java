@@ -74,10 +74,10 @@ public class MemberController {
 				 return mav;				
 			 }
 		}   
-			 else{
-				 mav.addObject("msg", "로그인실패");
-				 mav.addObject("location","redirect:login.do");
-				 return mav;
+		else{
+				mav.addObject("msg", "로그인실패");
+				mav.addObject("location","login.do");
+				return mav;
 			 }
 	}
 	
