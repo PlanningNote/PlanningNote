@@ -29,7 +29,6 @@ import plan.dto.PlanDTO;
 import subplan.dto.FileUpload;
 import subplan.dto.SubPlanDTO;
 import tag.dto.TagDTO;
-
 @org.springframework.stereotype.Controller
 public class PlanController {
 
@@ -117,9 +116,13 @@ public class PlanController {
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute("file") FileUpload upload, @ModelAttribute("targets") SubPlanDTO dtoS,
-			@ModelAttribute PlanDTO dtoP, @ModelAttribute TagDTO dtoT) throws Exception {
+			@ModelAttribute PlanDTO dtoP, @ModelAttribute TagDTO dtoT,@RequestParam String mapLat , @RequestParam String mapLng,@RequestParam String mapIndex) throws Exception {
 		PrintWriter writer = arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
+		
+		String a[] = mapLat.split(",");
+		String b[] = mapLng.split(",");
+		String c[] = mapIndex.split(",");
 
 		// ↓addPlan.jsp에서 받아온 데이터를 맵핑 해주는 메소드
 		mappingSubDTO(arg0, arg1, upload, dtoS);
@@ -133,7 +136,7 @@ public class PlanController {
 		int resP = 0, resS = 0, resT = 0;
 		resT = dao.tagPlan(dtoT);
 		resP = dao.insertPlan(dtoP);
-		resS = dao.insertsubPlan(dtoS);
+		resS = dao.insertsubPlan(dtoS,a,b,c);
 
 		if (resP > 0 && resT > 0 && resS > 0) {
 			mav.setViewName("WEB-INF/planning/list.jsp");
@@ -242,5 +245,13 @@ public class PlanController {
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);
 		return mav;
+	}
+	
+	@RequestMapping(value= "/checkMap.do")
+	protected ModelAndView checkMap(HttpServletRequest arg0,@RequestParam int index) throws Exception {
+		 ModelAndView mav = new  ModelAndView();
+		 mav.addObject("index", index);
+		 mav.setViewName("WEB-INF/planning/mapInsertForm.jsp");
+		 return mav;
 	}
 }

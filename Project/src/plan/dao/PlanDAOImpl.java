@@ -65,20 +65,31 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	@Override
-	public int insertsubPlan(SubPlanDTO sdto) {
+	public int insertsubPlan(SubPlanDTO sdto, String[] lat, String[] lng, String[] index) {
 		// String sql = "insert into PN_subplan
 		// values(group_no.currval,board_num.nextval, ?,?,?,?,?)";
-		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?)";
+		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?,?,?)";
 		Object[] values;
 		int res = 0;
-		for (int i = 0; i < sdto.getImgName().size(); i++) {
-			sdto.getTargets().get(i).setImg(sdto.getImgName().get(i));
-			sdto.getTargets().get(i).setPath(sdto.getImgPath().get(i));
-			values = new Object[] { sdto.getTargets().get(i).getSubject(), // not null
-					sdto.getTargets().get(i).getImg(), sdto.getTargets().get(i).getContent(),
-					sdto.getTargets().get(i).getPrice(), sdto.getTargets().get(i).getTraffic() };
-			res = jdbcTemplate.update(sql, values);
+		int imgnum = 0;
+		
+		for(int i=0;i<sdto.getTargets().size();i++) {
+			if((int)(sdto.getTargets().get(i).getLng()) == Integer.parseInt(index[i])) {
+				
+				sdto.getTargets().get(i).setImg(sdto.getImgName().get(imgnum));
+				sdto.getTargets().get(i).setPath(sdto.getImgPath().get(imgnum));
+				
+				sdto.getTargets().get(i).setLat(Double.parseDouble(lat[i]));
+				sdto.getTargets().get(i).setLng(Double.parseDouble(lng[i]));
+				
+				values = new Object[] { sdto.getTargets().get(i).getSubject(), // not null
+						sdto.getTargets().get(i).getImg(), sdto.getTargets().get(i).getContent(),
+						sdto.getTargets().get(i).getPrice(), sdto.getTargets().get(i).getTraffic(),
+						sdto.getTargets().get(i).getLat(), sdto.getTargets().get(i).getLng()};
+				res = jdbcTemplate.update(sql, values);
+			}
 		}
+		
 		if (res < 0) {
 			// res에 update횟수가 list의 사이드와 다르다면 sql업데이트가 제대로 되지 않음을 확인할수 있다.
 			res = -1;

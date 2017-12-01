@@ -17,8 +17,23 @@ public class SubPlanDTO {
 	private  List<SubPlanDTO> targets;
 	private List<String> imgName = new ArrayList<String>();//이미지 이름 여러개
 	private List<String> imgPath = new ArrayList<String>();//이미지 경로 여러개
+	private double lat;
+	private double lng;
 	
 	
+	
+	public double getLat() {
+		return lat;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public double getLng() {
+		return lng;
+	}
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
 	public String getPath() {
 		return path;
 	}

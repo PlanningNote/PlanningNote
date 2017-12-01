@@ -11,7 +11,7 @@ import tag.dto.TagDTO;
 
 public interface PlanDAO {
 	public int insertPlan(PlanDTO dto);
-	public int insertsubPlan(SubPlanDTO sdto);
+	public int insertsubPlan(SubPlanDTO sdto, String[] lat, String[] lng,String index[]);
 	public int tagPlan(TagDTO dto);
 	//-----insert---------
 	public int updatePlan(int no, PlanDTO dto);
