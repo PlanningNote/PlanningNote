@@ -32,7 +32,7 @@
 	</script>
 <div align="center">
 	<form name="f" method="post" action="admin_FAQWrite.do"
-		onsubmit="return checkMember()">
+		onsubmit="return checkMember()" enctype="multipart/form-data">
 
 		<table border="1" width="600">
 			<tr bgcolor="pink">

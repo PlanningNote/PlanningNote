@@ -43,8 +43,9 @@
 
 			<tr>
 				<th bgcolor="pink" width="20%">이미지</th>
-				<td><input type="file" name="img" class="box" size="50"
-					value="${getFAQBoard.img}"></td>
+				<td><input type="file" name="img" size="50">
+				<input type="hidden" name="beforeimg" value="${getFAQBoard.img}">	
+				</td>
 			</tr>
 
 			<tr>

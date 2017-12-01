@@ -24,8 +24,8 @@
 	</script>
 <div align="center">
 	<h3>글수정</h3>
-	<form name="f" action="ask_update.do" method="post"
-		onsubmit="return check()">
+	<form name="f" action="admin_askUpdate.do" method="post"
+		onsubmit="return check()" enctype="multipart/form-data">
 		<input type="hidden" name="no" value="${getAskBoard.no}" />
 		<table border="1" width="600">
 			<tr bgcolor="pink">
@@ -47,8 +47,8 @@
 			</tr>
 			<tr>
 				<th bgcolor="pink" width="20%">이미지</th>
-				<td><input type="file" name="img" size="50"
-					value="${getAskBoard.img}"></td>
+				<td><input type="file" name="img"></td>
+				<input type="hidden" name="beforeimg" value="${getAskBoard.img}">	
 			</tr>
 			<tr>
 				<th bgcolor="pink" width="20%">비밀번호</th>
@@ -57,7 +57,7 @@
 			<tr bgcolor="pink">
 				<td align="center" colspan="2"><input type="submit" value="글수정">
 					<input type="reset" value="다시작성"> <input type="button"
-					value="목록보기" onclick="window.location='ask_list.do'"></td>
+					value="목록보기" onclick="window.location='admin_askList.do'"></td>
 			</tr>
 		</table>
 	</form>

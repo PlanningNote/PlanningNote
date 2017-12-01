@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%String path = session.getServletContext().getRealPath("files/askimg"); %>
 <%@ include file="../admin_top.jsp"%>
 <tr>
 	<td>
@@ -49,11 +48,11 @@
 						onclick="window.location='admin_askReply.do?no=${getAskBoard.no}'">	
 					
 						<input type="button" value="글수정"
-						onclick="window.location='admin_ask_update.do?no=${getAskBoard.no}'">						
+						onclick="window.location='admin_askUpdate.do?no=${getAskBoard.no}'">						
 						<input type="button" value="글삭제"
-						onclick="window.location='admin_ask_delete.do?no=${getAskBoard.no}'">
+						onclick="window.location='admin_askDelete.do?no=${getAskBoard.no}'">
 						<input type="button" value="글목록"
-						onclick="window.location='admin_ask_list.do'"></td>
+						onclick="window.location='admin_askList.do'"></td>
 				</tr>
 			</table>
 		</div>

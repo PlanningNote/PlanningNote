@@ -423,7 +423,6 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin_askList.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		System.out.println("관리자admin_askList여기는 왔쇼");
 		List<AskDTO> list = askDAO.listAsk();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askList", list);
@@ -433,11 +432,6 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin_askContent.do")
 	public ModelAndView contentAsk(@RequestParam String no) throws Exception {
-		// @RequestParam Map<String, String> params
-		// Set<Entry<String, String>> set = params.entrySet();
-		// for(Entry<String,String> entry = set){
-		// System.out.println(entry.getKey() + "=" + entry.getValues());
-		// }
 		if (no == null || no.trim().equals("")) {
 			return null;
 		}
@@ -457,45 +451,33 @@ public class AdminController {
 	@RequestMapping(value = "/admin_askWrite.do", method = RequestMethod.POST)
 	protected ModelAndView writeProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
-		// 이제 arg2로 dto 한번에 값 못받아온다.
-		if (result.hasErrors()) { // 에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
-			dto.setNo(0);
-
-		}
-
-		// 파일받기
-		ModelAndView mav = new ModelAndView();
-
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
-
-		// 형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
 		MultipartFile mf = mr.getFile("img");
 
-		// 파일 제대로왔는지 확인
-		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
-
-		if (img == null || img.trim().equals(""))
-			return null; // 파일업로드가안되는거
-
-		// 파일이 받아졌다면 경로지정 session? request ?
+		String img = mf.getOriginalFilename(); 
 
 		HttpSession session = arg0.getSession();
-		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
-
-		// 서버에 파일을 옮겨 적기 . (파일쓰기)
+		String upPath = session.getServletContext().getRealPath("imgfile/askImg"); 
+		System.out.println(upPath);
+		
 		File file = new File(upPath, img);
 
 		try {
-			mf.transferTo(file); // 실제 파일 전송
+			mf.transferTo(file); 
 			System.out.println("파일전송 성공! ");
 		} catch (IOException e) {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
 
+		if (result.hasErrors()) { 
+			dto.setNo(0);
+			dto.setCount(0);
+		}
+
 		dto.setImg(img);
 		askDAO.insertAsk(dto);
-		return new ModelAndView("admin_askList.do");
+		return new ModelAndView("redirect:admin_askList.do");
 	}
 
 	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.GET)
@@ -510,18 +492,19 @@ public class AdminController {
 		}
 
 		int res = askDAO.deleteAsk(Integer.parseInt(no), pwd);
+		
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
-			return new ModelAndView("redirect:admin_askList.do");
+			mav.addObject("msg", "글삭제에 성공하였습니다.");
+			mav.addObject("location", "admin_askList.do");
 		} else if (res == -1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", no);
-			mav.setViewName("admin_askDelete.do");
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("location", "admin_askDelete.do?no=" + no);
 		} else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", no);
-			mav.setViewName("admin_askContent.do");
+			mav.addObject("msg", "오류발생");
+			mav.addObject("location", "admin_askContent.do?no=" + no);
 		}
+		mav.setViewName("message.jsp");
 		return mav;
 	}
 
@@ -533,40 +516,28 @@ public class AdminController {
 	@RequestMapping(value = "/admin_askReply.do", method = RequestMethod.POST)
 	protected ModelAndView replyProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
-		if (result.hasErrors()) { // 에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
-			dto.setNo(0);
-			dto.setRe_group(0);
-			dto.setRe_level(0);
-			dto.setRe_step(0);
-		}
-		// 파일받기
-		ModelAndView mav = new ModelAndView();
-
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
-
-		// 형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
 		MultipartFile mf = mr.getFile("img");
 
-		// 파일 제대로왔는지 확인
-		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
-
-		if (img == null || img.trim().equals(""))
-			return null; // 파일업로드가안되는거
-
-		// 파일이 받아졌다면 경로지정 session? request ?
+		String img = mf.getOriginalFilename(); 
 
 		HttpSession session = arg0.getSession();
-		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
-
-		// 서버에 파일을 옮겨 적기 . (파일쓰기)
+		String upPath = session.getServletContext().getRealPath("imgfile/askImg"); 
+		System.out.println(upPath);
+		
 		File file = new File(upPath, img);
 
 		try {
-			mf.transferTo(file); // 실제 파일 전송
+			mf.transferTo(file); 
 			System.out.println("파일전송 성공! ");
 		} catch (IOException e) {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
+		}
+
+		if (result.hasErrors()) { 
+			dto.setNo(0);
+			dto.setCount(0);
 		}
 
 		dto.setImg(img);
@@ -580,32 +551,54 @@ public class AdminController {
 			return null;
 		}
 		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "update");
-		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_updateForm.jsp", "getAskBoard", dto); // 값 하나일때
-																												// 가능
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_updateForm.jsp", "getAskBoard", dto);
+																												
 		return mav;
 	}
 
 	@RequestMapping(value = "/admin_askUpdate.do", method = RequestMethod.POST)
 	protected ModelAndView updateProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
-		if (result.hasErrors()) {
-			dto.setNo(0);
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+		MultipartFile mf = mr.getFile("img");
+
+		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
+
+		if (img != null && !(img.trim().equals(""))) {
+			HttpSession session = arg0.getSession();
+			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
+
+			// 서버에 파일을 옮겨 적기 . (파일쓰기)
+			File file = new File(upPath, img);
+
+			try {
+				mf.transferTo(file); // 실제 파일 전송
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+
+			dto.setImg(img);
+		} else {
+			dto.setImg(arg0.getParameter("beforeimg"));
 		}
 
+		System.out.println(dto.getNo());
 		int res = askDAO.updateAsk(dto);
 
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
-			return new ModelAndView("redirect:admin_askList.do");
+			mav.addObject("msg", "글수정에 성공하였습니다.");
+			mav.addObject("location", "admin_askList.do");
 		} else if (res == -1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("admin_askUpdate.do");
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("location", "admin_askUpdate.do?no=" + String.valueOf(dto.getNo()));
 		} else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("admin_askContent.do");
+			mav.addObject("msg", "오류발생");
+			mav.addObject("location", "admin_askContent.do?no=" + String.valueOf(dto.getNo()));
 		}
+		mav.setViewName("message.jsp");
 		return mav;
 	}
 

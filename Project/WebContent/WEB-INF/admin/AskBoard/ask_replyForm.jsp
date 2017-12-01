@@ -25,8 +25,8 @@
 	</script>
 <div align="center">
 	<h3>답 글 요 ~~~~~</h3>
-	<form name="f" action="ask_reply.do" method="post"
-		onsubmit="return check()">
+	<form name="f" action="admin_askReply.do" method="post"
+		onsubmit="return check()" enctype="multipart/form-data">
 		<input type="hidden" name="no" value="${param.no}" /> <input
 			type="hidden" name="re_group" value="${param.re_group}" /> <input
 			type="hidden" name="re_step" value="${param.re_step}" /> <input
@@ -50,8 +50,7 @@
 			</tr>
 			<tr>
 				<th bgcolor="grey" width="20%">이미지</th>
-				<td><input type="file" name="img" size="50"
-					value="${getAskBoard.img}"></td>
+				<td><input type="file" name="img"></td>
 			</tr>
 			<tr>
 				<th bgcolor="grey" width="20%">비밀번호</th>
@@ -60,7 +59,7 @@
 			<tr bgcolor="grey">
 				<td align="center" colspan="2"><input type="submit"
 					value="답글달기"> <input type="reset" value="취소"> <input
-					type="button" value="목록보기" onclick="window.location='ask_list.do'">
+					type="button" value="목록보기" onclick="window.location='admin_askList.do'">
 				</td>
 			</tr>
 		</table>

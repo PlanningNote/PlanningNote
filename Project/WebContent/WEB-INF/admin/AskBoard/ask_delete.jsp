@@ -4,7 +4,7 @@
 <%@ include file="../admin_top.jsp"%>
 <div align="center">
 	<b>글 삭 제</b>
-	<form name="f" action="ask_delete.do" method="post">
+	<form name="f" action="admin_askDelete.do" method="post">
 		<input type="hidden" name="no" value="${param.no}" />
 		<table border="1" width="300">
 			<tr bgcolor="yellow">
@@ -17,7 +17,7 @@
 			</tr>
 			<tr bgcolor="yellow">
 				<td align="center"><input type="submit" value="글삭제"> <input
-					type="button" value="글목록" onclick="window.location='ask_list.do'">
+					type="button" value="글목록" onclick="window.location='admin_askList.do'">
 				</td>
 			</tr>
 		</table>

@@ -26,8 +26,8 @@
 		}
 	</script>
 <div align="center">
-	<form name="f" method="post" action="ask_write.do"
-		onsubmit="return checkMember()">
+	<form name="f" method="post" action="admin_askWrite.do"
+		onsubmit="return checkMember()" enctype="multipart/form-data">
 		<table border="1" width="600">
 			<tr bgcolor="orange">
 				<th colspan="2">문 의 쓰 기</th>
@@ -59,7 +59,7 @@
 				<td bgcolor="pink" colspan="2" align="center"><input
 					type="submit" value="글쓰기"> <input type="reset" value="다시작성">
 					<input type="button" value="목록보기"
-					onclick="window.location='ask_list.do'"></td>
+					onclick="window.location='admin_askList.do'"></td>
 			</tr>
 		</table>
 	</form>
