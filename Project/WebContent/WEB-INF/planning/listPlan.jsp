@@ -48,7 +48,7 @@ function recom_click() {
 				<tr>
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 					<td ALIGN="left">총예산: ${dtoP.totalprice} 원
-					<img src="images1.png" name="recom" style="max-width: 25; height: 25;" onclick="javascript:recom_click();"></td>
+					<img src="images1.png" name="recom" style="max-width: 30; height: 30;" onclick="javascript:recom_click();"></td>
 					</td>
 				</tr>
 			</table>
