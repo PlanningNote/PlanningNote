@@ -9,6 +9,11 @@
         width: 100%;
         height:400px;
 		}
+		.max-small {
+		width: auto; height: auto;
+		max-width: 30px;
+		max-height: 30px;
+}
 </style>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap">
@@ -43,8 +48,7 @@ function initMap() {
        // 기본 마커 - 지도 생기면 중심에 찍혀있는 것
        var basicMarker = new google.maps.Marker({
            position: initLatLng
-       });   
-       
+       });
        
        <c:forEach items="${dtoS.getTargets()}" var="dtoS">	   
 	  		var lat = ${dtoS.lat};       
@@ -99,7 +103,7 @@ function initMap() {
 					<tr>
 						<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 						<td ALIGN="left">총예산: ${dtoP.totalprice} 원
-						<img src="images1.png" name="recom" style="max-width: 25; height: 25;" onclick="javascript:recom_click();"></td>
+						<img src="images1.png" name="recom" class="max-small" onclick="javascript:recom_click();"></td>
 						</td>
 					</tr>
 				</table>

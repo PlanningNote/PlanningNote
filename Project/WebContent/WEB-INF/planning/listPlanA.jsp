@@ -53,7 +53,7 @@
 //		다음 페이지 번호 = 현재 그룹 시작 번호 + 페이지당 보여줄 번호수
 //	ex)		56		=	51 - 5
 	if(prev_pageno<1){
-//		이전 페이지 번호가 1보다 작을 경우		
+//		이전 페이지 번호가 1보다 작을 경우
 		prev_pageno=1;
 //		이전 페이지를 1로
 	}
@@ -122,13 +122,15 @@
 				<hr />  --%>
 				<a href="listPlanA.do?pageno=<%=prev_pageno%>">[이전]</a> 
 				<%for(int i =page_sno;i<=page_eno;i++){%>
-				<a href="listPlanA.do?pageno=<%=i %>">
 				<%if(pageno == i){ %>
-				<%=i %>
-				<%}else{ %>
+				<a href="listPlanA.do?pageno=<%=i %>">
 				[<%=i %>]
-				<%} %>
 				</a> 
+				<%}else{ %>
+				<a href="listPlanA.do?pageno=<%=i %>">
+				[<%=i %>]
+				</a> 
+				<%} %>
 				<%--	콤마	 --%>
 				<%if(i<page_eno){ %>,
 				<%} %>
