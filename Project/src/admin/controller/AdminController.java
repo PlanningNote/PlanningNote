@@ -515,6 +515,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin_askReply.do", method = RequestMethod.POST)
 	protected ModelAndView replyProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
+		
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
@@ -537,6 +538,7 @@ public class AdminController {
 		if (result.hasErrors()) { 
 			dto.setNo(0);
 			dto.setCount(0);
+			
 		}
 
 		dto.setImg(img);
@@ -558,6 +560,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin_askUpdate.do", method = RequestMethod.POST)
 	protected ModelAndView updateProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
+		
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 

@@ -188,6 +188,14 @@ public class AskDAOImpl implements AskDAO{
 		int res = jdbcTemplate.update(sql);
 		return res ;
 	}
+
+
+
+	@Override
+	public boolean checkpwd(String pwd) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }

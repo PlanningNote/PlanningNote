@@ -15,6 +15,7 @@ public interface AskDAO {
 	public AskDTO findAsk(String search,String searchString);
 	public List<AskDTO> rankAsk(); 
 	public AskDTO getAskBoard(int no, String mode);
+	public boolean checkpwd(String pwd);
 	
 
 

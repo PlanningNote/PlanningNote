@@ -59,6 +59,7 @@
 							<a href="notLogin.do"> <img src="img/comu.PNG" border="0"></a> <!--커뮤니티 --> 
 							<a href="notLogin.do"><img src="img/make.PNG" border="0"></a><!--일정만들기-->
 							<a href="notLogin.do"><img src="img/no10.PNG" border="0"></a><!--일정공유-->
+							<a href="calendar.do"><img src="img/cal.PNG" border="0"></a>	<!--일정공유-->
 						</c:if>
 						<c:if test="${isLogin eq true}">
 							<a href="index.jsp"><img src="img/main.PNG" border="0"></a> <!--main --> 
@@ -67,6 +68,7 @@
 							<a href="comu_main.do"> <img src="img/comu.PNG" border="0"></a> <!--커뮤니티 --> 
 							<a href="plan.do"><img src="img/make.PNG" border="0"></a> <!--일정만들기-->
 							<a href="listPlanA.do"><img src="img/no10.PNG" border="0"></a>	<!--일정공유-->
+							<a href="calendar.do"><img src="img/cal.PNG" border="0"></a>	<!--일정공유-->
 						</c:if>
 					
 					</td>

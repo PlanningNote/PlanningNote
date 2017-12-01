@@ -66,14 +66,11 @@ public class AskController {
 		
 	}
 	@RequestMapping(value= "/ask_write.do",method=RequestMethod.POST)
-	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
+	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result ,@RequestParam String pwd)
 			throws Exception {
 	
-		
 		//이제 arg2로 dto 한번에 값 못받아온다.		
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
-			dto.setNo(0);
-		}
+	
 			//파일받기
 		ModelAndView mav = new ModelAndView();
 			
@@ -87,6 +84,9 @@ public class AskController {
 		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
 		
 		if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
+		
+		
+		
 		
 		//파일이 받아졌다면 경로지정 session? request ? 
 		
@@ -104,10 +104,19 @@ public class AskController {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
+		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+			dto.setNo(0);
+			System.out.println("에러");
+		}
+		
 		
 		dto.setImg(img);
+		
+		
 	    askDAO.insertAsk(dto);
-		return new ModelAndView("ask_list.do");
+		return new ModelAndView("redirect:ask_list.do");
+		
+		
 	}
 	
 	@RequestMapping(value= "/ask_delete.do", method=RequestMethod.GET)

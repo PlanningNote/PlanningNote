@@ -33,6 +33,11 @@ public class ComuController {
 		return mav;
 	}
 	
+	
+	@RequestMapping(value= "/calendar.do", method=RequestMethod.GET)
+	protected ModelAndView calBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/Service/CalendarExam2.jsp");
+	}
 
 	
 	@RequestMapping(value= "/comu_write.do", method=RequestMethod.GET)
