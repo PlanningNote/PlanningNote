@@ -7,10 +7,6 @@
     request.setCharacterEncoding("UTF-8");
 %>
 <%@ include file="../../top.jsp"%>
-<html>
-<head>
-<title>플랜리스트</title>
-</head>
 <script language="javascript">
 var index=-1;
 
@@ -35,11 +31,19 @@ function addRow() {
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
 			+ "<br>([*필수]교통 <br>"
-			+ "<input type='text'name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>";
+			+ "<input type='text' name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>"
+			+ "<input type='hidden' name='targets["+index+"].lat' value=0>"
+			+ "<input type='hidden' name='targets["+index+"].lng' value='"+index+"'>";
 	oCell3.innerHTML = "[*필수]<br><input type='file' name='file'>"
+			+ "<input type=button value='지도선택' onClick='selectMap(index)'>";
 	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
 	document.recalc();
 }
+
+function selectMap(idx, subject){	
+	window.open("checkMap.do?index="+idx,"insertMap", "width=800, height=600, resizable = no, scrollbars = no");	
+}
+
 function delRow() {
 	dyntbl1.deleteRow(dyntbl1.clickedRowIndex);
 }
@@ -85,73 +89,76 @@ function alertError(){
 }
 
 </script>
-<body>
-	<div align="center">
-		<form name="f" class="f" method="post" onsubmit="return alertError()" action="goView.do" enctype="multipart/form-data">
-			
-			<table WIDTH="1100" HEIGHT="450" class="outline"
-				background="img/backimg1.jpg">
-				<tr>
-					<td>[*필수]나라: <INPUT TYPE="TEXT" NAME="country"><br>
-					[*필수]도시: <INPUT
-						TYPE="TEXT" NAME="city"></td>
-				</tr>
-				<tr>
-					<td>[*필수]<h2>
-							제목: <INPUT TYPE="TEXT" NAME="subject"></td>
-					<td ALIGN="RIGHT">[*필수]<br>
-					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="1~5일">1~5일 
-					<INPUT TYPE="RADIO" NAME="travel_period"VALUE="5~10일">5~10일 
-					<INPUT TYPE="RADIO"	NAME="travel_period" VALUE="10~15일">10~15일 
-					<INPUT TYPE="RADIO" NAME="travel_period" VALUE="15일이상">15일이상<br>
-					
-					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="봄">봄 
-					<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="여름">여름 
-					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="가을">가을 
-					<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="겨울">겨울 <br>
-					
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="나 홀로 여행">나 홀로 여행
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="친구와함께">친구와 함께 
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="연인과함께">연인과 함께 
-					<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
-				</tr>
-				<tr>
-					<td COLSPAN="2">작성자:  
-					<INPUT TYPE="hidden" NAME="writer" value="${sessionScope.mynick}" readonly="readonly">${sessionScope.mynick} 님
-					</td>
-				</tr>
-				<tr>
-					<td COLSPAN="2">작성일: 
-					<c:set var="day" value="<%=new java.util.Date()%>" /> 
-					<fmt:formatDate value="${day}" type="date" dateStyle="full"/> </td>
-				</tr>
-				<tr>
-					<td>태그:<br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
-						&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
-					</td>
-				</tr>
-				<tr>
-					<td ALIGN="RIGHT" COLSPAN="2"><font color="white">[*필수] 배경사진</font>
-					<INPUT TYPE="FILE" name="thumbfile"></td>
-				</tr>
-			</table> 
-			<br>
+<tr>
+	<td>
+		<div align="center">
+			<form name="f" class="f" method="post" onsubmit="return alertError()" action="goView.do" enctype="multipart/form-data">
+				<input type="hidden" name="mapLat" >
+				<input type="hidden" name="mapLng" >
+				<input type="hidden" name="mapIndex" >
+				<table WIDTH="1100" HEIGHT="450" class="outline"
+					background="img/backimg1.jpg">
+					<tr>
+						<td>[*필수]나라: <INPUT TYPE="TEXT" NAME="country"><br>
+						[*필수]도시: <INPUT
+							TYPE="TEXT" NAME="city"></td>
+					</tr>
+					<tr>
+						<td>[*필수]<h2>
+								제목: <INPUT TYPE="TEXT" NAME="subject"></td>
+						<td ALIGN="RIGHT">[*필수]<br>
+						<INPUT TYPE="RADIO" NAME="travel_period"VALUE="1~5일">1~5일 
+						<INPUT TYPE="RADIO" NAME="travel_period"VALUE="5~10일">5~10일 
+						<INPUT TYPE="RADIO"	NAME="travel_period" VALUE="10~15일">10~15일 
+						<INPUT TYPE="RADIO" NAME="travel_period" VALUE="15일이상">15일이상<br>
+						
+						<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="봄">봄 
+						<INPUT TYPE="RADIO" NAME="travel_seasion" VALUE="여름">여름 
+						<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="가을">가을 
+						<INPUT	TYPE="RADIO" NAME="travel_seasion" VALUE="겨울">겨울 <br>
+						
+						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="나 홀로 여행">나 홀로 여행
+						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="친구와함께">친구와 함께 
+						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="연인과함께">연인과 함께 
+						<INPUT TYPE="RADIO" NAME="travel_theme" VALUE="가족여행">가족여행</td>
+					</tr>
+					<tr>
+						<td COLSPAN="2">작성자:  
+						<INPUT TYPE="hidden" NAME="writer" value="${sessionScope.mynick}" readonly="readonly">${sessionScope.mynick} 님
+						</td>
+					</tr>
+					<tr>
+						<td COLSPAN="2">작성일: 
+						<c:set var="day" value="<%=new java.util.Date()%>" /> 
+						<fmt:formatDate value="${day}" type="date" dateStyle="full"/> </td>
+					</tr>
+					<tr>
+						<td>태그:<br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
+						</td>
+					</tr>
+					<tr>
+						<td ALIGN="RIGHT" COLSPAN="2"><font color="white">[*필수] 배경사진</font>
+						<INPUT TYPE="FILE" name="thumbfile"></td>
+					</tr>
+				</table> 
+				<br>
+		</div>
+			<div id="pre_set" align="center">
+				<table id=dyntbl1 border=1 height="290" width="850">
+					<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
+	
+					</tr>
+				</table>
+				<input type="button" value="일정추가" onClick="addRow()"><br><br>
+				<input type="submit" value="저장">
+				<input type="reset" value="취소">
+		</form>
 	</div>
-		<div id="pre_set" align="center">
-			<table id=dyntbl1 border=1 height="290" width="850">
-				<tr onMouseOver="dyntbl1.clickedRowIndex=this.rowIndex">
-
-				</tr>
-			</table>
-			<input type="button" value="일정추가" onClick="addRow()"><br><br>
-			<input type="submit" value="저장">
-			<input type="reset" value="취소">
-	</form>
-</div>
-</body>
-</html>
+	</td>
+</tr>
 <%@ include file="../../bottom.jsp"%>
