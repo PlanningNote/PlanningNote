@@ -3,25 +3,25 @@
 <%@ include file="../admin_top.jsp"%>
 <div align="center">
 	<b>문의글내용 보기</b>
-	<table border="1" width="600">
+	<table border="1" width="650">
 		<tr>
-			<th bgcolor="yellow" width="15%">글번호</th>
+			<th bgcolor="yellow" width="150" >글번호</th>
 			<td align="center" width="35%">${getAskBoard.no}</td>
 		</tr>
 		<tr>
-			<th bgcolor="yellow" width="15%">글제목</th>
+			<th bgcolor="yellow" width="150">글제목</th>
 			<td align="center" width="85%" colspan="3">
 				${getAskBoard.subject}</td>
 		</tr>
 		<tr>
-			<th bgcolor="yellow" width="20%">내 용</th>
+			<th bgcolor="yellow" width="150">내 용</th>
 			<td><textarea name="content" width="55%" align="center"
-				rows="12" cols="65" size="50"  readonly>${getAskBoard.content}</textarea></td>
+				rows="12" cols="65" size="190"  readonly>${getAskBoard.content}</textarea></td>
 			</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="20%">이 미 지</th>
+			<th bgcolor="yellow" width="200">이 미 지</th>
 			<td><img src="imgfile/askImg/${getAskBoard.img}" width="500">
 
 
@@ -29,12 +29,12 @@
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">조회수</th>
+			<th bgcolor="yellow" width="150">조회수</th>
 			<td align="center" width="35%">${getAskBoard.count}</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">작성일</th>
+			<th bgcolor="yellow" width="150">작성일</th>
 			<td align="center" width="35%">${getAskBoard.day}</td>
 		</tr>
 

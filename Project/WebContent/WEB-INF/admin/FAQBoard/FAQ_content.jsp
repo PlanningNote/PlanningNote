@@ -3,7 +3,7 @@
 <%@ include file="../admin_top.jsp"%>
 <div align="center">
 	<b>FAQ내용 보기(관리자용)</b>
-	<table border="1" width="600">
+	<table border="1" width="650">
 		<tr>
 			<th bgcolor="yellow" width="15%">글번호</th>
 			<td align="center" width="35%">${getFAQBoard.no}</td>
@@ -15,14 +15,14 @@
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="20%">내 용</th>
+			<th bgcolor="yellow" width="15%">내 용</th>
 			<td><textarea name="content" width="55%" align="center"
-					rows="12" cols="65" size="50"class="box" /readonly>${getFAQBoard.content}</textarea></td>
+					rows="12" cols="90" size="50"class="box" /readonly>${getFAQBoard.content}</textarea></td>
 			</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="20%">이 미 지</th>
+			<th bgcolor="yellow" width="15%">이 미 지</th>
 			<td><img
 				src="imgfile/faqImg/${getFAQBoard.img}"	width="300" /></td>
 		</tr>

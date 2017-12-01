@@ -3,7 +3,7 @@
 <%@ include file="../admin_top.jsp"%>
 <div align="center">
 	<b>공지사항 글내용 보기(관리자)</b>
-	<table border="1" width="600">
+	<table border="1" width="650">
 		<tr>
 			<th bgcolor="yellow" width="15%">글번호</th>
 			<td align="center" width="35%">${getNoticeBoard.no}</td>
@@ -15,7 +15,7 @@
 		</tr>
 		<tr>
 			<th bgcolor="yellow" width="20%">내 용</th>
-			<td><textarea name="content" width="55%" align="center" rows="12" cols="65" size="50"
+			<td><textarea name="content" width="55%" align="center" rows="12" cols="60" size="50"
 					 /readonly>${getNoticeBoard.content}</textarea></td>
 			</td>
 		</tr>
