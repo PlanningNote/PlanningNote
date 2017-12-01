@@ -24,8 +24,7 @@
 		<tr>
 			<th bgcolor="yellow" width="20%">이 미 지</th>
 			<td><img
-				src="${request.getRealPath()}files/notice/${getFAQBoard.img}"
-				width="300" /></td>
+				src="imgfile/faqImg/${getFAQBoard.img}"	width="300" /></td>
 		</tr>
 
 		<tr>

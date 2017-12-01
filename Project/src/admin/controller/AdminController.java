@@ -458,7 +458,6 @@ public class AdminController {
 
 		HttpSession session = arg0.getSession();
 		String upPath = session.getServletContext().getRealPath("imgfile/askImg"); 
-		System.out.println(upPath);
 		
 		File file = new File(upPath, img);
 
@@ -482,7 +481,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.GET)
 	public ModelAndView deleteFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		return new ModelAndView("WEB-INF/AskBoard/ask_delete.jsp");
+		return new ModelAndView("WEB-INF/admin/AskBoard/ask_delete.jsp");
 	}
 
 	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.POST)
