@@ -13,6 +13,9 @@
 	}
 </script>
 <div align="center" >
+	<hr color="green" width="300">
+	<font size="6"><b>회 원 목 록</b></font>
+	<hr color="green" width="300">
 	<table border="1" width="600">
 		<tr>
 			<th>회원번호</th>

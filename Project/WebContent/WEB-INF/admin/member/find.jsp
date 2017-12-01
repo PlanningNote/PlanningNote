@@ -4,8 +4,8 @@
 <%@ include file="../admin_top.jsp" %>
 <div align="center">
 	<hr color="green" width="300">
-	<h2>회 원 찾 기</h2>
-	
+	<font size="6"><b>회 원 찾 기</b></font>
+	<hr color="green" width="300">
 	<form name="f" method="post" action="">	
 		<select name="search">
 			<option value="no">회원번호</option>
@@ -15,7 +15,7 @@
 		<input type="text" name="searchString">
 		<input type="submit" value="찾기">
 	</form>
-	<hr color="green" width="300">
+	
 		
 	<table border="1" width="600">
 		<tr>

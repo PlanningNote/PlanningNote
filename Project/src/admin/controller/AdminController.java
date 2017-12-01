@@ -40,17 +40,15 @@ public class AdminController {
 
 	@Autowired
 	private FAQDAO faqDAO;
-	
+
 	@Autowired
 	private AskDAO askDAO;
-	
+
 	// 관리자 메인화면
 	@RequestMapping(value = "/admin_main.do")
 	public ModelAndView adminMain(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/admin_main.jsp");
 	}
-	
-
 
 	/* 회원 관리 */
 
@@ -125,176 +123,153 @@ public class AdminController {
 		mav.setViewName("WEB-INF/admin/noticeBoard/notice_list.jsp");
 		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_noticeWrite.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin_noticeWrite.do", method = RequestMethod.GET)
 	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/noticeBoard/notice_writeForm.jsp");
 	}
-	
-	@RequestMapping(value= "/admin_noticeWrite.do",method=RequestMethod.POST)
-	
+
+	@RequestMapping(value = "/admin_noticeWrite.do", method = RequestMethod.POST)
+
 	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute NoticeDTO dto, BindingResult result)
 			throws Exception {
+
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+		MultipartFile mf = mr.getFile("img");
+
+		String img = mf.getOriginalFilename(); 
+
+		/*
+		 * if(filename==null || filename.trim().equals("")) return; //파일업로드가안되는거
+		 */
+		// 파일이 받아졌다면 경로지정 session? request ?
+
+		HttpSession session = arg0.getSession();
+		String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); 
+		System.out.println(upPath);
 		
-		//파일받기
-	MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
-		//파일 제대로왔는지 확인
-	
-	//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
-	MultipartFile mf = mr.getFile("img");
-	
-				String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
-				
-				/*if(filename==null || filename.trim().equals(""))
-					return; //파일업로드가안되는거 
-				*/
-				//파일이 받아졌다면 경로지정 session? request ? 
-				
-				HttpSession session = arg0.getSession();
-				String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); //파일즈라는 폴더를 하나만들겠다.
-				System.out.println(upPath);
-				
-				//서버에 파일을 옮겨 적기 . (파일쓰기)
-				File file = new File(upPath, img);
-				
-				try{
-					mf.transferTo(file); //실제 파일 전송
-					System.out.println("파일전송 성공! ");
-				}catch(IOException e) {
-					System.out.println("파일전송실패ㅠㅠ ");
-					e.printStackTrace();
-				}
-				
-				
-		//이제 arg2로 dto 한번에 값 못받아온다.		
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
-			dto.setNo(0);		
+		File file = new File(upPath, img);
+
+		try {
+			mf.transferTo(file); 
+			System.out.println("파일전송 성공! ");
+		} catch (IOException e) {
+			System.out.println("파일전송실패ㅠㅠ ");
+			e.printStackTrace();
+		}
+
+		if (result.hasErrors()) { 
+			dto.setNo(0);
 			dto.setCount(0);
 		}
-		
+
 		dto.setImg(img);
 		noticeDAO.insertNotice(dto);
 		return new ModelAndView("redirect:admin_noticeList.do");
-		
-	
-		
-		
-			
-		}
-	
-	
-	@RequestMapping(value= "/admin_noticeContent.do")
+
+	}
+
+	@RequestMapping(value = "/admin_noticeContent.do")
 	public ModelAndView contentNotice(@RequestParam String no) throws Exception {
-		//@RequestParam Map<String, String> params
-		// Set<Entry<String, String>> set = params.entrySet();
-		// for(Entry<String,String> entry = set){
-		// System.out.println(entry.getKey() + "=" + entry.getValues());
-		// }
-		if(no == null || no.trim().equals("")) {
+		if (no == null || no.trim().equals("")) {
 			return null;
 		}
-		
+
 		NoticeDTO dto = noticeDAO.getNoticeBoard(Integer.parseInt(no), "content");
-		
+
 		ModelAndView mav = new ModelAndView("WEB-INF/admin/noticeBoard/notice_content.jsp");
 		mav.addObject("getNoticeBoard", dto);
 		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_noticeUpdate.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin_noticeUpdate.do", method = RequestMethod.GET)
 	protected ModelAndView updateNoticeBoard(@RequestParam String no) throws Exception {
-		if(no == null || no.trim().equals("")) {
+		if (no == null || no.trim().equals("")) {
 			return null;
 		}
 		NoticeDTO dto = noticeDAO.getNoticeBoard(Integer.parseInt(no), "update");
-		ModelAndView mav = new ModelAndView("WEB-INF/admin/noticeBoard/notice_updateForm.jsp","getNoticeBoard",dto); //값 하나일때 가능
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/noticeBoard/notice_updateForm.jsp", "getNoticeBoard", dto);
 		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_noticeUpdate.do", method=RequestMethod.POST)
-	protected ModelAndView updateProNoticeBoard(HttpServletRequest arg0, @ModelAttribute NoticeDTO dto, BindingResult result)	throws Exception {
-		//파일받기		
-		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
-			//파일 제대로왔는지 확인
-		//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
+
+	@RequestMapping(value = "/admin_noticeUpdate.do", method = RequestMethod.POST)
+	protected ModelAndView updateProNoticeBoard(HttpServletRequest arg0, @ModelAttribute NoticeDTO dto,
+			BindingResult result) throws Exception {
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
-				
-		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
-		
-		if(img != null && !(img.trim().equals(""))) {
+
+		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
+
+		if (img != null && !(img.trim().equals(""))) {
 			HttpSession session = arg0.getSession();
-			String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); //파일즈라는 폴더를 하나만들겠다.
-			System.out.println(upPath);
-			
-			//서버에 파일을 옮겨 적기 . (파일쓰기)
+			String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); // 파일즈라는 폴더를 하나만들겠다.
+
+			// 서버에 파일을 옮겨 적기 . (파일쓰기)
 			File file = new File(upPath, img);
-			
-			try{
-				mf.transferTo(file); //실제 파일 전송
+
+			try {
+				mf.transferTo(file); // 실제 파일 전송
 				System.out.println("파일전송 성공! ");
-			}catch(IOException e) {
+			} catch (IOException e) {
 				System.out.println("파일전송실패ㅠㅠ ");
 				e.printStackTrace();
-			}		
+			}
 
 			dto.setImg(img);
-		}else {
+		} else {
 			dto.setImg(arg0.getParameter("beforeimg"));
 		}
-				
-			
-	
-		System.out.println(dto.getNo());
-		int res =noticeDAO.updateNotice(dto);
 
-		
+		System.out.println(dto.getNo());
+		int res = noticeDAO.updateNotice(dto);
+
 		ModelAndView mav = new ModelAndView();
-		if(res>0) {
-			return new ModelAndView("redirect:admin_noticeList.do");
-		}else if(res==-1) {
-			mav.addObject("msg","비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("url","admin_noticeUpdate.do?no="+dto.getNo());
-		}else {
-			mav.addObject("msg","오류발생");
-			mav.addObject("url","admin_noticeContent.do?no="+dto.getNo());
+		if (res > 0) {
+			mav.addObject("msg", "글수정에 성공하였습니다.");
+			mav.addObject("location", "admin_noticeList.do");
+		} else if (res == -1) {
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("location", "admin_noticeUpdate.do?no=" + String.valueOf(dto.getNo()));
+		} else {
+			mav.addObject("msg", "오류발생");
+			mav.addObject("location", "admin_noticeContent.do?no=" + String.valueOf(dto.getNo()));
 		}
 		mav.setViewName("message.jsp");
 		return mav;
-		
+
 	}
-	
-	
-	
-	@RequestMapping(value= "/admin_noticeDelete.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin_noticeDelete.do", method = RequestMethod.GET)
 	public ModelAndView deleteForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/noticeBoard/notice_delete.jsp");
 	}
-	
-	@RequestMapping(value= "/admin_noticeDelete.do", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/admin_noticeDelete.do", method = RequestMethod.POST)
 	protected ModelAndView deleteProBoard(@RequestParam String no, @RequestParam String pwd) throws Exception {
-		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
+		if (no == null || pwd == null || no.trim().equals("") || pwd.trim().equals("")) {
 			return null;
 		}
-		
+
 		int res = noticeDAO.deleteNotice(Integer.parseInt(no), pwd);
+		
 		ModelAndView mav = new ModelAndView();
-		if(res>0) {
-			return new ModelAndView("redirect:admin_noticeList.do");
-		}else if(res==-1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", no);
-			mav.setViewName("admin_noticeDelete.do");
-		}else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", no);
-			mav.setViewName("admin_noticeContent.do");
-		}		
+		if (res > 0) {
+			mav.addObject("msg", "글삭제에 성공하였습니다.");
+			mav.addObject("location", "admin_noticeList.do");
+		} else if (res == -1) {
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("location", "admin_noticeDelete.do?no=" + no);
+		} else {
+			mav.addObject("msg", "오류발생");
+			mav.addObject("location", "admin_noticeContent.do?no=" + no);
+		}
+		mav.setViewName("message.jsp");
 		return mav;
 	}
-	
-	/* FAQ */	
-		
-		@RequestMapping(value="/admin_FAQList.do")
+
+	/* FAQ */
+
+	@RequestMapping(value = "/admin_FAQList.do")
 	public ModelAndView listFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<FAQDTO> list = faqDAO.listFAQ(); // 가져오는거
 		ModelAndView mav = new ModelAndView();
@@ -302,299 +277,336 @@ public class AdminController {
 		mav.setViewName("WEB-INF/admin/FAQBoard/FAQ_list.jsp");
 		return mav;
 	}
-	
 
-	
-	@RequestMapping(value= "/admin_FAQWrite.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/admin_FAQWrite.do", method = RequestMethod.GET)
 	protected ModelAndView writeFormFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_writeForm.jsp");
 	}
-	
-	@RequestMapping(value= "/admin_FAQWrite.do",method=RequestMethod.POST)
-	protected ModelAndView writeProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)
+
+	@RequestMapping(value = "/admin_FAQWrite.do", method = RequestMethod.POST)
+		protected ModelAndView writeProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)
 			throws Exception {
-		//이제 arg2로 dto 한번에 값 못받아온다.		
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
-			dto.setNo(0);		
+
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+		MultipartFile mf = mr.getFile("img");
+
+		String img = mf.getOriginalFilename(); 
+
+		/*
+		 * if(filename==null || filename.trim().equals("")) return; //파일업로드가안되는거
+		 */
+		// 파일이 받아졌다면 경로지정 session? request ?
+
+		HttpSession session = arg0.getSession();
+		String upPath = session.getServletContext().getRealPath("imgfile/faqImg"); 
+		System.out.println(upPath);
+		
+		File file = new File(upPath, img);
+
+		try {
+			mf.transferTo(file); 
+			System.out.println("파일전송 성공! ");
+		} catch (IOException e) {
+			System.out.println("파일전송실패ㅠㅠ ");
+			e.printStackTrace();
+		}
+
+		if (result.hasErrors()) { 
+			dto.setNo(0);
 			dto.setCount(0);
 		}
+
+		dto.setImg(img);
 		faqDAO.insertFAQ(dto);
 		return new ModelAndView("redirect:admin_FAQList.do");
+
 	}
-	
-	@RequestMapping(value= "/admin_FAQContent.do")
+
+	@RequestMapping(value = "/admin_FAQContent.do")
 	public ModelAndView contentFAQ(@RequestParam String no) throws Exception {
-		//@RequestParam Map<String, String> params
-		// Set<Entry<String, String>> set = params.entrySet();
-		// for(Entry<String,String> entry = set){
-		// System.out.println(entry.getKey() + "=" + entry.getValues());
-		// }
-		if(no == null || no.trim().equals("")) {
+		if (no == null || no.trim().equals("")) {
 			return null;
 		}
-		
+
 		FAQDTO dto = faqDAO.getFAQBoard(Integer.parseInt(no), "content");
-		
+
 		ModelAndView mav = new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_content.jsp");
 		mav.addObject("getFAQBoard", dto);
 		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_FAQUpdate.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin_FAQUpdate.do", method = RequestMethod.GET)
 	protected ModelAndView updateFAQ(@RequestParam String no) throws Exception {
-		if(no == null || no.trim().equals("")) {
+		if (no == null || no.trim().equals("")) {
 			return null;
 		}
 		FAQDTO dto = faqDAO.getFAQBoard(Integer.parseInt(no), "update");
-		ModelAndView mav = new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_updateForm.jsp","getFAQBoard",dto); //값 하나일때 가능
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_updateForm.jsp", "getFAQBoard", dto); 
+																												
 		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_FAQUpdate.do", method=RequestMethod.POST)
-	protected ModelAndView updateProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)	throws Exception {
-		if(result.hasErrors()) { 
-			dto.setNo(0);			
+
+	@RequestMapping(value = "/admin_FAQUpdate.do", method = RequestMethod.POST)
+	protected ModelAndView updateProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto,
+			BindingResult result) throws Exception {
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+		MultipartFile mf = mr.getFile("img");
+
+		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
+
+		if (img != null && !(img.trim().equals(""))) {
+			HttpSession session = arg0.getSession();
+			String upPath = session.getServletContext().getRealPath("imgfile/faqImg"); // 파일즈라는 폴더를 하나만들겠다.
+
+			// 서버에 파일을 옮겨 적기 . (파일쓰기)
+			File file = new File(upPath, img);
+
+			try {
+				mf.transferTo(file); // 실제 파일 전송
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+
+			dto.setImg(img);
+		} else {
+			dto.setImg(arg0.getParameter("beforeimg"));
 		}
-		int res =faqDAO.updateFAQ(dto);
-		
+
+		int res = faqDAO.updateFAQ(dto);
+
 		ModelAndView mav = new ModelAndView();
-		if(res>0) {
-			return new ModelAndView("redirect:admin_FAQList.do");
-		}else if(res==-1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("admin_FAQUpdate.do");
-		}else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("admin_FAQContent.do");
+		if (res > 0) {
+			mav.addObject("msg", "글수정에 성공하였습니다.");
+			mav.addObject("location", "admin_FAQList.do");
+		} else if (res == -1) {
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("location", "admin_FAQUpdate.do?no=" + String.valueOf(dto.getNo()));
+		} else {
+			mav.addObject("msg", "오류발생");
+			mav.addObject("location", "admin_FAQContent.do?no=" + String.valueOf(dto.getNo()));
 		}
+		mav.setViewName("message.jsp");
 		return mav;
+
 	}
-	
-	@RequestMapping(value= "/admin_FAQDelete.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin_FAQDelete.do", method = RequestMethod.GET)
 	public ModelAndView deleteFormFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_delete.jsp");
 	}
-	
-	@RequestMapping(value= "/admin_FAQDelete.do", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/admin_FAQDelete.do", method = RequestMethod.POST)
 	protected ModelAndView deleteProFAQ(@RequestParam String no, @RequestParam String pwd) throws Exception {
-		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
+		if (no == null || pwd == null || no.trim().equals("") || pwd.trim().equals("")) {
 			return null;
 		}
 		int res = faqDAO.deleteFAQ(Integer.parseInt(no), pwd);
+		
 		ModelAndView mav = new ModelAndView();
-		if(res>0) {
-			return new ModelAndView("redirect:admin_FAQList.do");
-		}else if(res==-1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", no);
-			mav.setViewName("admin_FAQDelete.do");
-		}else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", no);
-			mav.setViewName("admin_FAQContent.do");
-		}		
+		if (res > 0) {
+			mav.addObject("msg", "글삭제에 성공하였습니다.");
+			mav.addObject("location", "admin_FAQList.do");
+		} else if (res == -1) {
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("location", "admin_FAQDelete.do?no=" + no);
+		} else {
+			mav.addObject("msg", "오류발생");
+			mav.addObject("location", "admin_FAQContent.do?no=" + no);
+		}
+		mav.setViewName("message.jsp");
 		return mav;
 	}
 
 	/* Q&A */
-	
 
-	@RequestMapping(value="/admin_askList.do")
+	@RequestMapping(value = "/admin_askList.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		System.out.println("관리자admin_askList여기는 왔쇼");
 		List<AskDTO> list = askDAO.listAsk();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askList", list);
-		mav.setViewName("WEB-INF/admin/AskBoard/ask_list.jsp");		
-		return mav;		
+		mav.setViewName("WEB-INF/admin/AskBoard/ask_list.jsp");
+		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_askContent.do")
+
+	@RequestMapping(value = "/admin_askContent.do")
 	public ModelAndView contentAsk(@RequestParam String no) throws Exception {
-		//@RequestParam Map<String, String> params
+		// @RequestParam Map<String, String> params
 		// Set<Entry<String, String>> set = params.entrySet();
 		// for(Entry<String,String> entry = set){
 		// System.out.println(entry.getKey() + "=" + entry.getValues());
 		// }
-		if(no == null || no.trim().equals("")) {
+		if (no == null || no.trim().equals("")) {
 			return null;
 		}
-		
-		
+
 		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "content");
-		
+
 		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_content.jsp");
 		mav.addObject("getAskBoard", dto);
 		return mav;
 	}
 
-	
-	@RequestMapping(value= "/admin_askWrite.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/admin_askWrite.do", method = RequestMethod.GET)
 	protected ModelAndView writeFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/AskBoard/ask_writeForm.jsp");
 	}
-	@RequestMapping(value= "/admin_askWrite.do",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/admin_askWrite.do", method = RequestMethod.POST)
 	protected ModelAndView writeProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
-		//이제 arg2로 dto 한번에 값 못받아온다.		
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+		// 이제 arg2로 dto 한번에 값 못받아온다.
+		if (result.hasErrors()) { // 에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
 			dto.setNo(0);
-			
-		}
-		
-		//파일받기
-				ModelAndView mav = new ModelAndView();
-					
-				MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
-				
-				//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
-				MultipartFile mf = mr.getFile("img");
-				
-				
-				//파일 제대로왔는지 확인
-				String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
-				
-				if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
-				
-				//파일이 받아졌다면 경로지정 session? request ? 
-				
-				HttpSession session = arg0.getSession();
-				String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); //파일즈라는 폴더를 하나만들겠다.
-				
-				
-				//서버에 파일을 옮겨 적기 . (파일쓰기)
-				File file = new File(upPath, img);
-				
-				try{
-					mf.transferTo(file); //실제 파일 전송
-					System.out.println("파일전송 성공! ");
-				}catch(IOException e) {
-					System.out.println("파일전송실패ㅠㅠ ");
-					e.printStackTrace();
-				}
-				
-				dto.setImg(img);
-			    askDAO.insertAsk(dto);
-				return new ModelAndView("admin_askList.do");
-			}
 
-		
-	
-	@RequestMapping(value= "/admin_askDelete.do", method=RequestMethod.GET)
+		}
+
+		// 파일받기
+		ModelAndView mav = new ModelAndView();
+
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+
+		// 형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
+		MultipartFile mf = mr.getFile("img");
+
+		// 파일 제대로왔는지 확인
+		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
+
+		if (img == null || img.trim().equals(""))
+			return null; // 파일업로드가안되는거
+
+		// 파일이 받아졌다면 경로지정 session? request ?
+
+		HttpSession session = arg0.getSession();
+		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
+
+		// 서버에 파일을 옮겨 적기 . (파일쓰기)
+		File file = new File(upPath, img);
+
+		try {
+			mf.transferTo(file); // 실제 파일 전송
+			System.out.println("파일전송 성공! ");
+		} catch (IOException e) {
+			System.out.println("파일전송실패ㅠㅠ ");
+			e.printStackTrace();
+		}
+
+		dto.setImg(img);
+		askDAO.insertAsk(dto);
+		return new ModelAndView("admin_askList.do");
+	}
+
+	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.GET)
 	public ModelAndView deleteFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/AskBoard/ask_delete.jsp");
 	}
-	
-	@RequestMapping(value= "/admin_askDelete.do", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.POST)
 	protected ModelAndView deleteProAsk(@RequestParam String no, @RequestParam String pwd) throws Exception {
-		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
+		if (no == null || pwd == null || no.trim().equals("") || pwd.trim().equals("")) {
 			return null;
 		}
-		
+
 		int res = askDAO.deleteAsk(Integer.parseInt(no), pwd);
 		ModelAndView mav = new ModelAndView();
-		if(res>0) {
+		if (res > 0) {
 			return new ModelAndView("redirect:admin_askList.do");
-		}else if(res==-1) {
+		} else if (res == -1) {
 			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
 			mav.addObject("no", no);
 			mav.setViewName("admin_askDelete.do");
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(null, "오류발생");
 			mav.addObject("no", no);
 			mav.setViewName("admin_askContent.do");
-		}		
+		}
 		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_askReply.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin_askReply.do", method = RequestMethod.GET)
 	public ModelAndView replyAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/AskBoard/ask_replyForm.jsp");
 	}
-	
-	@RequestMapping(value= "/admin_askReply.do", method=RequestMethod.POST)
-	protected ModelAndView replyProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result) throws Exception {
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+
+	@RequestMapping(value = "/admin_askReply.do", method = RequestMethod.POST)
+	protected ModelAndView replyProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
+			throws Exception {
+		if (result.hasErrors()) { // 에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
 			dto.setNo(0);
 			dto.setRe_group(0);
 			dto.setRe_level(0);
 			dto.setRe_step(0);
-		}		
-		//파일받기
+		}
+		// 파일받기
 		ModelAndView mav = new ModelAndView();
-			
-		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
-		
-		//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
+
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+
+		// 형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
 		MultipartFile mf = mr.getFile("img");
-		
-		
-		//파일 제대로왔는지 확인
-		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
-		
-		if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
-		
-		//파일이 받아졌다면 경로지정 session? request ? 
-		
+
+		// 파일 제대로왔는지 확인
+		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
+
+		if (img == null || img.trim().equals(""))
+			return null; // 파일업로드가안되는거
+
+		// 파일이 받아졌다면 경로지정 session? request ?
+
 		HttpSession session = arg0.getSession();
-		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); //파일즈라는 폴더를 하나만들겠다.
-		
-		
-		//서버에 파일을 옮겨 적기 . (파일쓰기)
+		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
+
+		// 서버에 파일을 옮겨 적기 . (파일쓰기)
 		File file = new File(upPath, img);
-		
-		try{
-			mf.transferTo(file); //실제 파일 전송
+
+		try {
+			mf.transferTo(file); // 실제 파일 전송
 			System.out.println("파일전송 성공! ");
-		}catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
-		
+
 		dto.setImg(img);
 		askDAO.insertAsk(dto);
 		return new ModelAndView("redirect:admin_askList.do");
 	}
-	
-	
-	
-	
-	@RequestMapping(value= "/admin_askUpdate.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin_askUpdate.do", method = RequestMethod.GET)
 	protected ModelAndView updateAsk(@RequestParam String no) throws Exception {
-		if(no == null || no.trim().equals("")) {
+		if (no == null || no.trim().equals("")) {
 			return null;
 		}
 		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "update");
-		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_updateForm.jsp","getAskBoard",dto); //값 하나일때 가능
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_updateForm.jsp", "getAskBoard", dto); // 값 하나일때
+																												// 가능
 		return mav;
 	}
-	
-	@RequestMapping(value= "/admin_askUpdate.do", method=RequestMethod.POST)
-	protected ModelAndView updateProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)	throws Exception {
-		if(result.hasErrors()) { 
-			dto.setNo(0);			
+
+	@RequestMapping(value = "/admin_askUpdate.do", method = RequestMethod.POST)
+	protected ModelAndView updateProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
+			throws Exception {
+		if (result.hasErrors()) {
+			dto.setNo(0);
 		}
-		
-		
-		int res =askDAO.updateAsk(dto);
-		
+
+		int res = askDAO.updateAsk(dto);
+
 		ModelAndView mav = new ModelAndView();
-		if(res>0) {
+		if (res > 0) {
 			return new ModelAndView("redirect:admin_askList.do");
-		}else if(res==-1) {
+		} else if (res == -1) {
 			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
 			mav.addObject("no", dto.getNo());
 			mav.setViewName("admin_askUpdate.do");
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(null, "오류발생");
 			mav.addObject("no", dto.getNo());
 			mav.setViewName("admin_askContent.do");
 		}
 		return mav;
 	}
-	
-	
 
 }

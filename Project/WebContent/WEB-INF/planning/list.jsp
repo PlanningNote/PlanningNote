@@ -6,7 +6,7 @@
 <%@ include file="../../top.jsp"%>
 <style>
 	#map{
-        width: 800px;
+        width: 100%;
         height:400px;
 		}
 </style>
@@ -30,7 +30,10 @@ function recom_click() {
 <script>
 var map;
 function initMap() {		 
-	var initLatLng = {lat : 37.366184,	lng : 127.107905	};
+	// ★★★★ group_seq 수정 후 여기값 고치기!! ★★★★
+	var a = ${dtoS.getTargets().get(0).getLat()};
+	var b = ${dtoS.getTargets().get(0).getLng()};
+	var initLatLng = {lat : a, 	lng : b};
        var geocoder = new google.maps.Geocoder;
        map = new google.maps.Map(document.getElementById('map'), {
            center: initLatLng,
@@ -72,7 +75,7 @@ function initMap() {
 	<td>
 		<div align="center">
 			<form name="f" method="post" action="list.do" enctype="multipart/form-data">
-				<table WIDTH="800" HEIGHT="500" class="outline"
+				<table WIDTH="100%" HEIGHT="500" class="outline"
 					background="<%=path %>/${dtoP.thumbnail}">
 					<tr>
 						<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
@@ -105,21 +108,22 @@ function initMap() {
 			<div id="map"></div>
 		</div> 
 		<div id="pre_set" align="center">
-				<table id=dyntbl1 border=1 height="290" width="850">
+				<table id=dyntbl1 border=1  width="100%">
 				<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
 					<tr>
 						<td width="5%">${dtoS.board_num}</td>
-						<td whidth="50%" height="100%">
+						<td width="50%" height="200">
 							제목 <br>${dtoS.subject}<br>
 							비용 <br>${dtoS.price }
 							<br>내용 <br>
 							${dtoS.content}
 							<br>교통 <br>
 							${dtoS.traffic}</td>
-						<td width="10%" height="100%">
+						<td width="40%" >
 						<a href="subPlanContent.do?board_num=${dtoS.getBoard_num()}">
-						<img src="<%=path %>/${dtoS.img}" style="max-width: 250; height: 250;"></a></td>
-						<td width="3%"></td>
+						<img src="<%=path %>/${dtoS.img}" width=100% height =100%"></a>
+						</td>
+						<td width="5%"></td>
 					</tr>
 				</c:forEach>
 				</table><br>
