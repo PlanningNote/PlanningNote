@@ -17,7 +17,7 @@
 		pageno = 1;
 	}
 	int total_record = 754;		   //총 레코드 수
-	int page_per_record_cnt = 5;  //페이지 당 레코드 수
+	int page_per_record_cnt = 6;  //페이지 당 레코드 수
 	int group_per_page_cnt =5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
 
@@ -89,7 +89,7 @@
 					</form>
 				</td>
 			</tr>
-			<c:forEach items="${dtoP}" var="dtoP">
+			<c:forEach items="${dtoP}" var="dtoP" end="<%=page_per_record_cnt %>">
 			<tr WIDTH="100">
 			<td>${dtoP.getGroup_no()}</td>
 			<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
@@ -105,8 +105,8 @@
 			</c:forEach>
 			<tr HEIGHT="5%">
 				<td ALIGN="center"  COLSPAN="3">
-				<%--  현재 페이지   (pageno)   : <%=pageno%><br />
-				전체 데이터 수   (total_record) : <%=total_record %><br />
+				현재 페이지<!--    (pageno)    -->: <%=pageno%>페이지<br />
+				<%-- 전체 데이터 수   (total_record) : <%=total_record %><br />
 				한페이지 당 레코드 수   (page_per_record_cnt) : <%=page_per_record_cnt %><br />
 				한페이지 당 보여줄 페지 번호 수   (group_per_page_cnt) : <%=group_per_page_cnt %><br />
 				<hr />
@@ -119,7 +119,7 @@
 				현재 그룹 끝 번호  (page_eno): <%= page_eno%><br />
 				이전 페이지 번호   (prev_pageno) <%=prev_pageno%><br />
 				다음 페이지 번호   (next_pageno) <%=next_pageno%><br />
-				<hr />  --%>
+				<hr />   --%>
 				<a href="listPlanA.do?pageno=<%=prev_pageno%>">[이전]</a> 
 				<%for(int i =page_sno;i<=page_eno;i++){%>
 				<%if(pageno == i){ %>

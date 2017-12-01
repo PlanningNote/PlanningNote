@@ -33,6 +33,7 @@ import tag.dto.TagDTO;
 public class PlanDAOImpl implements PlanDAO {
 	private JdbcTemplate jdbcTemplate;
 	private MyRowMapper mapper = new MyRowMapper();
+	private TagMyRowMapper tagmapper = new TagMyRowMapper();
 	private SubRowMapper submapper = new SubRowMapper();
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -40,7 +41,7 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	@Override
-	public int tagPlan(TagDTO dto) {
+	public int inserttag(TagDTO dto) {
 		String sql = "insert into PN_tag (tag_no_sequence,tag) values(tag_no_sequence.nextval, " + "?)";
 		String tag = dto.getTag1() + dto.getTag2() + dto.getTag3() + dto.getTag4() + dto.getTag5();
 		// String[] arr = tag.split("#");
@@ -196,6 +197,19 @@ public class PlanDAOImpl implements PlanDAO {
 			return dto;
 		}
 	}
+	private class TagMyRowMapper implements RowMapper<TagDTO> {
+		@Override
+		public TagDTO mapRow(ResultSet rs, int arg1) throws SQLException {
+			TagDTO dto = new TagDTO();
+			dto.setGroup_no(rs.getInt("group_no"));
+			dto.setTag1(rs.getString("tag1"));
+			dto.setTag2(rs.getString("tag2"));
+			dto.setTag3(rs.getString("tag3"));
+			dto.setTag4(rs.getString("tag4"));
+			dto.setTag5(rs.getString("tag5"));
+			return dto;
+		}
+	}
 
 	// SubPlanDTO ÀÇ RowMapper
 	private class SubRowMapper implements RowMapper<SubPlanDTO> {
@@ -290,5 +304,12 @@ public class PlanDAOImpl implements PlanDAO {
 	public List<PlanDTO> findOption(String search, String searchString) {
 		String sql = "";
 		return null;
+	}
+
+	@Override
+	public List<TagDTO> taglist() {
+		String sql="select * from PN_tag";
+		List<TagDTO> result = jdbcTemplate.query(sql,tagmapper);
+		return result;
 	}
 }

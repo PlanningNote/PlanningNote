@@ -30,11 +30,11 @@ function addRow() {
 			+ "<br>[*필수]내용 <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
-			+ "<br>([*필수]교통 <br>"
+			+ "<br>[*필수]교통 <br>"
 			+ "<input type='text' name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>"
 			+ "<input type='hidden' name='targets["+index+"].lat' value=0>"
 			+ "<input type='hidden' name='targets["+index+"].lng' value='"+index+"'>";
-	oCell3.innerHTML = "[*필수]<br><input type='file' name='file'>"
+	oCell3.innerHTML = "[*필수]<br><input type='file' name='file'><br>"
 			+ "<input type=button value='지도선택' onClick='selectMap(index)'>";
 	oCell4.innerHTML = "<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>";
 	document.recalc();

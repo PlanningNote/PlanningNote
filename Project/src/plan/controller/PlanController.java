@@ -134,7 +134,7 @@ public class PlanController {
 
 		// ▽ DAOImpl working..
 		int resP = 0, resS = 0, resT = 0;
-		resT = dao.tagPlan(dtoT);
+		resT = dao.inserttag(dtoT);
 		resP = dao.insertPlan(dtoP);
 		resS = dao.insertsubPlan(dtoS,a,b,c);
 
@@ -167,15 +167,19 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		PlanDTO dtoP = new PlanDTO();
 		SubPlanDTO dtoS = new SubPlanDTO();
+		TagDTO dtoT = new TagDTO();
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
-
+		List<TagDTO> listT = new ArrayList<TagDTO>();
+		
+		listT = dao.taglist();
 		dtoP = dao.listPlan(group_no);
 		listS = dao.subList(group_no);
 		System.out.println("리스트플랜: " + listS.size());
-
+		
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);
+		mav.addObject("dtoT", dtoT);
 		return mav;
 	}
 
@@ -230,7 +234,7 @@ public class PlanController {
 		}
 		// ▽ DAOImpl working..
 		int resP = 0, resS = 0, resT = 0;
-		resT = dao.tagPlan(dtoT);
+		resT = dao.inserttag(dtoT);
 		resP = dao.updatePlan(dtoP.getGroup_no(), dtoP);
 		resS = dao.updateSubPlan(numlist, dtoS);
 

@@ -47,7 +47,8 @@ function recom_click() {
 				</tr>
 				<tr>
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
-					<td ALIGN="left">총예산: ${dtoP.totalprice} 원
+					<td ALIGN="right">
+					총예산: ${dtoP.totalprice} 원
 					<img src="images1.png" name="recom" style="max-width: 30; height: 30;" onclick="javascript:recom_click();"></td>
 					</td>
 				</tr>
@@ -75,7 +76,8 @@ function recom_click() {
 			<input type="button" value="글수정"
 				onclick="window.location='updatePlan.do?group_no=${dtoP.group_no}'">
 			<input type="button" value="글삭제"
-				onclick="window.location='deletePlan.do?group_no=${dtoP.group_no}'"> 
+				onclick="window.location='deletePlan.do?group_no=${dtoP.group_no}'"><br><br>
+			<input type="button" value="글목록"onclick="window.location='listPlanA.do'">
 	</FORM>
 	</div>
 </body>
