@@ -30,7 +30,7 @@
 		onsubmit="return checkMember()" enctype="multipart/form-data">
 		<table border="1" width="600">
 			<tr bgcolor="orange">
-				<th colspan="2">문 의 쓰 기</th>
+				<th colspan="2">문 의 쓰 기 (관리자)</th>
 			</tr>
 			<tr>
 				<th bgcolor="pink" width="20%">작성자</th>

@@ -16,7 +16,7 @@
 		<tr>
 			<th bgcolor="yellow" width="20%">내 용</th>
 			<td><textarea name="content" width="55%" align="center"
-					rows="12" cols="55" class="box" readonly>${getAskBoard.content}</textarea></td>
+				rows="12" cols="65" size="50"  readonly>${getAskBoard.content}</textarea></td>
 			</td>
 		</tr>
 

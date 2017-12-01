@@ -3,7 +3,7 @@
 <%@ include file="../admin_top.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div align="center">
-	<b> 문의 </b>
+	<b> 문의 (관리자용)</b>
 	<table border="1" width="600">
 		<tr bgcolor="pink">
 			<th>번호</th>

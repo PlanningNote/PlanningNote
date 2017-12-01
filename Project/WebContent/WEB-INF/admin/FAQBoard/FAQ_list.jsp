@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../admin_top.jsp"%>
 <div align="center">
-	<b> FAQ </b>
+	<b> FAQ (관리자)</b>
 	<table border="0" width="600">
 		<tr bgcolor="sky blue">
 			<td align="right"><a href="admin_FAQWrite.do">FAQ</a></td>

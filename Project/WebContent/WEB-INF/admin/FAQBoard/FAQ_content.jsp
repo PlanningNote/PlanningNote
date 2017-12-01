@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../admin_top.jsp"%>
 <div align="center">
-	<b>FAQ내용 보기</b>
+	<b>FAQ내용 보기(관리자용)</b>
 	<table border="1" width="600">
 		<tr>
 			<th bgcolor="yellow" width="15%">글번호</th>
@@ -17,7 +17,7 @@
 		<tr>
 			<th bgcolor="yellow" width="20%">내 용</th>
 			<td><textarea name="content" width="55%" align="center"
-					rows="12" cols="55" class="box" /readonly>${getFAQBoard.content}</textarea></td>
+					rows="12" cols="65" size="50"class="box" /readonly>${getFAQBoard.content}</textarea></td>
 			</td>
 		</tr>
 
