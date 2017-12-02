@@ -116,7 +116,7 @@ public class AskController {
 	    askDAO.insertAsk(dto);
 		return new ModelAndView("redirect:ask_list.do");
 		
-		
+		 
 	}
 	
 	@RequestMapping(value= "/ask_delete.do", method=RequestMethod.GET)

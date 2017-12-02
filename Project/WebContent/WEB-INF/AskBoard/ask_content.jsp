@@ -10,7 +10,7 @@
  
 <tr>
 	<td>
-		<div align="center">
+		<div align="center"> 
 			<b>글내용 보기</b>
 			<table border="1" width="600">
 			 		

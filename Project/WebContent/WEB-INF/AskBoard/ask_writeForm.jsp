@@ -50,7 +50,7 @@
 					<td width="80%">
 						<textarea name="content" rows="10" cols="50"></textarea>
 					</td>
-				</tr>			
+				</tr>			 
 			 	<tr>
 					<th>이미지</th>
 					<td><input type="file" name="img"></td>
