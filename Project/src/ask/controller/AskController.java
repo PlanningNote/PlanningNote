@@ -66,18 +66,18 @@ public class AskController {
 		
 	}
 	@RequestMapping(value= "/ask_write.do",method=RequestMethod.POST)
-	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result ,@RequestParam String pwd)
+	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
 	
 		//이제 arg2로 dto 한번에 값 못받아온다.		
 	
-			//파일받기
+			//파일받기 
 		ModelAndView mav = new ModelAndView();
 			
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
 		
 		//형변환 되려면 꼭 xml에 MultipartResolver 넣어야 됨.
-		MultipartFile mf = mr.getFile("img");
+		MultipartFile mf = mr.getFile("img"); 
 		
 		
 		//파일 제대로왔는지 확인

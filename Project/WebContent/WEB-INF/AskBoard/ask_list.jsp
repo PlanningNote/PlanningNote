@@ -71,12 +71,12 @@
 	<td valign="top">
 		<div align="center">
 			<b> 문의 </b>
-			<table border="0" width="600">
+			<table border="0" width="700">
 				<tr bgcolor="orange">
 					<td align="right"><a href="ask_write.do">문의하기</a></td>
 				</tr>
 			</table>
-			<table border="1" width="600" >
+			<table border="1" width="700" >
 				<tr bgcolor="pink" >
 					<th>번호</th>
 					<th>작성자</th>
