@@ -5,6 +5,8 @@
 <tr height="600">
 	<td valign="top">
 		<div align="center">
+		
+		<img src="img/noticeimg.PNG"><br>
 			<b> 공 지 사 항  </b>
 			<table border="1" width="600">
 				<tr bgcolor="pink">
@@ -36,11 +38,13 @@
 			</c:forEach>				
 			</table>
 			
+	
+
 			<form>
 				<select name="opt">
 					<option value="0">제목</option>
 					
-					<option value="3">글쓴이</option>
+					<option value="1">글쓴이</option>
 				</select>
 				<input type="text" size="20" name="condition"/>&nbsp;
 				<input type="submit" value="검색"/>

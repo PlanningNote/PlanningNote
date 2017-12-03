@@ -14,5 +14,5 @@ public interface NoticeDAO {
 	public NoticeDTO getNoticeBoard(int parseInt, String string);
 	
 
-
+z
 }
