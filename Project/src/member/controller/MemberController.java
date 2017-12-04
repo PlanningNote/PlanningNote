@@ -38,6 +38,29 @@ public class MemberController {
 		return new ModelAndView("WEB-INF/Mypage/mypage_update.jsp");
 	}
 	
+	@RequestMapping(value= "/mypage_updatePro.do")
+	protected ModelAndView Mypage_updatePro(HttpSession session,HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+			String nickname = (String) session.getAttribute("mynick");
+			String oldPwd = arg0.getParameter("oldPwd");
+			String newPwd = arg0.getParameter("newPwd");
+			boolean result = memberDAO.checkPwd(nickname, oldPwd);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("message.jsp");
+			if(result) {
+				int res = memberDAO.updateMember(newPwd, nickname);
+				if(res>0) {
+					mav.addObject("msg","비밀번호가 변경되었습니다.");
+					mav.addObject("url","mypage.do");
+				}else {
+					mav.addObject("msg","비밀번호변경 실패... 관리자에게 문의주세요");
+					mav.addObject("url","mypage.do");
+				}
+			}else {
+				mav.addObject("msg","기존 비밀번호가 틀렸습니다.");
+				mav.addObject("url","mypage_update.do");
+			}	
+		return mav;
+	}
 	
 	@RequestMapping(value= "/login.do")
 	protected ModelAndView Login(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -96,8 +119,7 @@ public class MemberController {
 	protected ModelAndView emailCheck(HttpServletRequest arg0,@RequestParam String email) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("getEmail",email);		
-		mav.setViewName("WEB-INF/member/EmailCheckForm.jsp");
-		
+		mav.setViewName("WEB-INF/member/EmailCheckForm.jsp");		
 		return mav;
 	}
 	
@@ -105,8 +127,7 @@ public class MemberController {
 	protected ModelAndView nicknameCheck(HttpServletRequest arg0,@RequestParam String nickname) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("getNickname",nickname);		
-		mav.setViewName("WEB-INF/member/NicknameCheckForm.jsp");
-		
+		mav.setViewName("WEB-INF/member/NicknameCheckForm.jsp");		
 		return mav;
 	}
 	
@@ -117,7 +138,6 @@ public class MemberController {
 	
 	@RequestMapping(value= "/join_member.do", method=RequestMethod.POST) //join_member.jsp에서 입력처리한 후 db에 넣는 작업
 	protected ModelAndView joinProMember(HttpServletRequest arg0, @ModelAttribute MemberDTO dto, BindingResult result) throws Exception {
-
 		memberDAO.insertMember(dto);
 		
 		return new ModelAndView("redirect:login.do");
@@ -183,7 +203,7 @@ public class MemberController {
 				mav.addObject("url","index.jsp");	
 				return mav;
 			}
-		}else {
+		}else{
 			mav.addObject("msg","비밀번호가 틀렸습니다. 다시 입력해주세요");
 			mav.addObject("url","mypage_delete.do");	
 			return mav;

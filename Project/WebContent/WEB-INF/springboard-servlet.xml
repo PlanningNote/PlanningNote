@@ -74,6 +74,10 @@
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 
+	<bean id="breportDAO" class="report.dao.BReportDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate" />
+	</bean>
+	
 	<bean class="member.controller.MemberController">
 	</bean>
 	<bean class="admin.controller.AdminController">

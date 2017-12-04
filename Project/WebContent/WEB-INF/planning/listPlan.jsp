@@ -2,10 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
-<html>
-<head>
-<title>플랜리스트자세보기</title>
-</head>
+<%@ include file ="../../top.jsp" %>
 <script language="javascript">
 var img = new Array("images1.png","images2.png")
 var cnt=0;
@@ -20,8 +17,16 @@ function recom_click() {
 	}
 }
 
+function reportPlan(){
+	var no =${dtoP.group_no}
+	var suspecter = "${dtoP.writer}";
+	var reporter = "${sessionScope.mynick}";
+	location.href="reportPlanForm.do?no="+no+"&suspecter="+suspecter+"&reporter="+reporter;	
+}
+
 </script>
-<body>
+<tr>
+<td>
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
@@ -78,7 +83,9 @@ function recom_click() {
 			<input type="button" value="글삭제"
 				onclick="window.location='deletePlan.do?group_no=${dtoP.group_no}'"><br><br>
 			<input type="button" value="글목록"onclick="window.location='listPlanA.do'">
+			<input type="button" value="신고" onclick="reportPlan()">		
 	</FORM>
 	</div>
-</body>
-</html>
+</td>
+</tr>
+<%@ include file ="../../bottom.jsp" %>

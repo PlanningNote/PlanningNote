@@ -62,7 +62,8 @@
 						<input type="button" value="글삭제"
 						onclick="window.location='ask_delete.do?no=${getAskBoard.no}'">
 						<input type="button" value="글목록"
-						onclick="window.location='ask_list.do'"></td>
+						onclick="window.location='ask_list.do'">						
+					</td>
 				</tr>
 			</table>
 		</div>

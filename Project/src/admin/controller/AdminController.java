@@ -226,13 +226,13 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글수정에 성공하였습니다.");
-			mav.addObject("location", "admin_noticeList.do");
+			mav.addObject("url", "admin_noticeList.do");
 		} else if (res == -1) {
 			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("location", "admin_noticeUpdate.do?no=" + String.valueOf(dto.getNo()));
+			mav.addObject("url", "admin_noticeUpdate.do?no=" + String.valueOf(dto.getNo()));
 		} else {
 			mav.addObject("msg", "오류발생");
-			mav.addObject("location", "admin_noticeContent.do?no=" + String.valueOf(dto.getNo()));
+			mav.addObject("url", "admin_noticeContent.do?no=" + String.valueOf(dto.getNo()));
 		}
 		mav.setViewName("message.jsp");
 		return mav;
@@ -255,13 +255,13 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글삭제에 성공하였습니다.");
-			mav.addObject("location", "admin_noticeList.do");
+			mav.addObject("url", "admin_noticeList.do");
 		} else if (res == -1) {
 			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("location", "admin_noticeDelete.do?no=" + no);
+			mav.addObject("url", "admin_noticeDelete.do?no=" + no);
 		} else {
 			mav.addObject("msg", "오류발생");
-			mav.addObject("location", "admin_noticeContent.do?no=" + no);
+			mav.addObject("url", "admin_noticeContent.do?no=" + no);
 		}
 		mav.setViewName("message.jsp");
 		return mav;
@@ -379,13 +379,13 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글수정에 성공하였습니다.");
-			mav.addObject("location", "admin_FAQList.do");
+			mav.addObject("url", "admin_FAQList.do");
 		} else if (res == -1) {
 			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("location", "admin_FAQUpdate.do?no=" + String.valueOf(dto.getNo()));
+			mav.addObject("url", "admin_FAQUpdate.do?no=" + String.valueOf(dto.getNo()));
 		} else {
 			mav.addObject("msg", "오류발생");
-			mav.addObject("location", "admin_FAQContent.do?no=" + String.valueOf(dto.getNo()));
+			mav.addObject("url", "admin_FAQContent.do?no=" + String.valueOf(dto.getNo()));
 		}
 		mav.setViewName("message.jsp");
 		return mav;
@@ -407,13 +407,13 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글삭제에 성공하였습니다.");
-			mav.addObject("location", "admin_FAQList.do");
+			mav.addObject("url", "admin_FAQList.do");
 		} else if (res == -1) {
 			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("location", "admin_FAQDelete.do?no=" + no);
+			mav.addObject("url", "admin_FAQDelete.do?no=" + no);
 		} else {
 			mav.addObject("msg", "오류발생");
-			mav.addObject("location", "admin_FAQContent.do?no=" + no);
+			mav.addObject("url", "admin_FAQContent.do?no=" + no);
 		}
 		mav.setViewName("message.jsp");
 		return mav;
@@ -495,13 +495,13 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글삭제에 성공하였습니다.");
-			mav.addObject("location", "admin_askList.do");
+			mav.addObject("url", "admin_askList.do");
 		} else if (res == -1) {
 			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("location", "admin_askDelete.do?no=" + no);
+			mav.addObject("url", "admin_askDelete.do?no=" + no);
 		} else {
 			mav.addObject("msg", "오류발생");
-			mav.addObject("location", "admin_askContent.do?no=" + no);
+			mav.addObject("url", "admin_askContent.do?no=" + no);
 		}
 		mav.setViewName("message.jsp");
 		return mav;
@@ -592,13 +592,13 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글수정에 성공하였습니다.");
-			mav.addObject("location", "admin_askList.do");
+			mav.addObject("url", "admin_askList.do");
 		} else if (res == -1) {
 			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("location", "admin_askUpdate.do?no=" + String.valueOf(dto.getNo()));
+			mav.addObject("url", "admin_askUpdate.do?no=" + String.valueOf(dto.getNo()));
 		} else {
 			mav.addObject("msg", "오류발생");
-			mav.addObject("location", "admin_askContent.do?no=" + String.valueOf(dto.getNo()));
+			mav.addObject("url", "admin_askContent.do?no=" + String.valueOf(dto.getNo()));
 		}
 		mav.setViewName("message.jsp");
 		return mav;

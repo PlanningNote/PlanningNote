@@ -17,6 +17,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,8 +25,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.dto.MemberDTO;
 import plan.dao.PlanDAO;
+import plan.dto.BReportDTO;
 import plan.dto.PlanDTO;
+import report.dao.BReportDAO;
 import subplan.dto.FileUpload;
 import subplan.dto.SubPlanDTO;
 import tag.dto.TagDTO;
@@ -34,6 +38,9 @@ public class PlanController {
 
 	@Autowired
 	private PlanDAO dao;
+	
+	@Autowired
+	private BReportDAO reportDAO;
 
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -258,4 +265,34 @@ public class PlanController {
 		 mav.setViewName("WEB-INF/planning/mapInsertForm.jsp");
 		 return mav;
 	}
+	
+	@RequestMapping(value= "/reportPlanForm.do")
+	protected ModelAndView reportPlanForm(HttpSession session,HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		 int no = Integer.parseInt(arg0.getParameter("no"));		 
+		 String suspecter = arg0.getParameter("suspecter");
+		 String reporter = arg0.getParameter("reporter");
+		 ModelAndView mav = new  ModelAndView();
+		 mav.addObject("no",no);		
+		 mav.addObject("suspecter",suspecter);
+		 mav.addObject("reporter",reporter);
+		 mav.setViewName("WEB-INF/planning/reportForm.jsp");
+		 return mav;
+	}
+	
+	@RequestMapping(value= "/reportPlan.do")
+	protected ModelAndView reportPlan(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		System.out.println("report");
+		BReportDTO dto = new BReportDTO();
+		dto.setBoard_no(Integer.parseInt(req.getParameter("board_no")));
+		dto.setContent(req.getParameter("content"));
+		dto.setHandling("N");
+		dto.setReporter(req.getParameter("reporter"));
+		dto.setSuspecter(req.getParameter("suspecter"));
+		int res =  reportDAO.insertReport(dto);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		mav.addObject("msg","신고접수가 완료되었습니다.");
+		mav.addObject("url","list.do?group_no="+req.getParameter("board_no"));
+		return mav;		
+	}	
 }
