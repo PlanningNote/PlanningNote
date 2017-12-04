@@ -1,5 +1,5 @@
 package member.controller;
- 
+  
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -89,17 +89,17 @@ public class MemberController {
 			 if(email.equals("admin")) {
 				
 				 mav.addObject("msg", "관리자모드로 로그인되었습니다.");
-				 mav.addObject("location","admin_main.do");
+				 mav.addObject("url","admin_main.do");
 				 return mav;
 			 }else {
 				 mav.addObject("msg", "로그인에 성공하셨습니다.");
-				 mav.addObject("location","index.jsp");
+				 mav.addObject("url","index.jsp");
 				 return mav;				
 			 }
 		}   
 		else{
 				mav.addObject("msg", "로그인실패");
-				mav.addObject("location","login.do");
+				mav.addObject("url","login.do");
 				return mav;
 			 }
 	}
