@@ -17,7 +17,6 @@
 </style>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap">
-</script>
 <script language="javascript">
 var img = new Array("images1.png","images2.png")
 var cnt=0;
@@ -47,28 +46,7 @@ function initMap() {
            position: initLatLng
        });
        
-       <c:forEach items="${dtoS.getTargets()}" var="dtoS">	   
-	  		var lat = ${dtoS.lat};       
-	  		var lng = ${dtoS.lng};       
-	  		var sub = "${dtoS.subject}";    	 
-	  		var c =  new google.maps.LatLng(lat,lng);    	  
-	  		addMarker(c,sub);
-		</c:forEach>   
-  
- function addMarker(location,sub){
-  	var marker = new google.maps.Marker({
-					position: location,
-					map:map
-			});
-  	
-  	var infoWindow = new google.maps.InfoWindow({
-		content:sub
-	});
-	
-	marker.addListener('click',function(){
-		infoWindow.open(map, marker);
-	});
-			}	
+       
      
    }
 </script>
@@ -76,7 +54,7 @@ function initMap() {
 	<td>
 		<div align="center">
 			<form name="f" method="post" action="list.do" enctype="multipart/form-data">
-				<table WIDTH="800" HEIGHT="500" class="outline"
+				<table width="100%" height="500" class="outline"
 					background="<%=path %>/${dtoP.thumbnail}">
 					<tr>
 						<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
@@ -105,11 +83,9 @@ function initMap() {
 					</tr>
 				</table>
 		</div>
-		<div align="center">
-			<div id="map"></div>
-		</div> 
+		<div id="map"></div>
 		<div id="pre_set" align="center">
-				<table id=dyntbl1 border=1 height="290" width="850">
+				<table id=dyntbl1 border=1 width="100%" height="1000">
 				<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
 					<tr>
 						<td width="5%">${dtoS.board_num}</td>
@@ -120,10 +96,9 @@ function initMap() {
 							${dtoS.content}
 							<br>교통 <br>
 							${dtoS.traffic}</td>
-						<td width="10%" height="100%">
+						<td width="45%" height="100%">
 						<a href="subPlanContent.do?board_num=${dtoS.getBoard_num()}">
 						<img src="<%=path %>/${dtoS.img}" style="max-width: 250; height: 250;"></a></td>
-						<td width="3%"></td>
 					</tr>
 				</c:forEach>
 				</table><br>

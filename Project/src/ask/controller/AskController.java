@@ -114,7 +114,7 @@ public class AskController {
 		
 		
 	    askDAO.insertAsk(dto);
-		return new ModelAndView("redirect:ask_list.do");
+		return new ModelAndView("ask_list.do");
 		
 		 
 	}

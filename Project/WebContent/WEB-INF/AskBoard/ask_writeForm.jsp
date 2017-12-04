@@ -17,7 +17,7 @@
 				f.content.focus()
 				return false
 			}
-			if (f.passwd.value==""){
+			if (f.pwd.value==""){
 				alert("비밀번호를 입력해 주세요!!")
 				f.passwd.focus()
 				return false

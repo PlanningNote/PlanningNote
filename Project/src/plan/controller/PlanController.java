@@ -44,7 +44,9 @@ public class PlanController {
 
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		int no = dao.getBoardNo();
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("no",no);
 		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
 	}
@@ -123,7 +125,7 @@ public class PlanController {
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute("file") FileUpload upload, @ModelAttribute("targets") SubPlanDTO dtoS,
-			@ModelAttribute PlanDTO dtoP, @ModelAttribute TagDTO dtoT,@RequestParam String mapLat , @RequestParam String mapLng,@RequestParam String mapIndex) throws Exception {
+			@ModelAttribute PlanDTO dtoP, @ModelAttribute TagDTO dtoT,@RequestParam String mapLat , @RequestParam String mapLng,@RequestParam String mapIndex, @RequestParam int group_no) throws Exception {
 		PrintWriter writer = arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
 		
@@ -143,10 +145,10 @@ public class PlanController {
 		int resP = 0, resS = 0, resT = 0;
 		resT = dao.inserttag(dtoT);
 		resP = dao.insertPlan(dtoP);
-		resS = dao.insertsubPlan(dtoS,a,b,c);
+		resS = dao.insertsubPlan(dtoS,a,b,c,group_no);
 
 		if (resP > 0 && resT > 0 && resS > 0) {
-			mav.setViewName("WEB-INF/planning/list.jsp");
+			mav.setViewName("list.do?group_no="+group_no);
 		} else {
 			writer.println("게시글 등록을 실패하였습니다.");
 			mav.setViewName("plan.do");
@@ -187,6 +189,7 @@ public class PlanController {
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);
 		mav.addObject("dtoT", dtoT);
+		mav.addObject("size",listS.size());
 		return mav;
 	}
 

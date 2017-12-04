@@ -55,10 +55,10 @@ public class PlanDAOImpl implements PlanDAO {
 		// String sql = "insert into PN_planning " + "values(group_no.nextval, " +
 		// "?,?,sysdate,?,?,"
 		// + "tag_no_sequence.currval,?,?,?,?,?,?,?,?)";
-		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,"
+		String sql = "insert into PN_planning " + "values(?, ?,?,sysdate,?,?,"
 				+ "tag_no_sequence.nextval,?,?,?,?,?,?,?,?)";
 		int res = 0;
-		Object[] values = new Object[] { dto.getWriter(), dto.getSubject(), "pwd", dto.getCount(), dto.getCountry(),
+		Object[] values = new Object[] { dto.getGroup_no(),dto.getWriter(), dto.getSubject(), "pwd", dto.getCount(), dto.getCountry(),
 				dto.getCity(), dto.getThumbnail(), dto.getTotalprice(), dto.getTravel_period(), dto.getTravel_seasion(),
 				dto.getTravel_theme(), dto.getRecom() };
 		res = jdbcTemplate.update(sql, values);
@@ -66,10 +66,10 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	@Override
-	public int insertsubPlan(SubPlanDTO sdto, String[] lat, String[] lng, String[] index) {
+	public int insertsubPlan(SubPlanDTO sdto, String[] lat, String[] lng, String[] index, int no) {
 		// String sql = "insert into PN_subplan
 		// values(group_no.currval,board_num.nextval, ?,?,?,?,?)";
-		String sql = "insert into PN_subplan values(group_no.nextval,board_num.nextval, ?,?,?,?,?,?,?)";
+		String sql = "insert into PN_subplan values(?,board_num.nextval, ?,?,?,?,?,?,?)";
 		Object[] values;
 		int res = 0;
 		int imgnum = 0;
@@ -79,11 +79,11 @@ public class PlanDAOImpl implements PlanDAO {
 				
 				sdto.getTargets().get(i).setImg(sdto.getImgName().get(imgnum));
 				sdto.getTargets().get(i).setPath(sdto.getImgPath().get(imgnum));
-				
+				imgnum++;
 				sdto.getTargets().get(i).setLat(Double.parseDouble(lat[i]));
 				sdto.getTargets().get(i).setLng(Double.parseDouble(lng[i]));
 				
-				values = new Object[] { sdto.getTargets().get(i).getSubject(), // not null
+				values = new Object[] { no,sdto.getTargets().get(i).getSubject(), // not null
 						sdto.getTargets().get(i).getImg(), sdto.getTargets().get(i).getContent(),
 						sdto.getTargets().get(i).getPrice(), sdto.getTargets().get(i).getTraffic(),
 						sdto.getTargets().get(i).getLat(), sdto.getTargets().get(i).getLng()};
@@ -223,6 +223,8 @@ public class PlanDAOImpl implements PlanDAO {
 			dto.setContent(rs.getString("content"));
 			dto.setPrice(rs.getInt("price"));
 			dto.setTraffic(rs.getString("traffic"));
+			dto.setLat(rs.getDouble("lat"));
+			dto.setLng(rs.getDouble("lng"));
 			System.out.println("서브플랜리스트다오임플 그룹노: " + dto.getGroup_no());
 			return dto;
 		}
@@ -267,6 +269,8 @@ public class PlanDAOImpl implements PlanDAO {
 				dto.setContent(rs.getString("content"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setTraffic(rs.getString("traffic"));
+				dto.setLat(rs.getDouble("lat"));
+				dto.setLng(rs.getDouble("lng"));
 				return dto;
 			}
 			throw new DataRetrievalFailureException("SubPlanDTO를 찾을수가 없습니다.");
@@ -311,5 +315,12 @@ public class PlanDAOImpl implements PlanDAO {
 		String sql="select * from PN_tag";
 		List<TagDTO> result = jdbcTemplate.query(sql,tagmapper);
 		return result;
+	}
+
+	@Override
+	public int getBoardNo() {
+		String sql = "select group_no.nextval from dual";
+		int a = jdbcTemplate.queryForInt(sql);
+		return a;
 	}
 }
