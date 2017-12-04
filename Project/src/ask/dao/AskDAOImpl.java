@@ -196,6 +196,15 @@ public class AskDAOImpl implements AskDAO{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+
+	@Override
+	public int admindeleteAsk(int no, String pwd) {
+		String sql ="delete from PN_ask where no = ?";
+		int res = jdbcTemplate.update(sql,no);
+		return res;
+	}
 	
 
 }

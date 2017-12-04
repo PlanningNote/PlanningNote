@@ -42,11 +42,6 @@ public class AskController {
 	
 	@RequestMapping(value= "/ask_content.do")
 	public ModelAndView contentBoard(@RequestParam String no) throws Exception {
-		//@RequestParam Map<String, String> params
-		// Set<Entry<String, String>> set = params.entrySet();
-		// for(Entry<String,String> entry = set){
-		// System.out.println(entry.getKey() + "=" + entry.getValues());
-		// }
 		if(no == null || no.trim().equals("")) {
 			return null;
 		}
@@ -67,6 +62,7 @@ public class AskController {
 	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
 	
+			//파일받기 
 		ModelAndView mav = new ModelAndView();
 			
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
@@ -77,11 +73,7 @@ public class AskController {
 		
 		//파일 제대로왔는지 확인
 		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
-		
-		//if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
-		
-		
-		
+			
 		
 		//파일이 받아졌다면 경로지정 session? request ? 
 		
@@ -99,7 +91,7 @@ public class AskController {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
-		if(result.hasErrors()) { 
+		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
 			dto.setNo(0);
 			System.out.println("에러");
 		}
@@ -121,21 +113,24 @@ public class AskController {
 	
 	@RequestMapping(value= "/ask_delete.do", method=RequestMethod.POST)
 	protected ModelAndView deleteProBoard(@RequestParam String no, @RequestParam String pwd) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		
 		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
-			return null;
+			mav.addObject("msg", "비정상적인 접근입니다. 메인으로 이동합니다.");
+			mav.setViewName("index.jsp");
 		}
 		
 		int res = askDAO.deleteAsk(Integer.parseInt(no), pwd);
-		ModelAndView mav = new ModelAndView();
+		
 		if(res>0) {
-			return new ModelAndView("redirect:ask_list.do");
+			mav.addObject("msg", "삭제되었습니다.");
+			mav.setViewName("ask_list.do");
 		}else if(res==-1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", no);
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
 			mav.setViewName("ask_delete.do");
 		}else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", no);
+			mav.addObject("msg", "오류발생 관리자에게 문의주세요");
 			mav.setViewName("ask_content.do");
 		}		
 		return mav;
@@ -156,7 +151,7 @@ public class AskController {
 		}		
 		
 		askDAO.insertAsk(dto);
-		return new ModelAndView("redirect:ask_list.do");
+		return new ModelAndView("ask_list.do");
 	}
 	
 	
@@ -164,7 +159,6 @@ public class AskController {
 	
 	@RequestMapping(value= "/ask_update.do", method=RequestMethod.GET)
 	protected ModelAndView updateBoard(@RequestParam String no) throws Exception {
-		System.out.println("여기오니?");
 		if(no == null || no.trim().equals("")) {
 			return null;
 		}
@@ -181,20 +175,18 @@ public class AskController {
 		int res =askDAO.updateAsk(dto);
 		
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
 		if(res>0) {
-			return new ModelAndView("redirect:ask_list.do");
+			mav.addObject("msg","수정되었습니다.");
+			mav.addObject("url","ask_list.do");
 		}else if(res==-1) {
-			JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("ask_update.do");
+			mav.addObject("msg","비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("url","ask_update.do?no="+dto.getNo());
 		}else {
-			JOptionPane.showMessageDialog(null, "오류발생");
-			mav.addObject("no", dto.getNo());
-			mav.setViewName("ask_content.do");
+			mav.addObject("msg","오류발생... 관리자에게 문의주세요");
+			mav.addObject("url","ask_content.do?no="+dto.getNo());
 		}
 		return mav;
-	}
-
-	
+	}	
 }
 

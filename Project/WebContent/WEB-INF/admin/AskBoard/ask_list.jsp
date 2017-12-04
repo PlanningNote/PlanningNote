@@ -23,20 +23,21 @@
 			<tr>
 				<td>${dto.no}</td>
 				<td>${dto.writer}</td>
-				<td><c:if test="${dto.re_level>0}">
+				<td>
+					<c:if test="${dto.re_level>0}">
 						<img src="img/level.gif" width="${dto.re_level*10}">
 						<img src="img/re.gif">
-					</c:if> <a href="admin_askContent.do?no=${dto.no}"> ${dto.subject} </a> <c:if
-						test="${dto.count>10}">
+					</c:if> 
+					<a href="admin_askContent.do?no=${dto.no}"> ${dto.subject}</a> 
+					<c:if 	test="${dto.count>10}">
 						<img src="img/hot.gif">
-					</c:if></td>
+					</c:if>
+				</td>
 				<td>${dto.count}</td>
-
 				<td>${dto.day}</td>
 			</tr>
 		</c:forEach>
 	</table>
-
 
 	<form>
 		<select name="opt">

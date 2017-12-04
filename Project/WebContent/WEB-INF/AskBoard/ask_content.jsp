@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%-- <%String path = session.getServletContext().getRealPath("files/askImg"); %> --%>
-
-
-
-<%@ include file="../../top.jsp" %>
-
-
- 
+<%@ include file="../../top.jsp" %> 
 <tr>
 	<td>
 		<div align="center"> 
@@ -38,9 +32,9 @@
 				<tr>
 					<th bgcolor="yellow" width="20%">이 미 지</th>
 					<td >
-					<img src="imgfile/askImg/${getAskBoard.img}" width="500">
-				<%-- 	<img src="<%=savePath%>/${getAskBoard.img}" width="300" />  --%>
-					
+						<c:if test="${not empty  getAskBoard.img}">
+							<img src="imgfile/askImg/${getAskBoard.img}" width="500">
+						</c:if>
 					</td>
 				</tr>
 				
@@ -57,12 +51,13 @@
 	
 				<tr bgcolor="yellow">
 					<td colspan="4" align="right">
-						<input type="button" value="글수정"
-						onclick="window.location='ask_update.do?no=${getAskBoard.no}'">						
-						<input type="button" value="글삭제"
-						onclick="window.location='ask_delete.do?no=${getAskBoard.no}'">
-						<input type="button" value="글목록"
-						onclick="window.location='ask_list.do'">						
+						<c:if test="${getAskBoard.writer == sessionScope.mynick}">
+							<input type="button" value="글수정"
+							onclick="window.location='ask_update.do?no=${getAskBoard.no}'">						
+							<input type="button" value="글삭제"
+							onclick="window.location='ask_delete.do?no=${getAskBoard.no}'">
+						</c:if>
+							<input type="button" value="글목록"  onclick="window.location='ask_list.do'">						
 					</td>
 				</tr>
 			</table>

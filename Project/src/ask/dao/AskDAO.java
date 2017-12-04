@@ -17,6 +17,7 @@ public interface AskDAO {
 	public AskDTO getAskBoard(int no, String mode);
 	public boolean checkpwd(String pwd);
 	
+	public int admindeleteAsk(int no, String pwd);
 
 
 }
