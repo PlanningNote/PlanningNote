@@ -41,7 +41,7 @@
 					<tr>
 						<th bgcolor="pink" width="80%">작성자</th>
 						<td><input type="text" name="writer" class="box" size="50" 
-																value="${getAskBoard.writer}"></td>
+																value="${getAskBoard.writer}" readonly></td>
 					</tr> 					
 					<tr>
 						<th bgcolor="pink" width="20%">내 용</th>
@@ -49,8 +49,10 @@
 					</tr>
 					<tr>
 						<th bgcolor="pink" width="20%">이미지</th>
-						<td><input type="file" name="img"  size="50" 
-																value="${getAskBoard.img}"></td>
+						<td>
+							<input type="file" name="img"  size="50">
+							<input type="hidden" name="beforeimg" value="${getAskBoard.img}">	
+						</td>
 					</tr>
 					<tr>
 						<th bgcolor="pink" width="20%">비밀번호</th>

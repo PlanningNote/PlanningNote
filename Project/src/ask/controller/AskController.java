@@ -136,26 +136,6 @@ public class AskController {
 		return mav;
 	}
 	
-	@RequestMapping(value= "/ask_reply.do", method=RequestMethod.GET)
-	public ModelAndView replyBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		return new ModelAndView("WEB-INF/AskBoard/ask_replyForm.jsp");
-	}
-	
-	@RequestMapping(value= "/ask_reply.do", method=RequestMethod.POST)
-	protected ModelAndView replyProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result) throws Exception {
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
-			dto.setNo(0);
-			dto.setRe_group(0);
-			dto.setRe_level(0);
-			dto.setRe_step(0);
-		}		
-		
-		askDAO.insertAsk(dto);
-		return new ModelAndView("ask_list.do");
-	}
-	
-	
-	
 	
 	@RequestMapping(value= "/ask_update.do", method=RequestMethod.GET)
 	protected ModelAndView updateBoard(@RequestParam String no) throws Exception {
@@ -169,8 +149,29 @@ public class AskController {
 	
 	@RequestMapping(value= "/ask_update.do", method=RequestMethod.POST)
 	protected ModelAndView updateProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)	throws Exception {
-		if(result.hasErrors()) { 
-			dto.setNo(0);			
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+		MultipartFile mf = mr.getFile("img");
+
+		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
+
+		if (img != null && !(img.trim().equals(""))) {
+			HttpSession session = arg0.getSession();
+			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
+
+			// 서버에 파일을 옮겨 적기 . (파일쓰기)
+			File file = new File(upPath, img);
+
+			try {
+				mf.transferTo(file); // 실제 파일 전송
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+
+			dto.setImg(img);
+		}else {
+			dto.setImg(arg0.getParameter("beforeimg"));
 		}
 		int res =askDAO.updateAsk(dto);
 		

@@ -418,8 +418,8 @@ public class AdminController {
 		mav.setViewName("message.jsp");
 		return mav;
 	}
-
-	/* Q&A */
+     /*=========================================================*/
+	/* Q&A     ===== ASK*/
 
 	@RequestMapping(value = "/admin_askList.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -443,67 +443,34 @@ public class AdminController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/admin_askWrite.do", method = RequestMethod.GET)
-	protected ModelAndView writeFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		return new ModelAndView("WEB-INF/AskBoard/ask_writeForm.jsp");
-	}
-
-	@RequestMapping(value = "/admin_askWrite.do", method = RequestMethod.POST)
-	protected ModelAndView writeProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
-			throws Exception {
-		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
-		MultipartFile mf = mr.getFile("img");
-
-		String img = mf.getOriginalFilename(); 
-
-		HttpSession session = arg0.getSession();
-		String upPath = session.getServletContext().getRealPath("imgfile/askImg"); 
-		
-		File file = new File(upPath, img);
-
-		try {
-			mf.transferTo(file); 
-			System.out.println("파일전송 성공! ");
-		} catch (IOException e) {
-			System.out.println("파일전송실패ㅠㅠ ");
-			e.printStackTrace();
-		}
-
-		if (result.hasErrors()) { 
-			dto.setNo(0);
-			dto.setCount(0);
-		}
-
-		dto.setImg(img);
-		askDAO.insertAsk(dto);
-		return new ModelAndView("redirect:admin_askList.do");
-	}
-
 	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.GET)
 	public ModelAndView deleteFormAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/AskBoard/ask_delete.jsp");
 	}
 
 	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.POST)
-	protected ModelAndView deleteProAsk(@RequestParam String no, @RequestParam String pwd) throws Exception {
+	protected ModelAndView deleteProAsk(HttpSession session, @RequestParam String no, @RequestParam String pwd,@RequestParam String board_pwd) throws Exception {
 		if (no == null || pwd == null || no.trim().equals("") || pwd.trim().equals("")) {
 			return null;
 		}
 
-		int res = askDAO.deleteAsk(Integer.parseInt(no), pwd);
-		
 		ModelAndView mav = new ModelAndView();
-		if (res > 0) {
-			mav.addObject("msg", "글삭제에 성공하였습니다.");
-			mav.addObject("url", "admin_askList.do");
-		} else if (res == -1) {
-			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("url", "admin_askDelete.do?no=" + no);
-		} else {
-			mav.addObject("msg", "오류발생");
-			mav.addObject("url", "admin_askContent.do?no=" + no);
-		}
 		mav.setViewName("message.jsp");
+		boolean result = memberDAO.checkPwd((String)session.getAttribute("mynick"),pwd);
+		if(result) {
+			int res = askDAO.admindeleteAsk(Integer.parseInt(no), board_pwd);
+			if(res>0) {
+				mav.addObject("msg","삭제되었습니다.");
+				mav.addObject("url","admin_askList.do");
+			}else {
+				mav.addObject("msg","오류발생... 관리자에게 문의주세요");
+				mav.addObject("url","admin_askContent.do?no="+no);
+			}
+			
+		}else {
+			mav.addObject("msg","비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("url","admin_askDelete.do?no="+no);
+		}
 		return mav;
 	}
 
@@ -519,29 +486,25 @@ public class AdminController {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
-		String img = mf.getOriginalFilename(); 
+		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
-		HttpSession session = arg0.getSession();
-		String upPath = session.getServletContext().getRealPath("imgfile/askImg"); 
-		System.out.println(upPath);
-		
-		File file = new File(upPath, img);
+		if (img != null && !(img.trim().equals(""))) {
+			HttpSession session = arg0.getSession();
+			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
 
-		try {
-			mf.transferTo(file); 
-			System.out.println("파일전송 성공! ");
-		} catch (IOException e) {
-			System.out.println("파일전송실패ㅠㅠ ");
-			e.printStackTrace();
+			// 서버에 파일을 옮겨 적기 . (파일쓰기)
+			File file = new File(upPath, img);
+
+			try {
+				mf.transferTo(file); // 실제 파일 전송
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+
+			dto.setImg(img);
 		}
-
-		if (result.hasErrors()) { 
-			dto.setNo(0);
-			dto.setCount(0);
-			
-		}
-
-		dto.setImg(img);
 		askDAO.insertAsk(dto);
 		return new ModelAndView("redirect:admin_askList.do");
 	}
