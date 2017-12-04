@@ -12,7 +12,4 @@ public interface NoticeDAO {
 	public NoticeDTO findNotice(String search,String searchString);
 	public List<NoticeDTO> rankNotice();
 	public NoticeDTO getNoticeBoard(int parseInt, String string);
-	
-
-z
 }
