@@ -30,4 +30,5 @@ public interface PlanDAO {
 	public List<PlanDTO> findOption(String search,String searchString); //여행기간, 시기, 테마 검색
 	
 	
+	
 }

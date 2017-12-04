@@ -55,7 +55,7 @@ public class PlanDAOImpl implements PlanDAO {
 		// String sql = "insert into PN_planning " + "values(group_no.nextval, " +
 		// "?,?,sysdate,?,?,"
 		// + "tag_no_sequence.currval,?,?,?,?,?,?,?,?)";
-		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,?,?,"
+		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,0,?,"
 				+ "tag_no_sequence.nextval,?,?,?,?,?,?,?,?)";
 		int res = 0;
 		Object[] values = new Object[] { dto.getWriter(), dto.getSubject(), "pwd", dto.getCount(), dto.getCountry(),
@@ -311,5 +311,12 @@ public class PlanDAOImpl implements PlanDAO {
 		String sql="select * from PN_tag";
 		List<TagDTO> result = jdbcTemplate.query(sql,tagmapper);
 		return result;
+	}
+	
+	public int getCount() throws SQLException{
+		String sql = "select count(*) from PN_planning";
+		
+		int res = jdbcTemplate.update(sql);
+		return res ;
 	}
 }

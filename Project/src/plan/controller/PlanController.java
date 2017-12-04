@@ -186,7 +186,7 @@ public class PlanController {
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);
-		mav.addObject("dtoT", dtoT);
+		mav.addObject("listT", listT);
 		return mav;
 	}
 
