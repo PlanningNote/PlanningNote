@@ -5,47 +5,50 @@
 	<b>FAQ내용 보기(관리자용)</b>
 	<table border="1" width="650">
 		<tr>
-			<th bgcolor="yellow" width="15%">글번호</th>
-			<td align="center" width="35%">${getFAQBoard.no}</td>
+			<th bgcolor="yellow" width="20%">글번호</th>
+			<td align="center" width=""80%"">${getFAQBoard.no}</td>
 		</tr>
 		<tr>
-			<th bgcolor="yellow" width="15%">글제목</th>
-			<td align="center" width="85%" colspan="3">
-				${getFAQBoard.subject}</td>
+			<th bgcolor="yellow" width="20%">글제목</th>
+			<td align="center" width="80%" >${getFAQBoard.subject}</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">내 용</th>
-			<td><textarea name="content" width="55%" align="center"
-					rows="12" cols="90" size="50"class="box" /readonly>${getFAQBoard.content}</textarea></td>
+			<th bgcolor="yellow" width="20%">내 용</th>
+			<td width="80%">
+				<textarea name="content" rows="12" cols="60" class="box" readonly>${getFAQBoard.content}</textarea></td>
 			</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">이 미 지</th>
-			<td><img
-				src="imgfile/faqImg/${getFAQBoard.img}"	width="300" /></td>
+			<th bgcolor="yellow" width="20%">이 미 지</th>
+			<td width="80%">
+				<c:if test="${not empty getFAQBoard.img}">
+					<img src="imgfile/faqImg/${getFAQBoard.img}"	width="200" />
+				</c:if>
+			</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">조회수</th>
-			<td align="center" width="35%">${getFAQBoard.count}</td>
+			<th bgcolor="yellow" width="20%">조회수</th>
+			<td align="center" width="80%">${getFAQBoard.count}</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">작성일</th>
-			<td align="center" width="35%">${getFAQBoard.day}</td>
+			<th bgcolor="yellow" width="20%">작성일</th>
+			<td align="center" width="80%">${getFAQBoard.day}</td>
 		</tr>
 
 
 		<tr bgcolor="yellow">
-			<td colspan="4" align="right">
+			<td colspan="2" align="right">
 				<input type="button" value="글수정"
 				onclick="window.location='admin_FAQUpdate.do?no=${getFAQBoard.no}'">
 				<input type="button" value="글삭제"
 				onclick="window.location='admin_FAQDelete.do?no=${getFAQBoard.no}'">
 				<input type="button" value="글목록"
-				onclick="window.location='admin_FAQList.do'"></td>
+				onclick="window.location='admin_FAQList.do'">
+			</td>
 		</tr>
 	</table>
 </div>

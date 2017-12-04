@@ -267,7 +267,7 @@ public class AdminController {
 		mav.setViewName("message.jsp");
 		return mav;
 	}
-	   /*=========================================================*/
+	  /*=========================================================*/
 	/* FAQ */
 
 	@RequestMapping(value = "/admin_FAQList.do")
@@ -285,24 +285,20 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_FAQWrite.do", method = RequestMethod.POST)
-		protected ModelAndView writeProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)
+		protected ModelAndView writeProFAQ(HttpSession session, HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)
 			throws Exception {
 
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
 		String img = mf.getOriginalFilename(); 
-
-		/*
-		 * if(filename==null || filename.trim().equals("")) return; //파일업로드가안되는거
-		 */
-		// 파일이 받아졌다면 경로지정 session? request ?
-
-		HttpSession session = arg0.getSession();
-		String upPath = session.getServletContext().getRealPath("imgfile/faqImg"); 
-		System.out.println(upPath);
 		
-		File file = new File(upPath, img);
+		if (img != null && !(img.trim().equals(""))) {
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
+		String upPath = session.getServletContext().getRealPath("imgfile/faqImg"); 
+		
+		File file = new File(upPath, saveImg);
 
 		try {
 			mf.transferTo(file); 
@@ -311,15 +307,19 @@ public class AdminController {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
-
+		dto.setImg(saveImg);
+		}else {
+			dto.setImg("");
+		}
+		
 		if (result.hasErrors()) { 
 			dto.setNo(0);
 			dto.setCount(0);
 		}
 
-		dto.setImg(img);
+		
 		faqDAO.insertFAQ(dto);
-		return new ModelAndView("redirect:admin_FAQList.do");
+		return new ModelAndView("admin_FAQList.do");
 
 	}
 
@@ -348,7 +348,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_FAQUpdate.do", method = RequestMethod.POST)
-	protected ModelAndView updateProFAQ(HttpServletRequest arg0, @ModelAttribute FAQDTO dto,
+	protected ModelAndView updateProFAQ(HttpSession session, HttpServletRequest arg0, @ModelAttribute FAQDTO dto,
 			BindingResult result) throws Exception {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
@@ -356,11 +356,12 @@ public class AdminController {
 		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
 		if (img != null && !(img.trim().equals(""))) {
-			HttpSession session = arg0.getSession();
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
 			String upPath = session.getServletContext().getRealPath("imgfile/faqImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
-			File file = new File(upPath, img);
+			File file = new File(upPath, saveImg);
 
 			try {
 				mf.transferTo(file); // 실제 파일 전송
@@ -370,7 +371,7 @@ public class AdminController {
 				e.printStackTrace();
 			}
 
-			dto.setImg(img);
+			dto.setImg(saveImg);
 		} else {
 			dto.setImg(arg0.getParameter("beforeimg"));
 		}

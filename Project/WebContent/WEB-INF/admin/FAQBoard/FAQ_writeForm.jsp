@@ -46,7 +46,7 @@
 
 			<tr>
 				<th bgcolor="pink" width="20%">내 용</th>
-				<td width="80%"><textarea name="content" rows="10" cols="50"></textarea>
+				<td width="80%"><textarea name="content" rows="10" cols="55"></textarea>
 				</td>
 			</tr>
 
@@ -60,10 +60,11 @@
 				<td width="80%"><input type="password" name="pwd"></td>
 			</tr>
 			<tr>
-				<td bgcolor="pink" colspan="2" align="center"><input
-					type="submit" value="글쓰기"> <input type="reset" value="다시작성">
+				<td bgcolor="pink" colspan="2" align="center">
+					<input type="submit" value="글쓰기"> <input type="reset" value="다시작성">
 					<input type="button" value="목록보기"
-					onclick="window.location='admin_FAQList.do'"></td>
+					onclick="window.location='admin_FAQList.do'">
+				</td>
 			</tr>
 		</table>
 	</form>
