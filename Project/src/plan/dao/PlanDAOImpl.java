@@ -330,4 +330,12 @@ public class PlanDAOImpl implements PlanDAO {
 		int a = jdbcTemplate.queryForInt(sql);
 		return a;
 	}
+	
+	
+	@Override
+	public List<PlanDTO> mylistAPlan(String nickname) {
+		String sql = "select * from PN_planning where writer = ? order by group_no desc ";
+		List<PlanDTO> result = jdbcTemplate.query(sql, mapper, nickname);
+		return result;
+	}
 }

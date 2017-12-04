@@ -29,4 +29,6 @@ public interface PlanDAO {
 	public List<PlanDTO> rankPlan();
 	public List<PlanDTO> findOption(String search,String searchString); //여행기간, 시기, 테마 검색
 	public int getBoardNo();
+	//내꺼
+		public List<PlanDTO> mylistAPlan(String nickname);
 }
