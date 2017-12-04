@@ -71,7 +71,6 @@ function addMarker(location,sub){
 			</tr>
 			<tr height="40%" align="center">
 				<td colspan="2" id="map">
-				
 				</td>
 			</tr>
 		</table>

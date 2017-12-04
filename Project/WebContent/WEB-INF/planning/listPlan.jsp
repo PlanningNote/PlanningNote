@@ -138,7 +138,6 @@ function addMarker(location,sub){
 					<td width="10%" height="100%">
 					<a href="subPlanContent.do?board_num=${dtoS.board_num}">
 					<img src="<%=path %>/${dtoS.img}"style="max-width: 250; height: 250;"></a></td>
-					<td width="3%"></td>
 				</tr>
 			</c:forEach>
 			</table><br>

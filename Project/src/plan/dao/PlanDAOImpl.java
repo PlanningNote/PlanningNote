@@ -317,6 +317,10 @@ public class PlanDAOImpl implements PlanDAO {
 		return result;
 	}
 	
+	protected void plusReadCount(int no) {
+		String sql = "update PN_planning set count = count+1 where no = ?";
+		jdbcTemplate.update(sql, no);
+	}
 	public int getCount() throws SQLException{
 		String sql = "select count(*) from PN_planning";
 		

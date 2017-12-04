@@ -165,7 +165,10 @@ public class PlanController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
 		List<PlanDTO> dtoP = dao.listAPlan();
+		System.out.println("dtoPsize"+dtoP.size());
 		mav.addObject("dtoP", dtoP);
+		mav.addObject("size",dtoP.size());
+		
 		return mav;
 	}
 

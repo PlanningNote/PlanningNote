@@ -16,8 +16,8 @@
 	if(pageno<1){//현재 페이지
 		pageno = 1;
 	}
-	int total_record = 754;		   //총 레코드 수
-	int page_per_record_cnt = 2;  //페이지 당 레코드 수
+	int total_record =10; //toInt(request.getParameter("size"));//총 레코드 수
+	int page_per_record_cnt = 4;  //페이지 당 레코드 수
 	int group_per_page_cnt =5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
 
@@ -89,7 +89,12 @@
 					</form>
 				</td>
 			</tr>
-			<c:forEach items="${dtoP}" var="dtoP" end="<%=page_per_record_cnt %>">
+			<c:if test="${empty dtoP}">
+				<tr>
+					<td colspan="3">게시된 글이 없습니다.</td>
+				</tr>
+			</c:if>
+			<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
 			<tr WIDTH="100">
 			<td>${dtoP.getGroup_no()}</td>
 			<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
@@ -106,7 +111,8 @@
 			<tr HEIGHT="5%">
 				<td ALIGN="center"  COLSPAN="3">
 				현재 페이지<!--    (pageno)    -->: <%=pageno%>페이지<br />
-				<%-- 전체 데이터 수   (total_record) : <%=total_record %><br />
+				 전체 데이터 수   (total_record) : <%=total_record %><br />
+				 <%--
 				한페이지 당 레코드 수   (page_per_record_cnt) : <%=page_per_record_cnt %><br />
 				한페이지 당 보여줄 페지 번호 수   (group_per_page_cnt) : <%=group_per_page_cnt %><br />
 				<hr />
@@ -120,22 +126,18 @@
 				이전 페이지 번호   (prev_pageno) <%=prev_pageno%><br />
 				다음 페이지 번호   (next_pageno) <%=next_pageno%><br />
 				<hr />   --%>
-				<a href="listPlanA.do?group_no=<%=prev_pageno%>">[이전]</a> 
+				[<a href="listPlanA.do?pageno=<%=prev_pageno%>">이전</a>]
 				<%for(int i =page_sno;i<=page_eno;i++){%>
 				<%if(pageno == i){ %>
-				<a href="listPlanA.do?group_no=<%=i %>">
-				[<%=i %>]
-				</a> 
+				[<a href="listPlanA.do?pageno=<%=i %>"><%=i %></a>]
 				<%}else{ %>
-				<a href="listPlanA.do?group_no=<%=i %>">
-				[<%=i %>]
-				</a> 
+				[<a href="listPlanA.do?pageno=<%=i %>"><%=i %></a>]
 				<%} %>
 				<%--	콤마	 --%>
 				<%if(i<page_eno){ %>,
 				<%} %>
 				<%} %>
-				<a href="listPlanA.do?pageno=<%=next_pageno%>" >[다음]</a>
+				[<a href="listPlanA.do?pageno=<%=next_pageno%>" >다음</a>]
 				</td>
 			</tr>
 		</table>
