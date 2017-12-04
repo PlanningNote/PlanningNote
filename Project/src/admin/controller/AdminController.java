@@ -115,6 +115,7 @@ public class AdminController {
 		return new ModelAndView("message.jsp");
 	}
 
+	/*==================================================================*/
 	/* 공지사항 */
 
 	@RequestMapping(value = "/admin_noticeList.do")
@@ -133,24 +134,19 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin_noticeWrite.do", method = RequestMethod.POST)
 
-	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute NoticeDTO dto, BindingResult result)
+	protected ModelAndView writeProBoard(HttpSession session , HttpServletRequest arg0, @ModelAttribute NoticeDTO dto, BindingResult result)
 			throws Exception {
 
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
+		String img = mf.getOriginalFilename();
 
-		String img = mf.getOriginalFilename(); 
-
-		/*
-		 * if(filename==null || filename.trim().equals("")) return; //파일업로드가안되는거
-		 */
-		// 파일이 받아졌다면 경로지정 session? request ?
-
-		HttpSession session = arg0.getSession();
+		if (img != null && !(img.trim().equals(""))) {
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
 		String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); 
-		System.out.println(upPath);
 		
-		File file = new File(upPath, img);
+		File file = new File(upPath, saveImg);
 
 		try {
 			mf.transferTo(file); 
@@ -159,15 +155,18 @@ public class AdminController {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
-
+		dto.setImg(saveImg);
+		}else {
+			dto.setImg("");
+		}
 		if (result.hasErrors()) { 
 			dto.setNo(0);
 			dto.setCount(0);
 		}
 
-		dto.setImg(img);
+		
 		noticeDAO.insertNotice(dto);
-		return new ModelAndView("redirect:admin_noticeList.do");
+		return new ModelAndView("admin_noticeList.do");
 
 	}
 
@@ -195,19 +194,20 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_noticeUpdate.do", method = RequestMethod.POST)
-	protected ModelAndView updateProNoticeBoard(HttpServletRequest arg0, @ModelAttribute NoticeDTO dto,
+	protected ModelAndView updateProNoticeBoard(HttpSession session, HttpServletRequest arg0, @ModelAttribute NoticeDTO dto,
 			BindingResult result) throws Exception {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
-		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
+		String img = mf.getOriginalFilename(); 
 
 		if (img != null && !(img.trim().equals(""))) {
-			HttpSession session = arg0.getSession();
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
 			String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
-			File file = new File(upPath, img);
+			File file = new File(upPath, saveImg);
 
 			try {
 				mf.transferTo(file); // 실제 파일 전송
@@ -217,12 +217,11 @@ public class AdminController {
 				e.printStackTrace();
 			}
 
-			dto.setImg(img);
+			dto.setImg(saveImg);
 		} else {
 			dto.setImg(arg0.getParameter("beforeimg"));
 		}
 
-		System.out.println(dto.getNo());
 		int res = noticeDAO.updateNotice(dto);
 
 		ModelAndView mav = new ModelAndView();
@@ -268,7 +267,7 @@ public class AdminController {
 		mav.setViewName("message.jsp");
 		return mav;
 	}
-
+	   /*=========================================================*/
 	/* FAQ */
 
 	@RequestMapping(value = "/admin_FAQList.do")

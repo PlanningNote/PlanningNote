@@ -5,47 +5,45 @@
 	<b>공지사항 글내용 보기(관리자)</b>
 	<table border="1" width="650">
 		<tr>
-			<th bgcolor="yellow" width="15%">글번호</th>
-			<td align="center" width="35%">${getNoticeBoard.no}</td>
+			<th bgcolor="yellow" width="20%">글번호</th>
+			<td align="center" width="80%">${getNoticeBoard.no}</td>
 		</tr>
 		<tr>
-			<th bgcolor="yellow" width="15%">글제목</th>
-			<td align="center" width="85%" colspan="3">
-				${getNoticeBoard.subject}</td>
+			<th bgcolor="yellow" width="20%">글제목</th>
+			<td align="center" width="80%" colspan="3">${getNoticeBoard.subject}</td>
 		</tr>
 		<tr>
 			<th bgcolor="yellow" width="20%">내 용</th>
-			<td><textarea name="content" width="55%" align="center" rows="12" cols="60" size="50"
-					 /readonly>${getNoticeBoard.content}</textarea></td>
+			<td width="80%">
+				<textarea name="content" rows="12" cols="60"  readonly>
+				${getNoticeBoard.content}</textarea>
 			</td>
 		</tr>
 
 		<tr>
 			<th bgcolor="yellow" width="20%">이 미 지</th>
-			<td>
-					<img src="imgfile/noticeImg/${getNoticeBoard.img}" width="500">
-			
-<%-- 			<img src="${request.getRealPath()}files/notice/${getNoticeBoard.img}"	width="300" /> "
- --%>			</td>
+			<td width="80%">
+				<c:if test="${not empty getNoticeBoard.img}">
+					<img src="imgfile/noticeImg/${getNoticeBoard.img}" width="200">
+				</c:if>
+			</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">조회수</th>
-			<td align="center" width="35%">${getNoticeBoard.count}</td>
+			<th bgcolor="yellow" width="20%">조회수</th>
+			<td align="center" width="80%">${getNoticeBoard.count}</td>
 		</tr>
 
 		<tr>
-			<th bgcolor="yellow" width="15%">작성일</th>
-			<td align="center" width="35%">${getNoticeBoard.day}</td>
+			<th bgcolor="yellow" width="20%">작성일</th>
+			<td align="center" width="80%">${getNoticeBoard.day}</td>
 		</tr>
 
 		<tr bgcolor="yellow">
-			<td colspan="4" align="right"><input type="button" value="글수정"
-				onclick="window.location='admin_noticeUpdate.do?no=${getNoticeBoard.no}'">
-				<input type="button" value="글삭제"
-				onclick="window.location='admin_noticeDelete.do?no=${getNoticeBoard.no}'">
-				<input type="button" value="글목록"
-				onclick="window.location='admin_noticeList.do'"></td>
+			<td colspan="2" align="right">
+				<input type="button" value="글수정" onclick="window.location='admin_noticeUpdate.do?no=${getNoticeBoard.no}'">
+				<input type="button" value="글삭제" onclick="window.location='admin_noticeDelete.do?no=${getNoticeBoard.no}'">
+				<input type="button" value="글목록" onclick="window.location='admin_noticeList.do'"></td>
 		</tr>
 	</table>
 </div>

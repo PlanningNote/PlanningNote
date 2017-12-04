@@ -11,14 +11,15 @@
 				<th>비밀번호를 입력해 주세요</th>
 			</tr>
 			<tr>
-				<td align="center">비밀번호 : <input type="password" name="pwd"
-					class="box">
+				<td align="center">비밀번호 : <input type="password" name="pwd" class="box">
 				</td>
 			</tr>
 			<tr bgcolor="yellow">
-				<td align="center"><input type="submit" value="글삭제"> <input
-					type="button" value="글목록"
-					onclick="window.location='admin_noticeList.do'"></td>
+				<td align="center">
+					<input type="submit" value="글삭제"> 
+					<input type="button" value="글목록" 
+						onclick="window.location='admin_noticeList.do'">
+				</td>
 			</tr>
 		</table>
 	</form>

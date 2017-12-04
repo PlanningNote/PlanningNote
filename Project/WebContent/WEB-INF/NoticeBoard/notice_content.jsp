@@ -7,45 +7,43 @@
 			<b>글내용 보기</b>
 			<table border="1" width="600">
 				<tr>
-					<th bgcolor="yellow" width="15%">글번호</th>
-					<td align="center" width="35%">${getNoticeBoard.no}</td>
+					<th bgcolor="yellow" width="20%">글번호</th>
+					<td align="center" width="80%">${getNoticeBoard.no}</td>
 				</tr>
 				<tr>
-					<th bgcolor="yellow" width="15%">글제목</th>
-					<td align="center" width="85%" colspan="3">
+					<th bgcolor="yellow" width="20%">글제목</th>
+					<td align="center" width="80%" colspan="3">
 						${getNoticeBoard.subject}</td>
 				</tr>
 				<tr>					
 					<th bgcolor="yellow" width="20%">내 용</th>
-					<td>
-						<textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getNoticeBoard.content}</textarea></td>
+					<td width="80%">
+						<textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" readonly>${getNoticeBoard.content}</textarea></td>
 					</td>
 				</tr>
 				
 				<tr>
 					<th bgcolor="yellow" width="20%">이 미 지</th>
-					<td >
-					<img src="imgfile/noticeImg/${getNotcieBoard.img}" width="500">
-					
-					<!--  <img src="${request.getRealPath()}files/notice/${getNoticeBoard.img}" width="300" /> -->
-					
+					<td width="80%">
+						<c:if test="${not empty  getNotcieBoard.img}">
+							<img src="imgfile/noticeImg/${getNotcieBoard.img}" width="200">
+						</c:if>										
 					</td>
 				</tr>
 				
 				<tr>
-					<th bgcolor="yellow" width="15%">조회수</th>
+					<th bgcolor="yellow" width="20%">조회수</th>
 					<td align="center" width="35%">${getNoticeBoard.count}</td>
 				</tr>
 				
 				<tr>	
-					<th bgcolor="yellow" width="15%">작성일</th>
+					<th bgcolor="yellow" width="20%">작성일</th>
 					<td align="center" width="35%">${getNoticeBoard.day}</td>
 				</tr>
 	
 				<tr bgcolor="yellow">
-					<td colspan="4" align="right">
-						<input type="button" value="글목록"
-						onclick="window.location='notice_list.do'">
+					<td colspan="2" align="right">
+						<input type="button" value="글목록" 	onclick="window.location='notice_list.do'">
 					</td>
 				</tr>
 			</table>
