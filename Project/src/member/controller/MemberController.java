@@ -1,10 +1,12 @@
 package member.controller;
   
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,11 +18,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.dao.MemberDAO;
 import member.dto.MemberDTO;
+import plan.dao.PlanDAO;
+import plan.dto.PlanDTO;
 @Controller
 public class MemberController {   
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	@Autowired 
+	private PlanDAO dao;
 	@RequestMapping(value = "/notLogin.do") // 계획적는 페이지로 이동.
 	public ModelAndView login(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -29,8 +35,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value= "/mypage.do")
-	protected ModelAndView Mypage(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		return new ModelAndView("WEB-INF/Mypage/mypage_main.jsp");
+	protected ModelAndView Mypage(HttpSession session, HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String my = (String) session.getAttribute("mynick");
+		mav.setViewName("WEB-INF/Mypage/mypage_main.jsp");
+		List<PlanDTO> dtoP = dao.mylistAPlan(my);
+		mav.addObject("dtoP", dtoP);	
+		
+		
+		
+		
+		return mav;
 	}
 	
 	@RequestMapping(value= "/mypage_update.do")
