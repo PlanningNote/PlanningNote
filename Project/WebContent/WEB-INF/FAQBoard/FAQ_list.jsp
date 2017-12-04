@@ -5,6 +5,7 @@
 <tr>
 	<td valign="top">
 		<div align="center">
+	<img src="img/faqimg.PNG"><br><br><br>
 			<b> FAQ  </b>
 			<table border="1" width="600">
 				<tr bgcolor="pink">

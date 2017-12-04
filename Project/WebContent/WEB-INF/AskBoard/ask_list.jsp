@@ -70,6 +70,7 @@
 
 	<td valign="top">
 		<div align="center">
+		<img src="img/askimg.PNG"><br><br><br>
 			<b> 문의 </b>
 			<table border="0" width="700">
 				<tr bgcolor="orange">

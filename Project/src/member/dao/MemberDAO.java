@@ -6,7 +6,7 @@ import member.dto.MemberDTO;
 
 public interface MemberDAO {
 	public void insertMember(MemberDTO dto);
-	public int updateMember(int no);
+	public int updateMember(String pwd, String nickname);
 	public int deleteMember(int no);
 	public List<MemberDTO> listMember();
 	public String findPwd(String email);

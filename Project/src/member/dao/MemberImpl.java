@@ -1,6 +1,5 @@
 package member.dao;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -55,9 +54,11 @@ public class MemberImpl implements MemberDAO{
 	}
 
 	@Override
-	public int updateMember(int no) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateMember(String pwd, String nickname) {
+		String sql = "update PN_member set pwd = ? where nickname= ?";
+		Object[] values = new Object[] {pwd, nickname};
+		int res = jdbcTemplate.update(sql,values);
+		return res;
 	}
 
 	@Override
