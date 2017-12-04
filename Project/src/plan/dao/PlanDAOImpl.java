@@ -55,7 +55,7 @@ public class PlanDAOImpl implements PlanDAO {
 		// String sql = "insert into PN_planning " + "values(group_no.nextval, " +
 		// "?,?,sysdate,?,?,"
 		// + "tag_no_sequence.currval,?,?,?,?,?,?,?,?)";
-		String sql = "insert into PN_planning " + "values(group_no.nextval, " + "?,?,sysdate,0,?,"
+		String sql = "insert into PN_planning " + "values(?, " + "?,?,sysdate,?,?,"
 				+ "tag_no_sequence.nextval,?,?,?,?,?,?,?,?)";
 		int res = 0;
 		Object[] values = new Object[] { dto.getGroup_no(),dto.getWriter(), dto.getSubject(), "pwd", dto.getCount(), dto.getCountry(),

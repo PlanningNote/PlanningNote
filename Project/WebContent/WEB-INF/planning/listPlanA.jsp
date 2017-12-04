@@ -17,7 +17,7 @@
 		pageno = 1;
 	}
 	int total_record = 754;		   //총 레코드 수
-	int page_per_record_cnt = 6;  //페이지 당 레코드 수
+	int page_per_record_cnt = 2;  //페이지 당 레코드 수
 	int group_per_page_cnt =5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
 
@@ -120,14 +120,14 @@
 				이전 페이지 번호   (prev_pageno) <%=prev_pageno%><br />
 				다음 페이지 번호   (next_pageno) <%=next_pageno%><br />
 				<hr />   --%>
-				<a href="listPlanA.do?pageno=<%=prev_pageno%>">[이전]</a> 
+				<a href="listPlanA.do?group_no=<%=prev_pageno%>">[이전]</a> 
 				<%for(int i =page_sno;i<=page_eno;i++){%>
 				<%if(pageno == i){ %>
-				<a href="listPlanA.do?pageno=<%=i %>">
+				<a href="listPlanA.do?group_no=<%=i %>">
 				[<%=i %>]
 				</a> 
 				<%}else{ %>
-				<a href="listPlanA.do?pageno=<%=i %>">
+				<a href="listPlanA.do?group_no=<%=i %>">
 				[<%=i %>]
 				</a> 
 				<%} %>
@@ -135,7 +135,7 @@
 				<%if(i<page_eno){ %>,
 				<%} %>
 				<%} %>
-				<a href="listPlanA.do?pageno=<%=next_pageno%>" > [다음]</a>
+				<a href="listPlanA.do?pageno=<%=next_pageno%>" >[다음]</a>
 				</td>
 			</tr>
 		</table>

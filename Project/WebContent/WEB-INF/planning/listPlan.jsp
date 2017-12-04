@@ -8,7 +8,12 @@
 	#map{
         width: 800px;
         height:400px;
-		}
+	}
+	.max-small {
+		width: auto; height: auto;
+		max-width: 30px;
+		max-height: 30px;
+	}
 </style>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap"></script>
@@ -110,14 +115,14 @@ function addMarker(location,sub){
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 					<td ALIGN="right">
 					총예산: ${dtoP.totalprice} 원
-					<img src="images1.png" name="recom" style="max-width: 30; height: 30;" onclick="javascript:recom_click();"></td>
+					<img src="images1.png" name="recom" class="max-small" onclick="javascript:recom_click();"></td>
 					</td>
 				</tr>
 			</table>
 	</div> 
-	<div align="center">
+	<!-- <div align="center">
 		<div id="map"></div>
-	</div>
+	</div> -->
 	<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850">
 			<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
