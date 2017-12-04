@@ -29,8 +29,8 @@
 <tr height="600">
 	<td>
 	<div align="center">
-		<form name="f" method="post"  
-			action="ask_write.do" onsubmit="return checkMember()" enctype="multipart/form-data">	
+		<form name="f" method="post"  action="ask_write.do" 
+				onsubmit="return checkMember()" enctype="multipart/form-data">	
 			<table border="1" width="600">
 				<tr bgcolor="orange">
 					<th colspan="2">문 의 쓰 기</th>
@@ -38,7 +38,7 @@
 				<tr>
 					<th bgcolor="pink" width="20%">작성자</th>
 					<td width="80%">
-						<input type ="text" name="writer" rows="10" >
+						<input type ="text" name="writer" rows="10" value="${sessionScope.mynick}" readonly>
 					</td>
 				</tr> 			
 				<tr>

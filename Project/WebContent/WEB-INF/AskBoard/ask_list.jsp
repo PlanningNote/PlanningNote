@@ -87,54 +87,28 @@
 					<th>작성일</th>
 				</tr>
 				
-<%-- 		<%	int pageSize = 5;
-		String pageNum = request.getParameter("pageNum");
-		if (pageNum==null){
-			pageNum = "1";
-		}
-		int currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage-1) * pageSize + 1;
-		int endRow = startRow + pageSize - 1;
-/* 		int count = ${askList}.getCount();  
-<%-- 		if (endRow>count) endRow = count; %>  --%>
-
-<!-- 		ArrayList<BoardDBBean> list =	bdao.listBoard(startRow, endRow); 
-		if (list==null || list.size()==0){
-		<tr> 
-			<td colspan="6">게시된 글이 없습니다.</td>
-		</tr>
-			 -->
-			<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
 			<c:if test="${empty askList}">
 				<tr>
-					<td colspan="6">게시된 글이 없습니다.</td>
-				</tr>
-				
-				
+					<td colspan="5">게시된 글이 없습니다.</td>
+				</tr>				
 			</c:if>
 			
 			<c:forEach var="dto" items="${askList}">
 				<tr>
 					<td>${dto.no}</td>
-						<td>${dto.writer}</td>
-					<td>
-						
-						
+					<td>${dto.writer}</td>
+					<td>						
 						<c:if test="${dto.re_level>0}">
 							<img src="img/level.gif" width="${dto.re_level*10}">
 							<img src="img/re.gif">
 						</c:if> 
-						<a href="ask_content.do?no=${dto.no}"> 
-						${dto.subject} 
-						</a> 
+						<a href="ask_content.do?no=${dto.no}">${dto.subject}</a> 
 						
 						<c:if test="${dto.count>10}">	
-						<img src="img/hot.gif">
-						</c:if>
-						
+							<img src="img/hot.gif">
+						</c:if>						
 					</td>
-					<td>${dto.count}</td>
-				
+					<td>${dto.count}</td>				
 					<td>${dto.day}</td>	
 				</tr>
 			</c:forEach>

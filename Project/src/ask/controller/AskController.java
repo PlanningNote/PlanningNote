@@ -33,8 +33,6 @@ public class AskController {
 
 	@RequestMapping(value="/ask_list.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		
-		System.out.println("ask_list.do 여기는 왔쇼");
 		List<AskDTO> list = askDAO.listAsk();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askList", list);
@@ -69,9 +67,6 @@ public class AskController {
 	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
 	
-		//이제 arg2로 dto 한번에 값 못받아온다.		
-	
-			//파일받기 
 		ModelAndView mav = new ModelAndView();
 			
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
@@ -83,7 +78,7 @@ public class AskController {
 		//파일 제대로왔는지 확인
 		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
 		
-		if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
+		//if(img==null || img.trim().equals(""))return null; //파일업로드가안되는거 
 		
 		
 		
@@ -104,7 +99,7 @@ public class AskController {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+		if(result.hasErrors()) { 
 			dto.setNo(0);
 			System.out.println("에러");
 		}
