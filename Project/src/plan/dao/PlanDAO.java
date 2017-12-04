@@ -11,7 +11,7 @@ import tag.dto.TagDTO;
 
 public interface PlanDAO {
 	public int insertPlan(PlanDTO dto);
-	public int insertsubPlan(SubPlanDTO sdto, String[] lat, String[] lng,String index[]);
+	public int insertsubPlan(SubPlanDTO sdto, String[] lat, String[] lng,String index[],int no);
 	public int inserttag(TagDTO dto);
 	//-----insert---------
 	public int updatePlan(int no, PlanDTO dto);
@@ -28,7 +28,5 @@ public interface PlanDAO {
 	public PlanDTO findPlan(String search,String searchString); //제목으로할건지 작성자로 할건지
 	public List<PlanDTO> rankPlan();
 	public List<PlanDTO> findOption(String search,String searchString); //여행기간, 시기, 테마 검색
-	
-	
-	
+	public int getBoardNo();
 }

@@ -2,7 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
+<!DOCTYPE html>
 <%@ include file ="../../top.jsp" %>
+<style>
+	#map{
+        width: 800px;
+        height:400px;
+		}
+</style>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap"></script>
+
 <script language="javascript">
 var img = new Array("images1.png","images2.png")
 var cnt=0;
@@ -24,6 +34,52 @@ function reportPlan(){
 	location.href="reportPlanForm.do?no="+no+"&suspecter="+suspecter+"&reporter="+reporter;	
 }
 
+</script>
+<script>
+var map;
+function initMap() {		 
+	var initLatLng = {lat : 37.366184,	lng : 127.107905	};
+       var geocoder = new google.maps.Geocoder;
+       map = new google.maps.Map(document.getElementById('map'), {
+           center: initLatLng,
+           zoom: 13
+       });              
+       
+       // 기본 마커 - 지도 생기면 중심에 찍혀있는 것
+       var basicMarker = new google.maps.Marker({
+           position: initLatLng
+       });
+       
+       var x = ${size};
+       window.alert('size : '+x);
+       
+       <c:forEach items="${dtoS.getTargets()}" var="dtoS">	    
+		var lat = ${dtoS.lat};       
+		window.alert(lat);
+		var lng = ${dtoS.lng};
+		window.alert(lng);
+		var sub = "${dtoS.subject}";    
+		window.alert(sub);
+		var c =  new google.maps.LatLng(lat,lng);    	  
+		addMarker(c,sub);
+	</c:forEach>  
+       
+function addMarker(location,sub){
+ 	var marker = new google.maps.Marker({
+					position: location,
+					map:map
+			});
+ 	
+ 	var infoWindow = new google.maps.InfoWindow({
+		content:sub
+	});
+	
+	marker.addListener('click',function(){
+		infoWindow.open(map, marker);
+	});
+			}	
+     
+   }
 </script>
 <tr>
 <td>
@@ -59,6 +115,9 @@ function reportPlan(){
 				</tr>
 			</table>
 	</div> 
+	<div align="center">
+		<div id="map"></div>
+	</div>
 	<div id="pre_set" align="center">
 			<table id=dyntbl1 border=1 height="290" width="850">
 			<c:forEach items="${dtoS.getTargets()}" var="dtoS" varStatus="status">
