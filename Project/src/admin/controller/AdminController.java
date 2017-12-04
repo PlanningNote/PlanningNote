@@ -3,6 +3,8 @@ package admin.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -480,7 +482,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_askReply.do", method = RequestMethod.POST)
-	protected ModelAndView replyProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
+	protected ModelAndView replyProAsk(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
 		
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
@@ -489,11 +491,12 @@ public class AdminController {
 		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
 		if (img != null && !(img.trim().equals(""))) {
-			HttpSession session = arg0.getSession();
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
 			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
-			File file = new File(upPath, img);
+			File file = new File(upPath, saveImg);
 
 			try {
 				mf.transferTo(file); // 실제 파일 전송
@@ -503,10 +506,12 @@ public class AdminController {
 				e.printStackTrace();
 			}
 
-			dto.setImg(img);
+			dto.setImg(saveImg);
+		}else {
+			dto.setImg("");
 		}
 		askDAO.insertAsk(dto);
-		return new ModelAndView("redirect:admin_askList.do");
+		return new ModelAndView("admin_askList.do");
 	}
 
 	@RequestMapping(value = "/admin_askUpdate.do", method = RequestMethod.GET)
@@ -521,7 +526,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_askUpdate.do", method = RequestMethod.POST)
-	protected ModelAndView updateProAsk(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
+	protected ModelAndView updateProAsk(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
 		
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
@@ -530,11 +535,12 @@ public class AdminController {
 		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
 		if (img != null && !(img.trim().equals(""))) {
-			HttpSession session = arg0.getSession();
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
 			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
-			File file = new File(upPath, img);
+			File file = new File(upPath, saveImg);
 
 			try {
 				mf.transferTo(file); // 실제 파일 전송
@@ -544,7 +550,7 @@ public class AdminController {
 				e.printStackTrace();
 			}
 
-			dto.setImg(img);
+			dto.setImg(saveImg);
 		} else {
 			dto.setImg(arg0.getParameter("beforeimg"));
 		}

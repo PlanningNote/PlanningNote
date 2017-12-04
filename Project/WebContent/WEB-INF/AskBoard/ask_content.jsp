@@ -33,7 +33,7 @@
 					<th bgcolor="yellow" width="20%">이 미 지</th>
 					<td >
 						<c:if test="${not empty  getAskBoard.img}">
-							<img src="imgfile/askImg/${getAskBoard.img}" width="500">
+							<img src="imgfile/askImg/${getAskBoard.img}" width="200">
 						</c:if>
 					</td>
 				</tr>

@@ -2,6 +2,8 @@ package ask.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,7 +61,7 @@ public class AskController {
 		
 	}
 	@RequestMapping(value= "/ask_write.do",method=RequestMethod.POST)
-	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
+	protected ModelAndView writeProBoard(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
 			throws Exception {
 	
 			//파일받기 
@@ -73,16 +75,17 @@ public class AskController {
 		
 		//파일 제대로왔는지 확인
 		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
-			
 		
-		//파일이 받아졌다면 경로지정 session? request ? 
+		if (img != null && !(img.trim().equals(""))) {
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
 		
-		HttpSession session = arg0.getSession();
+		
 		String upPath = session.getServletContext().getRealPath("/imgfile/askImg"); //파일즈라는 폴더를 하나만들겠다.
 		
 		
 		//서버에 파일을 옮겨 적기 . (파일쓰기)
-		File file = new File(upPath, img);
+		File file = new File(upPath, saveImg);
 		
 		try{
 			mf.transferTo(file); //실제 파일 전송
@@ -91,13 +94,15 @@ public class AskController {
 			System.out.println("파일전송실패ㅠㅠ ");
 			e.printStackTrace();
 		}
+				
+		dto.setImg(saveImg);
+		}else {
+			dto.setImg("");
+		}
 		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
 			dto.setNo(0);
 			System.out.println("에러");
 		}
-		
-		
-		dto.setImg(img);
 		
 		
 	    askDAO.insertAsk(dto);
@@ -118,20 +123,20 @@ public class AskController {
 		
 		if(no == null || pwd ==null || no.trim().equals("") || pwd.trim().equals("")) {
 			mav.addObject("msg", "비정상적인 접근입니다. 메인으로 이동합니다.");
-			mav.setViewName("index.jsp");
+			mav.addObject("url","index.jsp");
 		}
 		
 		int res = askDAO.deleteAsk(Integer.parseInt(no), pwd);
 		
 		if(res>0) {
 			mav.addObject("msg", "삭제되었습니다.");
-			mav.setViewName("ask_list.do");
+			mav.addObject("url","ask_list.do");
 		}else if(res==-1) {
 			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.setViewName("ask_delete.do");
+			mav.addObject("url","ask_delete.do");
 		}else {
 			mav.addObject("msg", "오류발생 관리자에게 문의주세요");
-			mav.setViewName("ask_content.do");
+			mav.addObject("url","ask_content.do");
 		}		
 		return mav;
 	}
@@ -148,18 +153,19 @@ public class AskController {
 	}
 	
 	@RequestMapping(value= "/ask_update.do", method=RequestMethod.POST)
-	protected ModelAndView updateProBoard(HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)	throws Exception {
+	protected ModelAndView updateProBoard(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)	throws Exception {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
 		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
 		if (img != null && !(img.trim().equals(""))) {
-			HttpSession session = arg0.getSession();
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
 			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
-			File file = new File(upPath, img);
+			File file = new File(upPath, saveImg);
 
 			try {
 				mf.transferTo(file); // 실제 파일 전송
@@ -169,7 +175,7 @@ public class AskController {
 				e.printStackTrace();
 			}
 
-			dto.setImg(img);
+			dto.setImg(saveImg);
 		}else {
 			dto.setImg(arg0.getParameter("beforeimg"));
 		}
