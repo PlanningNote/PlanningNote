@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
 <%@ include file="/top.jsp"%>
+<style>
+	#map{
+        width: 800px;
+        height:300px;
+	}
+</style>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap">
 </script>
@@ -52,27 +58,28 @@ function addMarker(location,sub){
 		<div align="center">
 			<form name="f" method="post" action="list.do"
 				enctype="multipart/form-data">
-				<table border="1" width="700" height="900">
-					<tr height="20%" align="center">
+				<table border="1" width="700" height="600">
+					<tr height="43%" align="center">
 						<td colspan="2"><img src="imgfile/plan/${dtoS.img}"></td>
 					</tr>
-					<tr>
+					<tr height="10%">
 						<td colspan="2"><font size="5">제목: ${dtoS.subject}</font></td>
 					</tr>
-					<tr height="30%">
-						<td colspan="2">내용: ${dtoS.content}</td>
+					<tr height="40%" ALIGN="TOP">
+						<td colspan="2">내용: <br>${dtoS.content}</td>
 					</tr>
 					<tr>
 						<td width="70%">교통: ${dtoS.traffic}</td>
 						<td width="30%">비용: ${dtoS.price}원</td>
 					</tr>
-					<tr height="40%" align="center">
-						<td colspan="2" id="map">
-						</td>
-					</tr>
 				</table>
-				<button onclick="history.back()">뒤로가기</button> 
 			</form>
+		</div>
+		<div align="center">
+		<div id="map"></div>
+		</div>
+		<div align="center">
+		<br><button onclick="history.back()">뒤로가기</button> 
 		</div>
 	</td>
 </tr>
