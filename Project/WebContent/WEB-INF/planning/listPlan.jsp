@@ -80,7 +80,7 @@ function addMarker(location,sub){
 	});
 			}	
      
-   }
+   } 
 </script>
 <tr>
 <td>
