@@ -18,7 +18,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap"></script>
 
 <script language="javascript">
-var img = new Array("images1.png","images2.png")
+var img = new Array("img/images1.png","img/images2.png")
 var cnt=0;
 function recom_click() {
 	
@@ -110,7 +110,7 @@ function addMarker(location,sub){
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 					<td ALIGN="right">
 					총예산: ${dtoP.totalprice} 원
-					<img src="images1.png" name="recom" class="max-small" onclick="javascript:recom_click();"></td>
+					<img src="img/images1.png" name="recom" class="max-small" onclick="javascript:recom_click();"></td>
 					</td>
 				</tr>
 			</table>

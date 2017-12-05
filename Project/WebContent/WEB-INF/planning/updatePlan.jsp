@@ -3,10 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
-	String path = session.getServletContext().getRealPath("img");
 	int index=0;
 %>
-<%@ include file="/top.jsp"%>
+<%@ include file="../../top.jsp"%>
 <script language="javascript">
 function addRow() {
 	index+=1;
@@ -48,15 +47,12 @@ function renameForModelAttribute() {
 }
 
 </script>
-<html>
-<head>
-<title>플랜리스트자세보기</title>
-</head>
-<body>
-	<div align="center">
+<tr>
+	<td>
+		<div align="center">
 		<form name="f" method="post" action="updatePlan.do"enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="<%=path%>/${dtoP.thumbnail}">
+				background="imgfile/plan/${dtoP.thumbnail}">
 				<tr>
 					<td>(*필수)나라: <INPUT TYPE="TEXT" NAME="country"value="${dtoP.country}"><br>
 					(*필수)도시: <INPUT TYPE="TEXT"
@@ -107,7 +103,7 @@ function renameForModelAttribute() {
 				<tr>
 					<td ALIGN="RIGHT" COLSPAN="2"><font color="black">(*필수)배경사진</font>
 						<INPUT TYPE="FILE" name="thumbfile"
-						value="<%=path%>/${dtoP.thumbnail}"></td>
+						value="imgfile/plan/${dtoP.thumbnail}"></td>
 				</tr>
 			</table>
 	</div>
@@ -126,7 +122,7 @@ function renameForModelAttribute() {
 					<br>교통 <br>
 					<input type='text'name='targets[<%= index %>].traffic' value="${dtoS.traffic}"border='1' style='width: 100%; height: 25;'>
 					사진<br>
-					<input type='file' name='file' value="<%=path%>/${dtoS.img}">
+					<input type='file' name='file' value="imgfile/plan/${dtoS.img}">
 					<input type=button name=dyntbl1_delRow value=' 삭제 ' onClick='delRow()'>
 				</c:forEach>
 				
@@ -138,6 +134,6 @@ function renameForModelAttribute() {
 			<button onclick="location='list.do?group_no=${dtoS.getGroup_no()}'">취소</button>
 			</FORM>
 		</div>
-</body>
-</html>
-<%@ include file="/bottom.jsp"%>
+	</td>	
+</tr>
+<%@ include file="../../bottom.jsp"%>
