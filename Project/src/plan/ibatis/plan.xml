@@ -103,4 +103,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	delete from PN_tag where group_no = #{group_no}
 	</delete>
 	
+	<select id="mylistAPlan" resultType="PlanDTO">
+		select * from PN_planning where writer = #{writer} order by group_no desc
+	</select>
+	
 </mapper>

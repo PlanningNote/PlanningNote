@@ -19,4 +19,8 @@ public interface PlanDAO {
 	public int updatePlan(TagDTO dtoT,PlanDTO dtoP,SubPlanDTO dtoS);
 	public int deletePlan(int group_no);
 	
+	
+	
+	public List<PlanDTO> mylistAPlan(String nickname);
+	
 }

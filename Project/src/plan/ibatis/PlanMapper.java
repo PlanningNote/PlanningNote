@@ -173,4 +173,20 @@ public class PlanMapper {
 			session.close();
 		}
 	}
+	
+	public static List<PlanDTO> mylistAPlan() {
+		SqlSession session = null;
+		List<PlanDTO> dtoP = null;
+		try {
+			session = sqlMapper.openSession(); // 세션 열기
+			dtoP = session.selectList("mylistAPlan");
+		} finally {
+			session.close();
+		}
+		return dtoP;
+	}
+
+	
+	
+	
 }

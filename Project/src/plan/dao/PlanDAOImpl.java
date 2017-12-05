@@ -66,5 +66,11 @@ public class PlanDAOImpl implements PlanDAO {
 	}
 
 	
+	@Override
+	public List<PlanDTO> mylistAPlan(String nickname) {
+		List<PlanDTO>dtoP=PlanMapper.listPlanA();
+		return dtoP;
+	}
+	
 	
 }
