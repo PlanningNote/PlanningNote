@@ -64,11 +64,36 @@
 //	ex)			   = 	76 / 5 * 5 + 1	???????? 		
 	}
 %>
+<<<<<<< HEAD
 		
 </body>
 </html>
 <%@ include file="/bottom.jsp"%>
 	<table>
+=======
+<%@ include file="../../top.jsp"%>
+<tr>
+	<td>
+		<div align="center">
+			<table border="1" WIDTH="800" HEIGHT="500">
+				<tr>
+					<td COLSPAN="3" HEIGHT="7%" ALIGN="MIDDLE">
+						<form name="f">
+						<select name="searchPlan">
+						<option value="나라">나라</option>
+						<option value="작성자">작성자</option>
+						<option value="시기">시기</option>
+						<option value="기간">기간</option>
+						<option value="테마">테마</option>
+						</select>
+					 		<input type="text" name="searching" size="30">
+							<input type="submit" value="검색">
+							<input type="reset" value="취소">
+						</form>
+					</td>
+				</tr>
+			
+>>>>>>> refs/remotes/origin/master
 				<c:if test="${empty dtoP}">
 					<tr>
 						<td colspan="3">게시된 글이 없습니다.</td>
@@ -91,8 +116,7 @@
 				<tr HEIGHT="5%">
 					<td ALIGN="center"  COLSPAN="3">
 					현재 페이지<!--    (pageno)    -->: <%=pageno%>페이지<br />
-					 전체 데이터 수   (total_record) : <%=total_record %><br />
-					 <%--
+					<%--전체 데이터 수   (total_record) : <%=total_record %><br />
 					한페이지 당 레코드 수   (page_per_record_cnt) : <%=page_per_record_cnt %><br />
 					한페이지 당 보여줄 페지 번호 수   (group_per_page_cnt) : <%=group_per_page_cnt %><br />
 					<hr />
@@ -119,9 +143,18 @@
 					<%} %>
 					[<a href="listPlanA.do?pageno=<%=next_pageno%>" >다음</a>]
 					</td>
+<<<<<<< HEAD
 				</tr>
 			</table>
 		</div>
 	</td>
 </tr>
 <%@ include file="../../bottom.jsp"%>
+=======
+				</tr>
+		</table>
+	</div>
+</body>
+</html>
+<%@ include file="/bottom.jsp"%>
+>>>>>>> refs/remotes/origin/master
