@@ -71,8 +71,8 @@
 			<table border="1" WIDTH="800" HEIGHT="500">
 				<tr>
 					<td COLSPAN="3" HEIGHT="7%" ALIGN="MIDDLE">
-						<form name="f">
-						<select name="searchPlan">
+						<form name="f" action="searchPlanA.do">
+						<select name="mode">
 						<option value="나라">나라</option>
 						<option value="작성자">작성자</option>
 						<option value="시기">시기</option>
