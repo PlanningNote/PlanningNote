@@ -168,7 +168,6 @@ public class PlanController {
 	public ModelAndView listPlanA(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
-		List<PlanDTO> dtoP = dao.listAPlan();
 		List<PlanDTO> dtoP = planDAO.listPlanA();
 		mav.addObject("dtoP", dtoP);
 		arg0.setAttribute("size", dtoP.size());
@@ -183,12 +182,7 @@ public class PlanController {
 		PlanDTO dtoP = new PlanDTO();
 		SubPlanDTO dtoS = new SubPlanDTO();
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
-		List<TagDTO> listT = new ArrayList<TagDTO>();
 		
-		listT = dao.taglist();
-		dtoP = dao.listPlan(group_no);
-		listS = dao.subList(group_no);
-
 		dtoP = planDAO.listPlan(group_no);
 		listS = planDAO.subList(group_no);
 
@@ -250,13 +244,6 @@ public class PlanController {
 		// ▽ DAOImpl working..
 			int res = 0;
 			res = planDAO.updatePlan(dtoT, dtoP, dtoS);
-
-		if (resP > 0 && resT > 0 && resS > 0) {
-			mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		} else {
-			writer.println("게시글 등록을 실패하였습니다.");
-			mav.setViewName("listPlanA.do");
-		}
 			if (res < 3) {
 				writer.println("<script> <alert>");
 				writer.println("게시글 등록을 실패하였습니다.");
