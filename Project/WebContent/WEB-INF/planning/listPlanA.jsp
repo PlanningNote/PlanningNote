@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%String path = session.getServletContext().getRealPath("img"); %>
 <%!
 	public Integer toInt(String x){
 		int a = 0;
@@ -98,7 +97,7 @@
 			<tr WIDTH="100">
 			<td>${dtoP.getGroup_no()}</td>
 			<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
-			<img src="<%=path %>/${dtoP.thumbnail}" style="max-width: 200; height: 200;"></a></td>
+			<img src="imgfile/plan/${dtoP.thumbnail}" style="max-width: 200; height: 200;"></a></td>
 			<td>
 				나라: ${dtoP.country}<br>
 				기간: ${dtoP.travel_period}<br>

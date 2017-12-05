@@ -3,7 +3,9 @@ package plan.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -57,6 +59,8 @@ public class PlanController {
 		List<MultipartFile> files = upload.getFile();
 		String img = null;
 		String filePath = null;
+		String now = null;
+		String saveImg = null;
 
 		List<String> imgName = new ArrayList<String>();
 		List<String> imgPath = new ArrayList<String>();
@@ -65,12 +69,14 @@ public class PlanController {
 		if (null != files && files.size() > 0) {
 			for (MultipartFile multipartFile : files) {
 				img = multipartFile.getOriginalFilename();
-				filePath = session.getServletContext().getRealPath("img");
+				now  = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+				saveImg = now+img;
+				filePath = session.getServletContext().getRealPath("imgfile/plan");
 
-				imgName.add(img);
+				imgName.add(saveImg);
 				imgPath.add(filePath);
 
-				File file = new File(filePath, img);
+				File file = new File(filePath, saveImg);
 				try {
 					multipartFile.transferTo(file);
 				} catch (IOException e) {
@@ -94,13 +100,17 @@ public class PlanController {
 
 		String img = null;
 		String filePath = null;
+		String now = null;
+		String saveImg = null;
 
 		// 이미지 파일 저장
 		if (null != files && files.getSize() > 0) {
 			img = files.getOriginalFilename();
-			filePath = session.getServletContext().getRealPath("img");
+			now  = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			saveImg = now+img;
+			filePath = session.getServletContext().getRealPath("imgfile/plan");
 
-			File file = new File(filePath, img);
+			File file = new File(filePath, saveImg);
 			try {
 				files.transferTo(file);
 			} catch (IOException e) {
@@ -109,7 +119,7 @@ public class PlanController {
 			}
 		}
 		// 이미지파일 정보 dto에 담기▽▽
-		dtoP.setThumbnail(img);
+		dtoP.setThumbnail(saveImg);
 		dtoP.setThumbPath(filePath);
 	}
 

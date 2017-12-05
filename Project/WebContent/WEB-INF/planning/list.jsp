@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%String path = session.getServletContext().getRealPath("img"); %>
 <!DOCTYPE html>
 <%@ include file="../../top.jsp"%>
 <style>
@@ -55,7 +54,7 @@ function initMap() {
 		<div align="center">
 			<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 				<table width="100%" height="500" class="outline"
-					background="<%=path %>/${dtoP.thumbnail}">
+					background="imgfile/plan/${dtoP.thumbnail}">
 					<tr>
 						<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 					</tr>
@@ -98,7 +97,7 @@ function initMap() {
 							${dtoS.traffic}</td>
 						<td width="45%" height="100%">
 						<a href="subPlanContent.do?board_num=${dtoS.getBoard_num()}">
-						<img src="<%=path %>/${dtoS.img}" style="max-width: 250; height: 250;"></a></td>
+						<img src="imgfile/plan/${dtoS.img}" style="max-width: 250; height: 250;"></a></td>
 					</tr>
 				</c:forEach>
 				</table><br>
