@@ -125,12 +125,11 @@ function addMarker(location,sub){
 				<tr>
 					<td width="5%">${dtoS.board_num}</td>
 					<td whidth="50%" height="100%">
-						제목 <br>${dtoS.subject}<br>
-						비용 <br>${dtoS.price }
-						<br>내용 <br>
+						제목: ${dtoS.subject}<br>
+						비용: ${dtoS.price }원
+						<br>내용: <br>
 						${dtoS.content}
-						<br>교통 <br>
-						${dtoS.traffic}</td>
+						<br>교통:	${dtoS.traffic}</td>
 					<td width="10%" height="100%">
 					<a href="subPlanContent.do?board_num=${dtoS.board_num}">
 					<img src="imgfile/plan/${dtoS.img}"style="max-width: 250; height: 250;"></a></td>
