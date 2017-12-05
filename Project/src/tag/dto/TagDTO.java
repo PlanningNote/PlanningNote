@@ -8,7 +8,15 @@ public class TagDTO {
 	private String tag3;
 	private String tag4;
 	private String tag5;
+	private String tag;
 	
+	
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 	public int getTag_no() {
 		return tag_no;
 	}

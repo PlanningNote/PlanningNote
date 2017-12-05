@@ -3,9 +3,7 @@ package plan.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +17,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,29 +24,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import member.dto.MemberDTO;
 import plan.dao.PlanDAO;
-import plan.dto.BReportDTO;
+import plan.dao.PlanDAOImpl;
 import plan.dto.PlanDTO;
-import report.dao.BReportDAO;
+import plan.ibatis.PlanMapper;
 import subplan.dto.FileUpload;
 import subplan.dto.SubPlanDTO;
 import tag.dto.TagDTO;
+
 @org.springframework.stereotype.Controller
 public class PlanController {
-
 	@Autowired
-	private PlanDAO dao;
-	
-	@Autowired
-	private BReportDAO reportDAO;
+	private PlanDAOImpl planDAO;
 
 	@RequestMapping(value = "/plan.do") // 계획적는 페이지로 이동.
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		int no = dao.getBoardNo();
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("no",no);
 		mav.setViewName("WEB-INF/planning/addPlan.jsp");
+		System.out.println("아무것도 안나와 ㅠㅠ");
 		return mav;
 	}
 
@@ -59,9 +51,7 @@ public class PlanController {
 		List<MultipartFile> files = upload.getFile();
 		String img = null;
 		String filePath = null;
-		String now = null;
-		String saveImg = null;
-
+		System.out.println("여기1");
 		List<String> imgName = new ArrayList<String>();
 		List<String> imgPath = new ArrayList<String>();
 
@@ -69,14 +59,12 @@ public class PlanController {
 		if (null != files && files.size() > 0) {
 			for (MultipartFile multipartFile : files) {
 				img = multipartFile.getOriginalFilename();
-				now  = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-				saveImg = now+img;
-				filePath = session.getServletContext().getRealPath("imgfile/plan");
+				filePath = session.getServletContext().getRealPath("img");
 
-				imgName.add(saveImg);
+				imgName.add(img);
 				imgPath.add(filePath);
 
-				File file = new File(filePath, saveImg);
+				File file = new File(filePath, img);
 				try {
 					multipartFile.transferTo(file);
 				} catch (IOException e) {
@@ -97,20 +85,16 @@ public class PlanController {
 
 		HttpSession session = arg0.getSession();
 		MultipartFile files = dtoP.getThumbfile();
-
+		System.out.println("여기2");
 		String img = null;
 		String filePath = null;
-		String now = null;
-		String saveImg = null;
 
 		// 이미지 파일 저장
 		if (null != files && files.getSize() > 0) {
 			img = files.getOriginalFilename();
-			now  = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			saveImg = now+img;
-			filePath = session.getServletContext().getRealPath("imgfile/plan");
+			filePath = session.getServletContext().getRealPath("img");
 
-			File file = new File(filePath, saveImg);
+			File file = new File(filePath, img);
 			try {
 				files.transferTo(file);
 			} catch (IOException e) {
@@ -119,7 +103,7 @@ public class PlanController {
 			}
 		}
 		// 이미지파일 정보 dto에 담기▽▽
-		dtoP.setThumbnail(saveImg);
+		dtoP.setThumbnail(img);
 		dtoP.setThumbPath(filePath);
 	}
 
@@ -132,13 +116,23 @@ public class PlanController {
 		return total;
 	}
 
+	@RequestMapping(value = "/checkMap.do")
+	protected ModelAndView checkMap(HttpServletRequest arg0, @RequestParam int index) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("index", index);
+		mav.setViewName("WEB-INF/planning/mapInsertForm.jsp");
+		System.out.println("아무것도 안나와 ㅠㅠㅠ");
+		return mav;
+	}
+
 	@RequestMapping(value = "/goView.do") // 계획 저장
 	public ModelAndView addSubPlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@ModelAttribute("file") FileUpload upload, @ModelAttribute("targets") SubPlanDTO dtoS,
-			@ModelAttribute PlanDTO dtoP, @ModelAttribute TagDTO dtoT,@RequestParam String mapLat , @RequestParam String mapLng,@RequestParam String mapIndex, @RequestParam int group_no) throws Exception {
+			@ModelAttribute PlanDTO dtoP, @ModelAttribute TagDTO dtoT, @RequestParam String mapLat,
+			@RequestParam String mapLng, @RequestParam String mapIndex) throws Exception {
 		PrintWriter writer = arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
-		
+		System.out.println("아무것도 안나와 ㅠㅠㅠㅠ");
 		String a[] = mapLat.split(",");
 		String b[] = mapLng.split(",");
 		String c[] = mapIndex.split(",");
@@ -152,16 +146,19 @@ public class PlanController {
 		dtoP.setTotalprice(total);
 
 		// ▽ DAOImpl working..
-		int resP = 0, resS = 0, resT = 0;
-		resT = dao.inserttag(dtoT);
-		resP = dao.insertPlan(dtoP);
-		resS = dao.insertsubPlan(dtoS,a,b,c,group_no);
+		System.out.println("여기3");
+		int res = 0;
+		res = planDAO.insertPlan(dtoT, dtoP, dtoS, a, b, c);
 
-		if (resP > 0 && resT > 0 && resS > 0) {
-			mav.setViewName("list.do?group_no="+group_no);
-		} else {
+		System.out.println("여기4");
+		if (res < 3) {
+			writer.println("<script> <alert>");
 			writer.println("게시글 등록을 실패하였습니다.");
+			writer.println(" </alert> </script>");
 			mav.setViewName("plan.do");
+			return mav;
+		} else {
+			mav.setViewName("WEB-INF/planning/list.jsp");
 		}
 
 		mav.addObject("dtoT", dtoT);
@@ -174,11 +171,8 @@ public class PlanController {
 	public ModelAndView listPlanA(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
-		List<PlanDTO> dtoP = dao.listAPlan();
-		System.out.println("dtoPsize"+dtoP.size());
+		List<PlanDTO> dtoP = planDAO.listPlanA();
 		mav.addObject("dtoP", dtoP);
-		mav.addObject("size",dtoP.size());
-		
 		return mav;
 	}
 
@@ -189,20 +183,14 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		PlanDTO dtoP = new PlanDTO();
 		SubPlanDTO dtoS = new SubPlanDTO();
-		TagDTO dtoT = new TagDTO();
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
-		List<TagDTO> listT = new ArrayList<TagDTO>();
-		
-		listT = dao.taglist();
-		dtoP = dao.listPlan(group_no);
-		listS = dao.subList(group_no);
-		System.out.println("리스트플랜: " + listS.size());
-		
+
+		dtoP = planDAO.listPlan(group_no);
+		listS = planDAO.subList(group_no);
+
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);
-		mav.addObject("dtoT", dtoT);
-		mav.addObject("size",listS.size());
 		return mav;
 	}
 
@@ -212,7 +200,7 @@ public class PlanController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/subPlanContent.jsp");
 		SubPlanDTO dtoS = new SubPlanDTO();
-		dtoS = dao.getSubContent(board_num);
+		dtoS = planDAO.getSubContent(board_num);
 		mav.addObject("dtoS", dtoS);
 		return mav;
 	}
@@ -226,8 +214,8 @@ public class PlanController {
 		SubPlanDTO dtoS = new SubPlanDTO();
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
 
-		dtoP = dao.listPlan(group_no);
-		listS = dao.subList(group_no);
+		dtoP = planDAO.listPlan(group_no);
+		listS = planDAO.subList(group_no);
 
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
@@ -256,17 +244,18 @@ public class PlanController {
 			numlist.add(dtoS.getTargets().get(i).getBoard_num());
 		}
 		// ▽ DAOImpl working..
-		int resP = 0, resS = 0, resT = 0;
-		resT = dao.inserttag(dtoT);
-		resP = dao.updatePlan(dtoP.getGroup_no(), dtoP);
-		resS = dao.updateSubPlan(numlist, dtoS);
+			int res = 0;
+			res = planDAO.updatePlan(dtoT, dtoP, dtoS);
 
-		if (resP > 0 && resT > 0 && resS > 0) {
-			mav.setViewName("WEB-INF/planning/listPlan.jsp");
-		} else {
-			writer.println("게시글 등록을 실패하였습니다.");
-			mav.setViewName("listPlanA.do");
-		}
+			if (res < 3) {
+				writer.println("<script> <alert>");
+				writer.println("게시글 등록을 실패하였습니다.");
+				writer.println(" </alert> </script>");
+				mav.setViewName("plan.do");
+				return mav;
+			} else {
+				mav.setViewName("WEB-INF/planning/list.jsp");
+			}
 
 		mav.addObject("dtoT", dtoT);
 		mav.addObject("dtoP", dtoP);
@@ -274,41 +263,20 @@ public class PlanController {
 		return mav;
 	}
 	
-	@RequestMapping(value= "/checkMap.do")
-	protected ModelAndView checkMap(HttpServletRequest arg0,@RequestParam int index) throws Exception {
-		 ModelAndView mav = new  ModelAndView();
-		 mav.addObject("index", index);
-		 mav.setViewName("WEB-INF/planning/mapInsertForm.jsp");
-		 return mav;
-	}
-	
-	@RequestMapping(value= "/reportPlanForm.do")
-	protected ModelAndView reportPlanForm(HttpSession session,HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		 int no = Integer.parseInt(arg0.getParameter("no"));		 
-		 String suspecter = arg0.getParameter("suspecter");
-		 String reporter = arg0.getParameter("reporter");
-		 ModelAndView mav = new  ModelAndView();
-		 mav.addObject("no",no);		
-		 mav.addObject("suspecter",suspecter);
-		 mav.addObject("reporter",reporter);
-		 mav.setViewName("WEB-INF/planning/reportForm.jsp");
-		 return mav;
-	}
-	
-	@RequestMapping(value= "/reportPlan.do")
-	protected ModelAndView reportPlan(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		System.out.println("report");
-		BReportDTO dto = new BReportDTO();
-		dto.setBoard_no(Integer.parseInt(req.getParameter("board_no")));
-		dto.setContent(req.getParameter("content"));
-		dto.setHandling("N");
-		dto.setReporter(req.getParameter("reporter"));
-		dto.setSuspecter(req.getParameter("suspecter"));
-		int res =  reportDAO.insertReport(dto);
+	@RequestMapping(value = "/deletePlan.do") // 계획수정 페이지로 이동.
+	public ModelAndView deletePlan(HttpServletRequest arg0, HttpServletResponse arg1,
+			@RequestParam("group_no") int group_no) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("message.jsp");
-		mav.addObject("msg","신고접수가 완료되었습니다.");
-		mav.addObject("url","list.do?group_no="+req.getParameter("board_no"));
-		return mav;		
-	}	
+		mav.setViewName("WEB-INF/planning/deletePlan.jsp");
+		int res = planDAO.deletePlan(group_no);
+		if(res<0) {
+			System.out.println("플랜 삭제 실패");
+			mav.setViewName("listPlanA.do");
+		}else {
+			System.out.println("플랜 삭제 성공");
+			mav.setViewName("listPlanA.do");
+		}
+		return mav;
+	}
+	
 }
