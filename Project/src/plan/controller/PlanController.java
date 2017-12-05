@@ -41,7 +41,6 @@ public class PlanController {
 	public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/addPlan.jsp");
-		System.out.println("아무것도 안나와 ㅠㅠ");
 		return mav;
 	}
 	// subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
@@ -118,7 +117,6 @@ public class PlanController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("index", index);
 		mav.setViewName("WEB-INF/planning/mapInsertForm.jsp");
-		System.out.println("아무것도 안나와 ㅠㅠㅠ");
 		return mav;
 	}
 
@@ -129,7 +127,6 @@ public class PlanController {
 			@RequestParam String mapLng, @RequestParam String mapIndex) throws Exception {
 		PrintWriter writer = arg1.getWriter();
 		ModelAndView mav = new ModelAndView();
-		System.out.println("아무것도 안나와 ㅠㅠㅠㅠ");
 		String a[] = mapLat.split(",");
 		String b[] = mapLng.split(",");
 		String c[] = mapIndex.split(",");
@@ -143,11 +140,8 @@ public class PlanController {
 		dtoP.setTotalprice(total);
 
 		// ▽ DAOImpl working..
-		System.out.println("여기3");
 		int res = 0;
 		res = planDAO.insertPlan(dtoT, dtoP, dtoS, a, b, c);
-
-		System.out.println("여기4");
 		if (res < 3) {
 			writer.println("<script> <alert>");
 			writer.println("게시글 등록을 실패하였습니다.");
@@ -266,10 +260,8 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/deletePlan.jsp");
 		int res = planDAO.deletePlan(group_no);
 		if(res<0) {
-			System.out.println("플랜 삭제 실패");
 			mav.setViewName("listPlanA.do");
 		}else {
-			System.out.println("플랜 삭제 성공");
 			mav.setViewName("listPlanA.do");
 		}
 		return mav;
