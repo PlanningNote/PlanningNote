@@ -64,16 +64,8 @@
 //	ex)			   = 	76 / 5 * 5 + 1	???????? 		
 	}
 %>
-<<<<<<< HEAD
 		
-</body>
-</html>
-<%@ include file="/bottom.jsp"%>
-	<table>
-=======
 <%@ include file="../../top.jsp"%>
-<tr>
-	<td>
 		<div align="center">
 			<table border="1" WIDTH="800" HEIGHT="500">
 				<tr>
@@ -92,8 +84,6 @@
 						</form>
 					</td>
 				</tr>
-			
->>>>>>> refs/remotes/origin/master
 				<c:if test="${empty dtoP}">
 					<tr>
 						<td colspan="3">게시된 글이 없습니다.</td>
@@ -143,18 +133,7 @@
 					<%} %>
 					[<a href="listPlanA.do?pageno=<%=next_pageno%>" >다음</a>]
 					</td>
-<<<<<<< HEAD
 				</tr>
 			</table>
 		</div>
-	</td>
-</tr>
 <%@ include file="../../bottom.jsp"%>
-=======
-				</tr>
-		</table>
-	</div>
-</body>
-</html>
-<%@ include file="/bottom.jsp"%>
->>>>>>> refs/remotes/origin/master
