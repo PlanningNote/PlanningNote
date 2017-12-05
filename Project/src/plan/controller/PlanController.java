@@ -184,7 +184,8 @@ public class PlanController {
 		PlanDTO dtoP = new PlanDTO();
 		SubPlanDTO dtoS = new SubPlanDTO();
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
-
+		
+		
 		dtoP = planDAO.listPlan(group_no);
 		listS = planDAO.subList(group_no);
 

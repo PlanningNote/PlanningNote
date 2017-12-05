@@ -98,7 +98,6 @@ function alertError(){
 				<input type="hidden" name="mapLat" >
 				<input type="hidden" name="mapLng" >
 				<input type="hidden" name="mapIndex" >
-				<input type="hidden" name="group_no" value="${no}">
 				<table WIDTH="1100" HEIGHT="450" class="outline"
 					background="img/backimg1.jpg">
 					<tr>

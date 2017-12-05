@@ -33,7 +33,6 @@
 	<!-- 파일 업로드 -->
 
 	<bean id="planDAO" class="plan.dao.PlanDAOImpl">
-		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 	<bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
