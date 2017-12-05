@@ -68,7 +68,7 @@
 <%@ include file="../../top.jsp"%>
 
 		<div align="center">
-			<table border="1" WIDTH="800" HEIGHT="500">
+			<table border="1" WIDTH="700" HEIGHT="500">
 				<tr>
 					<td COLSPAN="3" HEIGHT="7%" ALIGN="MIDDLE">
 						<form name="f" action="searchPlanA.do">
@@ -92,10 +92,10 @@
 				</c:if>
 				<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
 				<tr WIDTH="100">
-				<td>${dtoP.getGroup_no()}</td>
+				<td width="10%" ALIGN="center">${dtoP.getGroup_no()}</td>
 				<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
 				<img src="imgfile/plan/${dtoP.thumbnail}" style="max-width: 200; height: 200;"></a></td>
-				<td width="25%">
+				<td width="23%">
 					나라: ${dtoP.country}<br>
 					기간: ${dtoP.travel_period}<br>
 					총예산: ${dtoP.totalprice} 원<br>
