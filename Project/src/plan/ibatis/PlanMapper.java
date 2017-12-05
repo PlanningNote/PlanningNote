@@ -86,6 +86,50 @@ public class PlanMapper {
 		return dtoP;
 	}
 
+	public static List<PlanDTO> searchPlanA(String mode,String searching){
+		SqlSession session = null;
+		List<PlanDTO> dtoP = null;
+		if(mode.equals("나라")) {
+			try {
+				session = sqlMapper.openSession(); // 세션 열기
+				dtoP = session.selectList("searchCountry",searching);
+			} finally {
+				session.close();
+			}
+		}else if(mode.equals("작성자")) {
+			try {
+				session = sqlMapper.openSession(); // 세션 열기
+				dtoP = session.selectList("searchWriter",searching);
+			} finally {
+				session.close();
+			}
+		}else if(mode.equals("시기")) {
+			try {
+				session = sqlMapper.openSession(); // 세션 열기
+				dtoP = session.selectList("searchPeriod",searching);
+			} finally {
+				session.close();
+			}
+		}else if(mode.equals("기간")) {
+			try {
+				session = sqlMapper.openSession(); // 세션 열기
+				dtoP = session.selectList("searchSeasion",searching);
+			} finally {
+				session.close();
+			}
+		}else if(mode.equals("테마")) {
+			try {
+				session = sqlMapper.openSession(); // 세션 열기
+				dtoP = session.selectList("searchTheme",searching);
+			} finally {
+				session.close();
+			}
+		}
+		System.out.println("찾기: "+dtoP.get(0).getCountry());
+		
+		return dtoP;
+	}
+	
 	public static TagDTO tagList(int group_no) {
 		SqlSession session = null;
 		TagDTO dtoT = null;

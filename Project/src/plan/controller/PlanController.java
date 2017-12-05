@@ -167,7 +167,21 @@ public class PlanController {
 		arg0.setAttribute("size", dtoP.size());
 		return mav;
 	}
-
+	@RequestMapping(value = "/searchPlanA.do") // 계획목록 페이지로 이동.
+	public ModelAndView searchPlanA(HttpServletRequest arg0, HttpServletResponse arg1,
+			@RequestParam("mode")String mode ,@RequestParam("searching") String searching) throws Exception {
+		ModelAndView mav = new ModelAndView(); 
+		List<PlanDTO> dtoP = null;
+		if(searching==null||searching.trim().equals("")) {
+			dtoP = planDAO.listPlanA();
+		}else {
+			dtoP = planDAO.searchPlanA(mode,searching);
+		}
+		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
+		mav.addObject("dtoP", dtoP);
+		arg0.setAttribute("size", dtoP.size());
+		return mav;
+	}
 	@RequestMapping(value = "/list.do") // 계획목록 페이지로 이동.
 	public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1, @RequestParam("group_no") int group_no)
 			throws Exception {

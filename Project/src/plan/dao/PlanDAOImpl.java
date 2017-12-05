@@ -28,6 +28,11 @@ public class PlanDAOImpl implements PlanDAO {
 		return dtoP;
 	}
 	@Override
+	public List<PlanDTO> searchPlanA(String mode, String searching) {
+		List<PlanDTO>dtoP=PlanMapper.searchPlanA(mode,searching);
+		return dtoP;
+	}
+	@Override
 	public TagDTO tagList(int group_no) {
 		TagDTO dtoT = PlanMapper.tagList(group_no);
 		return dtoT;

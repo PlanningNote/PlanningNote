@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
 			select 1 from dual
 		</selectKey>
-		insert into PN_tag
+		insert into PN_tag 
 		values(group_no.nextval,#{tag1,jdbcType=VARCHAR},#{tag2,
 		jdbcType=VARCHAR}
 		,#{tag3,jdbcType=VARCHAR},#{tag4, jdbcType=VARCHAR}
@@ -47,6 +47,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listPlanA" resultType="PlanDTO">
 		select * from PN_planning order by group_no desc
 	</select>
+	<select id="searchCountry" resultType="PlanDTO">
+		select * from PN_planning where country like #{searching}
+	</select>
+	<select id="searchWriter" resultType="PlanDTO">
+		select * from PN_planning where writer like #{searching}
+	</select>
+	<select id="searchPeriod" resultType="PlanDTO">
+		select * from PN_planning where period like #{searching}
+	</select>
+	<select id="searchSeasion" resultType="PlanDTO">
+		select * from PN_planning where seasion like #{searching}
+	</select>
+	<select id="searchTheme" resultType="PlanDTO">
+		select * from PN_planning where theme like #{searching}
+	</select>
+	
 	<select id="tagList" resultType="TagDTO">
 		select * from PN_tag where group_no = #{group_no}
 	</select>
