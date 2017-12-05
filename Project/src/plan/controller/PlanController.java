@@ -44,7 +44,6 @@ public class PlanController {
 		System.out.println("아무것도 안나와 ㅠㅠ");
 		return mav;
 	}
-
 	// subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
 	protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1, FileUpload upload, SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
@@ -68,7 +67,6 @@ public class PlanController {
 				try {
 					multipartFile.transferTo(file);
 				} catch (IOException e) {
-					System.err.println("sub파일전송실패!!");
 					e.printStackTrace();
 				}
 			}
@@ -98,7 +96,6 @@ public class PlanController {
 			try {
 				files.transferTo(file);
 			} catch (IOException e) {
-				System.err.println("plan파일전송실패!!");
 				e.printStackTrace();
 			}
 		}
@@ -173,6 +170,7 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
 		List<PlanDTO> dtoP = planDAO.listPlanA();
 		mav.addObject("dtoP", dtoP);
+		arg0.setAttribute("size", dtoP.size());
 		return mav;
 	}
 
@@ -183,8 +181,12 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		PlanDTO dtoP = new PlanDTO();
 		SubPlanDTO dtoS = new SubPlanDTO();
+<<<<<<< HEAD
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
 		
+=======
+		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
+>>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 		
 		dtoP = planDAO.listPlan(group_no);
 		listS = planDAO.subList(group_no);
@@ -247,7 +249,6 @@ public class PlanController {
 		// ▽ DAOImpl working..
 			int res = 0;
 			res = planDAO.updatePlan(dtoT, dtoP, dtoS);
-
 			if (res < 3) {
 				writer.println("<script> <alert>");
 				writer.println("게시글 등록을 실패하였습니다.");
@@ -257,7 +258,6 @@ public class PlanController {
 			} else {
 				mav.setViewName("WEB-INF/planning/list.jsp");
 			}
-
 		mav.addObject("dtoT", dtoT);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);

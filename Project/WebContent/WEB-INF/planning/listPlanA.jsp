@@ -15,7 +15,7 @@
 	if(pageno<1){//현재 페이지
 		pageno = 1;
 	}
-	int total_record =10; //toInt(request.getParameter("size"));//총 레코드 수
+	int total_record = (int)request.getAttribute("size");//총 레코드 수
 	int page_per_record_cnt = 4;  //페이지 당 레코드 수
 	int group_per_page_cnt =5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
@@ -56,8 +56,7 @@
 		prev_pageno=1;
 //		이전 페이지를 1로
 	}
-	if(next_pageno>total_page){
-//		다음 페이지보다 전체페이지 수보가 클경우		
+	if(next_pageno>total_page){//		다음 페이지보다 전체페이지 수가 클경우
 		next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
 //		next_pageno=total_page
 //		다음 페이지 = 전체페이지수 / 페이지당 보여줄 번호수 * 페이지당 보여줄 번호수 + 1 
@@ -85,6 +84,57 @@
 						</form>
 					</td>
 				</tr>
+			</c:if>
+			<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
+			<tr WIDTH="100">
+			<td>${dtoP.getGroup_no()}</td>
+			<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
+			<img src="<%=path %>/${dtoP.thumbnail}" style="max-width: 200; height: 200;"></a></td>
+			<td>
+				나라: ${dtoP.country}<br>
+				기간: ${dtoP.travel_period}<br>
+				총예산: ${dtoP.totalprice} 원<br>
+				작성자: ${dtoP.writer}님<br>
+				조회수: ${dtoP.count}
+			</td>
+			</tr>
+			</c:forEach>
+			<tr HEIGHT="5%">
+				<td ALIGN="center"  COLSPAN="3">
+				현재 페이지<!--    (pageno)    -->: <%=pageno%>페이지<br />
+				<%--전체 데이터 수   (total_record) : <%=total_record %><br />
+				한페이지 당 레코드 수   (page_per_record_cnt) : <%=page_per_record_cnt %><br />
+				한페이지 당 보여줄 페지 번호 수   (group_per_page_cnt) : <%=group_per_page_cnt %><br />
+				<hr />
+				레코드 시작 번호  (record_start_no) : <%=record_start_no%><br />
+				레코드 끝 번호    (record_end_no) : <%=record_end_no %><br />
+				전체페이지 수     (total_page)  : <%=total_page %><br />
+				<hr />
+				현재 그룹번호 [1] (group_no):  <%=group_no %><br />
+				현재 그룹 시작 번호(page_sno): <%= page_sno%><br />
+				현재 그룹 끝 번호  (page_eno): <%= page_eno%><br />
+				이전 페이지 번호   (prev_pageno) <%=prev_pageno%><br />
+				다음 페이지 번호   (next_pageno) <%=next_pageno%><br />
+				<hr />   --%>
+				[<a href="listPlanA.do?pageno=<%=prev_pageno%>">이전</a>]
+				<%for(int i =page_sno;i<=page_eno;i++){%>
+				<%if(pageno == i){ %>
+				[<a href="listPlanA.do?pageno=<%=i %>"><%=i %></a>]
+				<%}else{ %>
+				[<a href="listPlanA.do?pageno=<%=i %>"><%=i %></a>]
+				<%} %>
+				<%--	콤마	 --%>
+				<%if(i<page_eno){ %>,
+				<%} %>
+				<%} %>
+				[<a href="listPlanA.do?pageno=<%=next_pageno%>" >다음</a>]
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+<%@ include file="/bottom.jsp"%>
 				<c:if test="${empty dtoP}">
 					<tr>
 						<td colspan="3">게시된 글이 없습니다.</td>
@@ -141,3 +191,4 @@
 	</td>
 </tr>
 <%@ include file="../../bottom.jsp"%>
+>>>>>>> refs/remotes/origin/master
