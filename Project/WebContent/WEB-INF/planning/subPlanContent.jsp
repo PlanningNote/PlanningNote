@@ -76,5 +76,4 @@ function addMarker(location,sub){
 		</div>
 	</td>
 </tr>
-
 <%@ include file="../../bottom.jsp"%>
