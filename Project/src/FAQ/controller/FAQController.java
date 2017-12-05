@@ -47,6 +47,15 @@ public class FAQController {
 		mav.addObject("getFAQBoard", dto);
 		return mav;
 	}
+	
+	@RequestMapping(value="/FAQ_find.do")
+	public ModelAndView findFAQ(@RequestParam String search, @RequestParam String searchString) throws Exception {
+		List<FAQDTO> list = faqDAO.findFAQ(search, searchString); // 가져오는거
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("FAQList", list);
+		mav.setViewName("WEB-INF/FAQBoard/FAQ_list.jsp");
+		return mav;
+	}
 }
 
 

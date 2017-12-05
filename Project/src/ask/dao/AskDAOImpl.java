@@ -171,9 +171,10 @@ public class AskDAOImpl implements AskDAO{
 	}
 
 	@Override
-	public AskDTO findAsk(String search, String searchString) {
-		// TODO Auto-generated method stub
-		return null;
+	public  List<AskDTO> findAsk(String search, String searchString) {
+		String sql = "select * from PN_ask where "+search+" like ? order by re_group desc, re_step asc";		
+		List<AskDTO> list = jdbcTemplate.query(sql, mapper, "%"+searchString+"%");
+		return list;
 	}
 
 	@Override

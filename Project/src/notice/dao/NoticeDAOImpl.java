@@ -49,9 +49,10 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 
 	@Override
-	public NoticeDTO findNotice(String search, String searchString) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NoticeDTO> findNotice(String search, String searchString) {
+		String sql = "select * from PN_notice where "+search+" like ? order by no desc ";
+		List<NoticeDTO> list = jdbcTemplate.query(sql, mapper,"%"+searchString+"%");
+		return list;
 	}
 
 	@Override
@@ -117,22 +118,17 @@ protected void plusReadCount(int no) {
 	}
 	
 	protected boolean isPassword(int no, String pwd) {
-		System.out.println("isPassword");
-		System.out.println(no);
-		System.out.println(pwd);
 		String sql ="select pwd from PN_notice where no = ?";
 		try {				
 			String result  = jdbcTemplate.queryForObject(sql, new Object[] {no}, String.class);
 			System.out.println(result);
 			if(result.equals(pwd)) {
-				System.out.println("3333333333");
 				return true;
 			}else {
 				return false;
 			}
 			
 		}catch(EmptyResultDataAccessException e) {
-			System.out.println("8888888888");
 			return false;
 		}
 		
@@ -144,17 +140,13 @@ protected void plusReadCount(int no) {
 	
 	@Override
 	public int updateNotice(NoticeDTO dto) {
-		System.out.println("44444444444444");
 		boolean isPass = isPassword(dto.getNo(), dto.getPwd());
-		System.out.println("555555555555");
 		if(isPass) {
 			String sql ="update PN_notice set subject=?,content=? ,img=?  where no = ?";
 			Object[] values = new Object[] {dto.getSubject(),dto.getContent(),dto.getImg(),dto.getNo()};
 			int res = jdbcTemplate.update(sql, values);
-			System.out.println("66666666666");
 			return res;
 		}else {
-			System.out.println("77777777777");
 			return -1;
 		}
 	}

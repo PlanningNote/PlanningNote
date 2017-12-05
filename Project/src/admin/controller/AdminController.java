@@ -126,6 +126,16 @@ public class AdminController {
 		mav.setViewName("WEB-INF/admin/noticeBoard/notice_list.jsp");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/admin_noticeFind.do")
+	public ModelAndView findotice(@RequestParam String search, @RequestParam String searchString) throws Exception {
+		List<NoticeDTO> list = noticeDAO.findNotice(search, searchString);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("noticeList", list);
+		mav.setViewName("WEB-INF/admin/noticeBoard/notice_list.jsp");
+		return mav;
+	}
+
 
 	@RequestMapping(value = "/admin_noticeWrite.do", method = RequestMethod.GET)
 	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -273,6 +283,15 @@ public class AdminController {
 	@RequestMapping(value = "/admin_FAQList.do")
 	public ModelAndView listFAQ(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<FAQDTO> list = faqDAO.listFAQ(); // 가져오는거
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("FAQList", list);
+		mav.setViewName("WEB-INF/admin/FAQBoard/FAQ_list.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin_FAQFind.do")
+	public ModelAndView findFAQ(@RequestParam String search, @RequestParam String searchString) throws Exception {
+		List<FAQDTO> list = faqDAO.findFAQ(search, searchString);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("FAQList", list);
 		mav.setViewName("WEB-INF/admin/FAQBoard/FAQ_list.jsp");
@@ -426,6 +445,15 @@ public class AdminController {
 	@RequestMapping(value = "/admin_askList.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<AskDTO> list = askDAO.listAsk();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("askList", list);
+		mav.setViewName("WEB-INF/admin/AskBoard/ask_list.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin_askFind.do")
+	public ModelAndView findAsk(@RequestParam String search, @RequestParam String searchString) throws Exception {
+		List<AskDTO> list = askDAO.findAsk(search, searchString);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askList", list);
 		mav.setViewName("WEB-INF/admin/AskBoard/ask_list.jsp");

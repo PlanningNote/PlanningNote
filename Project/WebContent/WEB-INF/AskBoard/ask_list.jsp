@@ -3,7 +3,12 @@
  <%@ include file="../../top.jsp" %>
  
  <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<tr height="600">
+<script>
+	function revert(){
+		location.href="ask_list.do";
+	}
+</script> 
+
 <%!
 	public Integer toInt(String x){
 		int a = 0;
@@ -67,17 +72,17 @@
 //	ex)			   = 	76 / 5 * 5 + 1	???????? 		
 	}
 %>
-
+<tr height="600">
 	<td valign="top">
 		<div align="center">
-		<img src="img/askimg.PNG"><br><br><br>
+		<img src="img/askimg.PNG"><br>
 			<b> 문의 </b>
-			<table border="0" width="700">
+			<table border="0" width="600">
 				<tr bgcolor="orange">
 					<td align="right"><a href="ask_write.do">문의하기</a></td>
 				</tr>
 			</table>
-			<table border="1" width="700" >
+			<table border="1" width="600" >
 				<tr bgcolor="pink" >
 					<th>번호</th>
 					<th>작성자</th>
@@ -114,7 +119,7 @@
 			
 			
 			
-			<tr HEIGHT="5%">
+			<tr >
 				<td ALIGN="center"  COLSPAN="5" style="text-decoration:none">
 				<a href="ask_list.do?pageno=<%=prev_pageno%>">[이전]</a> 
 				<%for(int i =page_sno;i<=page_eno;i++){%>
@@ -156,18 +161,18 @@
 	 --%>
 	<!-- 검색부분 -->
 		
-		<form>
-			<select name="opt">
-				<option value="0">제목</option>
-	
-				<option value="3">글쓴이</option>
+		<form name="ff" action="ask_find.do" method="post">
+			<select name="search">
+				<option value="subject">제목</option>	
+				<option value="writer">글쓴이</option>
 			</select> 
-			<input type="text" size="20" name="condition" />&nbsp;
-			 <input type="submit" value="검색" />
+			<input type="text" size="20" name="searchString">&nbsp;
+			 <input type="submit" value="검색">
 		</form>
+		
+		<input type="button" value="전체목록" onClick="revert()">
 	</div>
-		</td>
-	
+		</td>	
 	</tr>	
 				
 	<%@include file="../../bottom.jsp" %>			

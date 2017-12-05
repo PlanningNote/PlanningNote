@@ -42,6 +42,15 @@ public class AskController {
 		return mav;		
 	}
 	
+	@RequestMapping(value="/ask_find.do")
+	public ModelAndView findAsk(@RequestParam String search, @RequestParam String searchString) throws Exception {
+		List<AskDTO> list = askDAO.findAsk(search,searchString);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("askList", list);
+		mav.setViewName("WEB-INF/AskBoard/ask_list.jsp");		
+		return mav;		
+	}
+	
 	@RequestMapping(value= "/ask_content.do")
 	public ModelAndView contentBoard(@RequestParam String no) throws Exception {
 		if(no == null || no.trim().equals("")) {

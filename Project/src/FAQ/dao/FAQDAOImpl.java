@@ -48,9 +48,10 @@ public class FAQDAOImpl implements FAQDAO {
 
 
 	@Override
-	public FAQDTO findFAQ(String search, String searchString) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<FAQDTO> findFAQ(String search, String searchString) {
+		String sql = "select * from PN_FAQ where "+search+" like ? order by no desc ";
+		List<FAQDTO> list = jdbcTemplate.query(sql, mapper, "%"+searchString+"%");
+		return list;
 	}
 
 	@Override

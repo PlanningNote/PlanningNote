@@ -31,12 +31,6 @@ public class NoticeController {
 	private NoticeDAO noticeDAO;
 	
 	
-	@RequestMapping("/submit")
-	public void submit(HttpServletRequest request){
-	    System.out.println("에디터 컨텐츠값:"+request.getParameter("editor"));
-	}
-
-
 	@RequestMapping(value="/notice_list.do")
 	public ModelAndView listNotice(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<NoticeDTO> list = noticeDAO.listNotice(); // 가져오는거
@@ -56,6 +50,15 @@ public class NoticeController {
 		
 		ModelAndView mav = new ModelAndView("WEB-INF/NoticeBoard/notice_content.jsp");
 		mav.addObject("getNoticeBoard", dto);
+		return mav;
+	}
+	
+	@RequestMapping(value="/notice_find.do")
+	public ModelAndView findNotice(@RequestParam String search, @RequestParam String searchString) throws Exception {
+		List<NoticeDTO> list = noticeDAO.findNotice(search, searchString); // 가져오는거
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("noticeList", list);
+		mav.setViewName("WEB-INF/NoticeBoard/notice_list.jsp");
 		return mav;
 	}
 	
