@@ -16,7 +16,7 @@
 	if(pageno<1){//현재 페이지
 		pageno = 1;
 	}
-	int total_record =10; //toInt(request.getParameter("size"));//총 레코드 수
+	int total_record = (int)request.getAttribute("size");//총 레코드 수
 	int page_per_record_cnt = 4;  //페이지 당 레코드 수
 	int group_per_page_cnt =5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
@@ -57,8 +57,7 @@
 		prev_pageno=1;
 //		이전 페이지를 1로
 	}
-	if(next_pageno>total_page){
-//		다음 페이지보다 전체페이지 수보가 클경우		
+	if(next_pageno>total_page){//		다음 페이지보다 전체페이지 수가 클경우
 		next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
 //		next_pageno=total_page
 //		다음 페이지 = 전체페이지수 / 페이지당 보여줄 번호수 * 페이지당 보여줄 번호수 + 1 
@@ -111,8 +110,7 @@
 			<tr HEIGHT="5%">
 				<td ALIGN="center"  COLSPAN="3">
 				현재 페이지<!--    (pageno)    -->: <%=pageno%>페이지<br />
-				 전체 데이터 수   (total_record) : <%=total_record %><br />
-				 <%--
+				<%--전체 데이터 수   (total_record) : <%=total_record %><br />
 				한페이지 당 레코드 수   (page_per_record_cnt) : <%=page_per_record_cnt %><br />
 				한페이지 당 보여줄 페지 번호 수   (group_per_page_cnt) : <%=group_per_page_cnt %><br />
 				<hr />

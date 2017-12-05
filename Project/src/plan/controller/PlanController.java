@@ -50,7 +50,6 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
 	}
-
 	// subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
 	protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1, FileUpload upload, SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
@@ -74,7 +73,6 @@ public class PlanController {
 				try {
 					multipartFile.transferTo(file);
 				} catch (IOException e) {
-					System.err.println("sub파일전송실패!!");
 					e.printStackTrace();
 				}
 			}
@@ -104,7 +102,6 @@ public class PlanController {
 			try {
 				files.transferTo(file);
 			} catch (IOException e) {
-				System.err.println("plan파일전송실패!!");
 				e.printStackTrace();
 			}
 		}
@@ -165,10 +162,8 @@ public class PlanController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
 		List<PlanDTO> dtoP = dao.listAPlan();
-		System.out.println("dtoPsize"+dtoP.size());
 		mav.addObject("dtoP", dtoP);
-		mav.addObject("size",dtoP.size());
-		
+		arg0.setAttribute("size", dtoP.size());
 		return mav;
 	}
 
@@ -186,7 +181,6 @@ public class PlanController {
 		listT = dao.taglist();
 		dtoP = dao.listPlan(group_no);
 		listS = dao.subList(group_no);
-		System.out.println("리스트플랜: " + listS.size());
 		
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
@@ -257,7 +251,6 @@ public class PlanController {
 			writer.println("게시글 등록을 실패하였습니다.");
 			mav.setViewName("listPlanA.do");
 		}
-
 		mav.addObject("dtoT", dtoT);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);
