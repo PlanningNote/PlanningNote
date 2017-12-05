@@ -48,31 +48,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from PN_planning order by group_no desc
 	</select>
 	<select id="searchCountry" resultType="PlanDTO">
-		select * from PN_planning where country like #{searching}
+		select * from PN_planning where country like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchWriter" resultType="PlanDTO">
-		select * from PN_planning where writer like #{searching}
+		select * from PN_planning where writer like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchPeriod" resultType="PlanDTO">
-		select * from PN_planning where period like #{searching}
+		select * from PN_planning where period like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchSeasion" resultType="PlanDTO">
-		select * from PN_planning where seasion like #{searching}
+		select * from PN_planning where seasion like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchTheme" resultType="PlanDTO">
-		select * from PN_planning where theme like #{searching}
+		select * from PN_planning where theme like '%' ||#{searching}|| '%'
 	</select>
 	
+	<update id="plusReadCount" parameterType="PlanDTO">
+		update PN_planning set count = count+1 where group_no = #{group_no}
+	</update>
 	<select id="tagList" resultType="TagDTO">
 		select * from PN_tag where group_no = #{group_no}
 	</select>
 	<select id="listPlan" resultType="PlanDTO">
 		select * from PN_planning where group_no = #{group_no}
 	</select>
-	
 	<select id="subList" resultType="SubPlanDTO">
 		select * from PN_subplan where group_no = #{group_no}
 	</select>
+	
 	<select id="subContent" resultType="SubPlanDTO">
 		select * from PN_subplan where board_num = #{board_num}
 	</select>

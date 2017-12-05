@@ -142,9 +142,19 @@ public class PlanMapper {
 		return dtoT;
 	}
 
+	protected static void plusReadCount(int group_no) {
+		SqlSession session = null;
+		try {
+			session = sqlMapper.openSession();
+			session.selectOne("plusReadCount", group_no);
+		} finally {
+			session.close();
+		}
+	}
 	public static PlanDTO listPlan(int group_no) {
 		SqlSession session = null;
 		PlanDTO dtoP = null;
+		plusReadCount(group_no);// 조회수 1증가
 		try {
 			session = sqlMapper.openSession();
 			dtoP = session.selectOne("listPlan", group_no);

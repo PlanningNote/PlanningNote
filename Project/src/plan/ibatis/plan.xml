@@ -63,16 +63,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from PN_planning where theme like '%' ||#{searching}|| '%'
 	</select>
 	
+	<update id="plusReadCount" parameterType="PlanDTO">
+		update PN_planning set count = count+1 where group_no = #{group_no}
+	</update>
 	<select id="tagList" resultType="TagDTO">
 		select * from PN_tag where group_no = #{group_no}
 	</select>
 	<select id="listPlan" resultType="PlanDTO">
 		select * from PN_planning where group_no = #{group_no}
 	</select>
-	
 	<select id="subList" resultType="SubPlanDTO">
 		select * from PN_subplan where group_no = #{group_no}
 	</select>
+	
 	<select id="subContent" resultType="SubPlanDTO">
 		select * from PN_subplan where board_num = #{board_num}
 	</select>
