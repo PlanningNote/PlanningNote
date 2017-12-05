@@ -8,7 +8,7 @@
 		try{
 			a = Integer.parseInt(x);
 		}catch(Exception e){}
-		return a;
+		return a; 
 	}
 %>
 <%
