@@ -95,7 +95,7 @@
 				<td>${dtoP.getGroup_no()}</td>
 				<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
 				<img src="imgfile/plan/${dtoP.thumbnail}" style="max-width: 200; height: 200;"></a></td>
-				<td>
+				<td width="25%">
 					나라: ${dtoP.country}<br>
 					기간: ${dtoP.travel_period}<br>
 					총예산: ${dtoP.totalprice} 원<br>
