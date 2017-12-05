@@ -108,7 +108,7 @@ body {
 						<a href=""><img src="img/report.png" border="0"></a>	<!--신고관리-->   <!-- ★ -->
 					</td>
 				</tr>
-				<tr>
+				<tr> 
 					<td width="15%">
 						<div align="left">
 							<h4><img src="img/M1.png" border="0"></h4><!-- 회원관리 -->
