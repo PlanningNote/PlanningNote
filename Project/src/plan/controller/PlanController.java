@@ -149,7 +149,7 @@ public class PlanController {
 			mav.setViewName("plan.do");
 			return mav;
 		} else {
-			mav.setViewName("WEB-INF/planning/list.jsp");
+			mav.setViewName("list.do");
 		}
 
 		mav.addObject("dtoT", dtoT);
