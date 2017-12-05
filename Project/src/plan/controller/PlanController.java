@@ -181,12 +181,7 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/listPlan.jsp");
 		PlanDTO dtoP = new PlanDTO();
 		SubPlanDTO dtoS = new SubPlanDTO();
-<<<<<<< HEAD
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
-		
-=======
-		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
->>>>>>> branch 'master' of https://github.com/PlanningNote/PlanningNote.git
 		
 		dtoP = planDAO.listPlan(group_no);
 		listS = planDAO.subList(group_no);
