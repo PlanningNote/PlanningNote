@@ -31,6 +31,8 @@ import member.dao.MemberDAO;
 import member.dto.MemberDTO;
 import notice.dao.NoticeDAO;
 import notice.dto.NoticeDTO;
+import report.BReportDAO;
+import report.BReportDTO;
 
 @Controller
 public class AdminController {
@@ -45,6 +47,9 @@ public class AdminController {
 
 	@Autowired
 	private AskDAO askDAO;
+
+	@Autowired
+	private BReportDAO breportDAO;
 
 	// 관리자 메인화면
 	@RequestMapping(value = "/admin_main.do")
@@ -115,7 +120,7 @@ public class AdminController {
 		return new ModelAndView("message.jsp");
 	}
 
-	/*==================================================================*/
+	/* ================================================================== */
 	/* 공지사항 */
 
 	@RequestMapping(value = "/admin_noticeList.do")
@@ -126,7 +131,7 @@ public class AdminController {
 		mav.setViewName("WEB-INF/admin/noticeBoard/notice_list.jsp");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/admin_noticeFind.do")
 	public ModelAndView findotice(@RequestParam String search, @RequestParam String searchString) throws Exception {
 		List<NoticeDTO> list = noticeDAO.findNotice(search, searchString);
@@ -136,7 +141,6 @@ public class AdminController {
 		return mav;
 	}
 
-
 	@RequestMapping(value = "/admin_noticeWrite.do", method = RequestMethod.GET)
 	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/admin/noticeBoard/notice_writeForm.jsp");
@@ -144,37 +148,36 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin_noticeWrite.do", method = RequestMethod.POST)
 
-	protected ModelAndView writeProBoard(HttpSession session , HttpServletRequest arg0, @ModelAttribute NoticeDTO dto, BindingResult result)
-			throws Exception {
+	protected ModelAndView writeProBoard(HttpSession session, HttpServletRequest arg0, @ModelAttribute NoticeDTO dto,
+			BindingResult result) throws Exception {
 
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 		String img = mf.getOriginalFilename();
 
 		if (img != null && !(img.trim().equals(""))) {
-			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			String saveImg = now+img;
-		String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); 
-		
-		File file = new File(upPath, saveImg);
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+			String saveImg = now + img;
+			String upPath = session.getServletContext().getRealPath("imgfile/noticeImg");
 
-		try {
-			mf.transferTo(file); 
-			System.out.println("파일전송 성공! ");
-		} catch (IOException e) {
-			System.out.println("파일전송실패ㅠㅠ ");
-			e.printStackTrace();
-		}
-		dto.setImg(saveImg);
-		}else {
+			File file = new File(upPath, saveImg);
+
+			try {
+				mf.transferTo(file);
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+			dto.setImg(saveImg);
+		} else {
 			dto.setImg("");
 		}
-		if (result.hasErrors()) { 
+		if (result.hasErrors()) {
 			dto.setNo(0);
 			dto.setCount(0);
 		}
 
-		
 		noticeDAO.insertNotice(dto);
 		return new ModelAndView("admin_noticeList.do");
 
@@ -204,16 +207,16 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_noticeUpdate.do", method = RequestMethod.POST)
-	protected ModelAndView updateProNoticeBoard(HttpSession session, HttpServletRequest arg0, @ModelAttribute NoticeDTO dto,
-			BindingResult result) throws Exception {
+	protected ModelAndView updateProNoticeBoard(HttpSession session, HttpServletRequest arg0,
+			@ModelAttribute NoticeDTO dto, BindingResult result) throws Exception {
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
-		String img = mf.getOriginalFilename(); 
+		String img = mf.getOriginalFilename();
 
 		if (img != null && !(img.trim().equals(""))) {
-			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			String saveImg = now+img;
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+			String saveImg = now + img;
 			String upPath = session.getServletContext().getRealPath("imgfile/noticeImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
@@ -262,7 +265,7 @@ public class AdminController {
 		}
 
 		int res = noticeDAO.deleteNotice(Integer.parseInt(no), pwd);
-		
+
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글삭제에 성공하였습니다.");
@@ -277,7 +280,7 @@ public class AdminController {
 		mav.setViewName("message.jsp");
 		return mav;
 	}
-	  /*=========================================================*/
+	/* ========================================================= */
 	/* FAQ */
 
 	@RequestMapping(value = "/admin_FAQList.do")
@@ -288,7 +291,7 @@ public class AdminController {
 		mav.setViewName("WEB-INF/admin/FAQBoard/FAQ_list.jsp");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/admin_FAQFind.do")
 	public ModelAndView findFAQ(@RequestParam String search, @RequestParam String searchString) throws Exception {
 		List<FAQDTO> list = faqDAO.findFAQ(search, searchString);
@@ -304,39 +307,38 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_FAQWrite.do", method = RequestMethod.POST)
-		protected ModelAndView writeProFAQ(HttpSession session, HttpServletRequest arg0, @ModelAttribute FAQDTO dto, BindingResult result)
-			throws Exception {
+	protected ModelAndView writeProFAQ(HttpSession session, HttpServletRequest arg0, @ModelAttribute FAQDTO dto,
+			BindingResult result) throws Exception {
 
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
-		String img = mf.getOriginalFilename(); 
-		
-		if (img != null && !(img.trim().equals(""))) {
-			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			String saveImg = now+img;
-		String upPath = session.getServletContext().getRealPath("imgfile/faqImg"); 
-		
-		File file = new File(upPath, saveImg);
+		String img = mf.getOriginalFilename();
 
-		try {
-			mf.transferTo(file); 
-			System.out.println("파일전송 성공! ");
-		} catch (IOException e) {
-			System.out.println("파일전송실패ㅠㅠ ");
-			e.printStackTrace();
-		}
-		dto.setImg(saveImg);
-		}else {
+		if (img != null && !(img.trim().equals(""))) {
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+			String saveImg = now + img;
+			String upPath = session.getServletContext().getRealPath("imgfile/faqImg");
+
+			File file = new File(upPath, saveImg);
+
+			try {
+				mf.transferTo(file);
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+			dto.setImg(saveImg);
+		} else {
 			dto.setImg("");
 		}
-		
-		if (result.hasErrors()) { 
+
+		if (result.hasErrors()) {
 			dto.setNo(0);
 			dto.setCount(0);
 		}
 
-		
 		faqDAO.insertFAQ(dto);
 		return new ModelAndView("admin_FAQList.do");
 
@@ -361,8 +363,8 @@ public class AdminController {
 			return null;
 		}
 		FAQDTO dto = faqDAO.getFAQBoard(Integer.parseInt(no), "update");
-		ModelAndView mav = new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_updateForm.jsp", "getFAQBoard", dto); 
-																												
+		ModelAndView mav = new ModelAndView("WEB-INF/admin/FAQBoard/FAQ_updateForm.jsp", "getFAQBoard", dto);
+
 		return mav;
 	}
 
@@ -375,8 +377,8 @@ public class AdminController {
 		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
 		if (img != null && !(img.trim().equals(""))) {
-			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			String saveImg = now+img;
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+			String saveImg = now + img;
 			String upPath = session.getServletContext().getRealPath("imgfile/faqImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
@@ -424,7 +426,7 @@ public class AdminController {
 			return null;
 		}
 		int res = faqDAO.deleteFAQ(Integer.parseInt(no), pwd);
-		
+
 		ModelAndView mav = new ModelAndView();
 		if (res > 0) {
 			mav.addObject("msg", "글삭제에 성공하였습니다.");
@@ -439,8 +441,8 @@ public class AdminController {
 		mav.setViewName("message.jsp");
 		return mav;
 	}
-     /*=========================================================*/
-	/* Q&A     ===== ASK*/
+	/* ========================================================= */
+	/* Q&A ===== ASK */
 
 	@RequestMapping(value = "/admin_askList.do")
 	public ModelAndView listAsk(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -450,7 +452,7 @@ public class AdminController {
 		mav.setViewName("WEB-INF/admin/AskBoard/ask_list.jsp");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/admin_askFind.do")
 	public ModelAndView findAsk(@RequestParam String search, @RequestParam String searchString) throws Exception {
 		List<AskDTO> list = askDAO.findAsk(search, searchString);
@@ -479,27 +481,28 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_askDelete.do", method = RequestMethod.POST)
-	protected ModelAndView deleteProAsk(HttpSession session, @RequestParam String no, @RequestParam String pwd,@RequestParam String board_pwd) throws Exception {
+	protected ModelAndView deleteProAsk(HttpSession session, @RequestParam String no, @RequestParam String pwd,
+			@RequestParam String board_pwd) throws Exception {
 		if (no == null || pwd == null || no.trim().equals("") || pwd.trim().equals("")) {
 			return null;
 		}
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("message.jsp");
-		boolean result = memberDAO.checkPwd((String)session.getAttribute("mynick"),pwd);
-		if(result) {
+		boolean result = memberDAO.checkPwd((String) session.getAttribute("mynick"), pwd);
+		if (result) {
 			int res = askDAO.admindeleteAsk(Integer.parseInt(no), board_pwd);
-			if(res>0) {
-				mav.addObject("msg","삭제되었습니다.");
-				mav.addObject("url","admin_askList.do");
-			}else {
-				mav.addObject("msg","오류발생... 관리자에게 문의주세요");
-				mav.addObject("url","admin_askContent.do?no="+no);
+			if (res > 0) {
+				mav.addObject("msg", "삭제되었습니다.");
+				mav.addObject("url", "admin_askList.do");
+			} else {
+				mav.addObject("msg", "오류발생... 관리자에게 문의주세요");
+				mav.addObject("url", "admin_askContent.do?no=" + no);
 			}
-			
-		}else {
-			mav.addObject("msg","비밀번호가 틀렸습니다.다시 입력해 주세요");
-			mav.addObject("url","admin_askDelete.do?no="+no);
+
+		} else {
+			mav.addObject("msg", "비밀번호가 틀렸습니다.다시 입력해 주세요");
+			mav.addObject("url", "admin_askDelete.do?no=" + no);
 		}
 		return mav;
 	}
@@ -510,17 +513,17 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_askReply.do", method = RequestMethod.POST)
-	protected ModelAndView replyProAsk(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
-			throws Exception {
-		
+	protected ModelAndView replyProAsk(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto,
+			BindingResult result) throws Exception {
+
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
 		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
 		if (img != null && !(img.trim().equals(""))) {
-			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			String saveImg = now+img;
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+			String saveImg = now + img;
 			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
@@ -535,7 +538,7 @@ public class AdminController {
 			}
 
 			dto.setImg(saveImg);
-		}else {
+		} else {
 			dto.setImg("");
 		}
 		askDAO.insertAsk(dto);
@@ -549,22 +552,22 @@ public class AdminController {
 		}
 		AskDTO dto = askDAO.getAskBoard(Integer.parseInt(no), "update");
 		ModelAndView mav = new ModelAndView("WEB-INF/admin/AskBoard/ask_updateForm.jsp", "getAskBoard", dto);
-																												
+
 		return mav;
 	}
 
 	@RequestMapping(value = "/admin_askUpdate.do", method = RequestMethod.POST)
-	protected ModelAndView updateProAsk(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto, BindingResult result)
-			throws Exception {
-		
+	protected ModelAndView updateProAsk(HttpSession session, HttpServletRequest arg0, @ModelAttribute AskDTO dto,
+			BindingResult result) throws Exception {
+
 		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
 		MultipartFile mf = mr.getFile("img");
 
 		String img = mf.getOriginalFilename(); // 실제 파일이름 올라와짐
 
 		if (img != null && !(img.trim().equals(""))) {
-			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			String saveImg = now+img;
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+			String saveImg = now + img;
 			String upPath = session.getServletContext().getRealPath("imgfile/askImg"); // 파일즈라는 폴더를 하나만들겠다.
 
 			// 서버에 파일을 옮겨 적기 . (파일쓰기)
@@ -599,6 +602,86 @@ public class AdminController {
 		}
 		mav.setViewName("message.jsp");
 		return mav;
+	}
+
+	/* ===================================================== */
+	/* 회원 신고 */
+
+	@RequestMapping(value = "/reportPlanForm.do")
+	protected ModelAndView reportPlanForm(HttpServletRequest arg0, HttpServletResponse arg1)
+			throws Exception {
+		int no = Integer.parseInt(arg0.getParameter("no"));
+		String suspecter = arg0.getParameter("suspecter");
+		String reporter = arg0.getParameter("reporter");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("no", no);
+		mav.addObject("suspecter", suspecter);
+		mav.addObject("reporter", reporter);
+		mav.setViewName("WEB-INF/planning/reportForm.jsp");
+		return mav;
+	}
+
+	@RequestMapping(value = "/reportPlan.do")
+	protected ModelAndView reportPlan(HttpSession session, HttpServletRequest arg0, @ModelAttribute BReportDTO dto,
+			BindingResult result) throws Exception {
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+
+		MultipartFile mf = mr.getFile("img");
+		String img = mf.getOriginalFilename();
+
+		if (img != null && !(img.trim().equals(""))) {
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+			String saveImg = now + img;
+
+			String upPath = session.getServletContext().getRealPath("/imgfile/report");
+			File file = new File(upPath, saveImg);
+
+			try {
+				mf.transferTo(file);
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+			dto.setImg(saveImg);
+		} else {
+			dto.setImg("");
+		}
+
+		if (result.hasErrors()) {
+			dto.setNo(0);
+			dto.setBoard_no(0);
+		}
+
+		dto.setHandling("N");
+		dto.setHandleday("");
+
+		int res = breportDAO.insertReport(dto);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		mav.addObject("msg", "신고접수가 완료되었습니다.");
+		mav.addObject("url", "list.do?group_no=" + arg0.getParameter("board_no"));
+		return mav;
+	}
+	
+	@RequestMapping(value = "/goBReport.do")
+	protected ModelAndView goBReport(HttpServletRequest arg0, HttpServletResponse arg1)
+			throws Exception {
+		List<BReportDTO> list = breportDAO.listBReport();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("getList", list);
+		mav.setViewName("WEB-INF/admin/report/blist.jsp");
+		return mav;
+	}
+		
+		@RequestMapping(value = "/getBContent.do")
+	protected ModelAndView getBContent(HttpServletRequest arg0, HttpServletResponse arg1)
+			throws Exception {
+		/*
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("getList", list);
+		mav.setViewName("WEB-INF/admin/report/blist.jsp");*/
+		return null;
 	}
 
 }

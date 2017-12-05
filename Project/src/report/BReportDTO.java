@@ -1,4 +1,4 @@
-package plan.dto;
+package report;
 
 public class BReportDTO {
 	private int no;
@@ -6,8 +6,10 @@ public class BReportDTO {
 	private String suspecter;
 	private int board_no;
 	private String content;
+	private String img;
 	private String handling;
-	private String day;
+	private String askday;
+	private String handleday;
 	public int getNo() {
 		return no;
 	}
@@ -38,22 +40,28 @@ public class BReportDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public String getHandling() {
 		return handling;
 	}
 	public void setHandling(String handling) {
 		this.handling = handling;
 	}
-	public String getDay() {
-		return day;
+	public String getAskday() {
+		return askday;
 	}
-	public void setDay(String day) {
-		this.day = day;
+	public void setAskday(String askday) {
+		this.askday = askday;
 	}
-	
-	
-	
-	
-	
-
+	public String getHandleday() {
+		return handleday;
+	}
+	public void setHandleday(String handleday) {
+		this.handleday = handleday;
+	}
 }
