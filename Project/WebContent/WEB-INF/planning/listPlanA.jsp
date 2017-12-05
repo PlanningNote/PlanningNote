@@ -8,7 +8,7 @@
 		try{
 			a = Integer.parseInt(x);
 		}catch(Exception e){}
-		return a;
+		return a; 
 	}
 %>
 <%
@@ -85,7 +85,6 @@
 						</form>
 					</td>
 				</tr>
-			
 				<c:if test="${empty dtoP}">
 					<tr>
 						<td colspan="3">게시된 글이 없습니다.</td>
@@ -136,6 +135,8 @@
 					[<a href="listPlanA.do?pageno=<%=next_pageno%>" >다음</a>]
 					</td>
 				</tr>
-		</table>
-	</div>
-<%@ include file="/bottom.jsp"%>
+			</table>
+		</div>
+	</td>
+</tr>
+<%@ include file="../../bottom.jsp"%>
