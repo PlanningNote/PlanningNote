@@ -29,7 +29,11 @@ public class PlanDAOImpl implements PlanDAO {
 		List<PlanDTO>dtoP=PlanMapper.listPlanA();
 		return dtoP;
 	}
-
+	@Override
+	public TagDTO tagList(int group_no) {
+		TagDTO dtoT = PlanMapper.tagList(group_no);
+		return dtoT;
+	}
 	@Override
 	public PlanDTO listPlan(int group_no) {
 		System.out.println("리스트 플랜!");
@@ -65,5 +69,7 @@ public class PlanDAOImpl implements PlanDAO {
 		res=PlanMapper.deletePlan(group_no);
 		return res;
 	}
+
+	
 	
 }

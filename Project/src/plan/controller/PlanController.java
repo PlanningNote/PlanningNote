@@ -177,11 +177,13 @@ public class PlanController {
 		SubPlanDTO dtoS = new SubPlanDTO();
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
 		
+		TagDTO dtoT = planDAO.tagList(group_no);
 		dtoP = planDAO.listPlan(group_no);
 		listS = planDAO.subList(group_no);
 
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
+		mav.addObject("dtoT",dtoT);
 		mav.addObject("dtoS", dtoS);
 		return mav;
 	}

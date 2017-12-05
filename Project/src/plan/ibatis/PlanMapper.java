@@ -86,30 +86,42 @@ public class PlanMapper {
 		return dtoP;
 	}
 
+	public static TagDTO tagList(int group_no) {
+		SqlSession session = null;
+		TagDTO dtoT = null;
+		try {
+			session = sqlMapper.openSession(); // 세션 열기
+			dtoT = session.selectOne("tagList",group_no);
+		} finally {
+			session.close();
+		}
+		return dtoT;
+	}
+
 	public static PlanDTO listPlan(int group_no) {
 		SqlSession session = null;
 		PlanDTO dtoP = null;
 		try {
 			session = sqlMapper.openSession();
-			dtoP = session.selectOne("listPlan",group_no);
+			dtoP = session.selectOne("listPlan", group_no);
 		} finally {
 			session.close();
 		}
 		return dtoP;
 	}
-	
-	public static List<SubPlanDTO> subList(int group_no){
+
+	public static List<SubPlanDTO> subList(int group_no) {
 		SqlSession session = null;
-		List<SubPlanDTO> dtoS=null;
+		List<SubPlanDTO> dtoS = null;
 		try {
 			session = sqlMapper.openSession();
-			dtoS = session.selectList("subList",group_no);
+			dtoS = session.selectList("subList", group_no);
 		} finally {
 			session.close();
 		}
 		return dtoS;
 	}
-	
+
 	public static SubPlanDTO subContent(int board_num) {
 		SqlSession session = null;
 		SubPlanDTO dtoS = null;
@@ -121,7 +133,7 @@ public class PlanMapper {
 		}
 		return dtoS;
 	}
-	
+
 	public static int updatePlan(TagDTO dtoT, PlanDTO dtoP, SubPlanDTO dtoS) {
 		SqlSession session = null;
 		int index = 0, resT = 0, resP = 0, resS = 0;
@@ -142,7 +154,7 @@ public class PlanMapper {
 			session.close();
 		}
 	}
-	
+
 	public static int deletePlan(int group_no) {
 		SqlSession session = null;
 		int index = 0, resT = 0, resP = 0, resS = 0;
