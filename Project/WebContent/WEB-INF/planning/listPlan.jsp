@@ -86,7 +86,7 @@ function addMarker(location,sub){
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="imgfile/plan/${dtoP.thumbnail}">
+				background="imgfile/plan/${dtoP.thumbnail}" style="background-repeat: no-repeat; background-size: 100% 100%;">
 				<tr>
 					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
