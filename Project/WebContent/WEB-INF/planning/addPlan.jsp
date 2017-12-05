@@ -8,8 +8,7 @@
 %>
 <%@ include file="../../top.jsp"%>
 <script language="javascript">
-var no = ${no};
-window.alert(no);
+
 
 var index=-1;
 

@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+>>>>>>> refs/remotes/origin/master
 <!DOCTYPE html>
 <%@ include file ="../../top.jsp" %>
 <style>
@@ -17,7 +23,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap"></script>
 
 <script language="javascript">
-var img = new Array("images1.png","images2.png")
+var img = new Array("img/images1.png","img/images2.png")
 var cnt=0;
 function recom_click() {
 	
@@ -54,15 +60,11 @@ function initMap() {
        });
        
        var x = ${size};
-       window.alert('size : '+x);
        
        <c:forEach items="${dtoS.getTargets()}" var="dtoS">	    
 		var lat = ${dtoS.lat};       
-		window.alert(lat);
 		var lng = ${dtoS.lng};
-		window.alert(lng);
 		var sub = "${dtoS.subject}";    
-		window.alert(sub);
 		var c =  new google.maps.LatLng(lat,lng);    	  
 		addMarker(c,sub);
 	</c:forEach>  
@@ -89,7 +91,7 @@ function addMarker(location,sub){
 	<div align="center">
 		<form name="f" method="post" action="list.do" enctype="multipart/form-data">
 			<table WIDTH="800" HEIGHT="500" class="outline"
-				background="<%=path %>/${dtoP.thumbnail}">
+				background="imgfile/plan/${dtoP.thumbnail}" style="background-repeat: no-repeat; background-size: 100% 100%;">
 				<tr>
 					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
@@ -113,7 +115,7 @@ function addMarker(location,sub){
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}
 					<td ALIGN="right">
 					총예산: ${dtoP.totalprice} 원
-					<img src="images1.png" name="recom" class="max-small" onclick="javascript:recom_click();"></td>
+					<img src="img/images1.png" name="recom" class="max-small" onclick="javascript:recom_click();"></td>
 					</td>
 				</tr>
 			</table>
@@ -135,7 +137,7 @@ function addMarker(location,sub){
 						${dtoS.traffic}</td>
 					<td width="10%" height="100%">
 					<a href="subPlanContent.do?board_num=${dtoS.board_num}">
-					<img src="<%=path %>/${dtoS.img}"style="max-width: 250; height: 250;"></a></td>
+					<img src="imgfile/plan/${dtoS.img}"style="max-width: 250; height: 250;"></a></td>
 				</tr>
 			</c:forEach>
 			</table><br>

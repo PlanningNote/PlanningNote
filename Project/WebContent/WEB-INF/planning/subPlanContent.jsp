@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%String path = session.getServletContext().getRealPath("img"); %>
 <%@ include file="/top.jsp"%>
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../../top.jsp"%>
+>>>>>>> refs/remotes/origin/master
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap">
 </script>
@@ -21,15 +26,11 @@ function initMap() {
        });
        
        var x = ${size};
-       window.alert('size : '+x);
        
        <c:forEach items="${dtoS.getTargets()}" var="dtoS">	    
-		var lat = ${dtoS.lat};       
-		window.alert(lat);
+		var lat = ${dtoS.lat}; 
 		var lng = ${dtoS.lng};
-		window.alert(lng);
-		var sub = "${dtoS.subject}";    
-		window.alert(sub);
+		var sub = "${dtoS.subject}";  
 		var c =  new google.maps.LatLng(lat,lng);    	  
 		addMarker(c,sub);
 	</c:forEach>  
@@ -51,29 +52,34 @@ function addMarker(location,sub){
      
    }
 </script>
-<div align="center">
-	<form name="f" method="post" action="list.do"
-		enctype="multipart/form-data">
-		<table border="1" width="700" height="900">
-			<tr height="20%" align="center">
-				<td colspan="2"><img src="<%=path %>/${dtoS.img}"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><font size="5">제목: ${dtoS.subject}</font></td>
-			</tr>
-			<tr height="30%">
-				<td colspan="2">내용: ${dtoS.content}</td>
-			</tr>
-			<tr>
-				<td width="70%">교통: ${dtoS.traffic}</td>
-				<td width="30%">비용: ${dtoS.price}원</td>
-			</tr>
-			<tr height="40%" align="center">
-				<td colspan="2" id="map">
-				</td>
-			</tr>
-		</table>
-		<button onclick="history.back()">뒤로가기</button> 
-	</form>
-</div>
-<%@ include file="/bottom.jsp"%>
+<tr>
+	<td>
+		<div align="center">
+			<form name="f" method="post" action="list.do"
+				enctype="multipart/form-data">
+				<table border="1" width="700" height="900">
+					<tr height="20%" align="center">
+						<td colspan="2"><img src="imgfile/plan/${dtoS.img}"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><font size="5">제목: ${dtoS.subject}</font></td>
+					</tr>
+					<tr height="30%">
+						<td colspan="2">내용: ${dtoS.content}</td>
+					</tr>
+					<tr>
+						<td width="70%">교통: ${dtoS.traffic}</td>
+						<td width="30%">비용: ${dtoS.price}원</td>
+					</tr>
+					<tr height="40%" align="center">
+						<td colspan="2" id="map">
+						</td>
+					</tr>
+				</table>
+				<button onclick="history.back()">뒤로가기</button> 
+			</form>
+		</div>
+	</td>
+</tr>
+
+<%@ include file="../../bottom.jsp"%>

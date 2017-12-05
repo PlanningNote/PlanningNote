@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 독타입이 제일 중요해서 일치해야 한다. -->
+
+<mapper namespace="plan/ibatis/plan"> <!-- 마이바티스는 이게 중요해서 꼭 써줘야한다. -->
+	<insert id="tagPlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		insert into PN_tag
+		values(group_no.nextval,#{tag1,jdbcType=VARCHAR},#{tag2,
+		jdbcType=VARCHAR}
+		,#{tag3,jdbcType=VARCHAR},#{tag4, jdbcType=VARCHAR}
+		,#{tag5,jdbcType=VARCHAR},#{tag,
+		jdbcType=VARCHAR},tag_no_sequence.nextval)
+		<!-- 테이블 컬럼에 null 이 들어가도 되는 경우 널이 넘어오는 경우를 생각해서 My(i)Batis 에서 column type 
+			지정해 줘야 하는 문제이다. -->
+	</insert>
+
+	<insert id="insertPlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		insert into PN_planning
+		values(group_no.currval,#{writer},#{subject},sysdate,'pwd',#{count},tag_no_sequence.currval,
+		#{country},#{city},#{thumbnail},#{totalprice},#{travel_period},#{travel_seasion},#{travel_theme},12)
+	</insert>
+
+	<insert id="insertsubPlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer"
+			order="AFTER">
+			select 1 from dual
+		</selectKey>
+		insert into PN_subplan values( group_no.currval,board_num.nextval,
+			#{subject, jdbcType=VARCHAR},
+			#{img, jdbcType=VARCHAR},
+			#{content, jdbcType=VARCHAR},
+			#{targets.price,jdbcType=INTEGER}, 
+			#{targets.traffic,jdbcType=VARCHAR},
+			#{lng, jdbcType=INTEGER},
+			#{lat,	jdbcType=INTEGER})
+	</insert>
+	
+	
+	<select id="listPlanA" resultType="PlanDTO">
+		select * from PN_planning order by group_no desc
+	</select>
+	
+	<select id="listPlan" resultType="PlanDTO">
+		select * from PN_planning where group_no = #{group_no}
+	</select>
+	
+	<select id="subList" resultType="SubPlanDTO">
+		select * from PN_subplan where group_no = #{group_no}
+	</select>
+	<select id="subContent" resultType="SubPlanDTO">
+		select * from PN_subplan where board_num = #{board_num}
+	</select>
+	
+	
+	<!-- <update id="updateTag">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		update PN_tag set tag1=#{tag1,jdbcType=VARCHAR},tag2=#{tag2,jdbcType=VARCHAR},
+		tag3=#{tag3,jdbcType=VARCHAR},tag4=#{tag4, jdbcType=VARCHAR},
+		tag5=#{tag5,jdbcType=VARCHAR},tag=#{tag,jdbcType=VARCHAR} where group_no=#{group_no}
+	</update>
+	<update id="updatePlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		update PN_planning set writer=#{writer}, subject=#{subject},
+		day=sysdate,pwd='pwd',content=#{count},country=#{country},
+		city=#{city},thumbnail=#{thumbnail},totalprice=#{totalprice},
+		travel_period=#{travel_period},travel_seasion=#{travel_seasion},
+		travel_theme=#{travel_theme},recom=12 where group_no = #{group_no}
+	</update>
+	<update id="updateSubPlan">
+		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
+			select 1 from dual
+		</selectKey>
+		update PN_subplan set subject=#{subject},
+			img=#{img},
+			content=#{content},
+			price=#{price}, 
+			traffic=#{traffic},
+			lng=#{lng},
+			lat=#{lat} where group_no = #{group_no}
+	</update> -->
+	
+	<delete id="deletePlan">
+	delete from PN_planning where group_no = #{group_no}
+	</delete>
+	<delete id="deleteSub">
+	delete from PN_subplan where group_no = #{group_no}
+	</delete>
+	<delete id="deleteTag">
+	delete from PN_tag where group_no = #{group_no}
+	</delete>
+	
+</mapper>
