@@ -48,19 +48,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from PN_planning order by group_no desc
 	</select>
 	<select id="searchCountry" resultType="PlanDTO">
-		select * from PN_planning where country like #{searching}
+		select * from PN_planning where country like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchWriter" resultType="PlanDTO">
-		select * from PN_planning where writer like #{searching}
+		select * from PN_planning where writer like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchPeriod" resultType="PlanDTO">
-		select * from PN_planning where period like #{searching}
+		select * from PN_planning where period like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchSeasion" resultType="PlanDTO">
-		select * from PN_planning where seasion like #{searching}
+		select * from PN_planning where seasion like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchTheme" resultType="PlanDTO">
-		select * from PN_planning where theme like #{searching}
+		select * from PN_planning where theme like '%' ||#{searching}|| '%'
 	</select>
 	
 	<select id="tagList" resultType="TagDTO">

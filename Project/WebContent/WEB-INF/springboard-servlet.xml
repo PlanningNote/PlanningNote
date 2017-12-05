@@ -73,7 +73,7 @@
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 
-	<bean id="breportDAO" class="report.dao.BReportDAOImpl">
+	<bean id="breportDAO" class="report.BReportDAOImpl">
 		<property name="jdbcTemplate" ref="springJdbcTemplate" />
 	</bean>
 	
