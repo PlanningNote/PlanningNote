@@ -84,7 +84,6 @@
 						</form>
 					</td>
 				</tr>
-			</c:if>
 			<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
 			<tr WIDTH="100">
 			<td>${dtoP.getGroup_no()}</td>
@@ -191,4 +190,3 @@
 	</td>
 </tr>
 <%@ include file="../../bottom.jsp"%>
->>>>>>> refs/remotes/origin/master
