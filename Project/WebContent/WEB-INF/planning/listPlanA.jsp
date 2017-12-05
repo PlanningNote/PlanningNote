@@ -64,14 +64,9 @@
 //	ex)			   = 	76 / 5 * 5 + 1	???????? 		
 	}
 %>
-<<<<<<< HEAD
-		
+
 <%@ include file="../../top.jsp"%>
-=======
-<%@ include file="../../top.jsp"%>
-<tr>
-	<td>
->>>>>>> refs/remotes/origin/master
+
 		<div align="center">
 			<table border="1" WIDTH="800" HEIGHT="500">
 				<tr>
@@ -142,9 +137,4 @@
 				</tr>
 			</table>
 		</div>
-<<<<<<< HEAD
-=======
-	</td>
-</tr>
->>>>>>> refs/remotes/origin/master
 <%@ include file="../../bottom.jsp"%>
