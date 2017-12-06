@@ -16,7 +16,7 @@
 	<!-- 	background="img/pink3.jpg" -->
 		<tr>
 		<td align="center">
-			<b>검색할 나라를 입력하세요</b>
+			<b>검색할 나라를 입력하세요</b>	<img src="img/move2.gif" border="0">
 			
 			<!-- <input type="text"   name="nation" size="50"
 			onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;"> -->
@@ -28,7 +28,7 @@
 						<option value="테마">테마</option>
 						</select>
 					 		<input type="text" name="searching" 
-					 		size="50" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+					 		size="30" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
 							<input type="submit" value="검색">
 							<input type="reset" value="취소">
 						</form>
