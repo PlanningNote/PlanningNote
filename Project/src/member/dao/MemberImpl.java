@@ -141,8 +141,8 @@ public class MemberImpl implements MemberDAO{
 
 	@Override
 	public List<MemberDTO> fineMember(String search, String searchString) {
-		String sql="select * from PN_member where "+search+" = ?";
-		List<MemberDTO> result = jdbcTemplate.query(sql, mapper, searchString);
+		String sql="select * from PN_member where "+search+" like ?";
+		List<MemberDTO> result = jdbcTemplate.query(sql, mapper, "%"+searchString+"%");
 		return result;
 	}
 

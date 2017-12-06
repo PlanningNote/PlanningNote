@@ -32,13 +32,15 @@
 		</tr>
 	</c:if>	
 		<c:forEach var="dto" items="${getList}">
+			<c:if test="${dto.nickname != 'admin'}">
 			<tr>
-				<td></td>
+				<td>${dto.no}</td>
 				<td>${dto.nickname}</td>
 				<td>${dto.email}</td>
 				<td>${dto.gender}</td>
 				<td><input type="button" value="삭제" onclick="deleteMember()"></td>
 			</tr>
+			</c:if>
 		</c:forEach>	
 	</table>
 </div>
