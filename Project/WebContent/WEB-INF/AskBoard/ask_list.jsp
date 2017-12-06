@@ -22,7 +22,7 @@
 	int pageno = toInt(request.getParameter("pageno"));
 	if(pageno<1){//현재 페이지
 		pageno = 1;
-	}
+	} 
 	int total_record = 754;		   //총 레코드 수
 	int page_per_record_cnt = 5;  //페이지 당 레코드 수
 	int group_per_page_cnt =5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
