@@ -20,7 +20,6 @@
 		window.name = "parentForm";
 		window.open("find_pwd.do","chkForm", "width=400, height=200, left=550, top=300, resizable = no, scrollbars = no");	
 	}
-	
 </script>
 <tr>
 	<td>
@@ -28,9 +27,9 @@
 				<form name="userInfo" onsubmit="return check()" method="post" action="login_ok.do">
 					<table align="center"  height="30%">
 						<tr>
-						<img src="img/joinImg.PNG" border="0">
-							<td>이메일: <input type="text" name="email"><br>
-							비밀번호: <input type="password" name="pwd"><br>
+						<img src="img/loginimg.PNG" border="0">
+							<td>이메일 : &nbsp; <input type="text" name="email"><br><br>
+							비밀번호: <input type="password" name="pwd"><br><br>
 							<input type="submit" value="로그인" ><br>
 							<img src="img/findpw.png" onclick="openFindPwd()" border="0"> 
 							<a href="join_member.do"><img src="img/joinmember.png" border="0"></a>

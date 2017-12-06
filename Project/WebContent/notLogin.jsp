@@ -5,7 +5,7 @@
 <tr>
 <td align="center">
 
-<img src="img/loginplz.PNG"><br>
+<img src="img/joinImg.PNG"><br>
 
 <a href="index.jsp"><img src="img/top1.png" border="0"></a> 
 <a href="login.do"><img src="img/loginIcon.png" border="0"></a><br><br><br><br>
