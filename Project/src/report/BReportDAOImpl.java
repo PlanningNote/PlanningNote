@@ -106,13 +106,11 @@ public class BReportDAOImpl implements BReportDAO {
 	
 	
 	@Override
-	public void sendEmail(String email, String c) {
+	public void sendEmail(String email, String content, String subject) {
 		String host = "smtp.gmail.com";
-		String subject = "녀행자들 게시물 삭제 안내";
 		String fromName = "녀행자들 관리자";
 		String from = "homie2032@gmail.com";
 		String to1 = email;
-		String content = "비밀번호 [" + c + "]";
 		
 		try {
 			Properties props = new Properties();
@@ -137,7 +135,7 @@ public class BReportDAOImpl implements BReportDAO {
 			msg.setRecipients(Message.RecipientType.TO,  address1); // 받는 사람 설정1
 			msg.setSentDate(new java.util.Date()); //보내는 날짜 설정
 			msg.setContent(content,"text/html;charset=euc-kr"); //내용 설정(HTML형식)
-			
+			msg.setSubject(subject);
 			Transport.send(msg); //메일 보내기
 		}catch(MessagingException e) {
 			e.printStackTrace();
@@ -145,6 +143,13 @@ public class BReportDAOImpl implements BReportDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public int updateReport() {
+		String sql = "update PN_BReport set handleday  = sysdate ,handle = ?";
+		int res = jdbcTemplate.update(sql,"Y");
+		return res;
 	}
 
 }

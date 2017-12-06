@@ -44,8 +44,8 @@
 		</tr>
 		<tr align="center">
 			<td colspan="4">
-				<input type="button" value="삭제하기" onclick="window.location='getBContent.do?no=${dto.no}'">
-				<input type="button" value="뒤로가기" onclick="window.location='getBContent.do?no=${dto.no}'">
+				<input type="button" value="삭제하기" onclick="window.location='breportDelForm.do?board_no=${dto.board_no}&suspecter=${dto.suspecter}'">
+				<input type="button" value="뒤로가기" onclick="window.location='goBReport.do'">
 			</td>
 		</tr>
 			

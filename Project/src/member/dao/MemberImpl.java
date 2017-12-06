@@ -239,6 +239,17 @@ public class MemberImpl implements MemberDAO{
 			}		
 		}
 
+		@Override
+		public String getEmail(String nickname) {
+			String sql ="select email from PN_member where nickname = ?";
+			try {
+				String result = jdbcTemplate.queryForObject(sql,new Object[] {nickname},String.class);
+				return result;
+			}catch(EmptyResultDataAccessException e) {
+				return null;
+			}
+		}
+
 
 		
 		

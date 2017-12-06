@@ -679,7 +679,30 @@ public class AdminController {
 		mav.addObject("dto", dto);
 		mav.setViewName("WEB-INF/admin/report/bcontent.jsp");
 		return mav;
+	}	
+	
+	@RequestMapping(value = "/breportDelForm.do")
+	protected ModelAndView breportDelForm(@RequestParam int board_no, @RequestParam String suspecter) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("no",board_no);
+		mav.addObject("nickname",suspecter);
+		mav.setViewName("WEB-INF/admin/report/deleteForm.jsp");
+		return mav;
 	}
+	
+	@RequestMapping(value = "/breportDelete.do")
+	protected ModelAndView breportDelete(@RequestParam int no, @RequestParam String nickname,@RequestParam String content,@RequestParam String subject) throws Exception {
+		// 여기에 no을 가지고 일정 삭제 추가
 		
+		String email = memberDAO.getEmail(nickname);
+		breportDAO.sendEmail(email, content, subject);	
+		breportDAO.updateReport();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		mav.addObject("url","goBReport.do");
+		mav.addObject("msg","게시물 삭제 및 메일 발송 완료");
+		return mav;
+	}
+	
 
 }

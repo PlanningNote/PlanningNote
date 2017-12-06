@@ -20,4 +20,6 @@ public interface MemberDAO {
 	public boolean checkPwd(String nickname, String pwd);
 	public void sendEmail(String email,String pwd);
 	public int delete(String nickname);
+	
+	public String getEmail(String nickname);
 }
