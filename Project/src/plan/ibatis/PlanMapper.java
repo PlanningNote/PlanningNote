@@ -203,6 +203,7 @@ public class PlanMapper {
 		}
 	}
 
+	
 	public static int deletePlan(int group_no) {
 		SqlSession session = null;
 		int index = 0, resT = 0, resP = 0, resS = 0;
