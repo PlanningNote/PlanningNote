@@ -608,8 +608,7 @@ public class AdminController {
 	/* 회원 신고 */
 
 	@RequestMapping(value = "/reportPlanForm.do")
-	protected ModelAndView reportPlanForm(HttpServletRequest arg0, HttpServletResponse arg1)
-			throws Exception {
+	protected ModelAndView reportPlanForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		int no = Integer.parseInt(arg0.getParameter("no"));
 		String suspecter = arg0.getParameter("suspecter");
 		String reporter = arg0.getParameter("reporter");
@@ -617,7 +616,7 @@ public class AdminController {
 		mav.addObject("no", no);
 		mav.addObject("suspecter", suspecter);
 		mav.addObject("reporter", reporter);
-		mav.setViewName("WEB-INF/planning/reportForm.jsp");
+		mav.setViewName("WEB-INF/report/reportForm.jsp");
 		return mav;
 	}
 
@@ -663,43 +662,24 @@ public class AdminController {
 		mav.addObject("url", "list.do?group_no=" + arg0.getParameter("board_no"));
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/goBReport.do")
-	protected ModelAndView goBReport(HttpServletRequest arg0, HttpServletResponse arg1)
-			throws Exception {
+	protected ModelAndView goBReport(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<BReportDTO> list = breportDAO.listBReport();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("getList", list);
 		mav.setViewName("WEB-INF/admin/report/blist.jsp");
 		return mav;
 	}
-		
-		@RequestMapping(value = "/getBContent.do")
-	protected ModelAndView getBContent(HttpServletRequest arg0, HttpServletResponse arg1)
-			throws Exception {
-		/*
+
+	@RequestMapping(value = "/getBContent.do")
+	protected ModelAndView getBContent(@RequestParam int no) throws Exception {
+		BReportDTO dto = breportDAO.getBContent(no);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("getList", list);
-		mav.setViewName("WEB-INF/admin/report/blist.jsp");*/
-		return null;
+		mav.addObject("dto", dto);
+		mav.setViewName("WEB-INF/admin/report/bcontent.jsp");
+		return mav;
 	}
 		
-		@RequestMapping(value = "/sendMsg.do")
-		protected ModelAndView sendMsg(@RequestParam String msg, @RequestParam String url) throws Exception {
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("msg",msg);
-			mav.addObject("url",url);
-			mav.setViewName("message.jsp");
-			return mav;
-		}
-		
-		@RequestMapping(value = "/openerClose.do")
-		protected ModelAndView openerClose(@RequestParam String msg, @RequestParam String url) throws Exception {
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("msg",msg);
-			mav.addObject("url",url);
-			mav.setViewName("openerClose.jsp");
-			return mav;
-		}
 
 }

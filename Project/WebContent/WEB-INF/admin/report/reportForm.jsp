@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../../top.jsp" %>
+<%@ include file="../../../top.jsp" %>
 <script>
 	function backPage(){
 		location.href="list.do?group_no="+${no};
@@ -41,4 +41,4 @@
 	</div>
 </td>
 </tr>
-<%@ include file="../../bottom.jsp" %>
+<%@ include file="../../../bottom.jsp" %>
