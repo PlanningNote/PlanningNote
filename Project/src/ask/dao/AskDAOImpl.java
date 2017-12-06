@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ask.dto.AskDTO;
+
 
 import ask.dao.AskDAOImpl.MyRowMapper;
 import ask.dto.AskDTO;
