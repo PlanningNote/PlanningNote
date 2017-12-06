@@ -27,7 +27,7 @@
 <body>
 	<div align="center">
 			<table align="center" >
-			<img src="img/imgmy.PNG" ><br><img src="img/myduck.gif" >
+			<img src="img/imgmy.PNG" ><br>
 				<tr >
 					<a href="mypage_update.do"><img src="img/changepw.png" border="0"></a>&nbsp <!-- 비번변경 / 밑은 회원탈퇴 -->
 					<a href="mypage_delete.do"><img src="img/bye.png" border="0"></a>	
@@ -38,7 +38,7 @@
 				
 					<td style="width:190px; border-right:1px ; padding-right:12px; text-align:justify"> 
 						<table border="1" width="100%">
-							<caption><img src="img/mywrite.png" border="0"></caption><!-- 내가쓴글 -->
+							<caption><img src="img/mywrite.png" border="0"><img src="img/myduck.gif" ></caption><!-- 내가쓴글 -->
 							<tr>
 								<th width="10%">번호</th>
 								<th width="30%">제목</th>
@@ -58,7 +58,7 @@
 					
 					<td width="50%">
 						<table border="1" width="100%">
-							<caption><img src="img/mylike.png" border="0"></caption>
+							<caption><img src="img/mylike.png" border="0"><img src="img/myduck.gif" ></caption>
 							<tr>
 								<td>제목</td>
 								<td>내용</td>

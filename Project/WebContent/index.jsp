@@ -11,7 +11,7 @@
 	<tr>
 	   
 		<td align="center">
-		
+		   
 		<table WIDTH="1100" HEIGHT="150" >
 	<!-- 	background="img/pink3.jpg" -->
 		<tr>
