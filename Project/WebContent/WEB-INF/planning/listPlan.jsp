@@ -89,9 +89,6 @@ function addMarker(location,sub){
 			<table WIDTH="800" HEIGHT="500" class="outline"
 				background="imgfile/plan/${dtoP.thumbnail}" style="background-repeat: no-repeat; background-size: 100% 100%;">
 				<tr>
-				<td align="left">조회수 : ${dtoP.count}</td>
-				</tr>
-				<tr>
 					<td>나라: ${dtoP.country} /도시: ${dtoP.city}</td>
 				</tr>
 				<tr>
@@ -109,6 +106,9 @@ function addMarker(location,sub){
 				<tr>
 					<td COLSPAN="2">작성일: ${dtoP.day}
 					</td>
+				</tr>
+				<tr>
+				<td align="left">조회수 : ${dtoP.count}</td>
 				</tr>
 				<tr>
 					<td WIDTH="75%"><br>${dtoT.tag1}   ${dtoT.tag2}   ${dtoT.tag3}   ${dtoT.tag4} ${dtoT.tag5}

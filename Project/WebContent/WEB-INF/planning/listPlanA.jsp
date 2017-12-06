@@ -17,8 +17,8 @@
 		pageno = 1;
 	}
 	int total_record = (int)request.getAttribute("size");//총 레코드 수
-	int page_per_record_cnt = 3;  //페이지 당 레코드 수
-	int group_per_page_cnt =5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
+	int page_per_record_cnt = 4;  //페이지 당 레코드 수
+	int group_per_page_cnt = 5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
 
 	int record_end_no = pageno*page_per_record_cnt;				
@@ -66,7 +66,6 @@
 %>
 
 <%@ include file="../../top.jsp"%>
-
 		<div align="center">
 			<table border="1" WIDTH="700" HEIGHT="500">
 				<tr>
@@ -84,7 +83,7 @@
 						</form>
 					</td>
 				</tr>
-				<c:if test="${size == 1}">
+				<c:if test="${size == 0}">
 					<tr>
 						<td colspan="3" align="center">게시된 글이 없습니다.</td>
 					</tr>
@@ -128,9 +127,6 @@
 					[<a href="listPlanA.do?pageno=<%=i %>"><%=i %></a>]
 					<%}else{ %>
 					[<a href="listPlanA.do?pageno=<%=i %>"><%=i %></a>]
-					<%} %>
-					<%--	콤마	 --%>
-					<%if(i<page_eno){ %>,
 					<%} %>
 					<%} %>
 					[<a href="listPlanA.do?pageno=<%=next_pageno%>" >다음</a>]

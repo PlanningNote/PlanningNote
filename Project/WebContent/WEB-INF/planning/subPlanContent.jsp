@@ -76,7 +76,7 @@ function addMarker(location,sub){
 			</form>
 		</div>
 		<div align="center">
-		<div id="map"></div>
+			<div id="map"></div>
 		</div>
 		<div align="center">
 		<br><button onclick="history.back()">뒤로가기</button> 
