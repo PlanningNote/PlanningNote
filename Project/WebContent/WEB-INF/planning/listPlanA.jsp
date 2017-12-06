@@ -76,7 +76,6 @@
 						<option value="나라">나라</option>
 						<option value="작성자">작성자</option>
 						<option value="시기">시기</option>
-						<option value="기간">기간</option>
 						<option value="테마">테마</option>
 						</select>
 					 		<input type="text" name="searching" size="30">
@@ -85,11 +84,12 @@
 						</form>
 					</td>
 				</tr>
-				<c:if test="${empty dtoP}">
+				<c:if test="${size == 1}">
 					<tr>
-						<td colspan="3">게시된 글이 없습니다.</td>
+						<td colspan="3" align="center">게시된 글이 없습니다.</td>
 					</tr>
 				</c:if>
+				<c:if test="${dtoP != null}">
 				<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
 				<tr WIDTH="100">
 				<td width="10%" ALIGN="center">${dtoP.getGroup_no()}</td>
@@ -104,6 +104,7 @@
 				</td>
 				</tr>
 				</c:forEach>
+				</c:if>
 				<tr HEIGHT="5%">
 					<td ALIGN="center"  COLSPAN="3">
 					현재 페이지<!--    (pageno)    -->: <%=pageno%>페이지<br />

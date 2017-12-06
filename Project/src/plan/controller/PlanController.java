@@ -45,6 +45,7 @@ public class PlanController {
 		mav.setViewName("WEB-INF/planning/addPlan.jsp");
 		return mav;
 	}
+
 	// subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
 	protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1, FileUpload upload, SubPlanDTO dto) {
 		HttpSession session = arg0.getSession();
@@ -59,8 +60,8 @@ public class PlanController {
 		if (null != files && files.size() > 0) {
 			for (MultipartFile multipartFile : files) {
 				img = multipartFile.getOriginalFilename();
-				String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-				String saveImg = now+img;
+				String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+				String saveImg = now + img;
 				filePath = session.getServletContext().getRealPath("imgfile/plan");
 
 				imgName.add(saveImg);
@@ -94,8 +95,8 @@ public class PlanController {
 		// 이미지 파일 저장
 		if (null != files && files.getSize() > 0) {
 			img = files.getOriginalFilename();
-			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
-			saveImg = now+img;
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
+			saveImg = now + img;
 			filePath = session.getServletContext().getRealPath("imgfile/plan");
 
 			File file = new File(filePath, saveImg);
@@ -174,21 +175,78 @@ public class PlanController {
 		arg0.setAttribute("size", dtoP.size());
 		return mav;
 	}
+
 	@RequestMapping(value = "/searchPlanA.do") // 계획목록 페이지로 이동.
 	public ModelAndView searchPlanA(HttpServletRequest arg0, HttpServletResponse arg1,
 			@RequestParam("mode")String mode ,@RequestParam("searching") String searching) throws Exception {
 		ModelAndView mav = new ModelAndView(); 
 		List<PlanDTO> dtoP = null;
+		System.out.println(mode);
+		System.out.println(searching);
 		if(searching==null||searching.trim().equals("")) {
 			dtoP = planDAO.listPlanA();
 		}else {
+			
+			if(mode.equals("country")) {
+				if(searching.equals("korea")) {
+					mode="나라";
+					searching="국내";
+				}else if(searching.equals("japan")) {
+					mode="나라";
+					searching="일본";
+				}else if(searching.equals("hongkong")) {
+					mode="나라";
+					searching="홍콩";
+				}else if(searching.equals("usa")) {
+					mode="나라";
+					searching="미국";
+				}else if(searching.equals("uk")) {
+					mode="나라";
+					searching="영국";
+				}
+			}else if(mode.equals("seasion")) {
+				if(searching.equals("spring")) {
+					mode="시기";
+					searching="봄";
+				}else if(searching.equals("summer")) {
+					mode="시기";
+					searching="여름";
+				}else if(searching.equals("autumn")) {
+					mode="시기";
+					searching="가을";
+				}else if(searching.equals("winter")) {
+					mode="시기";
+					searching="겨울";
+				}
+			}else if(mode.equals("theme")) {
+				if(searching.equals("family")) {
+					mode="테마";
+					searching="가족여행";
+				}else if(searching.equals("couple")) {
+					mode="테마";
+					searching="연인과함께";
+				}else if(searching.equals("friend")) {
+					mode="테마";
+					searching="친구와 함께";
+				}else if(searching.equals("solo")) {
+					mode="테마";
+					searching="나 홀로 여행";
+				}
+			}
+			System.out.println(mode+"//"+searching);
 			dtoP = planDAO.searchPlanA(mode,searching);
 		}
 		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
 		mav.addObject("dtoP", dtoP);
-		arg0.setAttribute("size", dtoP.size());
+		if(dtoP == null||dtoP.isEmpty()==true) {
+			arg0.setAttribute("size", 1);
+		}
+		else {
+			arg0.setAttribute("size", dtoP.size());
+		}
 		return mav;
 	}
+
 	@RequestMapping(value = "/list.do") // 계획목록 페이지로 이동.
 	public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1, @RequestParam("group_no") int group_no)
 			throws Exception {
@@ -197,14 +255,14 @@ public class PlanController {
 		PlanDTO dtoP = new PlanDTO();
 		SubPlanDTO dtoS = new SubPlanDTO();
 		List<SubPlanDTO> listS = new ArrayList<SubPlanDTO>();
-		
+
 		TagDTO dtoT = planDAO.tagList(group_no);
 		dtoP = planDAO.listPlan(group_no);
 		listS = planDAO.subList(group_no);
 
 		dtoS.setTargets(listS);
 		mav.addObject("dtoP", dtoP);
-		mav.addObject("dtoT",dtoT);
+		mav.addObject("dtoT", dtoT);
 		mav.addObject("dtoS", dtoS);
 		return mav;
 	}
@@ -259,35 +317,35 @@ public class PlanController {
 			numlist.add(dtoS.getTargets().get(i).getBoard_num());
 		}
 		// ▽ DAOImpl working..
-			int res = 0;
-			res = planDAO.updatePlan(dtoT, dtoP, dtoS);
-			if (res < 3) {
-				writer.println("<script> <alert>");
-				writer.println("게시글 등록을 실패하였습니다.");
-				writer.println(" </alert> </script>");
-				mav.setViewName("plan.do");
-				return mav;
-			} else {
-				mav.setViewName("WEB-INF/planning/list.jsp");
-			}
+		int res = 0;
+		res = planDAO.updatePlan(dtoT, dtoP, dtoS);
+		if (res < 3) {
+			writer.println("<script> <alert>");
+			writer.println("게시글 등록을 실패하였습니다.");
+			writer.println(" </alert> </script>");
+			mav.setViewName("plan.do");
+			return mav;
+		} else {
+			mav.setViewName("WEB-INF/planning/list.jsp");
+		}
 		mav.addObject("dtoT", dtoT);
 		mav.addObject("dtoP", dtoP);
 		mav.addObject("dtoS", dtoS);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/deletePlan.do") // 계획수정 페이지로 이동.
 	public ModelAndView deletePlan(HttpServletRequest arg0, HttpServletResponse arg1,
 			@RequestParam("group_no") int group_no) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("WEB-INF/planning/deletePlan.jsp");
 		int res = planDAO.deletePlan(group_no);
-		if(res<0) {
+		if (res < 0) {
 			mav.setViewName("listPlanA.do");
-		}else {
+		} else {
 			mav.setViewName("listPlanA.do");
 		}
 		return mav;
 	}
-	
+
 }

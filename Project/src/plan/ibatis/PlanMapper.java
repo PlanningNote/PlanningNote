@@ -90,6 +90,7 @@ public class PlanMapper {
 		SqlSession session = null;
 		List<PlanDTO> dtoP = null;
 		if(mode.equals("나라")) {
+			
 			try {
 				session = sqlMapper.openSession(); // 세션 열기
 				dtoP = session.selectList("searchCountry",searching);
@@ -106,13 +107,6 @@ public class PlanMapper {
 		}else if(mode.equals("시기")) {
 			try {
 				session = sqlMapper.openSession(); // 세션 열기
-				dtoP = session.selectList("searchPeriod",searching);
-			} finally {
-				session.close();
-			}
-		}else if(mode.equals("기간")) {
-			try {
-				session = sqlMapper.openSession(); // 세션 열기
 				dtoP = session.selectList("searchSeasion",searching);
 			} finally {
 				session.close();
@@ -125,7 +119,7 @@ public class PlanMapper {
 				session.close();
 			}
 		}
-		System.out.println("찾기: "+dtoP.get(0).getCountry());
+		//System.out.println("찾기: "+dtoP.get(0).getCountry());
 		
 		return dtoP;
 	}

@@ -99,7 +99,7 @@ function addMarker(location,sub){
 							제목:${dtoP.subject}</td>
 					<td ALIGN="left">
 					기간: ${dtoP.travel_period}<br> 
-					시즌: ${dtoP.travel_seasion}<br> 
+					시기: ${dtoP.travel_seasion}<br> 
 					테마: ${dtoP.travel_theme}<br>
 				</tr>
 				<tr>

@@ -53,14 +53,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="searchWriter" resultType="PlanDTO">
 		select * from PN_planning where writer like '%' ||#{searching}|| '%'
 	</select>
-	<select id="searchPeriod" resultType="PlanDTO">
-		select * from PN_planning where period like '%' ||#{searching}|| '%'
-	</select>
 	<select id="searchSeasion" resultType="PlanDTO">
-		select * from PN_planning where seasion like '%' ||#{searching}|| '%'
+		select * from PN_planning where travel_seasion like '%' ||#{searching}|| '%'
 	</select>
 	<select id="searchTheme" resultType="PlanDTO">
-		select * from PN_planning where theme like '%' ||#{searching}|| '%'
+		select * from PN_planning where travel_theme like '%' ||#{searching}|| '%'
 	</select>
 	
 	<update id="plusReadCount" parameterType="PlanDTO">
