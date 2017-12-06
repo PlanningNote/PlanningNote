@@ -23,7 +23,8 @@
 	<div align="center">
 		<form name="f" onSubmit="return checkPwd()" method="post" action="delete.do">
 			<table>
-				<h1>회원탈퇴</h1>
+			<img src="img/asd.PNG"><br>
+				<h3>회원탈퇴를 정말 원하시면 비밀번호를 입력해주세요</h3>
 				<hr color="gray" width="300">
 				<tr>
 					<td>비밀번호: <input type="password" name="pwd"></td>
