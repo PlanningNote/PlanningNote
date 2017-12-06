@@ -8,6 +8,7 @@
 	}
 </script>
 <div align="center">
+	<img src="img/noticeimg.PNG"><br>
 	<b> 공 지 사 항 </b>
 	<table border="0" width="600">
 		<tr bgcolor="sky blue">

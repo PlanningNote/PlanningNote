@@ -8,6 +8,7 @@
 	}
 </script>
 <div align="center">
+	<img src="img/askimg.PNG"><br>
 	<b> 문의 (관리자용)</b>
 	<table border="1" width="600">
 		<tr bgcolor="pink">

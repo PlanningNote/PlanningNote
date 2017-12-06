@@ -8,6 +8,7 @@
 	}
 </script>
 <div align="center">
+	<img src="img/faqimg.PNG"><br><br><br>
 	<b> FAQ (관리자)</b>
 	<table border="0" width="600">
 		<tr bgcolor="sky blue">

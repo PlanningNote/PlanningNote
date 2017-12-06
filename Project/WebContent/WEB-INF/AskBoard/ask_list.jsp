@@ -75,6 +75,7 @@
 <tr height="600">
 	<td valign="top">
 		<div align="center">
+		
 		<img src="img/askimg.PNG"><br>
 			<b> 문의 </b>
 			<table border="0" width="600">
