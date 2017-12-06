@@ -188,7 +188,7 @@ public class MemberImpl implements MemberDAO{
 		public void sendEmail(String email, String pwd) {
 			String host = "smtp.gmail.com";
 			String subject = "녀행자들 인증번호 전달";
-			String fromName = "녀행자들 관리자";
+			String fromName = "homie2032@gmail.com";
 			String from = "okokld518@gmail.com";
 			String to1 = email;
 			String content = "비밀번호 [" + pwd + "]";
@@ -216,7 +216,7 @@ public class MemberImpl implements MemberDAO{
 				msg.setRecipients(Message.RecipientType.TO,  address1); // 받는 사람 설정1
 				msg.setSentDate(new java.util.Date()); //보내는 날짜 설정
 				msg.setContent(content,"text/html;charset=euc-kr"); //내용 설정(HTML형식)
-				
+				msg.setSubject(subject);
 				Transport.send(msg); //메일 보내기
 			}catch(MessagingException e) {
 				e.printStackTrace();

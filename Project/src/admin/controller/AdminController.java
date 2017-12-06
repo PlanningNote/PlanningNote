@@ -683,5 +683,23 @@ public class AdminController {
 		mav.setViewName("WEB-INF/admin/report/blist.jsp");*/
 		return null;
 	}
+		
+		@RequestMapping(value = "/sendMsg.do")
+		protected ModelAndView sendMsg(@RequestParam String msg, @RequestParam String url) throws Exception {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("msg",msg);
+			mav.addObject("url",url);
+			mav.setViewName("message.jsp");
+			return mav;
+		}
+		
+		@RequestMapping(value = "/openerClose.do")
+		protected ModelAndView openerClose(@RequestParam String msg, @RequestParam String url) throws Exception {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("msg",msg);
+			mav.addObject("url",url);
+			mav.setViewName("openerClose.jsp");
+			return mav;
+		}
 
 }

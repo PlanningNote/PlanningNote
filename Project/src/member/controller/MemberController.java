@@ -196,6 +196,9 @@ public class MemberController {
 		String pwd = memberDAO.findPwd(email);
 		memberDAO.sendEmail(email.toString(),pwd);
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName("openerClose.jsp");
+		mav.addObject("url","login.do");
+		mav.addObject("msg","비밀번호가 메일로 발송되었습니다. 확인 후 로그인해주세요");
 		return mav;
 	}
 	
