@@ -35,9 +35,9 @@
 		<form method="post" action="mypage_updatePro.do" 
 				name="userInfo" onsubmit="return checkValue()">
 			<table align="center" height="40%">
-			<img src="img/mp2.PNG">
-			<h1>비밀번호 변경</h1>
-			<tr>
+			<img src="img/chpw.PNG"><br>
+		
+			<tr><br>
 					<td id="title">현재 비밀번호</td>
 					<td><input type="password" name="oldPwd" maxlength="50">
 					</td>
@@ -55,7 +55,7 @@
 				
 				<tr>
 					<td></td>
-					<td>
+					<td><br>
 					<input type="submit" value="확인" >  
 					<input type="reset" value="다시작성">	
 					</td>

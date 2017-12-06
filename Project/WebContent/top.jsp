@@ -92,18 +92,18 @@ ul li:hover {
 		<c:set var="isLogin" value="true" scope="session" />
 	</c:if>
 
-	<div style="padding: 0px 0px 0px 300px;">
+	<div style="padding: 0px 0px 0px 200px;">
 		<table border="0">
 			<tr>
 				<td>
-				<a href="index.jsp"><img src="img/planlogo.jpg"	border="0"></a><!-- 로고 -->
+				<a href="index.jsp"><img src="img/newmain.jpg"	border="0"></a><!-- 로고 -->
 				 <c:if test="${isLogin eq false}">
 						<a href="login.do"><img src="img/loginIcon.png" border="0"></a><!-- 로그인 -->
 						<a href="join_member.do"><img src="img/joinmember.png" border="0"></a><!-- 회원가입 -->
 					</c:if> 
 					<c:if test="${isLogin eq true}">
 					<font face="verdana" size="5" style="text-decoration: none">
-							${sessionScope.mynick} 님 환영합니다. </font>
+						<br>${sessionScope.mynick} 님 환영합니다. </font>
 						<a href="mypage.do?nickname=${sessionScope.nickname}"><img src="img/mypage.png" border="0"></a><!-- 마이페이지 -->
 						<a href="logout.do"><img src="img/logout.PNG" border="0"></a>	<!-- 로그아웃 -->
 

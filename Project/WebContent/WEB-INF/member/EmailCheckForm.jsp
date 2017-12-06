@@ -85,17 +85,17 @@
 <!--  <body onload="pValue()">-->
 <div id="wrap">
 	<br>
-	<b><font size="4" color="gray">이메일 중복체크</font></b>
+	<b><font size="4" color="gray"><img src="img/emailch.PNG" border="0"></font></b>
 	<hr size="1" width="460">
 	<br>
-	<div id="chk">
+	<div id="chk" align="center">
 		<form id="checkForm" name="checkForm">
 			<input type="text" name="emailinput" id="email" value="${getEmail}">
 			<input type="button" value="중복확인" onclick="emailCheck()">
 		</form>
 		<div id="msg"></div>
 		<br>
-		<input id="cancelBtn" type="button" value="취소" onclick="window.close()"><br>
+		<input id="cancelBtn" type="button" value="취소" onclick="window.close()">
 		<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
 	</div>
 </div>	

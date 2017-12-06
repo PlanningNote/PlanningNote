@@ -85,14 +85,17 @@
 </head>
 <body>
 <div align="center">
+
+
 		
 		<!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
 		<!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 JoinPro.jsp -->
 		<form method="post" action="join_member.do" 
 				name="userInfo" onsubmit="return checkValue()">
 			<table align="center"  height="60%">
+			<img src="img/welcomejoin.gif">
 				<tr>
-					<td id="title">이메일</td>
+					<br><td id="title">이메일</td>
 					<td>
 						<input type="text" name="email" maxlength="50" onkeydown="inputEmailChk()">
 						<input type="button" value="중복확인" onclick="openEmailChk()">	
