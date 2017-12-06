@@ -65,7 +65,7 @@ public class AskController {
 
 	
 	@RequestMapping(value= "/ask_write.do", method=RequestMethod.GET)
-	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	protected ModelAndView writeAskFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/AskBoard/ask_writeForm.jsp");
 		
 	}
@@ -121,7 +121,7 @@ public class AskController {
 	}
 	
 	@RequestMapping(value= "/ask_delete.do", method=RequestMethod.GET)
-	public ModelAndView deleteForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	public ModelAndView deleteAskForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		return new ModelAndView("WEB-INF/AskBoard/ask_delete.jsp");
 	}
 	
@@ -152,7 +152,7 @@ public class AskController {
 	
 	
 	@RequestMapping(value= "/ask_update.do", method=RequestMethod.GET)
-	protected ModelAndView updateBoard(@RequestParam String no) throws Exception {
+	protected ModelAndView updateAskBoard(@RequestParam String no) throws Exception {
 		if(no == null || no.trim().equals("")) {
 			return null;
 		}

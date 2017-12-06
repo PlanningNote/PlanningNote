@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
+
+
 <html>
 <head>
 <title>녀행자들홈페이지</title>
