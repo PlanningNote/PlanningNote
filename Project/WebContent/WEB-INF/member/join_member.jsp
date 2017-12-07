@@ -101,7 +101,7 @@
 	</script>
 	
 </head>
-<tr height="500">
+<tr>
 <td>
 <div align="center">
 
