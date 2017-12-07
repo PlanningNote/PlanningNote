@@ -2,6 +2,7 @@
 <%String path = session.getServletContext().getRealPath("img"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
 <%@ include file ="../../top.jsp" %>
 <style>
 	#map{
@@ -29,13 +30,15 @@ function recom_click() {
 		document.recom.src=img[0];
 		cnt--;
 	}
-} 
+}
+
 function reportPlan(){
 	var no =${dtoP.group_no}
 	var suspecter = "${dtoP.writer}";
 	var reporter = "${sessionScope.mynick}";
 	location.href="reportPlanForm.do?no="+no+"&suspecter="+suspecter+"&reporter="+reporter;	
 }
+
 </script>
 <script>
 var map;
