@@ -60,15 +60,21 @@ public class PlanMapper {
 			resT = session.insert("tagPlan", dtoT);
 			System.out.println("t/" + resT);
 			resP = session.insert("insertPlan", dtoP);
-			System.out.println("p/" + resP);
+			System.out.println("p 시퀀스/" + resP);
 			for (int i = 0; i < dtoS.getTargets().size(); i++) {
 				resS = session.insert("insertsubPlan", dtoS.getTargets().get(i));
 			}
 			System.out.println("s/" + resS);
 			session.commit();// mybatis는 자동commit을 안해줌. inert할때는 특히나 더 이런거 써줘야함.
 			index = resT + resP + resS;
-			return index;
-
+			
+			if(index<3) {
+				return index=-1;
+			}
+			else {
+				return index = session.selectOne("sequence");
+			}
+			
 		} finally {
 			session.close();
 		}
@@ -235,6 +241,7 @@ public class PlanMapper {
 		return dtoP;
 	}
 
+	
 	
 	
 }

@@ -43,15 +43,15 @@ public class PlanController {
    public ModelAndView plan(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
       ModelAndView mav = new ModelAndView();
       mav.setViewName("WEB-INF/planning/addPlan.jsp");
-      return mav;  
+      return mav;
    }
- 
+
    // subPlanDTO 이미지 파일을 디렉토리에 저장하고 이미지파일 이름을 분리시켜주는 메소드
    protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1, FileUpload upload, SubPlanDTO dto) {
       HttpSession session = arg0.getSession();
       List<MultipartFile> files = upload.getFile();
       System.out.println("여기1");
-      String img = null; 
+      String img = null;
       String filePath = null;
       List<String> imgName = new ArrayList<String>();
       List<String> imgPath = new ArrayList<String>();
@@ -158,14 +158,12 @@ public class PlanController {
          return mav;
       } else {
          mav.setViewName("list.do?group_no="+res);
-         System.out.println(dtoP.getGroup_no());
-         System.out.println("db저장 완료! list.do 로 가자!");
+         System.out.println("group_no//"+res);
       }
 
       mav.addObject("dtoT", dtoT);
       mav.addObject("dtoP", dtoP);
       mav.addObject("dtoS", dtoS);
-      System.out.println("return mav! list.do 로 가자!");
       return mav;
    }
 
@@ -253,7 +251,7 @@ public class PlanController {
    @RequestMapping(value = "/list.do") // 계획목록 페이지로 이동.
    public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1, @RequestParam("group_no") int group_no)
          throws Exception {
-      System.out.println("list.do 도착! 보여라ㅠㅠ"+group_no);
+      System.out.println("group_no//"+group_no);
       ModelAndView mav = new ModelAndView();
       mav.setViewName("WEB-INF/planning/listPlan.jsp");
       PlanDTO dtoP = new PlanDTO();
