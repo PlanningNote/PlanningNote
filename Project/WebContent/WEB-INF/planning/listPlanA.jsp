@@ -16,9 +16,15 @@
 	if(pageno<1){//현재 페이지
 		pageno = 1;
 	}
-	int total_record = (int)request.getAttribute("size");//총 레코드 수
+	
+	int total_record;
+	if(request.getAttribute("size")==null){
+		total_record = 1;
+	}else{
+		total_record = (int)request.getAttribute("size");
+	}
 	int page_per_record_cnt = 4;  //페이지 당 레코드 수
-	int group_per_page_cnt = 5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
+	int group_per_page_cnt = 1;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
 	int record_end_no = pageno*page_per_record_cnt;	
 	int record_next_start_no = record_end_no + 1;
@@ -89,7 +95,7 @@
 					</tr>
 				</c:if>
 				<c:if test="${dtoP != null}">
-				<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
+				<c:forEach items="${dtoP}" var="dtoP" begin="<%=record_start_no %>" end="<%=record_end_no %>">
 				<tr WIDTH="100">
 				<td width="10%" ALIGN="center">${dtoP.getGroup_no()}</td>
 				<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
