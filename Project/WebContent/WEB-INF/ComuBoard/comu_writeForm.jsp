@@ -34,12 +34,15 @@
 	<td>
 		<div align="center">
 			<form name="f" method="post"  
-				action="comu_write.do" onsubmit="return checkMember()">							
+				action="comu_write.do" onsubmit="return checkMember()" enctype="multipart/form-data">							
 				<table border="1" width="600">
 					<tr bgcolor="pink">
 						<th colspan="2">커뮤니티 글  쓰 기</th>
 					</tr> 
-				
+					<tr>
+						<th bgcolor="pink" >작성자</th>
+						<td width="80%"><input type ="text" name="writer" rows="10" value="${sessionScope.mynick}" readonly></td>
+					</tr>
 					<tr>
 						<th bgcolor="pink" width="20%">제 목</th>
 						<td width="80%"><input type="text" name="subject" size="50"></td>

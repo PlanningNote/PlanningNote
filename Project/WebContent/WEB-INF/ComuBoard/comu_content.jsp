@@ -7,47 +7,54 @@
 			<b>글내용 보기</b>
 			<table border="1" width="600">
 				<tr>
-					<th bgcolor="yellow" width="15%">글번호</th>
-					<td align="center" width="35%">${getComuBoard.no}</td>
+					<th bgcolor="yellow" width="20%">글번호</th>
+					<td align="center" width="80%">${getComuBoard.no}</td>
 				</tr>
 				<tr>
-					<th bgcolor="yellow" width="15%">글제목</th>
-					<td align="center" width="85%" colspan="3">
+					<th bgcolor="yellow" width="20%">작성자</th>
+					<td align="center" width="80%">${getComuBoard.writer}</td>
+				</tr>
+				<tr>
+					<th bgcolor="yellow" width="20%">글제목</th>
+					<td align="center" width="80%" colspan="3">
 						${getComuBoard.subject}</td>
 				</tr>
 				<tr>
 					<th bgcolor="yellow" width="20%">내 용</th>
 					<td>
-						<textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getComuBoard.content}</textarea>
+						<textarea name="content" width="80%"  align="center" rows="12" cols="55" class="box" /readonly>${getComuBoard.content}</textarea>
 					</td>
 				</tr>
 				
 				<tr>
 					<th bgcolor="yellow" width="20%">이 미 지</th>
 					<td>
-						<textarea name="content" width="55%"  align="center" rows="12" cols="55" class="box" /readonly>${getComueBoard.content}</textarea></td>
+						<c:if test="${not empty  getComuBoard.img}">
+							<img src="imgfile/comuImg/${getComuBoard.img}" width="200">
+						</c:if>
 					</td>
 				</tr>
 								
 				<tr>
-					<th bgcolor="yellow" width="15%">조회수</th>
-					<td align="center" width="35%">${getComuBoard.count}</td>
+					<th bgcolor="yellow" width="20%">조회수</th>
+					<td align="center" width="80%">${getComuBoard.count}</td>
 				</tr>
 				
 				<tr>	
-					<th bgcolor="yellow" width="15%">작성일</th>
-					<td align="center" width="35%">${getComuBoard.day}</td>
+					<th bgcolor="yellow" width="20%">작성일</th>
+					<td align="center" width="80%">${getComuBoard.day}</td>
 				</tr>	
 	
 				<tr bgcolor="yellow">
 					<td colspan="4" align="right">
-						<input type="button" value="글수정"
-						onclick="window.location='comu_update.do?no=${getComuBoard.no}'">
-						<input type="button" value="답글달기"
-						onclick="window.location='comu_reply.do?no=${getComuBoard.no}&re_group=${getComuBoard.re_group}&re_step=${getComuBoard.re_step}&re_level=${getComuBoard.re_level}'">
-						
+						<c:if test="${getComuBoard.writer == sessionScope.mynick}">
+							<input type="button" value="글수정"
+								onclick="window.location='comu_update.do?no=${getComuBoard.no}'">					
 						<input type="button" value="글삭제"
 						onclick="window.location='comu_delete.do?no=${getComuBoard.no}'">
+						</c:if>
+						<input type="button" value="답글달기"
+									onclick="window.location='comu_reply.do?no=${getComuBoard.no}&re_group=${getComuBoard.re_group}&re_step=${getComuBoard.re_step}&re_level=${getComuBoard.re_level}'">
 						<input type="button" value="글목록"
 						onclick="window.location='comu_list.do'">
 					</td>

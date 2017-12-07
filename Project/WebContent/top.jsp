@@ -147,7 +147,7 @@ ul li:hover {
 									<li><a href="FAQ_list.do"><img src="img/no2.PNG" border="0"></a></li>
 									<li><a href="ask_list.do"><img src="img/no3.PNG" border="0"></a></li>
 										</ul></li>
-                  	  <li><a href="comu_main.do"> <img src="img/comu.PNG" border="0"></a></li> <!--커뮤니티 --> 
+                  	  <li><a href="comu_list.do"> <img src="img/comu.PNG" border="0"></a></li> <!--커뮤니티 --> 
                   	 <li><a href="plan.do"><img src="img/make.PNG" border="0"></a></li><!--일정만들기-->
                   	 <li><a href="listPlanA.do"><img src="img/no10.PNG" border="0"></a></li>  <!--일정공유-->
                   	 <li><a href="calendar.do"><img src="img/cal.PNG" border="0"></a></li>   <!--일정공유-->

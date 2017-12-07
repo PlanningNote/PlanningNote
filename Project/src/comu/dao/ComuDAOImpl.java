@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
-
+import ask.dto.AskDTO;
 import comu.dto.ComuDTO;
 
 public class ComuDAOImpl implements ComuDAO {  
@@ -32,6 +32,9 @@ public class ComuDAOImpl implements ComuDAO {
 			dto.setDay(arg0.getString("day"));
 			dto.setImg(arg0.getString("img"));
 			dto.setPwd(arg0.getString("pwd")); 
+			dto.setRe_step(arg0.getInt("re_step"));
+			dto.setRe_group(arg0.getInt("re_group"));			
+			dto.setRe_level(arg0.getInt("re_level"));
 
 			return dto;
 		}
@@ -41,9 +44,20 @@ public class ComuDAOImpl implements ComuDAO {
 
 	@Override
 	public int insertComu(ComuDTO dto) {
-		String sql="insert into PN_community values(no_seq.nextval, ?,?,0,sysdate,?,?)";
-		Object[] values = new Object[] {dto.getSubject(),dto.getContent(),dto.getImg(),dto.getPwd()};
-		int res = jdbcTemplate.update(sql, values);
+		String sql = null;
+		if(dto.getNo() ==0 ) {
+			sql ="select max(no) from PN_community";
+			int max = jdbcTemplate.queryForInt(sql);
+			dto.setRe_group(max+1);
+		}else {
+			sql = "update PN_community set re_step = re_step + 1 where re_group=? and re_step>?";
+			jdbcTemplate.update(sql, dto.getRe_group(), dto.getRe_step());
+			dto.setRe_step(dto.getRe_group() +1);
+			dto.setRe_level(dto.getRe_level()+1);
+		}
+		sql="insert into PN_community values(no_seq.nextval, ?,?,?,0,sysdate,?,?,?,?,?)";
+		Object[] values = new Object[] {dto.getWriter(),dto.getSubject(),dto.getContent(),dto.getImg(),dto.getPwd(),dto.getRe_step(),dto.getRe_group(),dto.getRe_level()};
+		int res = jdbcTemplate.update(sql, values);		
 		return res;
 	}
 
@@ -52,7 +66,7 @@ public class ComuDAOImpl implements ComuDAO {
 
 	@Override 
 	public List<ComuDTO> listComu() {
-		String sql = "select * from PN_community order by no desc ";
+		String sql = "select * from PN_community order by re_group desc, re_step asc";
 		List<ComuDTO> list = jdbcTemplate.query(sql, mapper);
 		return list;
 	}
@@ -65,6 +79,9 @@ protected void plusReadCount(int no) {
 
 	@Override 
 	public ComuDTO getComuBoard(int no, String mode) {
+		if(mode.equals("content")) {
+			plusReadCount(no);
+		}		
 		
 		String sql = "select * from PN_community where no = ?";
 		ComuDTO dto = jdbcTemplate.query
@@ -84,7 +101,10 @@ protected void plusReadCount(int no) {
 				dto.setCount(arg0.getInt("count"));
 				dto.setDay(arg0.getString("day"));
 				dto.setImg(arg0.getString("img"));
-			/*	dto.setPwd(arg0.getString("pwd"));*/
+				dto.setPwd(arg0.getString("pwd"));
+				dto.setRe_step(arg0.getInt("re_step"));
+				dto.setRe_group(arg0.getInt("re_group"));			
+				dto.setRe_level(arg0.getInt("re_level"));
 				return dto;
 			}
 			throw new DataRetrievalFailureException("해당 객체를 찾을수가 없습니다.");

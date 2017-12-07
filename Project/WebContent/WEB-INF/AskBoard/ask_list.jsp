@@ -165,7 +165,7 @@
 		<form name="ff" action="ask_find.do" method="post">
 			<select name="search">
 				<option value="subject">제목</option>	
-				<option value="writer">글쓴이</option>
+				<option value="writer">작성자</option>
 			</select> 
 			<input type="text" size="20" name="searchString">&nbsp;
 			 <input type="submit" value="검색">
