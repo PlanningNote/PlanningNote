@@ -2,11 +2,16 @@
     pageEncoding="UTF-8"%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ include file="../../top.jsp" %> 
+<script>
+	function revert(){
+		location.href="comu_list.do";
+	}
+</script> 
 <tr>
 	<td>
 		<div align="center">		
 			<table border="0" width="600" >
-				<b>커뮤니티게시판 미완  </b>
+				<b>커뮤니티게시판 </b>
 				<tr bgcolor="yellow">
 					<td align="right"><a href="comu_write.do">글쓰기</a></td>
 				</tr>
@@ -15,15 +20,14 @@
 			<table border="1" width="600" background="b11.jpg">
 				<tr bgcolor="#7DFE74">
 					<th>번호</th>
+					<th>작성자</th>
 					<th width="50%">제목</th>
-					<th>조회수</th>
-					
+					<th>조회수</th>					
 					<th>날짜</th>
 				</tr>
-				<!-- 여기에 db의 자료를 꺼내서 표현을 하자 -->
-					<td>${dto.no}</td>
+			
 			<c:if test="${empty comuList}">
-				<tr> 				
+				<tr align="center"> 				
 					<td colspan="5">게시된 글이 없습니다.</td>
 				</tr>
 			</c:if>	
@@ -31,28 +35,24 @@
 			<c:forEach var="dto" items="${comuList}">
 				<tr>
 					<td>${dto.no}</td>
-				<td>	<a href="comu_content.do?no=${dto.no}">
-						${dto.subject}
-					</a>
-					</td>
-					<td>${dto.count}</td>
-			
+					<td>${dto.writer}</td>
+					<td>	<a href="comu_content.do?no=${dto.no}">${dto.subject}</a></td>
+					<td>${dto.count}</td>			
 					<td>${dto.day}</td>	
 				</tr>		
 			</c:forEach>				
 			</table>
 			
-			<br>
-		<div id="searchForm">
-			<form>
-				<select name="opt">
-					<option value="0">제목</option>
-					
-					<option value="3">글쓴이</option>
-				</select>
-				<input type="text" size="20" name="condition"/>&nbsp;
-				<input type="submit" value="검색"/>
-			</form>	
+			<form name="ff" action="comu_find.do" method="post">
+				<select name="search">
+					<option value="subject">제목</option>	
+					<option value="writer">작성자</option>
+				</select> 
+				<input type="text" size="20" name="searchString">&nbsp;
+				 <input type="submit" value="검색">
+			</form>
+		
+		<input type="button" value="전체목록" onClick="revert()">
 		</div>
 	</td>
 </tr>

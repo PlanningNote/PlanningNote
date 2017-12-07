@@ -7,7 +7,6 @@ public class ComuDTO {
 	private String content;
 	private int count;
 	private String day;
-
 	private String img;
 	private String pwd;
 	private int re_step;
@@ -43,7 +42,6 @@ public class ComuDTO {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
 	public String getDay() {
 		return day;
 	}

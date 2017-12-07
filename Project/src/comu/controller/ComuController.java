@@ -1,9 +1,14 @@
 package comu.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +18,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import ask.dto.AskDTO;
 import comu.dao.ComuDAO;
 import comu.dto.ComuDTO;
 
@@ -24,6 +32,13 @@ public class ComuController {
 	@Autowired
 	private ComuDAO comuDAO;
 	
+	@RequestMapping(value= "/calendar.do", method=RequestMethod.GET)
+	protected ModelAndView calBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		return new ModelAndView("WEB-INF/Service/CalendarExam2.jsp");
+	}
+
+	
+	
 	@RequestMapping(value="/comu_list.do")
 	public ModelAndView listComu(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		List<ComuDTO> list = comuDAO.listComu(); // 가져오는거
@@ -31,14 +46,7 @@ public class ComuController {
 		mav.addObject("comuList", list);
 		mav.setViewName("WEB-INF/ComuBoard/comu_list.jsp");
 		return mav;
-	}
-	
-	
-	@RequestMapping(value= "/calendar.do", method=RequestMethod.GET)
-	protected ModelAndView calBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-		return new ModelAndView("WEB-INF/Service/CalendarExam2.jsp");
-	}
-
+	}	
 	
 	@RequestMapping(value= "/comu_write.do", method=RequestMethod.GET)
 	protected ModelAndView writeFormBoard(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
@@ -46,24 +54,56 @@ public class ComuController {
 	}
 	
 	@RequestMapping(value= "/comu_write.do",method=RequestMethod.POST)
-	protected ModelAndView writeProBoard(HttpServletRequest arg0, @ModelAttribute ComuDTO dto, BindingResult result)
+	protected ModelAndView writeProBoard(HttpSession session, HttpServletRequest arg0, @ModelAttribute ComuDTO dto, BindingResult result)
 			throws Exception {
-		//이제 arg2로 dto 한번에 값 못받아온다.		
-		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
-			dto.setNo(0);		
-			dto.setCount(0);
+		ModelAndView mav = new ModelAndView();
+		
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest)arg0;
+		
+		MultipartFile mf = mr.getFile("img"); 
+		
+		
+		//파일 제대로왔는지 확인
+		String img= mf.getOriginalFilename(); //실제 파일이름 올라와짐
+		
+		if (img != null && !(img.trim().equals(""))) {
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());  //현재시간
+			String saveImg = now+img;
+		
+		
+		String upPath = session.getServletContext().getRealPath("/imgfile/comuImg"); //파일즈라는 폴더를 하나만들겠다.
+		
+		
+		//서버에 파일을 옮겨 적기 . (파일쓰기)
+		File file = new File(upPath, saveImg);
+		
+		try{
+			mf.transferTo(file); //실제 파일 전송
+			System.out.println("파일전송 성공! ");
+		}catch(IOException e) {
+			System.out.println("파일전송실패ㅠㅠ ");
+			e.printStackTrace();
 		}
-		comuDAO.insertComu(dto);
-		return new ModelAndView("redirect:comu_list.do");
+				
+		dto.setImg(saveImg);
+		}else {
+			dto.setImg("");
+		}
+		if(result.hasErrors()) { //에러가 발생하는 이유 중 하나가 String으로 받아왔는데 null값이 들어왔는데 그값을 int형으로 자동형변형 시키면서 오류가 발생한다.
+			dto.setNo(0);
+			System.out.println("에러");
+		}
+		
+		
+	    comuDAO.insertComu(dto);
+	    mav.setViewName("message.jsp");
+	    mav.addObject("url","comu_list.do");
+	    mav.addObject("msg", "글올리기 성공하였습니다.");
+		return mav;
 	}
 	
 	@RequestMapping(value= "/comu_content.do")
 	public ModelAndView contentComu(@RequestParam String no) throws Exception {
-		//@RequestParam Map<String, String> params
-		// Set<Entry<String, String>> set = params.entrySet();
-		// for(Entry<String,String> entry = set){
-		// System.out.println(entry.getKey() + "=" + entry.getValues());
-		// }
 		if(no == null || no.trim().equals("")) {
 			return null;
 		}
