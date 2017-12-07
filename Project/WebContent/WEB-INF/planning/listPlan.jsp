@@ -30,7 +30,6 @@ function recom_click() {
 		cnt--;
 	}
 }
-
 function reportPlan(){
 	var no =${dtoP.group_no}
 	var suspecter = "${dtoP.writer}";
