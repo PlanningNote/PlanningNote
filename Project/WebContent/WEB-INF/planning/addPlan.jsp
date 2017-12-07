@@ -26,14 +26,14 @@ function addRow() {
 	oCell4.width = "3%";
 	oCell1.innerHTML = "${dtoS.board_num}";
 	oCell2.innerHTML = "[*필수]제목 <br>"
-			+ "<input type='text' name='targets["+index+"].subject' onkeydown=checkSubsubject() border='1' style='width: 100%; height: 25;'>"
+			+ "<input type='text' name='targets["+index+"].subject' onkeydown=checkSubsubject() border='1' style='width: 95%; height: 25;'>"
 			+ "<br>[*필수]비용 <br>"
 			+ "<input type='text' name='targets["+index+"].price' id='targets["+index+"].price' onkeydown=checkPrice() border='1' style='width: 95%; height: 25;'>원"
 			+ "<br>[*필수]내용 <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
 			+ "<br>[*필수]교통 <br>"
-			+ "<input type='text' name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>"
+			+ "<input type='text' name='targets["+index+"].traffic' border='1' style='width: 95%; height: 25;'>"
 			+ "<input type='hidden' name='targets["+index+"].lat' value=0>"
 			+ "<input type='hidden' name='targets["+index+"].lng' value='"+index+"'>";
 	oCell3.innerHTML = "[*필수]<br><input type='file' name='file'><br>"

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%String path = session.getServletContext().getRealPath("img"); %>
 <%@ include file="/top.jsp"%>
 <style>
@@ -31,7 +32,7 @@ function initMap() {
        <c:forEach items="${dtoS.getTargets()}" var="dtoS">	    
 		var lat = ${dtoS.lat}; 
 		var lng = ${dtoS.lng};
-		var sub = "${dtoS.subject}";  
+		var sub = "${dtoS.subject}";
 		var c =  new google.maps.LatLng(lat,lng);    	  
 		addMarker(c,sub);
 	</c:forEach>  
@@ -75,9 +76,7 @@ function addMarker(location,sub){
 				</table>
 			</form>
 		</div>
-		<div align="center">
-			<div id="map"></div>
-		</div>
+		<div align="center" id="map"></div>
 		<div align="center">
 		<br><button onclick="history.back()">뒤로가기</button> 
 		</div>

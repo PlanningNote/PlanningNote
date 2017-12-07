@@ -4,7 +4,6 @@
 <%
 	String location = null;
 %>
-<!DOCTYPE html>
 <html>
 <head>
 <title>Áöµµ</title>
