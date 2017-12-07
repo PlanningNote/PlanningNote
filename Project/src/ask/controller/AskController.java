@@ -38,6 +38,7 @@ public class AskController {
 		List<AskDTO> list = askDAO.listAsk();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askList", list);
+		 arg0.setAttribute("size", list.size());
 		mav.setViewName("WEB-INF/AskBoard/ask_list.jsp");		
 		return mav;		
 	}

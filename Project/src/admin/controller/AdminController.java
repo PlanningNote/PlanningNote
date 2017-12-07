@@ -31,6 +31,7 @@ import member.dao.MemberDAO;
 import member.dto.MemberDTO;
 import notice.dao.NoticeDAO;
 import notice.dto.NoticeDTO;
+import plan.dao.PlanDAO;
 import report.BReportDAO;
 import report.BReportDTO;
 
@@ -50,6 +51,9 @@ public class AdminController {
 
 	@Autowired
 	private BReportDAO breportDAO;
+	
+	@Autowired
+	private PlanDAO planDAO;
 
 	// 관리자 메인화면
 	@RequestMapping(value = "/admin_main.do")
@@ -692,8 +696,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/breportDelete.do")
 	protected ModelAndView breportDelete(@RequestParam int no, @RequestParam String nickname,@RequestParam String content,@RequestParam String subject) throws Exception {
-		// 여기에 no을 가지고 일정 삭제 추가
-		
+		planDAO.deletePlan(no);  // 일정삭제
 		String email = memberDAO.getEmail(nickname);
 		breportDAO.sendEmail(email, content, subject);	
 		breportDAO.updateReport();
