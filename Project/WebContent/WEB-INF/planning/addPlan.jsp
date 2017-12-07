@@ -101,8 +101,7 @@ function alertError(){
 				<table WIDTH="1100" HEIGHT="450" class="outline"
 					background="img/backimg1.jpg">
 					<tr>
-						<td>[*필수]나라: <INPUT TYPE="TEXT" NAME="country"><br>
-						[*필수]도시: <INPUT
+						<td>[*필수]나라: <INPUT TYPE="TEXT" NAME="country">/[*필수]도시: <INPUT
 							TYPE="TEXT" NAME="city"></td>
 					</tr>
 					<tr>
@@ -136,11 +135,11 @@ function alertError(){
 					</tr>
 					<tr>
 						<td>태그:<br>
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag1" size="10">
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag2" size="10">
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag3" size="10">
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag4" size="10">
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag5" size="10">
 						</td>
 					</tr>
 					<tr>
