@@ -14,7 +14,7 @@
 		max-width: 30px;
 		max-height: 30px;
 	}
-</style>
+</style> 
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrt3e9BFpP0dfZJuTnfAnaAiKszMoJGm4&callback=initMap"></script>
 
