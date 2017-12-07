@@ -83,7 +83,8 @@
 	</script>
 	
 </head>
-<body>
+<tr height="500">
+<td>
 <div align="center">
 
 
@@ -146,6 +147,7 @@
 			<input type="reset" value="다시작성">
 		</form>
 </div>
+</td>
 </tr>
 
 <%@ include file="../../bottom.jsp" %>

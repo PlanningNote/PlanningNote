@@ -154,8 +154,11 @@ public class MemberController {
 	@RequestMapping(value= "/join_member.do", method=RequestMethod.POST) //join_member.jsp에서 입력처리한 후 db에 넣는 작업
 	protected ModelAndView joinProMember(HttpServletRequest arg0, @ModelAttribute MemberDTO dto, BindingResult result) throws Exception {
 		memberDAO.insertMember(dto);
-		
-		return new ModelAndView("redirect:login.do");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		mav.addObject("msg","회원가입에 성공하셨습니다. 환영합니다~");
+		mav.addObject("url","login.do");
+		return mav;
 	}
 	
 	

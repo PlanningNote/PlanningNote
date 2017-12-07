@@ -21,7 +21,7 @@
 		window.open("find_pwd.do","chkForm", "width=400, height=200, left=550, top=300, resizable = no, scrollbars = no");	
 	}
 </script>
-<tr>
+<tr height="500">
 	<td>
 			<div align="center">	
 				<form name="userInfo" onsubmit="return check()" method="post" action="login_ok.do">
