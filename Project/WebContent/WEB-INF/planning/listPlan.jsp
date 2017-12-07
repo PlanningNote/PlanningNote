@@ -36,7 +36,6 @@ function reportPlan(){
 	var reporter = "${sessionScope.mynick}";
 	location.href="reportPlanForm.do?no="+no+"&suspecter="+suspecter+"&reporter="+reporter;	
 }
-
 </script>
 <script>
 var map;
