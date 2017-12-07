@@ -29,7 +29,7 @@ function recom_click() {
 		document.recom.src=img[0];
 		cnt--;
 	}
-}
+} 
 function reportPlan(){
 	var no =${dtoP.group_no}
 	var suspecter = "${dtoP.writer}";
