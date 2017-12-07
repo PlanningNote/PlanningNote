@@ -90,7 +90,7 @@
 					</tr>
 				</c:if>
 				<c:if test="${dtoP != null}">
-				<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
+				<c:forEach items="${dtoP}" var="dtoP" begin="<%=record_start_no%>" end="<%=record_end_no %>">
 				<tr WIDTH="100">
 				<td width="10%" ALIGN="center">${dtoP.getGroup_no()}</td>
 				<td><a href="list.do?group_no=${dtoP.getGroup_no()}">

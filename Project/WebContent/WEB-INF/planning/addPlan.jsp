@@ -8,8 +8,6 @@
 %>
 <%@ include file="../../top.jsp"%>
 <script language="javascript">
-
-
 var index=-1;
 
 function addRow() {
