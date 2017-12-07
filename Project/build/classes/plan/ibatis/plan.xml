@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="plan/ibatis/plan"> <!-- 마이바티스는 이게 중요해서 꼭 써줘야한다. -->
 	<insert id="tagPlan">
-		<selectKey keyProperty="rslt" resultType="java.lang.Integer">
-			select group_no from dual
+		<selectKey keyProperty="group_no" resultType="java.lang.Integer">
+			SELECT IDENT_CURRENT('PN_planning')
 		</selectKey>
 		insert into PN_tag 
 		values(group_no.nextval,#{tag1,jdbcType=VARCHAR},#{tag2,

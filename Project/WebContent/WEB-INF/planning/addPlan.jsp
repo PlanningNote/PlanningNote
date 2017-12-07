@@ -26,14 +26,14 @@ function addRow() {
 	oCell4.width = "3%";
 	oCell1.innerHTML = "${dtoS.board_num}";
 	oCell2.innerHTML = "[*필수]제목 <br>"
-			+ "<input type='text' name='targets["+index+"].subject' onkeydown=checkSubsubject() border='1' style='width: 95%; height: 25;'>"
+			+ "<input type='text' name='targets["+index+"].subject' onkeydown=checkSubsubject() border='1' style='width: 100%; height: 25;'>"
 			+ "<br>[*필수]비용 <br>"
 			+ "<input type='text' name='targets["+index+"].price' id='targets["+index+"].price' onkeydown=checkPrice() border='1' style='width: 95%; height: 25;'>원"
 			+ "<br>[*필수]내용 <br>"
 			+ "<textarea name='targets["+index+"].content' rows='5' border='1' style='width: 95%; height: 80;'>"
 			+ "</textarea>"
 			+ "<br>[*필수]교통 <br>"
-			+ "<input type='text' name='targets["+index+"].traffic' border='1' style='width: 95%; height: 25;'>"
+			+ "<input type='text' name='targets["+index+"].traffic' border='1' style='width: 100%; height: 25;'>"
 			+ "<input type='hidden' name='targets["+index+"].lat' value=0>"
 			+ "<input type='hidden' name='targets["+index+"].lng' value='"+index+"'>";
 	oCell3.innerHTML = "[*필수]<br><input type='file' name='file'><br>"
@@ -101,7 +101,8 @@ function alertError(){
 				<table WIDTH="1100" HEIGHT="450" class="outline"
 					background="img/backimg1.jpg">
 					<tr>
-						<td>[*필수]나라: <INPUT TYPE="TEXT" NAME="country">/[*필수]도시: <INPUT
+						<td>[*필수]나라: <INPUT TYPE="TEXT" NAME="country"><br>
+						[*필수]도시: <INPUT
 							TYPE="TEXT" NAME="city"></td>
 					</tr>
 					<tr>
@@ -135,11 +136,11 @@ function alertError(){
 					</tr>
 					<tr>
 						<td>태그:<br>
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag1" size="10">
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag2" size="10">
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag3" size="10">
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag4" size="10">
-							&nbsp;<INPUT TYPE="TEXT" NAME="tag5" size="10">
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag1"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag2"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag3"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag4"><br>
+							&nbsp;<INPUT TYPE="TEXT" NAME="tag5"><br>
 						</td>
 					</tr>
 					<tr>

@@ -26,8 +26,8 @@
 	int page_per_record_cnt = 4;  //페이지 당 레코드 수
 	int group_per_page_cnt = 1;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
-	int record_end_no = pageno*page_per_record_cnt;	
-	int record_next_start_no = record_end_no + 1;
+
+	int record_end_no = pageno*page_per_record_cnt;				
 	int record_start_no = record_end_no-(page_per_record_cnt-1);
 	if(record_end_no>total_record){
 		record_end_no = total_record;
@@ -37,7 +37,7 @@
 		pageno = total_page;
 	}
 	
-// 	현재 페이지(정수) / 한페이지 당 보여줄 페이지 번호 수(정수) + (그룹 번호는 현제 페이지(정수) % 한페이지 당 보여줄 페지 번호 수(정수)>0 ? 1 : 0)
+// 	현재 페이지(정수) / 한페이지 당 보여줄 페지 번호 수(정수) + (그룹 번호는 현제 페이지(정수) % 한페이지 당 보여줄 페지 번호 수(정수)>0 ? 1 : 0)
 	int group_no = pageno/group_per_page_cnt+( pageno%group_per_page_cnt>0 ? 1:0);
 //		현재 그룹번호 = 현재페이지 / 페이지당 보여줄 번호수 (현재 페이지 % 페이지당 보여줄 번호 수 >0 ? 1:0)	
 //	ex) 	14		=	13(몫)		=	 (66 / 5)		1	(1(나머지) =66 % 5)			  
