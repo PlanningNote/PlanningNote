@@ -51,7 +51,7 @@ public class PlanController {
 		HttpSession session = arg0.getSession();
 		List<MultipartFile> files = upload.getFile();
 		System.out.println("¿©±â1");
-		String img = null;
+		String img = null; 
 		String filePath = null;
 		List<String> imgName = new ArrayList<String>();
 		List<String> imgPath = new ArrayList<String>();
