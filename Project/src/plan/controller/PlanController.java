@@ -50,7 +50,6 @@ public class PlanController {
    protected void mappingSubDTO(HttpServletRequest arg0, HttpServletResponse arg1, FileUpload upload, SubPlanDTO dto) {
       HttpSession session = arg0.getSession();
       List<MultipartFile> files = upload.getFile();
-      System.out.println("여기1");
       String img = null;
       String filePath = null;
       List<String> imgName = new ArrayList<String>();
@@ -87,7 +86,6 @@ public class PlanController {
 
       HttpSession session = arg0.getSession();
       MultipartFile files = dtoP.getThumbfile();
-      System.out.println("여기2");
       String img = null;
       String filePath = null;
       String saveImg = null;
@@ -158,7 +156,6 @@ public class PlanController {
          return mav;
       } else {
          mav.setViewName("list.do?group_no="+res);
-         System.out.println("group_no//"+res);
       }
 
       mav.addObject("dtoT", dtoT);
@@ -182,8 +179,6 @@ public class PlanController {
          @RequestParam("mode")String mode ,@RequestParam("searching") String searching) throws Exception {
       ModelAndView mav = new ModelAndView(); 
       List<PlanDTO> dtoP = null;
-      System.out.println(mode);
-      System.out.println(searching);
       if(searching==null||searching.trim().equals("")) {
          dtoP = planDAO.listPlanA();
       }else {
@@ -234,7 +229,6 @@ public class PlanController {
                searching="나 홀로 여행";
             }
          }
-         System.out.println(mode+"//"+searching);
          dtoP = planDAO.searchPlanA(mode,searching);
       }
       mav.setViewName("WEB-INF/planning/listPlanA.jsp");
@@ -251,7 +245,6 @@ public class PlanController {
    @RequestMapping(value = "/list.do") // 계획목록 페이지로 이동.
    public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1, @RequestParam("group_no") int group_no)
          throws Exception {
-      System.out.println("group_no//"+group_no);
       ModelAndView mav = new ModelAndView();
       mav.setViewName("WEB-INF/planning/listPlan.jsp");
       PlanDTO dtoP = new PlanDTO();

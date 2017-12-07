@@ -53,18 +53,13 @@ public class PlanMapper {
 	public static int insertPlan(TagDTO dtoT, PlanDTO dtoP, SubPlanDTO dtoS) {
 		SqlSession session = null;
 		int index = 0, resT = 0, resP = 0, resS = 0;
-		System.out.println("지금은 planmapper야.");
-		System.out.println(dtoS.getTargets().get(0).getLat());
 		try {
 			session = sqlMapper.openSession(); // 세션 열기
 			resT = session.insert("tagPlan", dtoT);
-			System.out.println("t/" + resT);
 			resP = session.insert("insertPlan", dtoP);
-			System.out.println("p 시퀀스/" + resP);
 			for (int i = 0; i < dtoS.getTargets().size(); i++) {
 				resS = session.insert("insertsubPlan", dtoS.getTargets().get(i));
 			}
-			System.out.println("s/" + resS);
 			session.commit();// mybatis는 자동commit을 안해줌. inert할때는 특히나 더 이런거 써줘야함.
 			index = resT + resP + resS;
 			
@@ -194,13 +189,10 @@ public class PlanMapper {
 		try {
 			session = sqlMapper.openSession(); // 세션 열기
 			resT = session.update("updateTag", dtoT);
-			System.out.println("update t/" + resT);
 			resP = session.update("updatePlan", dtoP);
-			System.out.println("update p/" + resP);
 			for (int i = 0; i < dtoS.getTargets().size(); i++) {
 				resS = session.update("updateSubPlan", dtoS.getTargets().get(i));
 			}
-			System.out.println("update s/" + resS);
 			session.commit();// mybatis는 자동commit을 안해줌. inert할때는 특히나 더 이런거 써줘야함.
 			index = resT + resP + resS;
 			return index;
@@ -216,11 +208,8 @@ public class PlanMapper {
 		try {
 			session = sqlMapper.openSession(); // 세션 열기
 			resP = session.delete("deletePlan", group_no);
-			System.out.println("delete p/" + resP);
 			resS = session.delete("deleteSub", group_no);
-			System.out.println("delete s/" + resS);
 			resT = session.delete("deleteTag", group_no);
-			System.out.println("delete t/" + resT);
 			session.commit();// mybatis는 자동commit을 안해줌. inert할때는 특히나 더 이런거 써줘야함.
 			index = resT + resP + resS;
 			return index;

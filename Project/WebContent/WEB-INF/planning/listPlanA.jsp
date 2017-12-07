@@ -18,14 +18,15 @@
 	}
 	
 	int total_record;
+	int group_per_page_cnt;
 	if(request.getAttribute("size")==null){
 		total_record = 1;
+		group_per_page_cnt = 1; 
 	}else{
 		total_record = (int)request.getAttribute("size");
+		group_per_page_cnt = 5; 
 	}
 	int page_per_record_cnt = 4;  //페이지 당 레코드 수
-	int group_per_page_cnt = 1;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
-//[6],[7],[8],[9],[10]
 
 	int record_end_no = pageno*page_per_record_cnt;				
 	int record_start_no = record_end_no-(page_per_record_cnt-1);
@@ -63,12 +64,6 @@
 		prev_pageno=1;
 //		이전 페이지를 1로
 	}
-	if(next_pageno>total_page){//		다음 페이지가 전체페이지 보다 클경우
-		next_pageno=total_page/group_per_page_cnt*group_per_page_cnt+1;
-//		next_pageno=total_page
-//		다음 페이지 = 전체페이지수 / 페이지당 보여줄 번호수 * 페이지당 보여줄 번호수 + 1 
-//	ex)			   = 	76 / 5 * 5 + 1	???????? 		
-	}
 %>
 
 <%@ include file="../../top.jsp"%>
@@ -95,7 +90,7 @@
 					</tr>
 				</c:if>
 				<c:if test="${dtoP != null}">
-				<c:forEach items="${dtoP}" var="dtoP" begin="<%=record_start_no %>" end="<%=record_end_no %>">
+				<c:forEach items="${dtoP}" var="dtoP" end="<%=record_end_no %>">
 				<tr WIDTH="100">
 				<td width="10%" ALIGN="center">${dtoP.getGroup_no()}</td>
 				<td><a href="list.do?group_no=${dtoP.getGroup_no()}">
