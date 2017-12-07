@@ -52,9 +52,7 @@
 								onclick="window.location='comu_update.do?no=${getComuBoard.no}'">					
 						<input type="button" value="글삭제"
 						onclick="window.location='comu_delete.do?no=${getComuBoard.no}'">
-						</c:if>
-						<input type="button" value="답글달기"
-									onclick="window.location='comu_reply.do?no=${getComuBoard.no}&re_group=${getComuBoard.re_group}&re_step=${getComuBoard.re_step}&re_level=${getComuBoard.re_level}'">
+						</c:if>						
 						<input type="button" value="글목록"
 						onclick="window.location='comu_list.do'">
 					</td>

@@ -9,9 +9,6 @@ public class ComuDTO {
 	private String day;
 	private String img;
 	private String pwd;
-	private int re_step;
-	private int re_group;
-	private int re_level;
 	public int getNo() {
 		return no;
 	}
@@ -59,24 +56,6 @@ public class ComuDTO {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-	public int getRe_step() {
-		return re_step;
-	}
-	public void setRe_step(int re_step) {
-		this.re_step = re_step;
-	}
-	public int getRe_group() {
-		return re_group;
-	}
-	public void setRe_group(int re_group) {
-		this.re_group = re_group;
-	}
-	public int getRe_level() {
-		return re_level;
-	}
-	public void setRe_level(int re_level) {
-		this.re_level = re_level;
 	}
 	
 	

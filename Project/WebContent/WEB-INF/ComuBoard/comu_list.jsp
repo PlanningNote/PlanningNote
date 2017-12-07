@@ -10,8 +10,8 @@
 <tr>
 	<td>
 		<div align="center">		
-			<table border="0" width="600" >
-				<b>커뮤니티게시판 </b>
+			<b>커뮤니티게시판 </b>
+			<table border="0" width="600" >				
 				<tr bgcolor="yellow">
 					<td align="right"><a href="comu_write.do">글쓰기</a></td>
 				</tr>
@@ -36,7 +36,11 @@
 				<tr>
 					<td>${dto.no}</td>
 					<td>${dto.writer}</td>
-					<td>	<a href="comu_content.do?no=${dto.no}">${dto.subject}</a></td>
+					<td>	<a href="comu_content.do?no=${dto.no}">${dto.subject}</a>
+						<c:if test="${dto.count>10}">	
+							<img src="img/hot.gif">
+						</c:if>
+					</td>
 					<td>${dto.count}</td>			
 					<td>${dto.day}</td>	
 				</tr>		
