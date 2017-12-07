@@ -185,13 +185,11 @@ public class MemberImpl implements MemberDAO{
 	}
 
 		@Override
-		public void sendEmail(String email, String pwd) {
-			String host = "smtp.gmail.com";
-			String subject = "녀행자들 인증번호 전달";
+		public void sendEmail(String email, String content, String subject) {
+			String host = "smtp.gmail.com";			
 			String fromName = "homie2032@gmail.com";
 			String from = "okokld518@gmail.com";
 			String to1 = email;
-			String content = "비밀번호 [" + pwd + "]";
 			
 			try {
 				Properties props = new Properties();

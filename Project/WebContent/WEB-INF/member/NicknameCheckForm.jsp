@@ -40,7 +40,7 @@
 			} 
 			else
 			{
-				var param="nickname="+nickname
+				var param="nickname="+nickname;
 				httpRequest = getXMLHttpRequest();
 				httpRequest.onreadystatechange = callback;
 				httpRequest.open("POST", "MemberNicknameCheckAction.do", true);	

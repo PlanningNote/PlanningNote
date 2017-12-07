@@ -18,7 +18,7 @@ public interface MemberDAO {
 	public String getNickname(String email);
 	public List<MemberDTO> fineMember(String search, String searchString);
 	public boolean checkPwd(String nickname, String pwd);
-	public void sendEmail(String email,String pwd);
+	public void sendEmail(String email, String content, String subject);
 	public int delete(String nickname);
 	
 	public String getEmail(String nickname);

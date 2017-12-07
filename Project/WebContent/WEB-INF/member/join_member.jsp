@@ -49,6 +49,11 @@
 				alert("나이는 숫자만 입력가능합니다.");
 				return false;
 			}
+			
+			if(f.auth.value == "N"){
+				alert("이메일 인증을 해주세요");
+				return false;
+			}
 		}
 		
 		// 취소 버튼 클릭시 첫화면으로 이동
@@ -80,6 +85,19 @@
 		function inputNicknameChk(){
 			document.userInfo.nicknameDuplication.value ="nicknameUncheck";
 		}
+		
+		function openAuth(){
+			var e = document.userInfo.emailDuplication.value;
+			if(e ==  "emailUncheck" ){
+				window.alert('중복체크를 먼저 해주세요');
+			}else{ 
+				var a = document.userInfo.email.value;
+				window.name = "parentForm";
+				window.open("authEmail.do?email="+a,"chkForm", "width=500, height=300, resizable = no, scrollbars = no");	
+			}
+			
+			
+		}
 	</script>
 	
 </head>
@@ -101,9 +119,9 @@
 						<input type="text" name="email" maxlength="50" onkeydown="inputEmailChk()">
 						<input type="button" value="중복확인" onclick="openEmailChk()">	
 						<input type="hidden" name="emailDuplication" value="emailUncheck" >
+						<input type="button" value="인증하기" onclick="openAuth()">	
 					</td>
-				</tr>
-						
+				</tr>	
 				<tr>
 					<td id="title">비밀번호</td>
 					<td>
@@ -145,6 +163,7 @@
 			<br>
 			<input type="submit" value="가입"/>  
 			<input type="reset" value="다시작성">
+			<input type="hidden" name="auth" value="N">
 		</form>
 </div>
 </td>

@@ -2,6 +2,7 @@ package member.controller;
   
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -197,7 +198,9 @@ public class MemberController {
 	public ModelAndView findemail(HttpServletResponse response,HttpServletRequest request) throws Exception{
 		String email = request.getParameter("email");
 		String pwd = memberDAO.findPwd(email);
-		memberDAO.sendEmail(email.toString(),pwd);
+		String content = "비밀번호 [" + pwd + "]";
+		String subject = "녀행자들 인증번호 전달";
+		memberDAO.sendEmail(email.toString(),content,subject);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("openerClose.jsp");
 		mav.addObject("url","login.do");
@@ -232,7 +235,41 @@ public class MemberController {
 	}
 	
 	
+	@RequestMapping(value= "/authEmail.do") 
+	public ModelAndView authEmail(HttpServletResponse response,HttpServletRequest request) throws Exception{
+		String email = request.getParameter("email");
+		String random = RandomNum();
+		String content = "인증번호 ["+random+"]";
+		String subject = "녀행자들 인증번호 전달";
+		memberDAO.sendEmail(email.toString(),content,subject);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/member/authEmail.jsp");
+		mav.addObject("pwd",random);
+		return mav;
+	}
 	
+	protected String RandomNum() {
+		Random rnd =new Random();
+
+		StringBuffer buf =new StringBuffer();
+
+		for(int i=0;i<6;i++){
+
+		    // rnd.nextBoolean() 는 랜덤으로 true, false 를 리턴. true일 시 랜덤 한 소문자를, false 일 시 랜덤 한 숫자를 StringBuffer 에 append 한다.
+
+		    if(rnd.nextBoolean()){
+
+		        buf.append((char)((int)(rnd.nextInt(26))+97));
+
+		    }else{
+
+		        buf.append((rnd.nextInt(10)));
+
+		    }
+
+		}
+		return buf.toString();
+	}
 	
 	
 	
