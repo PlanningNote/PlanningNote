@@ -166,14 +166,14 @@ public class PlanController {
    }
 
    @RequestMapping(value = "/listPlanA.do") // 계획목록 페이지로 이동.
-   public ModelAndView listPlanA(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
-      ModelAndView mav = new ModelAndView();
-      mav.setViewName("WEB-INF/planning/listPlanA.jsp");
-      List<PlanDTO> dtoP = planDAO.listPlanA();
-      mav.addObject("dtoP", dtoP);
-      arg0.setAttribute("size", dtoP.size());
-      return mav;
-   }
+	public ModelAndView listPlanA(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/planning/listPlanA.jsp");
+		List<PlanDTO> dtoP = planDAO.listPlanA();
+		mav.addObject("dtoP", dtoP);
+		arg0.setAttribute("size", dtoP.size());
+		return mav;
+	}
 
    @RequestMapping(value = "/searchPlanA.do") // 계획목록 페이지로 이동.
    public ModelAndView searchPlanA(HttpServletRequest arg0, HttpServletResponse arg1,
