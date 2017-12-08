@@ -187,8 +187,8 @@ public class MemberImpl implements MemberDAO{
 		@Override
 		public void sendEmail(String email, String content, String subject) {
 			String host = "smtp.gmail.com";			
-			String fromName = "homie2032@gmail.com";
-			String from = "okokld518@gmail.com";
+			String fromName = "녀행자들 관리자";
+			String from = "homie2032@gmail.com";
 			String to1 = email;
 			
 			try {
