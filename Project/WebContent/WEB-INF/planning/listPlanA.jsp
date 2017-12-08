@@ -16,9 +16,20 @@
 	if(pageno<1){//현재 페이지
 		pageno = 1;
 	}
-	int total_record = (int)request.getAttribute("size");//총 레코드 수
-	int page_per_record_cnt = 4;  //페이지 당 레코드 수
-	int group_per_page_cnt = 5;     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
+	int total_record ;//총 레코드 수
+	int group_per_page_cnt;
+	if(request.getAttribute("size")==null){
+		total_record=1;
+	}else{
+		total_record=(int)request.getAttribute("size");
+	}
+	if((int)request.getAttribute("size")==1){
+		group_per_page_cnt=1;
+	}else{
+		group_per_page_cnt=5;
+	}
+	int page_per_record_cnt = 3;  //페이지 당 레코드 수
+	     //페이지 당 보여줄 번호 수[1],[2],[3],[4],[5]
 //[6],[7],[8],[9],[10]
 
 	int record_end_no = pageno*page_per_record_cnt;				
