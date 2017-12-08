@@ -57,6 +57,7 @@ public class PlanMapper {
 			session = sqlMapper.openSession(); // 세션 열기
 			resT = session.insert("tagPlan", dtoT);
 			resP = session.insert("insertPlan", dtoP);
+			System.out.println("for/"+dtoS.getTargets().size());
 			for (int i = 0; i < dtoS.getTargets().size(); i++) {
 				resS = session.insert("insertsubPlan", dtoS.getTargets().get(i));
 			}
