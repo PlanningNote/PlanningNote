@@ -37,8 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{subject, jdbcType=VARCHAR},
 		#{img, jdbcType=VARCHAR},
 		#{content, jdbcType=VARCHAR},
-		#{targets.price,jdbcType=INTEGER},
-		#{targets.traffic,jdbcType=VARCHAR},
+		#{price,jdbcType=INTEGER},
+		#{traffic,jdbcType=VARCHAR},
 		#{lng, jdbcType=INTEGER},
 		#{lat, jdbcType=INTEGER})
 	</insert>
