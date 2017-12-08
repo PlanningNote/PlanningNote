@@ -21,12 +21,15 @@
 	int group_per_page_cnt;
 	if(request.getAttribute("size")==null){
 		total_record = 1;
-		group_per_page_cnt = 1; 
 	}else{
 		total_record = (int)request.getAttribute("size");
+	}
+	if((int)request.getAttribute("size")==0){
+		group_per_page_cnt = 1; 
+	}else{
 		group_per_page_cnt = 5; 
 	}
-	int page_per_record_cnt = 4;  //페이지 당 레코드 수
+	int page_per_record_cnt = 4;  //페이지 당 레코드 수 
 
 	int record_end_no = pageno*page_per_record_cnt;				
 	int record_start_no = record_end_no-(page_per_record_cnt-1);

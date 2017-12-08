@@ -4,7 +4,7 @@
 <%@ include file="/top.jsp"%>
 <style>
 	#map{
-        width: 800px;
+        width: 700px;
         height:300px;
 	}
 </style>
@@ -74,11 +74,7 @@ function addMarker(location,sub){
 					</tr>
 				</table>
 			</form>
-		</div>
-		<div align="center">
 			<div id="map"></div>
-		</div>
-		<div align="center">
 		<br><button onclick="history.back()">뒤로가기</button> 
 		</div>
 	</td>

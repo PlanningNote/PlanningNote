@@ -10,11 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select 1 from DUAL
 		</selectKey>
 		insert into PN_tag
-		values(group_no.nextval,#{tag1,jdbcType=VARCHAR},#{tag2,
-		jdbcType=VARCHAR}
-		,#{tag3,jdbcType=VARCHAR},#{tag4, jdbcType=VARCHAR}
-		,#{tag5,jdbcType=VARCHAR},#{tag,
-		jdbcType=VARCHAR},tag_no_sequence.nextval)
+		values(group_no.nextval,#{tag1,jdbcType=VARCHAR},#{tag2,jdbcType=VARCHAR}
+		,#{tag3,jdbcType=VARCHAR},#{tag4, jdbcType=VARCHAR},#{tag5,jdbcType=VARCHAR}
+		,#{tag,jdbcType=VARCHAR},tag_no_sequence.nextval)
 		<!-- 테이블 컬럼에 null 이 들어가도 되는 경우 널이 넘어오는 경우를 생각해서 My(i)Batis 에서 column type 
 			지정해 줘야 하는 문제이다. -->
 	</insert>
