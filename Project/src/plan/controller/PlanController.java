@@ -62,7 +62,7 @@ public class PlanController {
             String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()); // 현재시간
             String saveImg = now + img;
             filePath = session.getServletContext().getRealPath("imgfile/plan");
-
+            
             imgName.add(saveImg);
             imgPath.add(filePath);
 
