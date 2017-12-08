@@ -50,11 +50,11 @@
 				return false;
 			}
 			
-			/*
+			
 			if(f.auth.value == "N"){
 				alert("이메일 인증을 해주세요");
 				return false;
-			}*/
+			}
 		}
 		
 		// 취소 버튼 클릭시 첫화면으로 이동
