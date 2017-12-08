@@ -81,8 +81,7 @@ function renameForModelAttribute() {
 					</td>
 				</tr>
 				<tr>
-					<td COLSPAN="2">작성자: <INPUT TYPE="text" NAME="writer"
-						value="${dtoP.writer}" readonly>님
+					<td COLSPAN="2">작성자: ${dtoP.writer}님
 					</td>
 				</tr>
 				<tr>

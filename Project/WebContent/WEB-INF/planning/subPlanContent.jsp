@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%String path = session.getServletContext().getRealPath("img"); %>
 <%@ include file="/top.jsp"%>
 <style>

@@ -78,7 +78,6 @@ public class PlanController {
    // 이미지파일 정보 dto에 담기▽▽
    		for(int i=0;i<imgName.size();i++) {
    		dto.getTargets().get(i).setImg(imgName.get(i));
-   		System.out.println("서브이미지//"+dto.getTargets().get(i).getImg());
    		}
       // 파일및 데이터 dto에 저장.
    }
