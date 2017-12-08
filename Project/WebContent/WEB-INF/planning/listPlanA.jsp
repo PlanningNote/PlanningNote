@@ -29,7 +29,7 @@
 	}else{
 		group_per_page_cnt = 5; 
 	}
-	int page_per_record_cnt = 4;  //페이지 당 레코드 수 
+	int page_per_record_cnt = 3;  //페이지 당 레코드 수 
 
 	int record_end_no = pageno*page_per_record_cnt;				
 	int record_start_no = record_end_no-(page_per_record_cnt-1);
