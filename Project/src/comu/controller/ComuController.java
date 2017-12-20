@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ask.dto.AskDTO;
 import comu.dao.ComuDAO;
 import comu.dto.ComuDTO;
+import comu.dto.ComuReplyDTO;
 
 @Controller
 public class ComuController {
@@ -102,9 +103,10 @@ public class ComuController {
 		}
 		
 		ComuDTO dto = comuDAO.getComuBoard(Integer.parseInt(no), "content");
-		
+		List<ComuReplyDTO> list = comuDAO.listComuReply(Integer.parseInt(no));
 		ModelAndView mav = new ModelAndView("WEB-INF/ComuBoard/comu_content.jsp");
 		mav.addObject("getComuBoard", dto);
+		mav.addObject("comuReplyList",list);
 		return mav;
 	}
 	
@@ -168,6 +170,26 @@ public class ComuController {
 		}		
 		return mav;
 	}
+	
+	@RequestMapping(value= "/insertComuReply.do")
+	public ModelAndView insertComuReply(@RequestParam int comu_no, @RequestParam String writer, @RequestParam String content) throws Exception {
+		comuDAO.insertReply(comu_no, writer, content);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		mav.addObject("msg","댓글을 추가하였습니다.");
+		mav.addObject("url","comu_content.do?no="+comu_no);
+		return mav;
+	}
+	
+	@RequestMapping(value= "/nicknameClick.do", method=RequestMethod.GET)
+	public ModelAndView nickClickForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("WEB-INF/ComuBoard/nickClickForm.jsp");
+		mav.addObject("nickname",arg0.getParameter("nickname"));
+		return mav;
+	}
+	
+	
 }
 
 

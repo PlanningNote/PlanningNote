@@ -7,6 +7,6 @@ public interface BReportDAO {
 	public List<BReportDTO> listBReport();
 	public BReportDTO getBContent(int no);
 	public void sendEmail(String email, String content, String subject);
-	public int updateReport();
+	public int updateReport(int no);
 	
 }

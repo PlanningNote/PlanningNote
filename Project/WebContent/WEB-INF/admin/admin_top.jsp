@@ -47,7 +47,7 @@
 							<a href=""><img src="img/M4.png" border="0"><h4></h4></a>
 							<h4><img src="img/M5.png" border="0"></h4><!-- 신고관리 -->
 								<ul>
-									<a href=""><li><img src="img/no7.PNG" border="0"></li></a><!-- 회원신고 -->
+									<a href="goWReport.do"><li><img src="img/no7.PNG" border="0"></li></a><!-- 회원신고 -->
 									<a href="goBReport.do"><li><img src="img/no8.PNG" border="0"></li></a><!-- 게시물신고 -->
 								</ul>
 						</div>

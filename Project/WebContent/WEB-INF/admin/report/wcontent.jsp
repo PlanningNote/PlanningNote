@@ -9,20 +9,18 @@
 </script>
 <div align="center" >
 	<hr color="green" width="300">
-	<font size="6"><b>게 시 물 신 고 내 용</b></font>
+	<font size="6"><b>회 원 신 고 내 용</b></font>
 	<hr color="green" width="300">
 	<table border="1" width="800">
 		<tr align="center">
 			<th width="15%">번호</th>
-			<td width="35%">${dto.no}</td>
-			<th width="15%">게시물번호</th>
-			<td width="35%">${dto.board_no}</td>
+			<td colspan="3">${dto.no}</td>
 		</tr>
 		<tr align="center">
-			<th>신고자</th>
-			<td>${dto.reporter}</td>
-			<th>신고닉네임</th>
-			<td>${dto.suspecter}</td>
+			<th width="15%">신고자</th>
+			<td width="35%">${dto.reporter}</td>
+			<th width="15%">신고닉네임</th>
+			<td width="35%">${dto.suspecter}</td>
 		</tr>
 		<tr align="center">
 			<th>내용</th>
@@ -49,8 +47,8 @@
 		</tr>
 		<tr align="center">
 			<td colspan="4">
-				<input type="button" value="삭제하기" onclick="window.location='breportDelForm.do?board_no=${dto.board_no}&suspecter=${dto.suspecter}&no=${dto.no}'">
-				<input type="button" value="뒤로가기" onclick="window.location='goBReport.do'">
+				<input type="button" value="삭제하기" onclick="window.location='wreportDelForm.do?suspecter=${dto.suspecter}&no=${dto.no}'">
+				<input type="button" value="뒤로가기" onclick="window.location='goWReport.do'">
 			</td>
 		</tr>
 			

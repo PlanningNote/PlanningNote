@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import comu.dto.ComuDTO;
+import comu.dto.ComuReplyDTO;
 
 public class ComuDAOImpl implements ComuDAO {  
 	private JdbcTemplate jdbcTemplate;
@@ -35,8 +36,25 @@ public class ComuDAOImpl implements ComuDAO {
 			return dto;
 		}
 	}
+	
+	class ReplyMapper implements RowMapper<ComuReplyDTO>{
+
+		@Override
+		public ComuReplyDTO mapRow(ResultSet arg0, int arg1) throws SQLException {
+			ComuReplyDTO dto = new ComuReplyDTO();
+			dto.setNo(arg0.getInt("no"));
+			dto.setComu_no(arg0.getInt("comu_no"));
+			dto.setWriter(arg0.getString("writer"));
+			dto.setContent(arg0.getString("content"));
+			dto.setDay(arg0.getString("day"));
+			
+			return dto;
+		}
+		
+	}
 
 	MyRowMapper mapper = new MyRowMapper();
+	ReplyMapper replymapper = new ReplyMapper();
 
 	@Override
 	public int insertComu(ComuDTO dto) {
@@ -164,6 +182,24 @@ protected void plusReadCount(int no) {
 	}
 
 
+
+
+	@Override
+	public void insertReply(int comu_no, String writer, String content) {
+		String sql = "insert into PN_comuReply values(comuReply_seq.nextval, ?, ?,?,sysdate)";
+		Object[] values = new Object[] {comu_no, writer, content};
+		jdbcTemplate.update(sql, values);			
+	}
+
+
+
+
+	@Override
+	public List<ComuReplyDTO> listComuReply(int comu_no) {
+		String sql = "select * from PN_comuReply where comu_no= ? order by no desc";
+		List<ComuReplyDTO> list = jdbcTemplate.query(sql, replymapper, comu_no);
+		return list;
+	}
 
 
 

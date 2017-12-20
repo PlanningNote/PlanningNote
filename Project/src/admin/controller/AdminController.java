@@ -34,6 +34,8 @@ import notice.dto.NoticeDTO;
 import plan.dao.PlanDAO;
 import report.BReportDAO;
 import report.BReportDTO;
+import report.WReportDAO;
+import report.WReportDTO;
 
 @Controller
 public class AdminController {
@@ -51,6 +53,9 @@ public class AdminController {
 
 	@Autowired
 	private BReportDAO breportDAO;
+	
+	@Autowired
+	private WReportDAO wreportDAO;
 	
 	@Autowired
 	private PlanDAO planDAO;
@@ -607,10 +612,106 @@ public class AdminController {
 		mav.setViewName("message.jsp");
 		return mav;
 	}
+	
+	/* ===================================================== */
+	/* 회원신고 */
+	
+	@RequestMapping(value = "/memReportForm.do")
+	protected ModelAndView memReportForm(HttpSession session, HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		String suspecter = arg0.getParameter("nickname");
+		String reporter = (String) session.getAttribute("mynick");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("suspecter", suspecter);
+		mav.addObject("reporter", reporter);
+		mav.setViewName("WEB-INF/admin/report/memReportForm.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/memReport.do")
+	protected ModelAndView memReport(HttpSession session, HttpServletRequest arg0, @ModelAttribute WReportDTO dto,
+			BindingResult result) throws Exception {
+		MultipartHttpServletRequest mr = (MultipartHttpServletRequest) arg0;
+
+		MultipartFile mf = mr.getFile("img");
+		String img = mf.getOriginalFilename();
+
+		if (img != null && !(img.trim().equals(""))) {
+			String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+			String saveImg = now + img;
+
+			String upPath = session.getServletContext().getRealPath("/imgfile/report");
+			File file = new File(upPath, saveImg);
+
+			try {
+				mf.transferTo(file);
+				System.out.println("파일전송 성공! ");
+			} catch (IOException e) {
+				System.out.println("파일전송실패ㅠㅠ ");
+				e.printStackTrace();
+			}
+			dto.setImg(saveImg);
+		} else {
+			dto.setImg("");
+		}
+
+		if (result.hasErrors()) {
+			dto.setNo(0);
+		}
+
+		dto.setHandling("N");
+		dto.setHandleday("");
+
+		int res = wreportDAO.insertReport(dto); 
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		mav.addObject("msg", "신고접수가 완료되었습니다.");
+		mav.addObject("url", "comu_list.do");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/goWReport.do")
+	protected ModelAndView goWReport(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+		List<WReportDTO> list = wreportDAO.listWReport();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("getList", list);
+		mav.setViewName("WEB-INF/admin/report/wlist.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/getWContent.do")
+	protected ModelAndView getWContent(@RequestParam int no) throws Exception {
+		WReportDTO dto = wreportDAO.getWContent(no);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto", dto);
+		mav.setViewName("WEB-INF/admin/report/wcontent.jsp");
+		return mav;
+	}	
+	
+	@RequestMapping(value = "/wreportDelForm.do")
+	protected ModelAndView brepwreportDelFormrtDelForm(@RequestParam int no,@RequestParam String suspecter) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("no",no);
+		mav.addObject("nickname",suspecter);
+		mav.setViewName("WEB-INF/admin/report/wdeleteForm.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/wreportDelete.do")
+	protected ModelAndView wreportDelete(@RequestParam int no,@RequestParam String nickname,@RequestParam String content,@RequestParam String subject) throws Exception {
+		String email = memberDAO.getEmail(nickname);
+		wreportDAO.sendEmail(email, content, subject);	
+		wreportDAO.updateReport(no);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("message.jsp");
+		mav.addObject("url","goWReport.do");
+		mav.addObject("msg","회원 삭제 및 메일 발송 완료");
+		return mav;
+	}
+	
+	
 
 	/* ===================================================== */
-	/* 회원 신고 */
-
+	/* 게시물신고 */
 	@RequestMapping(value = "/reportPlanForm.do")
 	protected ModelAndView reportPlanForm(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		int no = Integer.parseInt(arg0.getParameter("no"));
@@ -620,7 +721,7 @@ public class AdminController {
 		mav.addObject("no", no);
 		mav.addObject("suspecter", suspecter);
 		mav.addObject("reporter", reporter);
-		mav.setViewName("WEB-INF/report/reportForm.jsp");
+		mav.setViewName("WEB-INF/admin/report/reportForm.jsp");
 		return mav;
 	}
 
@@ -663,7 +764,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("message.jsp");
 		mav.addObject("msg", "신고접수가 완료되었습니다.");
-		mav.addObject("url", "list.do?group_no=" + arg0.getParameter("board_no"));
+		mav.addObject("url", "listPlanA.do");
 		return mav;
 	}
 
@@ -686,20 +787,21 @@ public class AdminController {
 	}	
 	
 	@RequestMapping(value = "/breportDelForm.do")
-	protected ModelAndView breportDelForm(@RequestParam int board_no, @RequestParam String suspecter) throws Exception {
+	protected ModelAndView breportDelForm(@RequestParam int no, @RequestParam int board_no, @RequestParam String suspecter) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("no",board_no);
+		mav.addObject("board_no",board_no);
 		mav.addObject("nickname",suspecter);
+		mav.addObject("no",no);
 		mav.setViewName("WEB-INF/admin/report/deleteForm.jsp");
 		return mav;
 	}
 	
 	@RequestMapping(value = "/breportDelete.do")
-	protected ModelAndView breportDelete(@RequestParam int no, @RequestParam String nickname,@RequestParam String content,@RequestParam String subject) throws Exception {
-		planDAO.deletePlan(no);  // 일정삭제
+	protected ModelAndView breportDelete(@RequestParam int board_no,@RequestParam int no, @RequestParam String nickname,@RequestParam String content,@RequestParam String subject) throws Exception {
+		planDAO.deletePlan(board_no);  // 일정삭제
 		String email = memberDAO.getEmail(nickname);
 		breportDAO.sendEmail(email, content, subject);	
-		breportDAO.updateReport();
+		breportDAO.updateReport(no);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("message.jsp");
 		mav.addObject("url","goBReport.do");

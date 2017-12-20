@@ -4,7 +4,7 @@
 <%@ include file="../admin_top.jsp" %>
 <div align="center" >
 	<hr color="green" width="300">
-	<font size="6"><b>게 시 물 신 고 목 록</b></font>
+	<font size="6"><b>회 원 신 고 목 록</b></font>
 	<hr color="green" width="300">
 	<table border="1" width="800">
 		<tr>
@@ -20,7 +20,7 @@
 					<tr align="center">
 						<td>${dto.no} </td>
 						<td>${dto.suspecter}</td>
-						<td>${dto.askday}</td>			
+						<td>${dto.askday}</td>				
 						<td>
 							<c:if test="${not empty dto.handleday}">
 								${dto.handleday}
@@ -29,9 +29,8 @@
 								-
 							</c:if>
 						</td>
-						<td>${dto.handling}</td> 
-						
-						<td><input type="button" value="처리" onclick="window.location='getBContent.do?no=${dto.no}'"></td>
+						<td>${dto.handling}</td> 						
+						<td><input type="button" value="처리" onclick="window.location='getWContent.do?no=${dto.no}'"></td>
 					</tr>							
 		</c:forEach>
 		

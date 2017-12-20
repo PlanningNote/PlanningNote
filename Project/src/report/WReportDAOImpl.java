@@ -22,22 +22,25 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
-public class BReportDAOImpl implements BReportDAO {
+import report.BReportDAOImpl.MyPreparedStatementSetterForPrimaryKey;
+import report.BReportDAOImpl.MyResultSetExtractor;
+import report.BReportDAOImpl.MyRowMapper;
+
+public class WReportDAOImpl implements WReportDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	class MyRowMapper implements RowMapper<BReportDTO>{
+	class MyRowMapper implements RowMapper<WReportDTO>{
 
 		@Override
-		public BReportDTO mapRow(ResultSet arg0, int arg1) throws SQLException {
-			BReportDTO dto = new BReportDTO();
+		public WReportDTO mapRow(ResultSet arg0, int arg1) throws SQLException {
+			WReportDTO dto = new WReportDTO();
 			dto.setNo(arg0.getInt("no"));
 			dto.setReporter(arg0.getString("reporter"));
 			dto.setSuspecter(arg0.getString("suspecter"));
-			dto.setBoard_no(arg0.getInt("board_no"));
 			dto.setContent(arg0.getString("content"));
 			dto.setImg(arg0.getString("img"));
 			dto.setHandling(arg0.getString("handling"));
@@ -48,38 +51,38 @@ public class BReportDAOImpl implements BReportDAO {
 	}
 	
 	MyRowMapper mapper = new MyRowMapper();
+	
 
 	@Override
-	public int insertReport(BReportDTO dto) {
-		String sql="insert into PN_BReport values(breport_seq.nextval, ?,?,?,?,?,?,sysdate,?)";
-		Object[] values = new Object[] {dto.getReporter(),dto.getSuspecter(),dto.getBoard_no(),dto.getContent(),dto.getImg(),dto.getHandling(),dto.getHandleday()};
+	public int insertReport(WReportDTO dto) {
+		String sql="insert into PN_WReport values(wreport_seq.nextval, ?,?,?,?,?,sysdate,?)";
+		Object[] values = new Object[] {dto.getReporter(),dto.getSuspecter(),dto.getContent(),dto.getImg(),dto.getHandling(),dto.getHandleday()};
 		int res = jdbcTemplate.update(sql, values);
 		return res;
 	}
 
 	@Override
-	public List<BReportDTO> listBReport() {
-		String sql ="select * from PN_BReport order by no desc";
-		List<BReportDTO> list = jdbcTemplate.query(sql, mapper);
+	public List<WReportDTO> listWReport() {
+		String sql ="select * from PN_WReport order by no desc";
+		List<WReportDTO> list = jdbcTemplate.query(sql, mapper);
 		return list;		
 	}
 
 	@Override
-	public BReportDTO getBContent(int no) {
-		String sql = "select * from PN_BReport where no = ?";
-		BReportDTO dto = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(no), new MyResultSetExtractor());
+	public WReportDTO getWContent(int no) {
+		String sql = "select * from PN_WReport where no = ?";
+		WReportDTO dto = jdbcTemplate.query(sql, new MyPreparedStatementSetterForPrimaryKey(no), new MyResultSetExtractor());
 		return dto;
 	}
 	
-	class MyResultSetExtractor implements ResultSetExtractor<BReportDTO>{
+	class MyResultSetExtractor implements ResultSetExtractor<WReportDTO>{
 		@Override
-		public BReportDTO extractData(ResultSet arg0) throws SQLException, DataAccessException {
+		public WReportDTO extractData(ResultSet arg0) throws SQLException, DataAccessException {
 			if(arg0.next()) {
-				BReportDTO dto = new BReportDTO();
+				WReportDTO dto = new WReportDTO();
 				dto.setNo(arg0.getInt("no"));
 				dto.setReporter(arg0.getString("reporter"));
 				dto.setSuspecter(arg0.getString("suspecter"));
-				dto.setBoard_no(arg0.getInt("board_no"));
 				dto.setContent(arg0.getString("content"));
 				dto.setImg(arg0.getString("img"));
 				dto.setHandling(arg0.getString("handling"));
@@ -103,8 +106,8 @@ public class BReportDAOImpl implements BReportDAO {
 		}
 		
 	}
-	
-	 @Override
+
+	@Override
 	public void sendEmail(String email, String content, String subject) {
 		String host = "smtp.gmail.com";
 		String fromName = "녀행자들 관리자";
@@ -143,12 +146,11 @@ public class BReportDAOImpl implements BReportDAO {
 		}
 		
 	}
-	
-	
+
 	@Override
 	public int updateReport(int no) {
-		String sql = "update PN_BReport set handleday  = sysdate ,handle = ? where no = ?";
-		int res = jdbcTemplate.update(sql,"Y", no);
+		String sql = "update PN_WReport set handleday  = sysdate ,handle = ? where no= ?";
+		int res = jdbcTemplate.update(sql,"Y",no);
 		return res;
 	}
 

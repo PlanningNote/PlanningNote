@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%String path = session.getServletContext().getRealPath("img"); %>
-<%@ include file="/top.jsp"%>
+<!DOCTYPE>
+<%@ include file="../../top.jsp"%>
+
 <style>
 	#map{
         width: 700px;
@@ -26,32 +28,28 @@ function initMap() {
            position: initLatLng
        });
        
-       var x = ${size};
-       
-       <c:forEach items="${dtoS.getTargets()}" var="dtoS">	    
-		var lat = ${dtoS.lat}; 
+		var lat = ${dtoS.lat};       
 		var lng = ${dtoS.lng};
-		var sub = "${dtoS.subject}";  
+		var sub = "${dtoS.subject}";    
 		var c =  new google.maps.LatLng(lat,lng);    	  
 		addMarker(c,sub);
-	</c:forEach>  
-       
+      
 function addMarker(location,sub){
- 	var marker = new google.maps.Marker({
+	var marker = new google.maps.Marker({
 					position: location,
 					map:map
 			});
- 	
- 	var infoWindow = new google.maps.InfoWindow({
+	var infoWindow = new google.maps.InfoWindow({
 		content:sub
 	});
 	
 	marker.addListener('click',function(){
 		infoWindow.open(map, marker);
 	});
+
 			}	
-     
-   }
+    
+  } 
 </script>
 <tr>
 	<td>

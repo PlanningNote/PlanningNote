@@ -6,10 +6,9 @@
 	<hr color="green" width="300">
 	<font size="2"><b>신고대상자에게 보내는 메일</b></font>
 	<hr color="green" width="300">
-	<form name="f" action="breportDelete.do" method="post">
+	<form name="f" action="wreportDelete.do" method="post">
+		<input type="hidden" name="no" value="${no}">
 		<table border="1" width="600">
-			<input type="hidden" name="board_no" value="${board_no}">
-			<input type="hidden" name="no" value="${no}">
 			<tr>
 				<th  align="center">신고대상자</th>
 				<td><input type="text" name="nickname" value="${nickname}" readonly></td>
@@ -27,7 +26,7 @@
 			<tr align="center">
 				<td colspan="2">
 					<input type="submit" value="전송">
-					<input type="button" value="취소" onclick="window.location='goBReport.do'">
+					<input type="button" value="취소" onclick="window.location='goWReport.do'">
 				</td>
 			</tr>
 		

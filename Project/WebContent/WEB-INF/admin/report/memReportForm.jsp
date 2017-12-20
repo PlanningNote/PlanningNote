@@ -3,15 +3,14 @@
 <%@ include file="../../../top.jsp" %>
 <script>
 	function backPage(){
-		location.href="listPlanA.do";
+		location.href="comu_list.do";
 	}
 </script>
 <tr>
 <td>
 	<div align="center">
 		<h2>신 고 하 기</h2>
-		<form name="f" method="post"  action="reportPlan.do" enctype="multipart/form-data">
-		<input type="hidden" name="board_no" value="${no}">
+		<form name="f" method="post"  action="memReport.do" enctype="multipart/form-data">
 			<table border="1">
 				<tr>
 					<th>작성자</th>

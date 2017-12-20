@@ -6,19 +6,26 @@
 	function revert(){
 		location.href="comu_list.do";
 	}
+	function writeComu(){
+		location.href="comu_write.do";
+	}
+	function member(writer){
+		window.alert()
+	}
 </script> 
 <tr>
 	<td>
 		<div align="center">		
-			<b>커뮤니티게시판 </b>
-			<table border="0" width="600" >				
-				<tr bgcolor="yellow">
-					<td align="right"><a href="comu_write.do">글쓰기</a></td>
-				</tr>
+			<b>커뮤니티게시판 </b><br><br>
+			<table border="0" width="600">
+			<tr>
+				<td>
+					<input type="button" value="글쓰기" onClick="writeComu()">
+				</td>
+			</tr>
 			</table>
-					
-			<table border="1" width="600" background="b11.jpg">
-				<tr bgcolor="#7DFE74">
+			<table border="1" width="600">
+				<tr >
 					<th>번호</th>
 					<th>작성자</th>
 					<th width="50%">제목</th>
@@ -35,11 +42,8 @@
 			<c:forEach var="dto" items="${comuList}">
 				<tr>
 					<td>${dto.no}</td>
-					<td>${dto.writer}</td>
-					<td>	<a href="comu_content.do?no=${dto.no}">${dto.subject}</a>
-						<c:if test="${dto.count>10}">	
-							<img src="img/hot.gif">
-						</c:if>
+					<td><a href="#" onclick="return member('${dto.writer}');">${dto.writer}</a></td>
+					<td>	<a href="comu_content.do?no=${dto.no}">${dto.subject}</a>						
 					</td>
 					<td>${dto.count}</td>			
 					<td>${dto.day}</td>	
